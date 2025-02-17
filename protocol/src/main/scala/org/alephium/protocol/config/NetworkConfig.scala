@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -32,7 +32,7 @@ trait NetworkConfig {
 
   // scalastyle:off magic.number
   lazy val coinbaseLockupPeriod: Duration = networkId match {
-    case NetworkId.AlephiumMainNet => Duration.ofMinutesUnsafe(500)
+    case NetworkId.OxygeniumMainNet => Duration.ofMinutesUnsafe(500)
     case _                         => Duration.ofMinutesUnsafe(10)
   }
   // scalastyle:on magic.number

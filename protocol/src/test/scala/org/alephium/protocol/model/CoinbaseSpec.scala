@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -20,9 +20,9 @@ import scala.util.Random
 
 import org.oxygenium.protocol.Generators
 import org.oxygenium.protocol.config.{GroupConfigFixture}
-import org.oxygenium.util.{AlephiumSpec, AVector, U256}
+import org.oxygenium.util.{OxygeniumSpec, AVector, U256}
 
-class CoinbaseSpec extends AlephiumSpec with Generators with GroupConfigFixture.Default {
+class CoinbaseSpec extends OxygeniumSpec with Generators with GroupConfigFixture.Default {
   def checkEqual(u256: U256, double: Double) = {
     val a = BigDecimal(u256.v)
     val b = BigDecimal.valueOf(double)

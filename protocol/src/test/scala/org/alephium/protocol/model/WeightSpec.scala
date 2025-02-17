@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,9 +18,9 @@ package org.oxygenium.protocol.model
 
 import org.oxygenium.protocol.config.GroupConfigFixture
 import org.oxygenium.protocol.mining.HashRate
-import org.oxygenium.util.{AlephiumSpec, Duration}
+import org.oxygenium.util.{OxygeniumSpec, Duration}
 
-class WeightSpec extends AlephiumSpec with GroupConfigFixture.Default {
+class WeightSpec extends OxygeniumSpec with GroupConfigFixture.Default {
   it should "check special values" in {
     Weight.from(Target.Max) is Weight(1)
     (Weight(0) < Weight(1)) is true

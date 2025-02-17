@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -696,7 +696,7 @@ object ModelGenerators {
   case class AssetInputInfo(txInput: TxInput, referredOutput: AssetOutput, privateKey: PrivateKey)
 }
 
-class ModelGeneratorsSpec extends AlephiumSpec with TokenGenerators with DefaultGenerators {
+class ModelGeneratorsSpec extends OxygeniumSpec with TokenGenerators with DefaultGenerators {
   it should "split a positive number" in {
     def check(amount: Int, minAmount: Int, num: Int): Assertion = {
       val result = split(amount, minAmount, num)

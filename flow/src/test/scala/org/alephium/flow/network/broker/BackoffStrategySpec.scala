@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,10 +18,10 @@ package org.oxygenium.flow.network.broker
 
 import org.scalatest.concurrent.Eventually
 
-import org.oxygenium.flow.setting.{AlephiumConfigFixture, NetworkSetting}
-import org.oxygenium.util.{discard, AlephiumSpec, Duration, Math}
+import org.oxygenium.flow.setting.{OxygeniumConfigFixture, NetworkSetting}
+import org.oxygenium.util.{discard, OxygeniumSpec, Duration, Math}
 
-class BackoffStrategySpec extends AlephiumSpec with AlephiumConfigFixture {
+class BackoffStrategySpec extends OxygeniumSpec with OxygeniumConfigFixture {
   implicit lazy val network: NetworkSetting    = networkConfig
   def createStrategy(): DefaultBackoffStrategy = DefaultBackoffStrategy()
 

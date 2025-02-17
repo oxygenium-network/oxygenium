@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -24,10 +24,10 @@ import akka.io.{IO, Tcp}
 import akka.testkit.{EventFilter, SocketUtil, TestProbe}
 
 import org.oxygenium.flow.network.broker.MisbehaviorManager
-import org.oxygenium.flow.setting.{AlephiumConfigFixture, NetworkSetting}
+import org.oxygenium.flow.setting.{OxygeniumConfigFixture, NetworkSetting}
 import org.oxygenium.util._
 
-class TcpControllerSpec extends AlephiumActorSpec with AlephiumConfigFixture {
+class TcpControllerSpec extends OxygeniumActorSpec with OxygeniumConfigFixture {
 
   trait Fixture {
     implicit val system: ActorSystem = createSystem()

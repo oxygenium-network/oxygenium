@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,9 +18,9 @@ package org.oxygenium.serde
 
 import akka.util.ByteString
 
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class RandomBytesSpec extends AlephiumSpec {
+class RandomBytesSpec extends OxygeniumSpec {
   it should "compare random bytes" in {
     val zeros = ByteString.fromArrayUnsafe(Array.fill(32)(0))
     RandomBytes.equals(32, zeros, 32, zeros) is true

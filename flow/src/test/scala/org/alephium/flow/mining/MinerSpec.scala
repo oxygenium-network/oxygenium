@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ import akka.testkit.TestActorRef
 import akka.util.Timeout
 import org.scalatest.concurrent.ScalaFutures
 
-import org.oxygenium.flow.{AlephiumFlowActorSpec, FlowFixture}
+import org.oxygenium.flow.{OxygeniumFlowActorSpec, FlowFixture}
 import org.oxygenium.flow.handler.{BlockChainHandler, TestUtils, ViewHandler}
 import org.oxygenium.flow.model.BlockFlowTemplate
 import org.oxygenium.flow.validation.InvalidBlockVersion
@@ -30,7 +30,7 @@ import org.oxygenium.protocol.model._
 import org.oxygenium.serde._
 import org.oxygenium.util.{AVector, Duration}
 
-class MinerSpec extends AlephiumFlowActorSpec with ScalaFutures {
+class MinerSpec extends OxygeniumFlowActorSpec with ScalaFutures {
 
   implicit val askTimeout: Timeout = Timeout(Duration.ofSecondsUnsafe(10).asScala)
 

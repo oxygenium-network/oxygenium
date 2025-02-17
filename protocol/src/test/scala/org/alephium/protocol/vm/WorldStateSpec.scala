@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -27,9 +27,9 @@ import org.oxygenium.protocol.vm.nodeindexes.NodeIndexesStorage
 import org.oxygenium.protocol.vm.nodeindexes.TxOutputLocator
 import org.oxygenium.protocol.vm.subcontractindex.SubContractIndexStorage
 import org.oxygenium.serde.{avectorSerde, eitherSerde, intSerde}
-import org.oxygenium.util.{AlephiumSpec, AVector}
+import org.oxygenium.util.{OxygeniumSpec, AVector}
 
-class WorldStateSpec extends AlephiumSpec with NoIndexModelGenerators with StorageFixture {
+class WorldStateSpec extends OxygeniumSpec with NoIndexModelGenerators with StorageFixture {
   def generateAsset: Gen[(TxOutputRef, TxOutput)] = {
     for {
       groupIndex     <- groupIndexGen

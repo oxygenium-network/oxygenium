@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@ import java.math.BigInteger
 import akka.util.ByteString
 import org.scalacheck.Gen
 
-class I256Spec extends AlephiumSpec {
+class I256Spec extends OxygeniumSpec {
   val numGen = (0L to 3L).flatMap { i =>
     val n = BigInteger.valueOf(i)
     List(

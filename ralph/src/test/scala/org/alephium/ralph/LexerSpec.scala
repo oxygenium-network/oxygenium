@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -24,9 +24,9 @@ import org.oxygenium.protocol.model.{Address, ContractId}
 import org.oxygenium.protocol.vm.Val
 import org.oxygenium.ralph.ArithOperator._
 import org.oxygenium.ralph.error.CompilerError
-import org.oxygenium.util.{AlephiumSpec, Hex, I256, U256}
+import org.oxygenium.util.{OxygeniumSpec, Hex, I256, U256}
 
-abstract class LexerSpec(fileURI: Option[java.net.URI]) extends AlephiumSpec {
+abstract class LexerSpec(fileURI: Option[java.net.URI]) extends OxygeniumSpec {
   val Lexer           = new Lexer(fileURI)
   val StatelessParser = new StatelessParser(fileURI)
 

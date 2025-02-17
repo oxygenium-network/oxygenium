@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -21,9 +21,9 @@ import org.oxygenium.flow.setting.ConsensusSetting
 import org.oxygenium.protocol.ALPH
 import org.oxygenium.protocol.model.{ChainIndex, NetworkId, Target}
 import org.oxygenium.protocol.vm.LockupScript
-import org.oxygenium.util.{AlephiumSpec, TimeStamp}
+import org.oxygenium.util.{OxygeniumSpec, TimeStamp}
 
-class FlowDifficultyAdjustmentSpec extends AlephiumSpec {
+class FlowDifficultyAdjustmentSpec extends OxygeniumSpec {
 
   it should "calculate weighted target" in new PreLemanDifficultyFixture {
     prepareBlocks(2)
@@ -210,12 +210,12 @@ class FlowDifficultyAdjustmentSpec extends AlephiumSpec {
 
   it should "use diff penalty for leman fork" in new FlowFixture {
     override val configValues: Map[String, Any] = Map(
-      ("oxygenium.network.network-id", NetworkId.AlephiumDevNet.id),
+      ("oxygenium.network.network-id", NetworkId.OxygeniumDevNet.id),
       ("oxygenium.network.leman-hard-fork-timestamp ", TimeStamp.now().plusHoursUnsafe(-1).millis),
       ("oxygenium.network.rhone-hard-fork-timestamp ", TimeStamp.Max.millis),
       ("oxygenium.consensus.num-zeros-at-least-in-hash", 3)
     )
-    config.network.networkId is NetworkId.AlephiumDevNet
+    config.network.networkId is NetworkId.OxygeniumDevNet
     config.network.getHardFork(TimeStamp.now()).isLemanEnabled() is true
     implicit val consensusConfig: ConsensusSetting = consensusConfigs.mainnet
     consensusConfig.numZerosAtLeastInHash is 3

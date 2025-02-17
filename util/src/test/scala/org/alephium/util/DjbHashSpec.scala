@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@ package org.oxygenium.util
 
 import akka.util.ByteString
 
-class DjbHashSpec extends AlephiumSpec {
+class DjbHashSpec extends OxygeniumSpec {
   it should "hash correctly" in {
     def check(string: String, expected: Int) = {
       val bytes = ByteString.fromString(string)

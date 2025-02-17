@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -30,9 +30,9 @@ import org.oxygenium.protocol.{PublicKey, SignatureSchema}
 import org.oxygenium.protocol.message.Payload.Code
 import org.oxygenium.protocol.model._
 import org.oxygenium.serde.{serialize, Serde, SerdeError}
-import org.oxygenium.util.{AlephiumSpec, AVector, Hex, TimeStamp, U256}
+import org.oxygenium.util.{OxygeniumSpec, AVector, Hex, TimeStamp, U256}
 
-class PayloadSpec extends AlephiumSpec with NoIndexModelGenerators {
+class PayloadSpec extends OxygeniumSpec with NoIndexModelGenerators {
   implicit val ordering: Ordering[Code] = Ordering.by(Code.toInt(_))
 
   it should "index all payload types" in {

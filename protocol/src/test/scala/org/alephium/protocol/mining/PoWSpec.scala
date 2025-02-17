@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,9 +18,9 @@ package org.oxygenium.protocol.mining
 
 import org.oxygenium.protocol.model.NoIndexModelGenerators
 import org.oxygenium.serde._
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class PoWSpec extends AlephiumSpec with NoIndexModelGenerators {
+class PoWSpec extends OxygeniumSpec with NoIndexModelGenerators {
   it should "check PoW" in {
     forAll(blockGen) { block =>
       val headerBlob = serialize(block.header)

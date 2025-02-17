@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ import sttp.client3.asynchttpclient.future.AsyncHttpClientFutureBackend
 import sttp.model.{Method, Uri}
 
 import org.oxygenium.json.Json._
-import org.oxygenium.util.AlephiumFutureSpec
+import org.oxygenium.util.OxygeniumFutureSpec
 
 object HttpFixture {
   implicit class RichResponse[T](val response: Response[T]) extends AnyVal {
@@ -131,7 +131,7 @@ trait HttpFixture {
   }
 }
 
-trait HttpRouteFixture extends HttpFixture with AlephiumFutureSpec {
+trait HttpRouteFixture extends HttpFixture with OxygeniumFutureSpec {
   def port: Int
 
   def maybeApiKey: Option[String]

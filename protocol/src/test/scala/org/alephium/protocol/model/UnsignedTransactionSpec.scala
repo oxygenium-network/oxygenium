@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -21,9 +21,9 @@ import akka.util.ByteString
 import org.oxygenium.protocol.{ALPH, PublicKey}
 import org.oxygenium.protocol.model.UnsignedTransaction.TxOutputInfo
 import org.oxygenium.protocol.vm.LockupScript
-import org.oxygenium.util.{AlephiumSpec, AVector, NumericHelpers, TimeStamp, U256}
+import org.oxygenium.util.{OxygeniumSpec, AVector, NumericHelpers, TimeStamp, U256}
 
-class UnsignedTransactionSpec extends AlephiumSpec with NumericHelpers {
+class UnsignedTransactionSpec extends OxygeniumSpec with NumericHelpers {
   behavior of "Build outputs"
 
   trait BuildOutputsFixture extends Fixture

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -40,9 +40,9 @@ final case class ReleaseVersion(major: Int, minor: Int, patch: Int)
   // scalastyle:off magic.number
   def checkRhoneUpgrade()(implicit networkConfig: NetworkConfig): Boolean = {
     if (networkConfig.getHardFork(TimeStamp.now()).isRhoneEnabled()) {
-      if (networkConfig.networkId == NetworkId.AlephiumMainNet) {
+      if (networkConfig.networkId == NetworkId.OxygeniumMainNet) {
         this >= ReleaseVersion(3, 0, 0)
-      } else if (networkConfig.networkId == NetworkId.AlephiumTestNet) {
+      } else if (networkConfig.networkId == NetworkId.OxygeniumTestNet) {
         this >= ReleaseVersion(2, 14, 6)
       } else {
         true

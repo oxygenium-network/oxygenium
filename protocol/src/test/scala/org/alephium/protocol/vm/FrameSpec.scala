@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -26,9 +26,9 @@ import org.oxygenium.protocol.config.{NetworkConfig, NetworkConfigFixture}
 import org.oxygenium.protocol.model._
 import org.oxygenium.protocol.vm.ContractPool.ContractAssetInUsing
 import org.oxygenium.protocol.vm.nodeindexes.TxOutputLocator
-import org.oxygenium.util.{AlephiumSpec, AVector}
+import org.oxygenium.util.{OxygeniumSpec, AVector}
 
-class FrameSpec extends AlephiumSpec with FrameFixture {
+class FrameSpec extends OxygeniumSpec with FrameFixture {
   it should "initialize frame and use operand stack for method args" in {
     val frame = genStatelessFrame()
     frame.opStack.offset is 3

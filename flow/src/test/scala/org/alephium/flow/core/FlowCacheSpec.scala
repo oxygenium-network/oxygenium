@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,9 +18,9 @@ package org.oxygenium.flow.core
 
 import org.oxygenium.flow.FlowFixture
 import org.oxygenium.protocol.model.{ChainIndex, GroupIndex}
-import org.oxygenium.util.{AlephiumSpec, LockFixture, TimeStamp}
+import org.oxygenium.util.{OxygeniumSpec, LockFixture, TimeStamp}
 
-class FlowCacheSpec extends AlephiumSpec with LockFixture {
+class FlowCacheSpec extends OxygeniumSpec with LockFixture {
   it should "remove blocks when the cache is full" in new FlowFixture {
     override val configValues: Map[String, Any] = Map(
       ("oxygenium.broker.broker-num", 1),

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@ package org.oxygenium.flow.network.broker
 import akka.io.Tcp
 import akka.testkit.TestProbe
 
-import org.oxygenium.flow.AlephiumFlowActorSpec
+import org.oxygenium.flow.OxygeniumFlowActorSpec
 import org.oxygenium.flow.network.DiscoveryServer
 import org.oxygenium.flow.network.TcpController
 import org.oxygenium.flow.network.broker.MisbehaviorManager._
@@ -27,7 +27,7 @@ import org.oxygenium.protocol.Generators
 import org.oxygenium.protocol.model.BrokerInfo
 import org.oxygenium.util.{AVector, Duration, TimeStamp}
 
-class MisbehaviorManagerSpec extends AlephiumFlowActorSpec {
+class MisbehaviorManagerSpec extends OxygeniumFlowActorSpec {
   it should "start without peers" in new Fixture {
     misbehaviorManager ! GetPeers
     expectMsg(Peers(AVector.empty))

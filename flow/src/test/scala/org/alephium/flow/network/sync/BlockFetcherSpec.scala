@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@ package org.oxygenium.flow.network.sync
 import akka.actor.Props
 import akka.testkit.TestActorRef
 
-import org.oxygenium.flow.AlephiumFlowActorSpec
+import org.oxygenium.flow.OxygeniumFlowActorSpec
 import org.oxygenium.flow.core.BlockFlow
 import org.oxygenium.flow.network.broker.BrokerHandler
 import org.oxygenium.flow.setting.NetworkSetting
@@ -27,7 +27,7 @@ import org.oxygenium.protocol.config.BrokerConfig
 import org.oxygenium.protocol.model.{BlockHash, ChainIndex}
 import org.oxygenium.util.{AVector, UnsecureRandom}
 
-class BlockFetcherSpec extends AlephiumFlowActorSpec {
+class BlockFetcherSpec extends OxygeniumFlowActorSpec {
   class TestBlockFetcher(val blockflow: BlockFlow)(implicit
       val brokerConfig: BrokerConfig,
       val networkSetting: NetworkSetting

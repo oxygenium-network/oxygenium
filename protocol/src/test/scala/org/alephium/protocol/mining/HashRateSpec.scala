@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -20,9 +20,9 @@ import java.math.BigInteger
 
 import org.oxygenium.protocol.config.GroupConfigFixture
 import org.oxygenium.protocol.model.Target
-import org.oxygenium.util.{AlephiumSpec, Duration}
+import org.oxygenium.util.{OxygeniumSpec, Duration}
 
-class HashRateSpec extends AlephiumSpec with GroupConfigFixture {
+class HashRateSpec extends OxygeniumSpec with GroupConfigFixture {
   val groups: Int = 4
 
   it should "check special values" in {

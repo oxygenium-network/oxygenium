@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 
 package org.oxygenium.util
 
-class BitsSpec extends AlephiumSpec {
+class BitsSpec extends OxygeniumSpec {
   it should "convert for special cases" in {
     val zero = AVector.fill(8)(false)
 

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ import scala.language.postfixOps
 
 import akka.util.ByteString
 
-class BytesSpec extends AlephiumSpec {
+class BytesSpec extends OxygeniumSpec {
   it should "convert byte into positive int" in {
     forAll { (input: Byte) =>
       val output = Bytes.toPosInt(input)

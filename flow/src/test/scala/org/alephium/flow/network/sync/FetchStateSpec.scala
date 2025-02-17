@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -17,9 +17,9 @@
 package org.oxygenium.flow.network.sync
 
 import org.oxygenium.protocol.model.BlockHash
-import org.oxygenium.util.{AlephiumSpec, AVector, Duration, TimeStamp}
+import org.oxygenium.util.{OxygeniumSpec, AVector, Duration, TimeStamp}
 
-class FetchStateSpec extends AlephiumSpec {
+class FetchStateSpec extends OxygeniumSpec {
   trait Fixture {
     val maxCapacity      = 20
     val timeout          = Duration.ofSecondsUnsafe(2)

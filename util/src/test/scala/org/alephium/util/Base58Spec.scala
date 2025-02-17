@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@ import org.scalatest.Assertion
 
 import org.oxygenium.util.Hex._
 
-class Base58Spec extends AlephiumSpec {
+class Base58Spec extends OxygeniumSpec {
   it should "encode/decode" in {
     def test(base58: String, raw: ByteString): Assertion = {
       Base58.encode(raw) is base58

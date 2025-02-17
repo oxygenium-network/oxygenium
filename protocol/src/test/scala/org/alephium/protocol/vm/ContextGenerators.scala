@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@ trait ContextGenerators extends VMFactory with NoIndexModelGenerators {
     val chainIndex = ChainIndex(groupIndex, groupIndex)
     BlockEnv(
       chainIndex,
-      NetworkId.AlephiumDevNet,
+      NetworkId.OxygeniumDevNet,
       TimeStamp.now(),
       Target.Max,
       Some(BlockHash.generate)

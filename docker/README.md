@@ -1,11 +1,11 @@
 Docker Stack Setup
 ====
 
-This folder containes all the necessary material to build and run Alephium via docker container.
+This folder containes all the necessary material to build and run Oxygenium via docker container.
 
 ## Prerequisites
 
-We're using [docker-compose](https://docs.docker.com/compose/) to run Alephium here.
+We're using [docker-compose](https://docs.docker.com/compose/) to run Oxygenium here.
 Make sure you have installed `docker` and `docker-compose` before proceeding further.
 
 If you prefer running `docker` or `docker-compose` command without `sudo`, add your use name
@@ -17,7 +17,7 @@ sudo usermod -aG docker $USER
 
 ## Run
 
-The provided [docker-compose.yml](./docker-compose.yml) file will be used to run Alephium:
+The provided [docker-compose.yml](./docker-compose.yml) file will be used to run Oxygenium:
 
 ```shell
 docker-compose stop && docker-compose rm -f oxygenium && docker-compose pull && docker-compose up -d
@@ -35,7 +35,7 @@ A local instance of grafana will be started at `http://127.0.0.1:3000` with two 
 http://127.0.0.1:3000/d/ME6diT3Mk/jvm-overview?orgId=1&refresh=30s
 ```
 
-and `Alephium Overview`:
+and `Oxygenium Overview`:
 ```
 http://127.0.0.1:3000/d/S3eJTo3Mk/oxygenium-overview?orgId=1&refresh=30s
 ```

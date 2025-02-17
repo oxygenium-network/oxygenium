@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,9 +18,9 @@ package org.oxygenium.flow.client
 
 import org.oxygenium.flow.FlowFixture
 import org.oxygenium.protocol.ALPH
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class NodeSpec extends AlephiumSpec {
+class NodeSpec extends OxygeniumSpec {
   it should "check genesis blocks" in {
     val defaultFixture   = new FlowFixture {}
     val defaultConfig    = defaultFixture.config

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@ import org.oxygenium.serde._
 import org.oxygenium.util._
 
 // scalastyle:off file.size.limit
-class VMSpec extends AlephiumSpec with ContextGenerators with NetworkConfigFixture.Default {
+class VMSpec extends OxygeniumSpec with ContextGenerators with NetworkConfigFixture.Default {
   trait BaseFixture[Ctx <: StatelessContext] {
     val baseMethod = Method[Ctx](
       isPublic = true,

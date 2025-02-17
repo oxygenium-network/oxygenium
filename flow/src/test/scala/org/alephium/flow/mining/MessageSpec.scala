@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -25,10 +25,10 @@ import org.oxygenium.flow.model.BlockFlowTemplate
 import org.oxygenium.protocol.config.GroupConfigFixture
 import org.oxygenium.protocol.model.{BlockHash, ChainIndex, Transaction}
 import org.oxygenium.serde.{avectorSerde, serialize, Staging}
-import org.oxygenium.util.{AlephiumSpec, AVector}
+import org.oxygenium.util.{OxygeniumSpec, AVector}
 import org.oxygenium.util.Hex.HexStringSyntax
 
-class MessageSpec extends AlephiumSpec with GroupConfigFixture.Default {
+class MessageSpec extends OxygeniumSpec with GroupConfigFixture.Default {
   "ClientMessage" should "serde properly" in {
     val message    = ClientMessage.from(SubmitBlock(hex"bbbb"))
     val serialized = ClientMessage.serialize(message)

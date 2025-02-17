@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 
 package org.oxygenium.util
 
-class MathSpec extends AlephiumSpec {
+class MathSpec extends OxygeniumSpec {
   it should "compare" in {
     case class OrderedClass(n: Int) extends Ordered[OrderedClass] {
       def compare(that: OrderedClass) = this.n - that.n

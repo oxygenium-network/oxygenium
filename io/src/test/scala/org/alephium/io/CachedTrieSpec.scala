@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,10 +22,10 @@ import scala.util.Random
 import org.scalacheck.Gen
 
 import org.oxygenium.crypto.{Blake2b => Hash}
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 import org.oxygenium.util.Bytes.byteStringOrdering
 
-class CachedTrieSpec extends AlephiumSpec {
+class CachedTrieSpec extends OxygeniumSpec {
   import CachedTrieSpec.Fixture
 
   it should "test random operations" in new Fixture {

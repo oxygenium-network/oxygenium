@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -21,10 +21,10 @@ import org.scalacheck.Gen
 import org.oxygenium.protocol.{Hash, Signature}
 import org.oxygenium.protocol.config.{GroupConfigFixture, NetworkConfigFixture}
 import org.oxygenium.protocol.model._
-import org.oxygenium.util.{AlephiumSpec, AVector, Duration, TimeStamp}
+import org.oxygenium.util.{OxygeniumSpec, AVector, Duration, TimeStamp}
 
 class ConflictedBlocksSpec
-    extends AlephiumSpec
+    extends OxygeniumSpec
     with TxInputGenerators
     with GroupConfigFixture
     with NetworkConfigFixture.Default {

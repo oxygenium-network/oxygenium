@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@ import io.prometheus.client.Gauge
 import io.prometheus.client.hotspot.DefaultExports
 
 import org.oxygenium.flow.mining.Miner
-import org.oxygenium.flow.setting.{AlephiumConfig, Configs, Platform}
+import org.oxygenium.flow.setting.{OxygeniumConfig, Configs, Platform}
 import org.oxygenium.protocol.model.Block
 import org.oxygenium.util.{AVector, Duration, Env}
 
@@ -48,7 +48,7 @@ class BootUp extends StrictLogging {
   val rootPath: Path = Platform.getRootPath()
   val typesafeConfig: Config =
     Configs.parseConfigAndValidate(Env.currentEnv, rootPath, overwrite = true)
-  implicit val config: AlephiumConfig = AlephiumConfig.load(typesafeConfig, "oxygenium")
+  implicit val config: OxygeniumConfig = OxygeniumConfig.load(typesafeConfig, "oxygenium")
   implicit val apiConfig: ApiConfig   = ApiConfig.load(typesafeConfig, "oxygenium.api")
   val flowSystem: ActorSystem         = ActorSystem("flow", typesafeConfig)
 
@@ -125,7 +125,7 @@ class BootUp extends StrictLogging {
 
   def collectBuildInfo(): Unit = {
     Gauge
-      .build("oxygenium_build_info", "Alephium full node build info")
+      .build("oxygenium_build_info", "Oxygenium full node build info")
       .labelNames("release_version", "commit_id")
       .register()
       .labels(BuildInfo.releaseVersion, BuildInfo.commitId)

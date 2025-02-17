@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@ import org.scalacheck.Gen
 import org.scalatest.Assertion
 import org.scalatest.EitherValues._
 
-import org.oxygenium.flow.{AlephiumFlowSpec, FlowFixture}
+import org.oxygenium.flow.{OxygeniumFlowSpec, FlowFixture}
 import org.oxygenium.flow.core.ExtraUtxosInfo
 import org.oxygenium.flow.validation.ValidationStatus.{invalidTx, validTx}
 import org.oxygenium.io.IOError
@@ -37,7 +37,7 @@ import org.oxygenium.ralph.Compiler
 import org.oxygenium.util.{AVector, Duration, TimeStamp, U256}
 
 // scalastyle:off number.of.methods file.size.limit
-class TxValidationSpec extends AlephiumFlowSpec with NoIndexModelGeneratorsLike {
+class TxValidationSpec extends OxygeniumFlowSpec with NoIndexModelGeneratorsLike {
   override val configValues: Map[String, Any] = Map(("oxygenium.broker.broker-num", 1))
 
   type TxValidator[T] = Transaction => TxValidationResult[T]
@@ -336,8 +336,8 @@ class TxValidationSpec extends AlephiumFlowSpec with NoIndexModelGeneratorsLike 
     val tx         = block.nonCoinbase.head
     tx.pass()
 
-    tx.unsigned.networkId isnot NetworkId.AlephiumMainNet
-    val invalidTx = tx.updateUnsigned(_.copy(networkId = NetworkId.AlephiumMainNet))
+    tx.unsigned.networkId isnot NetworkId.OxygeniumMainNet
+    val invalidTx = tx.updateUnsigned(_.copy(networkId = NetworkId.OxygeniumMainNet))
     invalidTx.fail(InvalidNetworkId)
   }
 
@@ -1250,7 +1250,7 @@ class TxValidationSpec extends AlephiumFlowSpec with NoIndexModelGeneratorsLike 
       val now = TimeStamp.now()
       BlockEnv(
         tx.chainIndex,
-        NetworkId.AlephiumMainNet,
+        NetworkId.OxygeniumMainNet,
         now,
         consensusConfigs.getConsensusConfig(now).maxMiningTarget,
         None

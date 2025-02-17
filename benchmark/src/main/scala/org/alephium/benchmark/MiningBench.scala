@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ import scala.util.Random
 
 import org.openjdk.jmh.annotations._
 
-import org.oxygenium.flow.setting.{AlephiumConfig, Platform}
+import org.oxygenium.flow.setting.{OxygeniumConfig, Platform}
 import org.oxygenium.protocol.config.{ConsensusConfig, GroupConfig}
 import org.oxygenium.protocol.mining.PoW
 import org.oxygenium.protocol.model.{Block, ChainIndex}
@@ -34,7 +34,7 @@ import org.oxygenium.util.AVector
 @SuppressWarnings(Array("org.wartremover.warts.OptionPartial"))
 class MiningBench {
 
-  val config: AlephiumConfig            = AlephiumConfig.load(Platform.getRootPath(), "oxygenium")
+  val config: OxygeniumConfig            = OxygeniumConfig.load(Platform.getRootPath(), "oxygenium")
   implicit val groupConfig: GroupConfig = config.broker
   implicit val consensusConfig: ConsensusConfig = config.consensus.mainnet
 

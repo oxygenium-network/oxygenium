@@ -1,6 +1,6 @@
 [View code on GitHub](https://github.com/oxygenium/oxygenium/wallet/src/main/scala/org/oxygenium/wallet/api/model/RevealMnemonic.scala)
 
-This file contains two case classes, `RevealMnemonic` and `RevealMnemonicResult`, which are used in the `org.oxygenium.wallet.api` package of the Alephium project. 
+This file contains two case classes, `RevealMnemonic` and `RevealMnemonicResult`, which are used in the `org.oxygenium.wallet.api` package of the Oxygenium project. 
 
 `RevealMnemonic` takes a single parameter, `password`, which is a string. This case class is used to reveal the mnemonic associated with a wallet. A mnemonic is a sequence of words that can be used to recover a wallet's private key. The `password` parameter is used to decrypt the mnemonic, which is stored in an encrypted format. 
 

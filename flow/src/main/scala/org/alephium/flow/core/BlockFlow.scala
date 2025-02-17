@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@ import com.typesafe.scalalogging.StrictLogging
 import org.oxygenium.crypto.Blake3
 import org.oxygenium.flow.Utils
 import org.oxygenium.flow.io.Storages
-import org.oxygenium.flow.setting.{AlephiumConfig, ConsensusSettings, MemPoolSetting}
+import org.oxygenium.flow.setting.{OxygeniumConfig, ConsensusSettings, MemPoolSetting}
 import org.oxygenium.io.{IOResult, IOUtils}
 import org.oxygenium.io.RocksDBSource.ProdSettings
 import org.oxygenium.protocol.ALPH
@@ -122,11 +122,11 @@ trait BlockFlow
 object BlockFlow extends StrictLogging {
   type WorldStateUpdater = (WorldState.Cached, Block) => IOResult[Unit]
 
-  def emptyUnsafe(config: AlephiumConfig): BlockFlow = {
+  def emptyUnsafe(config: OxygeniumConfig): BlockFlow = {
     emptyAndStoragesUnsafe(config)._1
   }
 
-  def emptyAndStoragesUnsafe(config: AlephiumConfig): (BlockFlow, Storages) = {
+  def emptyAndStoragesUnsafe(config: OxygeniumConfig): (BlockFlow, Storages) = {
     val storages =
       Storages.createUnsafe(Files.tmpDir, BlockHash.random.toHexString, ProdSettings.writeOptions)(
         config.broker,
@@ -142,7 +142,7 @@ object BlockFlow extends StrictLogging {
     (blockFlow, storages)
   }
 
-  def fromGenesisUnsafe(config: AlephiumConfig, storages: Storages): BlockFlow = {
+  def fromGenesisUnsafe(config: OxygeniumConfig, storages: Storages): BlockFlow = {
     fromGenesisUnsafe(storages, config.genesisBlocks)(
       config.broker,
       config.network,
@@ -169,7 +169,7 @@ object BlockFlow extends StrictLogging {
     blockFlow
   }
 
-  def fromStorageUnsafe(config: AlephiumConfig, storages: Storages): BlockFlow = {
+  def fromStorageUnsafe(config: OxygeniumConfig, storages: Storages): BlockFlow = {
     fromStorageUnsafe(storages, config.genesisBlocks)(
       config.broker,
       config.network,

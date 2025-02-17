@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@ import akka.testkit.{EventFilter, TestActorRef, TestProbe}
 import akka.util.Timeout
 import org.scalacheck.Gen
 
-import org.oxygenium.flow.{AlephiumFlowActorSpec, FlowFixture}
+import org.oxygenium.flow.{OxygeniumFlowActorSpec, FlowFixture}
 import org.oxygenium.flow.core.BlockFlowState
 import org.oxygenium.flow.core.BlockFlowState.MemPooled
 import org.oxygenium.flow.handler.AllHandlers.BlockNotify
@@ -44,7 +44,7 @@ import org.oxygenium.protocol.vm.GasPrice
 import org.oxygenium.serde.serialize
 import org.oxygenium.util._
 
-class TxHandlerSpec extends AlephiumFlowActorSpec {
+class TxHandlerSpec extends OxygeniumFlowActorSpec {
 
   it should "add intra-clique transactions to mempool" in new Fixture {
     brokerConfig.brokerNum is 3
@@ -205,7 +205,7 @@ class TxHandlerSpec extends AlephiumFlowActorSpec {
   }
 
   it should "load persisted pending txs only once when node synced" in new FlowFixture {
-    implicit lazy val system: ActorSystem = createSystem(Some(AlephiumActorSpec.infoConfig))
+    implicit lazy val system: ActorSystem = createSystem(Some(OxygeniumActorSpec.infoConfig))
     val txHandler = TestActorRef[TxHandler](
       TxHandler.props(blockFlow, storages.pendingTxStorage, ActorRefT(TestProbe().ref))
     )
@@ -265,7 +265,7 @@ class TxHandlerSpec extends AlephiumFlowActorSpec {
   }
 
   it should "persist all of the pending txs once the handler is stopped" in new Fixture {
-    implicit lazy val system: ActorSystem       = createSystem(Some(AlephiumActorSpec.infoConfig))
+    implicit lazy val system: ActorSystem       = createSystem(Some(OxygeniumActorSpec.infoConfig))
     override val configValues: Map[String, Any] = Map(("oxygenium.broker.broker-num", 1))
 
     val txs = prepareRandomSequentialTxs(4)
@@ -398,7 +398,7 @@ class TxHandlerSpec extends AlephiumFlowActorSpec {
   }
 
   trait PeriodicTaskFixture extends FlowFixture {
-    implicit lazy val system: ActorSystem = createSystem(Some(AlephiumActorSpec.debugConfig))
+    implicit lazy val system: ActorSystem = createSystem(Some(OxygeniumActorSpec.debugConfig))
 
     def test(message: String) = {
       EventFilter.debug(message, occurrences = 5).intercept {

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -117,7 +117,7 @@ trait Documentation extends Endpoints with OpenAPIDocsInterpreter {
   lazy val openAPI: OpenAPI =
     toOpenAPI(
       walletEndpoints ++ blockflowEndpoints.map(_.endpoint),
-      "Alephium API",
+      "Oxygenium API",
       ReleaseVersion.current.toString.tail
     )
       .servers(servers)

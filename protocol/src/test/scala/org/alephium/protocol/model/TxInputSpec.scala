@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -17,9 +17,9 @@
 package org.oxygenium.protocol.model
 
 import org.oxygenium.protocol.Hash
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class TxInputSpec extends AlephiumSpec {
+class TxInputSpec extends OxygeniumSpec {
   "AssetOutputRef" should "use code hash from it's key" in {
     val key            = TxOutputRef.unsafeKey(Hash.generate)
     val assetOutputRef = AssetOutputRef.unsafe(Hint.unsafe(0), key)

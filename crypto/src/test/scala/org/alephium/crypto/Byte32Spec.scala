@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -20,9 +20,9 @@ import akka.util.ByteString
 import org.scalatest.Assertion
 
 import org.oxygenium.serde._
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class Byte32Spec extends AlephiumSpec {
+class Byte32Spec extends OxygeniumSpec {
   it should "build Byte32" in {
     def test(bs: ByteString, validity: Boolean): Assertion = {
       if (validity) {

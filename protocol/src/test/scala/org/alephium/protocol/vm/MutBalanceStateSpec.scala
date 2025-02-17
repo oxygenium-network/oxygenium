@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,9 +22,9 @@ import scala.collection.mutable.ArrayBuffer
 import org.oxygenium.protocol.ALPH
 import org.oxygenium.protocol.config.{GroupConfig, NetworkConfigFixture}
 import org.oxygenium.protocol.model.{TokenId, TxGenerators}
-import org.oxygenium.util.{AlephiumSpec, U256}
+import org.oxygenium.util.{OxygeniumSpec, U256}
 
-class MutBalanceStateSpec extends AlephiumSpec {
+class MutBalanceStateSpec extends OxygeniumSpec {
 
   it should "approveALPH" in new Fixture {
     balanceState.approveALPH(lockupScript, ALPH.oneAlph) is Some(())

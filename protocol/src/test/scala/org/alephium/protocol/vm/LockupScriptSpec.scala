@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -19,9 +19,9 @@ package org.oxygenium.protocol.vm
 import org.oxygenium.protocol.Hash
 import org.oxygenium.protocol.model.{ContractId, NoIndexModelGenerators}
 import org.oxygenium.serde._
-import org.oxygenium.util.{AlephiumSpec, AVector, Hex}
+import org.oxygenium.util.{OxygeniumSpec, AVector, Hex}
 
-class LockupScriptSpec extends AlephiumSpec with NoIndexModelGenerators {
+class LockupScriptSpec extends OxygeniumSpec with NoIndexModelGenerators {
   it should "serde correctly" in {
     forAll(groupIndexGen.flatMap(assetLockupGen)) { lock =>
       serialize[LockupScript](lock) is serialize[LockupScript.Asset](lock)

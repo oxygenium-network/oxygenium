@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@ package org.oxygenium.util
 
 import scala.collection.immutable.ArraySeq
 
-class CollectionSpec extends AlephiumSpec {
+class CollectionSpec extends OxygeniumSpec {
   it should "get element safely" in {
     forAll { (array: Array[Int]) =>
       Collection.get(array, -1) is None

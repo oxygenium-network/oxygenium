@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -23,14 +23,14 @@ import org.scalatest.Assertion
 import org.scalatest.EitherValues._
 
 import org.oxygenium.crypto.Blake3
-import org.oxygenium.flow.{AlephiumFlowSpec, FlowFixture}
+import org.oxygenium.flow.{OxygeniumFlowSpec, FlowFixture}
 import org.oxygenium.flow.setting.ConsensusSetting
 import org.oxygenium.protocol.{ALPH, Hash}
 import org.oxygenium.protocol.model._
 import org.oxygenium.serde.intSerde
 import org.oxygenium.util.{AVector, Duration, TimeStamp}
 
-class HeaderValidationSpec extends AlephiumFlowSpec with NoIndexModelGeneratorsLike {
+class HeaderValidationSpec extends OxygeniumFlowSpec with NoIndexModelGeneratorsLike {
   trait Fixture {
     def passCheck[T](result: HeaderValidationResult[T]): Assertion = {
       result.isRight is true

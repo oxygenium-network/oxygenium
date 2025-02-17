@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -23,14 +23,14 @@ import akka.testkit.{SocketUtil, TestActorRef, TestProbe}
 import akka.util.ByteString
 
 import org.oxygenium.flow.network.broker.ConnectionHandler.Ack
-import org.oxygenium.flow.setting.AlephiumConfigFixture
+import org.oxygenium.flow.setting.OxygeniumConfigFixture
 import org.oxygenium.protocol.{SignatureSchema, WireVersion}
 import org.oxygenium.protocol.message.{Header, Hello, Message, P2PV1, Ping, RequestId}
 import org.oxygenium.protocol.model.{BrokerInfo, CliqueId}
-import org.oxygenium.util.{AlephiumActorSpec, TimeStamp}
+import org.oxygenium.util.{OxygeniumActorSpec, TimeStamp}
 
-class ConnectionHandlerSpec extends AlephiumActorSpec {
-  trait Fixture extends AlephiumConfigFixture {
+class ConnectionHandlerSpec extends OxygeniumActorSpec {
+  trait Fixture extends OxygeniumConfigFixture {
     val remoteAddress = SocketUtil.temporaryServerAddress()
     val connection    = TestProbe()
     val brokerHandler = TestProbe()

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -39,7 +39,7 @@ import org.oxygenium.flow.mempool.MemPool.AddedToMemPool
 import org.oxygenium.flow.network._
 import org.oxygenium.flow.network.bootstrap.{InfoFixture, IntraCliqueInfo}
 import org.oxygenium.flow.network.broker.MisbehaviorManager
-import org.oxygenium.flow.setting.{AlephiumConfig, AlephiumConfigFixture}
+import org.oxygenium.flow.setting.{OxygeniumConfig, OxygeniumConfigFixture}
 import org.oxygenium.io.IOResult
 import org.oxygenium.json.Json._
 import org.oxygenium.protocol._
@@ -55,12 +55,12 @@ import org.oxygenium.util.Hex.HexStringSyntax
 trait ServerFixture
     extends InfoFixture
     with ApiModelCodec
-    with AlephiumConfigFixture
+    with OxygeniumConfigFixture
     with ModelGenerators
     with TxGenerators
     with StoragesFixture.Default
     with NoIndexModelGeneratorsLike
-    with AlephiumFixture {
+    with OxygeniumFixture {
 
   lazy val dummyBlockHeader =
     blockGen.sample.get.header.copy(timestamp = (TimeStamp.now() - Duration.ofMinutes(5).get).get)
@@ -202,7 +202,7 @@ object ServerFixture {
       storages: Storages,
       cliqueManagerOpt: Option[ActorRefT[CliqueManager.Command]] = None,
       misbehaviorManagerOpt: Option[ActorRefT[MisbehaviorManager.Command]] = None
-  )(implicit val config: AlephiumConfig)
+  )(implicit val config: OxygeniumConfig)
       extends Node {
     implicit val system: ActorSystem       = ActorSystem("NodeDummy")
     val executionContext: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
@@ -243,7 +243,7 @@ object ServerFixture {
 
     val txHandlerRef =
       system.actorOf(
-        AlephiumTestActors.const(TxHandler.ProcessedByMemPool(dummyTx.toTemplate, AddedToMemPool))
+        OxygeniumTestActors.const(TxHandler.ProcessedByMemPool(dummyTx.toTemplate, AddedToMemPool))
       )
     val txHandler   = ActorRefT[TxHandler.Command](txHandlerRef)
     val allHandlers = _allHandlers.copy(txHandler = txHandler)(config.broker)
@@ -260,7 +260,7 @@ object ServerFixture {
       dummyTx: Transaction,
       dummyContract: StatefulContract,
       val storages: Storages
-  )(implicit val config: AlephiumConfig)
+  )(implicit val config: OxygeniumConfig)
       extends EmptyBlockFlow {
 
     override def getHeightedBlocks(

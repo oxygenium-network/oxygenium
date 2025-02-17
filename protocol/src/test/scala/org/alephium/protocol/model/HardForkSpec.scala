@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -16,9 +16,9 @@
 
 package org.oxygenium.protocol.model
 
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class HardForkSpec extends AlephiumSpec {
+class HardForkSpec extends OxygeniumSpec {
   it should "compare hard fork version" in {
     (HardFork.Leman > HardFork.Mainnet) is true
     (HardFork.Rhone > HardFork.Leman) is true

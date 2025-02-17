@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -19,9 +19,9 @@ package org.oxygenium.api
 import org.oxygenium.api.BaseEndpoint.checkApiKey
 import org.oxygenium.api.model.ApiKey
 import org.oxygenium.protocol.Hash
-import org.oxygenium.util.{AlephiumSpec, AVector}
+import org.oxygenium.util.{OxygeniumSpec, AVector}
 
-class BaseEndpointSpec extends AlephiumSpec {
+class BaseEndpointSpec extends OxygeniumSpec {
   "BaseEndpoint.checkApiKey" should "check api key" in {
     val apiKeys     = AVector.fill(3)(Hash.generate.toHexString).map(ApiKey.unsafe(_))
     val wrongApiKey = ApiKey.unsafe(Hash.generate.toHexString)

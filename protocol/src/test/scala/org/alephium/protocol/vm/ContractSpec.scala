@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -26,10 +26,10 @@ import org.oxygenium.protocol.Hash
 import org.oxygenium.protocol.config.NetworkConfigFixture
 import org.oxygenium.protocol.model.HardFork
 import org.oxygenium.serde._
-import org.oxygenium.util.{AlephiumSpec, AVector, Bytes}
+import org.oxygenium.util.{OxygeniumSpec, AVector, Bytes}
 import org.oxygenium.util.Hex.HexStringSyntax
 
-class ContractSpec extends AlephiumSpec {
+class ContractSpec extends OxygeniumSpec {
   trait ScriptFixture[Ctx <: StatelessContext] {
     val method = Method[Ctx](
       isPublic = true,

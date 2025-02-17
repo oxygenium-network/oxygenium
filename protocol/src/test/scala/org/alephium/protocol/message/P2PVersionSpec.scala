@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -15,9 +15,9 @@
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 package org.oxygenium.protocol.message
 
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class P2PVersionSpec extends AlephiumSpec {
+class P2PVersionSpec extends OxygeniumSpec {
   it should "parse protocol version from client id" in {
     P2PVersion.fromClientId("scala-oxygenium/v1.0.0/Linux") is Some(P2PV1)
     P2PVersion.fromClientId("scala-oxygenium/v1.0.0/Linux/p2p-v1") is Some(P2PV1)

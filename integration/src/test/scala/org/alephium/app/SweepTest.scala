@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ import org.oxygenium.protocol.model.nonCoinbaseMinGasFee
 import org.oxygenium.util._
 import org.oxygenium.wallet.api.model._
 
-abstract class SweepTest(isMiner: Boolean) extends AlephiumActorSpec {
+abstract class SweepTest(isMiner: Boolean) extends OxygeniumActorSpec {
 
   it should "sweep amounts from the active address" in new SweepFixture {
     val transfer =

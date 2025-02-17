@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ import org.oxygenium.protocol.vm
 import org.oxygenium.serde.deserialize
 import org.oxygenium.util._
 
-class ProtocolConversionSpec extends AlephiumSpec with EitherValues with NumericHelpers {
+class ProtocolConversionSpec extends OxygeniumSpec with EitherValues with NumericHelpers {
   it should "convert Script" in new Fixture {
     checkData[Script, vm.StatefulScript](script, Script.fromProtocol, _.toProtocol().rightValue)
   }

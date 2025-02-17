@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -19,9 +19,9 @@ package org.oxygenium.protocol.model
 import org.oxygenium.crypto.Blake3
 import org.oxygenium.protocol.config.GroupConfigFixture
 import org.oxygenium.protocol.model.BlockHash
-import org.oxygenium.util.{AlephiumSpec, AVector}
+import org.oxygenium.util.{OxygeniumSpec, AVector}
 
-class BlockDepsSpec extends AlephiumSpec with GroupConfigFixture.Default {
+class BlockDepsSpec extends OxygeniumSpec with GroupConfigFixture.Default {
 
   it should "validate number of deps" in {
     val deps =

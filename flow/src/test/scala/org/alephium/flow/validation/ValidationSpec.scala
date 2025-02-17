@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -16,13 +16,13 @@
 
 package org.oxygenium.flow.validation
 
-import org.oxygenium.flow.AlephiumFlowSpec
+import org.oxygenium.flow.OxygeniumFlowSpec
 import org.oxygenium.protocol.config.{ConsensusConfig, ConsensusConfigs}
 import org.oxygenium.protocol.mining.Emission
 import org.oxygenium.protocol.model.*
 import org.oxygenium.util.{AVector, Duration}
 
-class ValidationSpec extends AlephiumFlowSpec with NoIndexModelGeneratorsLike {
+class ValidationSpec extends OxygeniumFlowSpec with NoIndexModelGeneratorsLike {
   override val configValues: Map[String, Any] = Map(
     ("oxygenium.consensus.num-zeros-at-least-in-hash", 1)
   )

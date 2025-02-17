@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,9 +18,9 @@ package org.oxygenium.protocol.message
 
 import org.oxygenium.protocol.WireVersion
 import org.oxygenium.serde._
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class HeaderSpec extends AlephiumSpec {
+class HeaderSpec extends OxygeniumSpec {
   it should "serialize/deserialize the Header when version compatible" in {
     val header = Header(WireVersion.currentWireVersion)
     val bytes  = serialize(header)

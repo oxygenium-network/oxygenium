@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -26,9 +26,9 @@ import org.oxygenium.flow.network.bootstrap.InfoFixture
 import org.oxygenium.flow.network.broker.{BrokerHandler, InboundConnection, OutboundConnection}
 import org.oxygenium.protocol.message.{Message, NewBlock, NewHeader, RequestId, TxsResponse}
 import org.oxygenium.protocol.model.{BrokerInfo, ChainIndex}
-import org.oxygenium.util.{ActorRefT, AlephiumActorSpec, AVector}
+import org.oxygenium.util.{ActorRefT, OxygeniumActorSpec, AVector}
 
-class IntraCliqueManagerSpec extends AlephiumActorSpec {
+class IntraCliqueManagerSpec extends OxygeniumActorSpec {
   it should "sync with other brokers" in new Fixture {
     override val configValues: Map[String, Any] = Map(
       "oxygenium.broker.broker-id" -> 1

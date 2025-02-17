@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -23,10 +23,10 @@ import org.scalatest.Assertion
 import org.oxygenium.protocol.ALPH
 import org.oxygenium.protocol.config.{GroupConfig, NetworkConfigFixture}
 import org.oxygenium.protocol.model._
-import org.oxygenium.util.{AlephiumSpec, AVector, U256}
+import org.oxygenium.util.{OxygeniumSpec, AVector, U256}
 import org.oxygenium.util.Bytes.byteStringOrdering
 
-class MutBalancesPerLockupSpec extends AlephiumSpec {
+class MutBalancesPerLockupSpec extends OxygeniumSpec {
 
   it should "tokenVector" in new Fixture {
     val tokens = mutable.Map(tokenId -> ALPH.oneAlph)

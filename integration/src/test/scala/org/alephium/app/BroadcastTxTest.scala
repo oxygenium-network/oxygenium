@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@ import org.oxygenium.protocol.ALPH
 import org.oxygenium.protocol.model.{Address, BrokerInfo, GroupIndex}
 import org.oxygenium.util._
 
-class BroadcastTxTest extends AlephiumActorSpec {
+class BroadcastTxTest extends OxygeniumActorSpec {
   it should "broadcast cross-group txs inside a clique" in new CliqueFixture {
     val clique = bootClique(nbOfNodes = 2)
     clique.start()

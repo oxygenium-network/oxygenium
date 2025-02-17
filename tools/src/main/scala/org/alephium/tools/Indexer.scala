@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@ import com.typesafe.scalalogging.StrictLogging
 import org.oxygenium.flow.client.Node
 import org.oxygenium.flow.core.maxForkDepth
 import org.oxygenium.flow.io.Storages
-import org.oxygenium.flow.setting.{AlephiumConfig, Configs, Platform}
+import org.oxygenium.flow.setting.{OxygeniumConfig, Configs, Platform}
 import org.oxygenium.flow.validation.BlockValidation
 import org.oxygenium.io.IOUtils
 import org.oxygenium.io.RocksDBSource.ColumnFamily
@@ -37,7 +37,7 @@ import org.oxygenium.util.{AVector, Env}
 object Indexer extends App with StrictLogging {
   private val rootPath       = Platform.getRootPath()
   private val typesafeConfig = Configs.parseConfigAndValidate(Env.Prod, rootPath, overwrite = true)
-  private val config         = AlephiumConfig.load(typesafeConfig, "oxygenium")
+  private val config         = OxygeniumConfig.load(typesafeConfig, "oxygenium")
   private val brokerConfig   = config.broker
   private val intraChainIndexes = brokerConfig.chainIndexes.filter(_.isIntraGroup)
   private val indexedBlockCount = new AtomicInteger(0)

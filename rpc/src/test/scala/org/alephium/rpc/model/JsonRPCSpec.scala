@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,9 +22,9 @@ import scala.util.{Success, Try}
 import org.scalatest.{Assertion, EitherValues, Inside}
 
 import org.oxygenium.json.Json._
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class JsonRPCSpec extends AlephiumSpec with EitherValues with Inside {
+class JsonRPCSpec extends OxygeniumSpec with EitherValues with Inside {
 
   val dummy = Future.successful(JsonRPC.Response.Success(ujson.Null, 0))
 

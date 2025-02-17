@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -29,10 +29,10 @@ import org.scalactic.source.Position
 import org.scalatest.{Assertion, BeforeAndAfterEach}
 import org.scalatest.matchers.dsl.ResultOfATypeInvocation
 
-trait AlephiumActorSpec extends AlephiumFutureSpec with BeforeAndAfterEach with ActorKit {
-  implicit def actorSpec: AlephiumActorSpec = this
+trait OxygeniumActorSpec extends OxygeniumFutureSpec with BeforeAndAfterEach with ActorKit {
+  implicit def actorSpec: OxygeniumActorSpec = this
 
-  def actorSystemConfig: Config = AlephiumActorSpec.warningConfig
+  def actorSystemConfig: Config = OxygeniumActorSpec.warningConfig
 
   val systems: ArrayBuffer[ActorSystem] = ArrayBuffer.empty[ActorSystem]
   implicit def system: ActorSystem      = systems.synchronized(systems.head)
@@ -85,7 +85,7 @@ trait AlephiumActorSpec extends AlephiumFutureSpec with BeforeAndAfterEach with 
   }
 }
 
-object AlephiumActorSpec {
+object OxygeniumActorSpec {
   lazy val warningConfig: Config = config("WARNING")
   lazy val infoConfig: Config    = config("INFO")
   lazy val debugConfig: Config   = config("DEBUG")

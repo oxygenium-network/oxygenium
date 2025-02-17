@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -16,12 +16,12 @@
 
 package org.oxygenium.protocol.model
 
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class NetworkIdSpec extends AlephiumSpec {
+class NetworkIdSpec extends OxygeniumSpec {
   it should "return the right node folder" in {
-    NetworkId.AlephiumMainNet.nodeFolder is "mainnet"
-    NetworkId.AlephiumTestNet.nodeFolder is "testnet"
-    NetworkId.AlephiumDevNet.nodeFolder is "network-2"
+    NetworkId.OxygeniumMainNet.nodeFolder is "mainnet"
+    NetworkId.OxygeniumTestNet.nodeFolder is "testnet"
+    NetworkId.OxygeniumDevNet.nodeFolder is "network-2"
   }
 }

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -16,9 +16,9 @@
 
 package org.oxygenium.crypto.wallet
 
-import org.oxygenium.util.{AlephiumSpec, Hex}
+import org.oxygenium.util.{OxygeniumSpec, Hex}
 
-class MnemonicSpec extends AlephiumSpec {
+class MnemonicSpec extends OxygeniumSpec {
   it should "pass test vectors from trezor" in {
     val cases = Seq(
       ("Entropy", "Sentence", "Seed", "bip32_xprv"),

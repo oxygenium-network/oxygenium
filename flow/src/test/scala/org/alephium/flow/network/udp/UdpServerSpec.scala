@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,9 +22,9 @@ import akka.testkit.{EventFilter, SocketUtil, TestActorRef}
 import akka.util.ByteString
 
 import org.oxygenium.crypto.Blake2b
-import org.oxygenium.util.{AlephiumActorSpec}
+import org.oxygenium.util.{OxygeniumActorSpec}
 
-class UdpServerSpec extends AlephiumActorSpec {
+class UdpServerSpec extends OxygeniumActorSpec {
   it should "read and write messages" in new Fixture {
     val (bindAddress0, udpServer0) = createUdpServer()
     val (bindAddress1, udpServer1) = createUdpServer()

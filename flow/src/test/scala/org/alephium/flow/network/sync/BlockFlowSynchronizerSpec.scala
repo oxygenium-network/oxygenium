@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -35,13 +35,13 @@ import org.oxygenium.flow.network.broker.{
 import org.oxygenium.protocol.Generators
 import org.oxygenium.protocol.message.{P2PV1, P2PV2, P2PVersion}
 import org.oxygenium.protocol.model._
-import org.oxygenium.util.{ActorRefT, AlephiumActorSpec, AVector, TimeStamp}
+import org.oxygenium.util.{ActorRefT, OxygeniumActorSpec, AVector, TimeStamp}
 
 // scalastyle:off file.size.limit
-class BlockFlowSynchronizerSpec extends AlephiumActorSpec {
+class BlockFlowSynchronizerSpec extends OxygeniumActorSpec {
   import BrokerStatusTracker._
 
-  override def actorSystemConfig = AlephiumActorSpec.debugConfig
+  override def actorSystemConfig = OxygeniumActorSpec.debugConfig
 
   trait Fixture extends FlowFixture with Generators {
     override val configValues: Map[String, Any] = Map(

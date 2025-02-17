@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -21,14 +21,14 @@ import java.nio.file.Files
 
 import org.oxygenium.crypto.wallet.{BIP32, Mnemonic}
 import org.oxygenium.protocol.{Generators, Hash}
-import org.oxygenium.util.{AlephiumSpec, AVector, Hex}
+import org.oxygenium.util.{OxygeniumSpec, AVector, Hex}
 import org.oxygenium.wallet.Constants
 
-class SecretStorageSpec() extends AlephiumSpec with Generators {
+class SecretStorageSpec() extends OxygeniumSpec with Generators {
 
   val secretDir = Files.createTempDirectory("secret-storage-spec")
   secretDir.toFile.deleteOnExit
-  AlephiumSpec.addCleanTask(() => AlephiumSpec.delete(secretDir))
+  OxygeniumSpec.addCleanTask(() => OxygeniumSpec.delete(secretDir))
 
   val mnemonicGen = Mnemonic.generate(24).get
   val passwordGen = hashGen.map(_.toHexString)

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -19,10 +19,10 @@ package org.oxygenium.crypto
 import akka.util.ByteString
 
 import org.oxygenium.serde._
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 import org.oxygenium.util.Hex._
 
-class HashSpec extends AlephiumSpec {
+class HashSpec extends OxygeniumSpec {
   def check[T <: RandomBytes](provider: HashSchema[T], tests: Seq[(String, ByteString)])(implicit
       serde: Serde[T]
   ): Unit = {

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -20,9 +20,9 @@ import org.scalacheck.Gen
 
 import org.oxygenium.protocol.Generators
 import org.oxygenium.protocol.config.{BrokerConfig, CliqueConfig, GroupConfig, GroupConfigFixture}
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class BrokerInfoSpec extends AlephiumSpec {
+class BrokerInfoSpec extends OxygeniumSpec {
   it should "check if group included" in {
     forAll(Gen.oneOf(2 to 1 << 4)) { _groups =>
       new Generators {

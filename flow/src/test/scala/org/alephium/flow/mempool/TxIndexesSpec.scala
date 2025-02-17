@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -16,13 +16,13 @@
 
 package org.oxygenium.flow.mempool
 
-import org.oxygenium.flow.AlephiumFlowSpec
+import org.oxygenium.flow.OxygeniumFlowSpec
 import org.oxygenium.protocol.config.GroupConfig
 import org.oxygenium.protocol.model._
-import org.oxygenium.util.{AlephiumFixture, LockFixture}
+import org.oxygenium.util.{OxygeniumFixture, LockFixture}
 
 class TxIndexesSpec
-    extends AlephiumFlowSpec
+    extends OxygeniumFlowSpec
     with TxIndexesSpec.Fixture
     with LockFixture
     with NoIndexModelGeneratorsLike {
@@ -61,7 +61,7 @@ class TxIndexesSpec
 }
 
 object TxIndexesSpec {
-  trait Fixture extends AlephiumFixture {
+  trait Fixture extends OxygeniumFixture {
     def checkTx(indexes: TxIndexes, tx: TransactionTemplate)(implicit
         groupConfig: GroupConfig
     ): Unit = {

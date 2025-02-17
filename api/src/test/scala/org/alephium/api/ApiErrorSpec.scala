@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ import org.oxygenium.api.ApiError._
 import org.oxygenium.json.Json._
 import org.oxygenium.util._
 
-class ApiErrorSpec extends AlephiumSpec with EitherValues {
+class ApiErrorSpec extends OxygeniumSpec with EitherValues {
 
   def checkData[T: ReadWriter](data: T, jsonRaw: String): Assertion = {
     write(data) is jsonRaw

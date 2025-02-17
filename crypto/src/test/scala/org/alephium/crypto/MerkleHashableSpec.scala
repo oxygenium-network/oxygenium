@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,9 +18,9 @@ package org.oxygenium.crypto
 
 import org.scalatest.Assertion
 
-import org.oxygenium.util.{AlephiumSpec, AVector}
+import org.oxygenium.util.{OxygeniumSpec, AVector}
 
-class MerkleHashableSpec extends AlephiumSpec {
+class MerkleHashableSpec extends OxygeniumSpec {
   val hashAlgo = Blake3
   type Hash = Blake3
 

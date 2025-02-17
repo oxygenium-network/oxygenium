@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -32,9 +32,9 @@ import org.oxygenium.protocol.{Generators, Signature, SignatureSchema}
 import org.oxygenium.protocol.config.BrokerConfig
 import org.oxygenium.protocol.message._
 import org.oxygenium.protocol.model.{BlockHash, BrokerInfo, ChainIndex, CliqueId}
-import org.oxygenium.util.{ActorRefT, AlephiumActorSpec, AVector, Duration, TimeStamp}
+import org.oxygenium.util.{ActorRefT, OxygeniumActorSpec, AVector, Duration, TimeStamp}
 
-class BrokerHandlerSpec extends AlephiumActorSpec {
+class BrokerHandlerSpec extends OxygeniumActorSpec {
   it should "handshake with new connection" in new Fixture {
     receivedHandshakeMessage()
     brokerHandlerActor.pingPongTickOpt is a[Some[_]]

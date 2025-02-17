@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -20,7 +20,7 @@ import scala.util.Random
 
 import akka.util.ByteString
 
-class BloomFilterSpec extends AlephiumSpec {
+class BloomFilterSpec extends OxygeniumSpec {
   it should "check membership of hashes" in {
     val falsePositiveRate = 0.01
     val filter            = BloomFilter(1000000L, falsePositiveRate)

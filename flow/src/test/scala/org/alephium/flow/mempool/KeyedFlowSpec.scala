@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -20,9 +20,9 @@ import scala.collection.mutable
 import scala.language.implicitConversions
 import scala.util.Random
 
-import org.oxygenium.util.{AlephiumSpec, AVector, ConcurrentHashMap, SimpleMap}
+import org.oxygenium.util.{OxygeniumSpec, AVector, ConcurrentHashMap, SimpleMap}
 
-class KeyedFlowSpec extends AlephiumSpec {
+class KeyedFlowSpec extends OxygeniumSpec {
   import KeyedFlowSpec._
 
   trait PathFixture {
@@ -230,7 +230,7 @@ class KeyedFlowSpec extends AlephiumSpec {
   }
 }
 
-object KeyedFlowSpec extends AlephiumSpec {
+object KeyedFlowSpec extends OxygeniumSpec {
   final case class K(value: Int)
   final case class N(
       value: Int,

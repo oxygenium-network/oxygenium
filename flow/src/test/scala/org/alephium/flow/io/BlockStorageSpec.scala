@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,10 +18,10 @@ package org.oxygenium.flow.io
 
 import org.oxygenium.io._
 import org.oxygenium.protocol.model.NoIndexModelGenerators
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
 class BlockStorageSpec
-    extends AlephiumSpec
+    extends OxygeniumSpec
     with NoIndexModelGenerators
     with StorageSpec[BlockRockDBStorage] {
   import RocksDBSource.ColumnFamily

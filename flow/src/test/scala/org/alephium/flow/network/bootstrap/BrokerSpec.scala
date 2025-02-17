@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -20,12 +20,12 @@ import akka.io.{IO, Tcp}
 import akka.testkit.{SocketUtil, TestProbe}
 import akka.util.ByteString
 
-import org.oxygenium.flow.AlephiumFlowActorSpec
+import org.oxygenium.flow.OxygeniumFlowActorSpec
 import org.oxygenium.flow.network.Bootstrapper
 import org.oxygenium.serde.Staging
 import org.oxygenium.util.ActorRefT
 
-class BrokerSpec extends AlephiumFlowActorSpec with InfoFixture {
+class BrokerSpec extends OxygeniumFlowActorSpec with InfoFixture {
   it should "follow this workflow" in {
     val connection         = TestProbe()
     val bootstrapper       = TestProbe()

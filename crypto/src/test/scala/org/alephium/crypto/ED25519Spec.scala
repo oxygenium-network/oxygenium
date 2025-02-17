@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -17,9 +17,9 @@
 package org.oxygenium.crypto
 
 import org.oxygenium.serde.byteAVectorSerde
-import org.oxygenium.util.{AlephiumSpec, AVector}
+import org.oxygenium.util.{OxygeniumSpec, AVector}
 
-class ED25519Spec extends AlephiumSpec {
+class ED25519Spec extends OxygeniumSpec {
   "ED25519" should "sign correctly" in {
     forAll { (_message: IndexedSeq[Byte]) =>
       val message  = AVector.from(_message)

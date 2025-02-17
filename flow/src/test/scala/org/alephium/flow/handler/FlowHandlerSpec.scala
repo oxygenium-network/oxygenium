@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -16,12 +16,12 @@
 
 package org.oxygenium.flow.handler
 
-import org.oxygenium.flow.AlephiumFlowActorSpec
+import org.oxygenium.flow.OxygeniumFlowActorSpec
 import org.oxygenium.protocol.config.{BrokerConfig, GroupConfig}
 import org.oxygenium.protocol.model._
 import org.oxygenium.util.AVector
 
-class FlowHandlerSpec extends AlephiumFlowActorSpec with NoIndexModelGeneratorsLike {
+class FlowHandlerSpec extends OxygeniumFlowActorSpec with NoIndexModelGeneratorsLike {
   trait Fixture {
     val groupNum = 6
 

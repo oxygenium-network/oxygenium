@@ -1,4 +1,4 @@
-# Alephium Change Log
+# Oxygenium Change Log
 
 ## Unreleased
 
@@ -47,7 +47,7 @@ Note: The focus of `1.3.0` was new features for smart contract development.
 * Support event in contract test by @polarker in https://github.com/oxygenium/oxygenium/pull/534
 * Update sbt to 1.6.2 by @tdroxler in https://github.com/oxygenium/oxygenium/pull/536
 * Contract endpoints improvements by @polarker in https://github.com/oxygenium/oxygenium/pull/535
-* Fix config path in AlephiumConfigSpec by @polarker in https://github.com/oxygenium/oxygenium/pull/537
+* Fix config path in OxygeniumConfigSpec by @polarker in https://github.com/oxygenium/oxygenium/pull/537
 * Improve protocol endpoints by @tdroxler in https://github.com/oxygenium/oxygenium/pull/538
 * Better openapi by @polarker in https://github.com/oxygenium/oxygenium/pull/539
 * Improve openapi types by @polarker in https://github.com/oxygenium/oxygenium/pull/540

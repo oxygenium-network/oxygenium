@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -26,15 +26,15 @@ import org.scalatest.EitherValues._
 
 import org.oxygenium.flow.core.BlockChain.{TxIndex, TxIndexes, TxStatus}
 import org.oxygenium.flow.io.StoragesFixture
-import org.oxygenium.flow.setting.AlephiumConfigFixture
+import org.oxygenium.flow.setting.OxygeniumConfigFixture
 import org.oxygenium.io.IOError
 import org.oxygenium.protocol.{ALPH, Hash}
 import org.oxygenium.protocol.model._
-import org.oxygenium.util.{AlephiumSpec, AVector, Bytes, Duration, TimeStamp}
+import org.oxygenium.util.{OxygeniumSpec, AVector, Bytes, Duration, TimeStamp}
 
 // scalastyle:off file.size.limit
-class BlockChainSpec extends AlephiumSpec with BeforeAndAfter {
-  trait Fixture extends AlephiumConfigFixture with NoIndexModelGeneratorsLike {
+class BlockChainSpec extends OxygeniumSpec with BeforeAndAfter {
+  trait Fixture extends OxygeniumConfigFixture with NoIndexModelGeneratorsLike {
     lazy val genesis =
       Block.genesis(ChainIndex.unsafe(0, 0), AVector.empty)(brokerConfig, consensusConfigs.mainnet)
     lazy val blockGen0 = blockGenOf(AVector.fill(brokerConfig.depsNum)(genesis.hash), Hash.zero)

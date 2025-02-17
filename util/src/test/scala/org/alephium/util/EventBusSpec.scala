@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@ package org.oxygenium.util
 
 import akka.testkit.TestProbe
 
-class EventBusSpec extends AlephiumActorSpec {
+class EventBusSpec extends OxygeniumActorSpec {
 
   case object Dummy extends EventBus.Event
 

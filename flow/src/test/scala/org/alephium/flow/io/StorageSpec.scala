@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -19,9 +19,9 @@ package org.oxygenium.flow.io
 import org.scalatest.BeforeAndAfterEach
 
 import org.oxygenium.io.RocksDBSource
-import org.oxygenium.util.{AlephiumSpec, Files}
+import org.oxygenium.util.{OxygeniumSpec, Files}
 
-trait StorageSpec[S] extends AlephiumSpec with BeforeAndAfterEach {
+trait StorageSpec[S] extends OxygeniumSpec with BeforeAndAfterEach {
   val dbname: String
   val builder: RocksDBSource => S
   lazy val dbPath           = Files.tmpDir.resolve(dbname)

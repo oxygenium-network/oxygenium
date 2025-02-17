@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -21,9 +21,9 @@ import akka.testkit.TestProbe
 import org.oxygenium.flow.FlowFixture
 import org.oxygenium.flow.handler.TestUtils
 import org.oxygenium.flow.network.bootstrap.InfoFixture
-import org.oxygenium.util.{ActorRefT, AlephiumActorSpec}
+import org.oxygenium.util.{ActorRefT, OxygeniumActorSpec}
 
-class CliqueManagerSpec extends AlephiumActorSpec {
+class CliqueManagerSpec extends OxygeniumActorSpec {
   it should "become ready after connected to brokers" in new FlowFixture with InfoFixture {
     val (allHandlers, _) = TestUtils.createAllHandlersProbe
     val cliqueManager = system.actorOf(

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -19,9 +19,9 @@ package org.oxygenium.protocol.config
 import scala.collection.immutable.ArraySeq
 
 import org.oxygenium.protocol.model.HardFork
-import org.oxygenium.util.{AlephiumSpec, Duration, TimeStamp}
+import org.oxygenium.util.{OxygeniumSpec, Duration, TimeStamp}
 
-class NetworkConfigSpec extends AlephiumSpec {
+class NetworkConfigSpec extends OxygeniumSpec {
 
   it should "get Leman hard fork" in new NetworkConfigFixture.Default {
     override def lemanHardForkTimestamp: TimeStamp = TimeStamp.now()

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@ object Upnp extends StrictLogging {
   val tcp                         = "TCP"
   val udp                         = "UDP"
   val protocols: ArraySeq[String] = ArraySeq(tcp, udp)
-  val description                 = "Alephium"
+  val description                 = "Oxygenium"
 
   def getUpnpClient(setting: UpnpSettings): Option[UpnpClient] =
     try {

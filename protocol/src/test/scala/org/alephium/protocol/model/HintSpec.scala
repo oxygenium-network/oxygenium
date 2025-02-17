@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -16,9 +16,9 @@
 
 package org.oxygenium.protocol.model
 
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class HintSpec extends AlephiumSpec {
+class HintSpec extends OxygeniumSpec {
   it should "present correct types" in {
     forAll { (n: Int) =>
       val scriptHint = ScriptHint.fromHash(n)

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -28,7 +28,7 @@ import org.oxygenium.serde.{deserialize, serialize}
 import org.oxygenium.util._
 import org.oxygenium.wallet.api.model._
 
-class MultisigTest extends AlephiumActorSpec {
+class MultisigTest extends OxygeniumActorSpec {
 
   it should "handle multisig with private keys" in new MultisigFixture {
 

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -20,7 +20,7 @@ import akka.util.ByteString
 
 import org.oxygenium.util.Hex._
 
-class HexSpec extends AlephiumSpec {
+class HexSpec extends OxygeniumSpec {
   it should "interpolate string correctly" in {
     val input = hex"666f6f626172"
     input.map(_.toChar).mkString("") is "foobar"

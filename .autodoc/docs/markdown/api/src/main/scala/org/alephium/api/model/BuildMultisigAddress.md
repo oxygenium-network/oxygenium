@@ -1,14 +1,14 @@
 [View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/BuildMultisigAddress.scala)
 
-This file contains two case classes, `BuildMultisigAddress` and `BuildMultisigAddressResult`, which are used to build a multisig address in the Alephium project. 
+This file contains two case classes, `BuildMultisigAddress` and `BuildMultisigAddressResult`, which are used to build a multisig address in the Oxygenium project. 
 
-A multisig address is an address that requires multiple signatures to authorize a transaction. In the case of Alephium, a multisig address is created by combining multiple public keys and specifying the number of signatures required to authorize a transaction. 
+A multisig address is an address that requires multiple signatures to authorize a transaction. In the case of Oxygenium, a multisig address is created by combining multiple public keys and specifying the number of signatures required to authorize a transaction. 
 
 The `BuildMultisigAddress` case class takes in a vector of `PublicKey` objects and an integer `mrequired`, which specifies the number of signatures required to authorize a transaction. The `BuildMultisigAddressResult` case class contains the resulting multisig address.
 
-This code can be used in the larger Alephium project to create multisig addresses for transactions that require multiple parties to authorize. For example, if a group of users wants to pool their funds together and require a majority vote to authorize transactions, they can use this code to create a multisig address that requires a certain number of signatures to authorize transactions. 
+This code can be used in the larger Oxygenium project to create multisig addresses for transactions that require multiple parties to authorize. For example, if a group of users wants to pool their funds together and require a majority vote to authorize transactions, they can use this code to create a multisig address that requires a certain number of signatures to authorize transactions. 
 
-Here is an example of how this code might be used in the Alephium project:
+Here is an example of how this code might be used in the Oxygenium project:
 
 ```
 import org.oxygenium.api.model.BuildMultisigAddress

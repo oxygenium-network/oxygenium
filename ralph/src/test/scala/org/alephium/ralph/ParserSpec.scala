@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -27,10 +27,10 @@ import org.oxygenium.ralph.ArithOperator._
 import org.oxygenium.ralph.LogicalOperator._
 import org.oxygenium.ralph.TestOperator._
 import org.oxygenium.ralph.error.CompilerError
-import org.oxygenium.util.{AlephiumSpec, AVector, Hex, I256, U256}
+import org.oxygenium.util.{OxygeniumSpec, AVector, Hex, I256, U256}
 
 // scalastyle:off file.size.limit
-class ParserSpec(fileURI: Option[java.net.URI]) extends AlephiumSpec {
+class ParserSpec(fileURI: Option[java.net.URI]) extends OxygeniumSpec {
   import Ast._
 
   val StatelessParser = new StatelessParser(fileURI)

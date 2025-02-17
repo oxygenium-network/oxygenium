@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ import org.oxygenium.ralph.util.OperatingSystem
 import org.oxygenium.util._
 
 // scalastyle:off no.equal file.size.limit
-class StatelessParserSpec extends AlephiumSpec {
+class StatelessParserSpec extends OxygeniumSpec {
   val StatelessParser = new StatelessParser(None)
 
   it should "disallow mutable template params" in {

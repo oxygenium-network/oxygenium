@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,9 +18,9 @@ package org.oxygenium.crypto
 
 import akka.util.ByteString
 
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class Blake3Spec extends AlephiumSpec {
+class Blake3Spec extends OxygeniumSpec {
   it should "compare random bytes" in {
     val zeros = Blake3.zero
     Blake3.equals(32, zeros.bytes, 32, zeros.bytes) is true

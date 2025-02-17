@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -21,9 +21,9 @@ import org.scalacheck.Gen
 import org.oxygenium.protocol.PublicKey
 import org.oxygenium.protocol.model.NoIndexModelGenerators
 import org.oxygenium.serde._
-import org.oxygenium.util.{AlephiumSpec, AVector, Hex}
+import org.oxygenium.util.{OxygeniumSpec, AVector, Hex}
 
-class UnlockScriptSpec extends AlephiumSpec with NoIndexModelGenerators {
+class UnlockScriptSpec extends OxygeniumSpec with NoIndexModelGenerators {
   val keyGen = groupIndexGen.flatMap(publicKeyGen)
   val dummyMethod = Method[StatelessContext](
     isPublic = true,

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,9 +18,9 @@ package org.oxygenium.ralph
 
 import org.oxygenium.protocol.vm._
 import org.oxygenium.ralph.BuiltIn.{OverloadedSimpleBuiltIn, SimpleBuiltIn}
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class BuiltInSpec extends AlephiumSpec {
+class BuiltInSpec extends OxygeniumSpec {
   it should "check all functions that can use preapproved assets" in {
     BuiltIn.statelessFuncs.values.count(_.usePreapprovedAssets) is 0
     BuiltIn.statefulFuncs.values.filter(_.usePreapprovedAssets).toSet is

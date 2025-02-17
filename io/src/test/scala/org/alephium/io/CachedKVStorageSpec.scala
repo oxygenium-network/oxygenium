@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -20,9 +20,9 @@ import scala.collection.mutable
 
 import org.oxygenium.crypto.Blake2b
 import org.oxygenium.serde.intSerde
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class CachedKVStorageSpec extends AlephiumSpec with StorageFixture {
+class CachedKVStorageSpec extends OxygeniumSpec with StorageFixture {
   trait Fixture {
     val dbSource = newDBStorage()
     val storage  = newDB[Blake2b, Int](dbSource, RocksDBSource.ColumnFamily.All)

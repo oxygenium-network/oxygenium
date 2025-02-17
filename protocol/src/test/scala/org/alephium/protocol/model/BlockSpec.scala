@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -25,9 +25,9 @@ import org.oxygenium.crypto.{Blake2b, Blake3, MerkleHashable}
 import org.oxygenium.protocol._
 import org.oxygenium.protocol.vm.{GasPrice, LockupScript, StatefulScript}
 import org.oxygenium.serde._
-import org.oxygenium.util.{AlephiumSpec, AVector, Hex, Math, TimeStamp, U256}
+import org.oxygenium.util.{OxygeniumSpec, AVector, Hex, Math, TimeStamp, U256}
 
-class BlockSpec extends AlephiumSpec with NoIndexModelGenerators {
+class BlockSpec extends OxygeniumSpec with NoIndexModelGenerators {
   it should "serde" in {
     forAll(blockGen) { block =>
       val bytes  = serialize[Block](block)

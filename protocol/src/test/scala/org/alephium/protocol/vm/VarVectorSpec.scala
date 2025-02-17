@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -18,9 +18,9 @@ package org.oxygenium.protocol.vm
 
 import scala.collection.mutable
 
-import org.oxygenium.util.{AlephiumSpec, AVector}
+import org.oxygenium.util.{OxygeniumSpec, AVector}
 
-class VarVectorSpec extends AlephiumSpec {
+class VarVectorSpec extends OxygeniumSpec {
   it should "get and set values" in {
     val vector = VarVector.unsafe[Int](mutable.ArraySeq.from(Array.ofDim[Int](10)), 1, 2)
     vector.length is 2

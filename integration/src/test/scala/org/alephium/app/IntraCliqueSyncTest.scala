@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ import org.oxygenium.api.model.SelfClique
 import org.oxygenium.protocol.model.ChainIndex
 import org.oxygenium.util._
 
-class IntraCliqueSyncTest extends AlephiumActorSpec {
+class IntraCliqueSyncTest extends OxygeniumActorSpec {
   it should "boot and sync single node clique" in new CliqueFixture {
     val server = bootNode(publicPort = defaultMasterPort, brokerId = 0, brokerNum = 1)
     server.start().futureValue is (())

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -21,14 +21,14 @@ import scala.util.Random
 import akka.testkit.TestProbe
 import org.scalacheck.Gen
 
-import org.oxygenium.flow.AlephiumFlowActorSpec
+import org.oxygenium.flow.OxygeniumFlowActorSpec
 import org.oxygenium.flow.handler.{AllHandlers, TestUtils, ViewHandler}
 import org.oxygenium.flow.setting.MiningSetting
 import org.oxygenium.protocol.config.BrokerConfig
 import org.oxygenium.protocol.model.ChainIndex
 import org.oxygenium.util.AVector
 
-class MinerStateSpec extends AlephiumFlowActorSpec { Spec =>
+class MinerStateSpec extends OxygeniumFlowActorSpec { Spec =>
 
   val minerAddresses =
     AVector.tabulate(groups0)(g => getGenesisLockupScript(ChainIndex.unsafe(g, 0)))

@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -36,9 +36,9 @@ import org.oxygenium.protocol.Generators
 import org.oxygenium.protocol.config.BrokerConfig
 import org.oxygenium.protocol.message._
 import org.oxygenium.protocol.model._
-import org.oxygenium.util.{ActorRefT, AlephiumActorSpec, AVector}
+import org.oxygenium.util.{ActorRefT, OxygeniumActorSpec, AVector}
 
-class BrokerHandlerSpec extends AlephiumActorSpec {
+class BrokerHandlerSpec extends OxygeniumActorSpec {
   val clientInfo: String = "v0.0.0"
 
   it should "terminated when received invalid broker info" in new Fixture {

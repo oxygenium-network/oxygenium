@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -16,17 +16,17 @@
 
 package org.oxygenium.flow.io
 
-import org.oxygenium.flow.setting.AlephiumConfigFixture
+import org.oxygenium.flow.setting.OxygeniumConfigFixture
 import org.oxygenium.io.RocksDBSource
 import org.oxygenium.io.RocksDBSource.ColumnFamily
 import org.oxygenium.protocol.Generators
 import org.oxygenium.protocol.model.BrokerInfo
-import org.oxygenium.util.{AlephiumSpec, AVector}
+import org.oxygenium.util.{OxygeniumSpec, AVector}
 
 class BrokerStorageSpec
-    extends AlephiumSpec
+    extends OxygeniumSpec
     with StorageSpec[BrokerRocksDBStorage]
-    with AlephiumConfigFixture {
+    with OxygeniumConfigFixture {
 
   override val dbname: String = "broker-storage-spec"
   override val builder: RocksDBSource => BrokerRocksDBStorage =

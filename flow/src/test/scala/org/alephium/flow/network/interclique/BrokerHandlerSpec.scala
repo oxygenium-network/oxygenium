@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@ import akka.io.Tcp
 import akka.testkit.{EventFilter, TestActorRef, TestProbe}
 import org.scalacheck.Gen
 
-import org.oxygenium.flow.{AlephiumFlowActorSpec, FlowFixture}
+import org.oxygenium.flow.{OxygeniumFlowActorSpec, FlowFixture}
 import org.oxygenium.flow.core.BlockFlow
 import org.oxygenium.flow.handler.{AllHandlers, FlowHandler, TestUtils, TxHandler}
 import org.oxygenium.flow.network.CliqueManager
@@ -45,7 +45,7 @@ import org.oxygenium.serde.serialize
 import org.oxygenium.util.{ActorRefT, AVector, Duration, TimeStamp, UnsecureRandom}
 
 // scalastyle:off file.size.limit
-class BrokerHandlerSpec extends AlephiumFlowActorSpec {
+class BrokerHandlerSpec extends OxygeniumFlowActorSpec {
   it should "set remote synced" in new Fixture {
     brokerHandlerActor.selfSynced is false
     brokerHandlerActor.remoteSynced is false

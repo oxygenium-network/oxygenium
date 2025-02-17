@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -2868,7 +2868,7 @@ final case class DEBUG(stringParts: AVector[Val.ByteVec])
   }
 
   def runWithLeman[C <: StatelessContext](frame: Frame[C]): ExeResult[Unit] = {
-    if (frame.ctx.networkConfig.networkId == model.NetworkId.AlephiumMainNet) {
+    if (frame.ctx.networkConfig.networkId == model.NetworkId.OxygeniumMainNet) {
       failed(DebugIsNotSupportedForMainnet)
     } else if (stringParts.isEmpty) {
       failed(DebugMessageIsEmpty)

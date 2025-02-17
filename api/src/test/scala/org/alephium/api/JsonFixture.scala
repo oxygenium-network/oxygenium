@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -19,9 +19,9 @@ package org.oxygenium.api
 import org.scalatest.Assertion
 
 import org.oxygenium.json.Json._
-import org.oxygenium.util.{AlephiumSpec, Duration}
+import org.oxygenium.util.{OxygeniumSpec, Duration}
 
-trait JsonFixture extends ApiModelCodec with AlephiumSpec {
+trait JsonFixture extends ApiModelCodec with OxygeniumSpec {
 
   val blockflowFetchMaxAge = Duration.unsafe(1000)
 

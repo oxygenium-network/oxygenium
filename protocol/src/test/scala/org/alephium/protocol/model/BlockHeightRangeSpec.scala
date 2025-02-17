@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -17,9 +17,9 @@
 package org.oxygenium.protocol.model
 
 import org.oxygenium.serde.{deserialize, serialize}
-import org.oxygenium.util.{AlephiumSpec, AVector, NumericHelpers}
+import org.oxygenium.util.{OxygeniumSpec, AVector, NumericHelpers}
 
-class BlockHeightRangeSpec extends AlephiumSpec with NumericHelpers {
+class BlockHeightRangeSpec extends OxygeniumSpec with NumericHelpers {
   it should "validate block height range" in {
     val validRanges = Seq(
       BlockHeightRange(0, 0, 1),

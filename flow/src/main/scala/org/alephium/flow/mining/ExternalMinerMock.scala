@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -25,14 +25,14 @@ import akka.io.{IO, Tcp}
 import akka.util.ByteString
 
 import org.oxygenium.flow.network.broker.{ConnectionHandler, ResetBackoffStrategy}
-import org.oxygenium.flow.setting.{AlephiumConfig, MiningSetting, NetworkSetting}
+import org.oxygenium.flow.setting.{OxygeniumConfig, MiningSetting, NetworkSetting}
 import org.oxygenium.protocol.config.{BrokerConfig, GroupConfig}
 import org.oxygenium.protocol.model.{Block, ChainIndex}
 import org.oxygenium.serde.{serialize, SerdeResult, Staging}
 import org.oxygenium.util.{ActorRefT, AVector}
 
 object ExternalMinerMock {
-  def singleNode(config: AlephiumConfig): Props = {
+  def singleNode(config: OxygeniumConfig): Props = {
     require(config.broker.brokerNum == 1, "Only clique of 1 broker is supported")
 
     props(
@@ -41,7 +41,7 @@ object ExternalMinerMock {
     )
   }
 
-  def props(config: AlephiumConfig, nodes: AVector[InetSocketAddress]): Props = {
+  def props(config: OxygeniumConfig, nodes: AVector[InetSocketAddress]): Props = {
     require(
       config.broker.groups % nodes.length == 0,
       s"Invalid number of nodes ${nodes.length} for groups ${config.broker.groups}"

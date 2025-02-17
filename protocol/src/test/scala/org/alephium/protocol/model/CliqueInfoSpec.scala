@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,9 +22,9 @@ import org.scalacheck.Gen
 
 import org.oxygenium.protocol.Generators
 import org.oxygenium.protocol.config.{BrokerConfig, GroupConfig}
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class CliqueInfoSpec extends AlephiumSpec with Generators {
+class CliqueInfoSpec extends OxygeniumSpec with Generators {
   it should "work" in {
     forAll(Gen.chooseNum(1, 16)) { g =>
       implicit val groupConfig = new GroupConfig {

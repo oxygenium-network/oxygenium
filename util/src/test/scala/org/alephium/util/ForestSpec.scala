@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ import org.scalatest.Assertion
 
 import org.oxygenium.util.Forest.Node
 
-class ForestSpec extends AlephiumSpec {
+class ForestSpec extends OxygeniumSpec {
   def checkBuild(roots: AVector[Int], pairs: List[(Int, Int)]): Assertion = {
     val links  = mutable.HashMap.empty ++ pairs
     val values = AVector.from(pairs.map(_._1))

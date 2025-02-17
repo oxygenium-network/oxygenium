@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -19,9 +19,9 @@ package org.oxygenium.protocol.model
 import org.scalacheck.Gen
 
 import org.oxygenium.protocol.Hash
-import org.oxygenium.util.AlephiumSpec
+import org.oxygenium.util.OxygeniumSpec
 
-class ScriptHintSpec extends AlephiumSpec {
+class ScriptHintSpec extends OxygeniumSpec {
   it should "be 1 in the last bit" in {
     forAll(Gen.const(()).map(_ => Hash.generate)) { hash =>
       val scriptHint = ScriptHint.fromHash(hash)

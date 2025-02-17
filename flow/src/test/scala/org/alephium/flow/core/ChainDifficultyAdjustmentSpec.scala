@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@ import scala.util.Random
 
 import akka.util.ByteString
 
-import org.oxygenium.flow.AlephiumFlowSpec
+import org.oxygenium.flow.OxygeniumFlowSpec
 import org.oxygenium.flow.setting.{ConsensusSetting, ConsensusSettings}
 import org.oxygenium.io.IOResult
 import org.oxygenium.protocol.ALPH
@@ -31,7 +31,7 @@ import org.oxygenium.protocol.config._
 import org.oxygenium.protocol.model.{BlockHash, HardFork, NetworkId, Target}
 import org.oxygenium.util.{AVector, Duration, NumericHelpers, TimeStamp}
 
-class ChainDifficultyAdjustmentSpec extends AlephiumFlowSpec { Test =>
+class ChainDifficultyAdjustmentSpec extends OxygeniumFlowSpec { Test =>
   import ChainDifficultyAdjustment._
 
   trait MockFixture extends ChainDifficultyAdjustment with NumericHelpers {
@@ -204,7 +204,7 @@ class ChainDifficultyAdjustmentSpec extends AlephiumFlowSpec { Test =>
 
   it should "decrease the target when difficulty bomb enabled" in new MockFixture {
     implicit override def networkConfig: NetworkConfig = new NetworkConfig {
-      override def networkId: NetworkId       = NetworkId.AlephiumMainNet
+      override def networkId: NetworkId       = NetworkId.OxygeniumMainNet
       override def noPreMineProof: ByteString = ByteString.empty
       override def lemanHardForkTimestamp: TimeStamp =
         ALPH.DifficultyBombPatchEnabledTimeStamp.plusHoursUnsafe(100)

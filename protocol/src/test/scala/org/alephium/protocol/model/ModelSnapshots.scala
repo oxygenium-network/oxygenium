@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -23,9 +23,9 @@ import akka.util.ByteString
 import org.scalatest.OptionValues
 
 import org.oxygenium.serde._
-import org.oxygenium.util.{AlephiumFixture, Hex}
+import org.oxygenium.util.{OxygeniumFixture, Hex}
 
-trait ModelSnapshots extends AlephiumFixture with OptionValues {
+trait ModelSnapshots extends OxygeniumFixture with OptionValues {
   def readFile(path: Path): String = {
     val all = new String(Files.readAllBytes(path), StandardCharsets.UTF_8)
     all.filterNot(_.isWhitespace)

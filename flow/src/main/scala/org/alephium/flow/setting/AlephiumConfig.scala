@@ -1,4 +1,4 @@
-// Copyright 2018 The Alephium Authors
+// Copyright 2018 The Oxygenium Authors
 // This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
@@ -234,7 +234,7 @@ object Allocation {
 
 final case class GenesisSetting(allocations: AVector[Allocation])
 
-final case class AlephiumConfig(
+final case class OxygeniumConfig(
     broker: BrokerSetting,
     consensus: ConsensusSettings,
     mining: MiningSetting,
@@ -253,7 +253,7 @@ final case class AlephiumConfig(
     )
 }
 
-object AlephiumConfig {
+object OxygeniumConfig {
   import ConfigUtils._
 
   final private case class TempConsensusSettings(
@@ -385,7 +385,7 @@ object AlephiumConfig {
     }
   }
 
-  final private case class TempAlephiumConfig(
+  final private case class TempOxygeniumConfig(
       broker: BrokerSetting,
       consensus: TempConsensusSettings,
       mining: TempMiningSetting,
@@ -396,11 +396,11 @@ object AlephiumConfig {
       node: NodeSetting,
       genesis: GenesisSetting
   ) {
-    lazy val toAlephiumConfig: AlephiumConfig = {
+    lazy val toOxygeniumConfig: OxygeniumConfig = {
       parseMiners(mining.minerAddresses)(broker).map { minerAddresses =>
         val consensusExtracted = consensus.toConsensusSettings(broker)
         val networkExtracted   = network.toNetworkSetting(ActorRefT.apply)
-        val discoveryRefined = if (network.networkId == NetworkId.AlephiumTestNet) {
+        val discoveryRefined = if (network.networkId == NetworkId.OxygeniumTestNet) {
           if (discovery.bootstrap.isEmpty) {
             discovery.copy(bootstrap =
               ArraySeq(
@@ -414,7 +414,7 @@ object AlephiumConfig {
         } else {
           discovery
         }
-        AlephiumConfig(
+        OxygeniumConfig(
           broker,
           consensusExtracted,
           mining.toMiningSetting(minerAddresses),
@@ -432,9 +432,9 @@ object AlephiumConfig {
     }
   }
 
-  implicit val oxygeniumValueReader: ValueReader[AlephiumConfig] =
+  implicit val oxygeniumValueReader: ValueReader[OxygeniumConfig] =
     valueReader { implicit cfg =>
-      TempAlephiumConfig(
+      TempOxygeniumConfig(
         as[BrokerSetting]("broker"),
         as[TempConsensusSettings]("consensus"),
         as[TempMiningSetting]("mining"),
@@ -444,30 +444,30 @@ object AlephiumConfig {
         as[WalletSetting]("wallet"),
         as[NodeSetting]("node"),
         as[GenesisSetting]("genesis")
-      ).toAlephiumConfig
+      ).toOxygeniumConfig
     }
 
-  def load(env: Env, rootPath: Path, configPath: String): AlephiumConfig =
+  def load(env: Env, rootPath: Path, configPath: String): OxygeniumConfig =
     load(
       Configs.parseConfig(env, rootPath, overwrite = true, predefined = ConfigFactory.empty()),
       configPath
     )
-  def load(rootPath: Path, configPath: String): AlephiumConfig =
+  def load(rootPath: Path, configPath: String): OxygeniumConfig =
     load(Env.currentEnv, rootPath, configPath)
-  def load(config: Config, configPath: String): AlephiumConfig =
-    sanityCheck(config.as[AlephiumConfig](configPath))
-  def load(config: Config): AlephiumConfig = load(config, "oxygenium")
+  def load(config: Config, configPath: String): OxygeniumConfig =
+    sanityCheck(config.as[OxygeniumConfig](configPath))
+  def load(config: Config): OxygeniumConfig = load(config, "oxygenium")
 
-  def sanityCheck(config: AlephiumConfig): AlephiumConfig = {
+  def sanityCheck(config: OxygeniumConfig): OxygeniumConfig = {
     if (
-      config.network.networkId == NetworkId.AlephiumMainNet &&
+      config.network.networkId == NetworkId.OxygeniumMainNet &&
       config.network.lemanHardForkTimestamp != TimeStamp.unsafe(1680170400000L)
     ) {
       throw new IllegalArgumentException("Invalid timestamp for leman hard fork")
     }
 
     if (
-      config.network.networkId == NetworkId.AlephiumMainNet &&
+      config.network.networkId == NetworkId.OxygeniumMainNet &&
       config.network.rhoneHardForkTimestamp != TimeStamp.unsafe(1718186400000L)
     ) {
       throw new IllegalArgumentException("Invalid timestamp for rhone hard fork")
