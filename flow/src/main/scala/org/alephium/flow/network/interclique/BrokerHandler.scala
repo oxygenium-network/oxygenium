@@ -30,7 +30,7 @@ import org.oxygenium.flow.network.broker.{
 }
 import org.oxygenium.flow.network.sync.{BlockFlowSynchronizer, FlattenIndexedArray, SyncState}
 import org.oxygenium.io.{IOResult, IOUtils}
-import org.oxygenium.protocol.ALPH
+import org.oxygenium.protocol.OXM
 import org.oxygenium.protocol.message._
 import org.oxygenium.protocol.mining.PoW
 import org.oxygenium.protocol.model._
@@ -459,7 +459,7 @@ trait SyncV2Handler { _: BrokerHandler =>
         val chainIndex = tip.chainIndex
         (checkWork(tip.hash)
           && chainIndex.from.value == fromGroup && chainIndex.to.value == toGroup) ||
-        (tip.height == ALPH.GenesisHeight && tip.weight == ALPH.GenesisWeight)
+        (tip.height == OXM.GenesisHeight && tip.weight == OXM.GenesisWeight)
       }
     }
   }
@@ -788,8 +788,8 @@ object SyncV2Handler {
   ) {
     def startBinarySearch(): Int = {
       assume(binarySearch.isEmpty)
-      binarySearch = Some((ALPH.GenesisHeight, bestTip.height))
-      (ALPH.GenesisHeight + bestTip.height) / 2
+      binarySearch = Some((OXM.GenesisHeight, bestTip.height))
+      (OXM.GenesisHeight + bestTip.height) / 2
     }
 
     def updateBinarySearch(foundInLastHeight: Boolean): Unit = {
@@ -847,7 +847,7 @@ object SyncV2Handler {
               getNextHeight() match {
                 case Some(height) => ContinueBinarySearch(height)
                 case None =>
-                  if (!isAncestorFound) ancestorHeight = Some(ALPH.GenesisHeight)
+                  if (!isAncestorFound) ancestorHeight = Some(OXM.GenesisHeight)
                   resetBinarySearch()
                   AncestorFound
               }
@@ -882,12 +882,12 @@ object SyncV2Handler {
     // the highest block that we will get is 16 blocks back from head, which means we
     // will fetch 14 or 15 blocks unnecessarily in the case the height difference
     // between us and the peer is 1-2 blocks, which is most common
-    val requestHead   = math.max(remoteHeight - 1, ALPH.GenesisHeight)
-    val requestBottom = math.max(localHeight - 1, ALPH.GenesisHeight)
+    val requestHead   = math.max(remoteHeight - 1, OXM.GenesisHeight)
+    val requestBottom = math.max(localHeight - 1, OXM.GenesisHeight)
     val totalSpan     = requestHead - requestBottom
     val span          = calcInRange(1 + totalSpan / maxCount, 2, 16)
     val count         = calcInRange(1 + totalSpan / span, 2, maxCount)
-    val from          = math.max(requestHead - (count - 1) * span, ALPH.GenesisHeight)
+    val from          = math.max(requestHead - (count - 1) * span, OXM.GenesisHeight)
     BlockHeightRange.from(from, from + (count - 1) * span, span)
   }
 

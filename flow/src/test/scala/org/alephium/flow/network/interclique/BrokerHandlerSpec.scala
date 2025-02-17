@@ -37,7 +37,7 @@ import org.oxygenium.flow.network.broker.{ChainTipInfo, ConnectionHandler, Misbe
 import org.oxygenium.flow.network.sync.BlockFlowSynchronizer
 import org.oxygenium.flow.network.sync.SyncState.BlockDownloadTask
 import org.oxygenium.flow.setting.NetworkSetting
-import org.oxygenium.protocol.{ALPH, Generators}
+import org.oxygenium.protocol.{OXM, Generators}
 import org.oxygenium.protocol.config.BrokerConfig
 import org.oxygenium.protocol.message._
 import org.oxygenium.protocol.model._
@@ -1234,7 +1234,7 @@ class BrokerHandlerSpec extends OxygeniumFlowActorSpec {
     state.binarySearch = Some((0, 2))
     state.ancestorHeight = None
     state.handleAncestorResponseUnsafe(blockFlow, AVector(header)) is AncestorFound
-    state.ancestorHeight is Some(ALPH.GenesisHeight)
+    state.ancestorHeight is Some(OXM.GenesisHeight)
 
     state.binarySearch = Some((0, 2))
     state.ancestorHeight = None

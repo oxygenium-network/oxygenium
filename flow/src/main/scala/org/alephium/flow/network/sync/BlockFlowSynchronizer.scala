@@ -29,7 +29,7 @@ import org.oxygenium.flow.model.DataOrigin
 import org.oxygenium.flow.network._
 import org.oxygenium.flow.network.broker.{BrokerHandler, ChainTipInfo, MisbehaviorManager}
 import org.oxygenium.flow.setting.NetworkSetting
-import org.oxygenium.protocol.ALPH
+import org.oxygenium.protocol.OXM
 import org.oxygenium.protocol.config.BrokerConfig
 import org.oxygenium.protocol.message.{P2PV1, P2PV2, P2PVersion}
 import org.oxygenium.protocol.model._
@@ -596,7 +596,7 @@ object SyncState {
       val chainIndex: ChainIndex,
       val bestTip: ChainTip
   ) extends LazyLogging {
-    private[sync] var nextFromHeight                                = ALPH.GenesisHeight
+    private[sync] var nextFromHeight                                = OXM.GenesisHeight
     private[sync] var skeletonHeightRange: Option[BlockHeightRange] = None
     private[sync] val batchIds  = mutable.SortedSet.empty[BlockBatch]
     private[sync] val taskQueue = mutable.Queue.empty[BlockDownloadTask]
@@ -715,7 +715,7 @@ object SyncState {
       val queueSize = pendingQueue.size + validating.size
       if (
         queueSize <= MaxQueueSize / 2 &&
-        nextFromHeight > ALPH.GenesisHeight && // We don't know the common ancestor height yet
+        nextFromHeight > OXM.GenesisHeight && // We don't know the common ancestor height yet
         nextFromHeight <= bestTip.height &&
         skeletonHeightRange.isEmpty &&
         taskQueue.isEmpty &&

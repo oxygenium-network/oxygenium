@@ -49,7 +49,7 @@ class KeywordSpec extends OxygeniumSpec {
       "const",
       "enum",
       "Abstract",
-      "ALPH",
+      "OXM",
       "mapping"
     )
 

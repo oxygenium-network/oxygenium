@@ -2,11 +2,11 @@
 
 The `.autodoc/docs/json/protocol/src` folder contains essential functionality for the Oxygenium project, such as managing the Oxygenium cryptocurrency, handling message serialization and deserialization, and managing the mining process. The code in this folder is organized into the `org.oxygenium.protocol` package, which includes several files and subfolders, each with a specific purpose.
 
-For example, the `ALPH.scala` file contains constants and utility functions related to the Oxygenium cryptocurrency, making it easier to maintain and update the code as needed. It can be used throughout the project to perform currency conversions and access important constants related to the Oxygenium network.
+For example, the `OXM.scala` file contains constants and utility functions related to the Oxygenium cryptocurrency, making it easier to maintain and update the code as needed. It can be used throughout the project to perform currency conversions and access important constants related to the Oxygenium network.
 
 ```scala
-val amountInWei = ALPH.alph(10)
-val amountInNanoAlph = ALPH.nanoAlph(1000)
+val amountInWei = OXM.alph(10)
+val amountInNanoAlph = OXM.nanoAlph(1000)
 ```
 
 The `DiscoveryVersion.scala` and `WireVersion.scala` files define case classes and objects for representing the version numbers of the discovery and wire protocols used by the Oxygenium network. These classes are used to ensure compatibility between nodes in the network.

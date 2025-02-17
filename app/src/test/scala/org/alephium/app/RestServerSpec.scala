@@ -43,7 +43,7 @@ import org.oxygenium.flow.network.broker.MisbehaviorManager
 import org.oxygenium.http.HttpFixture._
 import org.oxygenium.http.HttpRouteFixture
 import org.oxygenium.json.Json._
-import org.oxygenium.protocol.{ALPH, Hash}
+import org.oxygenium.protocol.{OXM, Hash}
 import org.oxygenium.protocol.mining.HashRate
 import org.oxygenium.protocol.model.{Transaction => _, _}
 import org.oxygenium.protocol.model.UnsignedTransaction.TxOutputInfo
@@ -1585,7 +1585,7 @@ trait RestServerFixture
       blockflowFetchMaxAge = blockflowFetchMaxAge,
       askTimeout = Duration.ofMinutesUnsafe(1),
       apiConfig.apiKey,
-      ALPH.oneAlph,
+      OXM.oneAlph,
       utxosLimit,
       maxFormBufferedBytes,
       enableHttpMetrics = true

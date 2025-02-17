@@ -17,4 +17,4 @@ Example usage of this test file would be to run it as part of the Oxygenium proj
 - This code is released under the GNU Lesser General Public License.
 
 3. What other packages or classes are being imported and used in this code?
-- This code imports and uses the `org.oxygenium.protocol.ALPH` and `org.oxygenium.util.OxygeniumActorSpec` packages, as well as the `ConfigTest` and `CliqueFixture` classes.
+- This code imports and uses the `org.oxygenium.protocol.OXM` and `org.oxygenium.util.OxygeniumActorSpec` packages, as well as the `ConfigTest` and `CliqueFixture` classes.

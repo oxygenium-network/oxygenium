@@ -23,7 +23,7 @@ This tool is used to ensure that the difficulty bomb patch is working as intende
 
 2. What dependencies does this code have?
    
-   This code depends on several libraries and modules, including `java.nio.file.Path`, `org.oxygenium.flow.core.BlockFlow`, `org.oxygenium.flow.io.Storages`, `org.oxygenium.flow.setting.OxygeniumConfig`, `org.oxygenium.io.RocksDBSource.Settings`, `org.oxygenium.protocol.ALPH`, `org.oxygenium.protocol.mining.HashRate`, `org.oxygenium.protocol.model.BlockDeps`, `org.oxygenium.protocol.model.Target`, `org.oxygenium.protocol.vm.LockupScript`, and `org.oxygenium.util.Env`.
+   This code depends on several libraries and modules, including `java.nio.file.Path`, `org.oxygenium.flow.core.BlockFlow`, `org.oxygenium.flow.io.Storages`, `org.oxygenium.flow.setting.OxygeniumConfig`, `org.oxygenium.io.RocksDBSource.Settings`, `org.oxygenium.protocol.OXM`, `org.oxygenium.protocol.mining.HashRate`, `org.oxygenium.protocol.model.BlockDeps`, `org.oxygenium.protocol.model.Target`, `org.oxygenium.protocol.vm.LockupScript`, and `org.oxygenium.util.Env`.
 
 3. What is the expected output of this code?
    

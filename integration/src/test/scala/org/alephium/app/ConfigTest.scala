@@ -16,7 +16,7 @@
 
 package org.oxygenium.app
 
-import org.oxygenium.protocol.ALPH
+import org.oxygenium.protocol.OXM
 import org.oxygenium.util.OxygeniumActorSpec
 
 class ConfigTest extends OxygeniumActorSpec {
@@ -29,7 +29,7 @@ class ConfigTest extends OxygeniumActorSpec {
     theConfig.genesisBlocks(3)(3).coinbase.outputsLength is 2
 
     val specialTx = theConfig.genesisBlocks(3)(3).coinbase
-    specialTx.unsigned.fixedOutputs.head.lockTime is ALPH.LaunchTimestamp
-    specialTx.unsigned.fixedOutputs.last.lockTime is ALPH.LaunchTimestamp.plusHoursUnsafe(3 * 24)
+    specialTx.unsigned.fixedOutputs.head.lockTime is OXM.LaunchTimestamp
+    specialTx.unsigned.fixedOutputs.last.lockTime is OXM.LaunchTimestamp.plusHoursUnsafe(3 * 24)
   }
 }
