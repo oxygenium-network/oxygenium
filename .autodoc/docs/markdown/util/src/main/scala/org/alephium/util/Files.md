@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/util/src/main/scala/org/alephium/util/Files.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/util/src/main/scala/org/oxygenium/util/Files.scala)
 
 The code defines a utility class called `Files` that provides methods for working with files and directories. The class contains two methods: `copyFromResource` and two getter methods `homeDir` and `tmpDir`.
 

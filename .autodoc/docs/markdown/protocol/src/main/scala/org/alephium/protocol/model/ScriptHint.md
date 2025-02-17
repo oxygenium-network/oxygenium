@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/model/ScriptHint.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/model/ScriptHint.scala)
 
 This file contains code related to the Alephium project, which is licensed under the GNU Lesser General Public License. The code defines a class called `ScriptHint` and an object called `ScriptHint`. 
 
@@ -11,9 +11,9 @@ Overall, this code provides functionality related to calculating group indices b
 Example usage:
 
 ```
-import org.alephium.protocol.config.GroupConfig
-import org.alephium.protocol.Hash
-import org.alephium.protocol.model.{ScriptHint, GroupIndex}
+import org.oxygenium.protocol.config.GroupConfig
+import org.oxygenium.protocol.Hash
+import org.oxygenium.protocol.model.{ScriptHint, GroupIndex}
 
 // create a GroupConfig object with 10 groups
 implicit val config: GroupConfig = GroupConfig(10)

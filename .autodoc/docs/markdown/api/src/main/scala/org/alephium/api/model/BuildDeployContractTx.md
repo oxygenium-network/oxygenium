@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/BuildDeployContractTx.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/BuildDeployContractTx.scala)
 
 This file contains code for building and decoding a transaction for deploying a stateful smart contract on the Alephium blockchain. The `BuildDeployContractTx` class represents the transaction and contains various parameters such as the public key of the sender, the bytecode of the contract, the initial amount of Aleph tokens to be sent to the contract, and the gas price and amount for executing the transaction. The `decodeBytecode` method can be used to deserialize the bytecode into a `Code` object, which contains the contract itself as well as the initial values for its immutable and mutable fields.
 
@@ -32,7 +32,7 @@ val decodedCode = deployTx.decodeBytecode().getOrElse(throw new Exception("Faile
 
 2. What dependencies does this code file have?
     
-    This code file depends on several other packages and modules, including `akka`, `org.alephium.api`, `org.alephium.protocol`, `org.alephium.serde`, and `org.alephium.util`.
+    This code file depends on several other packages and modules, including `akka`, `org.oxygenium.api`, `org.oxygenium.protocol`, `org.oxygenium.serde`, and `org.oxygenium.util`.
 
 3. What is the license for this code file?
     

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/vm/GasPrice.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/vm/GasPrice.scala)
 
 This file contains the implementation of the GasPrice class and its companion object. The GasPrice class represents the gas price used in the Alephium blockchain. Gas is a unit of measurement for the computational effort required to execute a transaction or a smart contract on the blockchain. The gas price is the amount of ALPH tokens that a user is willing to pay for each unit of gas consumed by the transaction or smart contract.
 

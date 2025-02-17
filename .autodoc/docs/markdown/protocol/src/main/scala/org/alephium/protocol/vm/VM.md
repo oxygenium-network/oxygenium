@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/vm/VM.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/vm/VM.scala)
 
 This code defines the Virtual Machine (VM) for the Alephium project, which is responsible for executing smart contracts in a blockchain environment. The VM is implemented as an abstract class `VM[Ctx <: StatelessContext]` with two concrete implementations: `StatelessVM` and `StatefulVM`. The `StatelessVM` is used for executing stateless scripts, while the `StatefulVM` is used for executing stateful scripts that interact with the blockchain state.
 

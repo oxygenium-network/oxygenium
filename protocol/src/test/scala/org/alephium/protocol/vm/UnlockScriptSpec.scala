@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,14 +14,14 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.protocol.vm
+package org.oxygenium.protocol.vm
 
 import org.scalacheck.Gen
 
-import org.alephium.protocol.PublicKey
-import org.alephium.protocol.model.NoIndexModelGenerators
-import org.alephium.serde._
-import org.alephium.util.{AlephiumSpec, AVector, Hex}
+import org.oxygenium.protocol.PublicKey
+import org.oxygenium.protocol.model.NoIndexModelGenerators
+import org.oxygenium.serde._
+import org.oxygenium.util.{AlephiumSpec, AVector, Hex}
 
 class UnlockScriptSpec extends AlephiumSpec with NoIndexModelGenerators {
   val keyGen = groupIndexGen.flatMap(publicKeyGen)

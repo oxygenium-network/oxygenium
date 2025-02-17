@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/network/bootstrap/IntraCliqueInfo.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/network/bootstrap/IntraCliqueInfo.scala)
 
 This file contains the implementation of the `IntraCliqueInfo` class and its corresponding companion object. The purpose of this class is to represent the information required to establish a clique within the Alephium network. A clique is a group of nodes that communicate with each other to validate transactions and maintain the network's state. 
 
@@ -12,8 +12,8 @@ The companion object also provides an `unsafe` method that creates a new `IntraC
 
 Overall, the `IntraCliqueInfo` class and its companion object are used to represent and validate the information required to establish a clique within the Alephium network. This information is critical to the functioning of the network, as cliques are responsible for validating transactions and maintaining the network's state.
 ## Questions: 
- 1. What is the purpose of this code and how does it fit into the overall alephium project?
-- This code defines a case class `IntraCliqueInfo` and an object `IntraCliqueInfo` with methods for serialization and validation. It is part of the `org.alephium.flow.network.bootstrap` package and is likely related to bootstrapping the network. 
+ 1. What is the purpose of this code and how does it fit into the overall oxygenium project?
+- This code defines a case class `IntraCliqueInfo` and an object `IntraCliqueInfo` with methods for serialization and validation. It is part of the `org.oxygenium.flow.network.bootstrap` package and is likely related to bootstrapping the network. 
 
 2. What is the `CliqueInfo` class and how is it related to `IntraCliqueInfo`?
 - `CliqueInfo` is a case class that represents information about a clique, which is a group of nodes in the Alephium network. `IntraCliqueInfo` has a method `cliqueInfo` that returns a `CliqueInfo` object based on its own properties.

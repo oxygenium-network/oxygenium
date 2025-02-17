@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/model/BootstrapInfo.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/model/BootstrapInfo.scala)
 
 This file contains the definition of a case class called `BootstrapInfo` and an object with the same name that provides a `Serde` instance for the case class. 
 
@@ -11,8 +11,8 @@ This file is a small but important part of the Alephium project, as it provides 
 Example usage:
 
 ```scala
-import org.alephium.flow.model.BootstrapInfo
-import org.alephium.serde.Serde
+import org.oxygenium.flow.model.BootstrapInfo
+import org.oxygenium.serde.Serde
 
 // create a BootstrapInfo instance
 val bootstrapInfo = BootstrapInfo(privateKey, timestamp)
@@ -31,4 +31,4 @@ val deserializedBootstrapInfo = Serde.deserialize[BootstrapInfo](bytes)
    - The `Serde` object is used to provide serialization and deserialization functionality for the `BootstrapInfo` case class.
 
 3. What is the significance of the GNU Lesser General Public License mentioned in the code?
-   - The GNU Lesser General Public License is the license under which the `alephium` project is distributed, and it allows for the free distribution and modification of the library under certain conditions.
+   - The GNU Lesser General Public License is the license under which the `oxygenium` project is distributed, and it allows for the free distribution and modification of the library under certain conditions.

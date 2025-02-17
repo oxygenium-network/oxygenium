@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/DecodeFailureHandler.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/DecodeFailureHandler.scala)
 
 This file contains code related to handling decode failures in the Alephium API. The `DecodeFailureHandler` trait defines a custom failure handler for decoding errors that may occur when processing API requests. 
 
@@ -36,7 +36,7 @@ val myServer = myEndpoint.toRoutes(myLogic).map(_.intercept(myDecodeFailureHandl
 
 2. What external libraries or dependencies does this code rely on?
     
-    This code relies on the `sttp` and `tapir` libraries for defining and handling API endpoints, as well as the `org.alephium.api` package for defining custom error responses.
+    This code relies on the `sttp` and `tapir` libraries for defining and handling API endpoints, as well as the `org.oxygenium.api` package for defining custom error responses.
 
 3. What license is this code released under?
     

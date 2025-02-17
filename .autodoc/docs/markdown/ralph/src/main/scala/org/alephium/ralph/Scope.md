@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/ralph/src/main/scala/org/alephium/ralph/Scope.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/ralph/src/main/scala/org/oxygenium/ralph/Scope.scala)
 
 This file contains code related to the management of scopes in the Alephium project. Scopes are used to define the visibility and lifetime of variables in a program. The code defines a `ScopeState` class that holds information about the current state of a scope, including the index of the last declared variable, the index of the last generated fresh name, and an optional variable used to index arrays.
 

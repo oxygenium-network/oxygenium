@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/wallet/src/main/scala/org/alephium/wallet/WalletDocumentation.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/wallet/src/main/scala/org/oxygenium/wallet/WalletDocumentation.scala)
 
 The code defines a trait called `WalletDocumentation` that provides documentation for the endpoints of the Alephium wallet API. The trait extends `WalletEndpoints`, which defines the actual endpoints of the API, and `OpenAPIDocsInterpreter`, which is a library for generating OpenAPI documentation from Tapir endpoints.
 

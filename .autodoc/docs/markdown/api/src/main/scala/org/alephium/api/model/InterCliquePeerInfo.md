@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/InterCliquePeerInfo.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/InterCliquePeerInfo.scala)
 
 This file contains a case class called InterCliquePeerInfo, which is used to represent information about a peer node in the Alephium network. The class has six fields: cliqueId, brokerId, groupNumPerBroker, address, isSynced, and clientVersion.
 

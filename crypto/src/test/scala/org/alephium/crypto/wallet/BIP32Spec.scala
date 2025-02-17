@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,14 +14,14 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.crypto.wallet
+package org.oxygenium.crypto.wallet
 
 import akka.util.ByteString
 import org.scalacheck.Gen
 
-import org.alephium.crypto.{SecP256K1PrivateKey, SecP256K1PublicKey}
-import org.alephium.util.{AlephiumSpec, AVector, Base58}
-import org.alephium.util.Hex._
+import org.oxygenium.crypto.{SecP256K1PrivateKey, SecP256K1PublicKey}
+import org.oxygenium.util.{AlephiumSpec, AVector, Base58}
+import org.oxygenium.util.Hex._
 
 class BIP32Spec extends AlephiumSpec {
   def decodeBtcXPrv(input: String): (SecP256K1PrivateKey, ByteString) = {

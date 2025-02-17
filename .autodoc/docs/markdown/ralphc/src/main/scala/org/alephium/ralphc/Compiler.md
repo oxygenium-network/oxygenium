@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/ralphc/src/main/scala/org/alephium/ralphc/Compiler.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/ralphc/src/main/scala/org/oxygenium/ralphc/Compiler.scala)
 
 This file contains the implementation of a compiler for the Alephium project. The `Compiler` class is responsible for compiling contracts and scripts written in the Alephium language. The `compileProject` method is the main entry point for the compiler. It takes no arguments and returns an `Either` type, which can be either a `String` error message or a `CompileProjectResult` object.
 
@@ -29,7 +29,7 @@ compiler.compileProject() match {
 - This code is a compiler for Alephium smart contracts written in the `.ral` language. It compiles the contracts and generates artifacts in JSON format.
 
 2. What external libraries or dependencies does this code use?
-- This code uses several external libraries including `scala`, `org.alephium`, `java`, and `scala.util`. It also imports several classes and objects from other files in the `alephium` project.
+- This code uses several external libraries including `scala`, `org.oxygenium`, `java`, and `scala.util`. It also imports several classes and objects from other files in the `oxygenium` project.
 
 3. What is the output of this code and where is it stored?
 - The output of this code is a set of JSON artifacts generated from the compiled smart contracts. These artifacts are stored in a specified directory, which is passed as an argument to the `Compiler` class.

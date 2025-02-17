@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/flow/src/main/scala/org/alephium/flow/gasestimation)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/flow/src/main/scala/org/oxygenium/flow/gasestimation)
 
 The code in the `gasestimation` folder is responsible for estimating the amount of gas required to execute various types of scripts in the Alephium blockchain. Gas is a measure of computational effort required to execute a script and is used to prevent spamming and denial-of-service attacks on the network.
 
@@ -11,7 +11,7 @@ The `TxScriptGasEstimator.scala` file contains code related to gas estimation fo
 Here's an example of how the `GasEstimation` object might be used:
 
 ```scala
-import org.alephium.flow.gasestimation.GasEstimation
+import org.oxygenium.flow.gasestimation.GasEstimation
 
 val gasEstimation = GasEstimation()
 val p2pkhInputs = List(input1, input2, input3)

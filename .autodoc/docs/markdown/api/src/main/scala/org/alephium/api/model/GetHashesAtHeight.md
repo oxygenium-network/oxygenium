@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/GetHashesAtHeight.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/GetHashesAtHeight.scala)
 
 This code defines a case class called `GetHashesAtHeight` that is used in the Alephium project's API model. The purpose of this case class is to represent a request to retrieve the block hashes at a specific height range for a particular chain. 
 

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/vm/GasSchedule.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/vm/GasSchedule.scala)
 
 This file contains the implementation of the gas schedule for the Alephium virtual machine (VM). The gas schedule defines the cost of executing each operation in the VM. The gas cost is used to limit the amount of computation that can be performed by a transaction, preventing malicious actors from executing expensive operations that could slow down the network.
 

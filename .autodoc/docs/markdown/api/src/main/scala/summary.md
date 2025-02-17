@@ -1,6 +1,6 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/api/src/main/scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/api/src/main/scala)
 
-The code in the `org/alephium/api` folder is essential for defining the Alephium project's API, which allows developers to interact with the Alephium blockchain and build applications on top of it. The folder contains various files that define data models, codecs, utility functions, and API endpoints for the Alephium blockchain.
+The code in the `org/oxygenium/api` folder is essential for defining the Alephium project's API, which allows developers to interact with the Alephium blockchain and build applications on top of it. The folder contains various files that define data models, codecs, utility functions, and API endpoints for the Alephium blockchain.
 
 For instance, the `ApiModel.scala` file defines the API model and its serialization/deserialization logic. This is essential for developers to build applications on top of the Alephium blockchain. The `BaseEndpoint.scala` file provides a set of common functionality for building HTTP endpoints in the Alephium project, ensuring consistency across the project.
 

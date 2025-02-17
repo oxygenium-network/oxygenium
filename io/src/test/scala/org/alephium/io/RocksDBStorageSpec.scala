@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,10 +14,10 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.io
+package org.oxygenium.io
 
-import org.alephium.macros.EnumerationMacros
-import org.alephium.util.{AlephiumSpec, AVector}
+import org.oxygenium.macros.EnumerationMacros
+import org.oxygenium.util.{AlephiumSpec, AVector}
 
 class RocksDBStorageSpec extends AlephiumSpec {
   import RocksDBSource.ColumnFamily

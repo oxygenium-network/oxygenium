@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/PeerAddress.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/PeerAddress.scala)
 
 This code defines a case class called `PeerAddress` that represents the network address of a peer in the Alephium network. The `PeerAddress` class has four fields: `address`, which is an `InetAddress` object representing the IP address of the peer, `restPort`, which is an integer representing the port number for the peer's REST API, `wsPort`, which is an integer representing the port number for the peer's WebSocket API, and `minerApiPort`, which is an integer representing the port number for the peer's miner API.
 
@@ -7,7 +7,7 @@ This class is likely used in the larger Alephium project to manage connections t
 Here is an example of how the `PeerAddress` class might be used in the Alephium project:
 
 ```
-import org.alephium.api.model.PeerAddress
+import org.oxygenium.api.model.PeerAddress
 
 val peer = PeerAddress(InetAddress.getByName("192.168.1.100"), 8080, 8081, 8082)
 

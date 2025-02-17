@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/ContractEvents.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/ContractEvents.scala)
 
 This file contains code for defining and manipulating various data structures related to contract events in the Alephium project. 
 
@@ -15,7 +15,7 @@ Overall, this code provides a way to represent and manipulate contract events in
 Example usage:
 
 ```scala
-import org.alephium.api.model._
+import org.oxygenium.api.model._
 
 // create a ContractEvent instance
 val event = ContractEvent(

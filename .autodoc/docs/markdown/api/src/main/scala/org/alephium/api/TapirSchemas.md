@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/TapirSchemas.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/TapirSchemas.scala)
 
 This code defines a set of Tapir schemas for various types used in the Alephium project. Tapir is a library for building HTTP APIs in Scala, and these schemas define the expected input and output types for the API endpoints.
 

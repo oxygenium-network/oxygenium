@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/docker/grafana)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/docker/grafana)
 
 The `.autodoc/docs/json/docker/grafana` folder contains configuration files and provisioning settings for integrating the Alephium project with Grafana, a popular open-source platform for monitoring and observability. This integration allows Alephium to display monitoring data from Prometheus in a Grafana dashboard, providing valuable insights into the performance and health of the project.
 
@@ -28,7 +28,7 @@ Here's an example of how this code might be used:
 
 ```python
 # Load the configuration file
-config = load_config_file('alephium.yml')
+config = load_config_file('oxygenium.yml')
 
 # Get the list of datasources to delete
 delete_list = config['deleteDatasources']

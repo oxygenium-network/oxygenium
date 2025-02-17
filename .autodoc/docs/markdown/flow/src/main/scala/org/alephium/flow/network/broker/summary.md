@@ -1,12 +1,12 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/flow/src/main/scala/org/alephium/flow/network/broker)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/flow/src/main/scala/org/oxygenium/flow/network/broker)
 
-The `.autodoc/docs/json/flow/src/main/scala/org/alephium/flow/network/broker` folder contains code related to managing network connections, handling misbehavior, and implementing backoff strategies in the Alephium project. The code in this folder is essential for maintaining the stability and security of the Alephium network.
+The `.autodoc/docs/json/flow/src/main/scala/org/oxygenium/flow/network/broker` folder contains code related to managing network connections, handling misbehavior, and implementing backoff strategies in the Alephium project. The code in this folder is essential for maintaining the stability and security of the Alephium network.
 
 The `BackoffStrategy.scala` file provides a flexible and configurable way to implement backoff strategies for different network settings. It defines the `BackoffStrategy` trait, `DefaultBackoffStrategy` class, and `ResetBackoffStrategy` class. These classes can be used to handle network errors by retrying requests with increasing delays between them. For example, the `DefaultBackoffStrategy` can be used to retry a network request with increasing delays:
 
 ```scala
-import org.alephium.flow.network.broker.{BackoffStrategy, DefaultBackoffStrategy}
-import org.alephium.flow.setting.NetworkSetting
+import org.oxygenium.flow.network.broker.{BackoffStrategy, DefaultBackoffStrategy}
+import org.oxygenium.flow.setting.NetworkSetting
 
 implicit val network: NetworkSetting = NetworkSetting.default
 

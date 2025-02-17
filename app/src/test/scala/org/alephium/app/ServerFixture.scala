@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.app
+package org.oxygenium.app
 
 import scala.annotation.nowarn
 import scala.concurrent.{ExecutionContext, Future}
@@ -25,32 +25,32 @@ import akka.testkit.TestProbe
 import akka.util.ByteString
 import org.scalacheck.Gen
 
-import org.alephium.api.ApiModelCodec
-import org.alephium.api.model.{AssetOutput => _, ContractOutput => _, Transaction => _, _}
-import org.alephium.crypto.{Blake2b, Byte32}
-import org.alephium.flow.client.Node
-import org.alephium.flow.core._
-import org.alephium.flow.core.BlockChain.TxIndex
-import org.alephium.flow.core.FlowUtils.{AssetOutputInfo, OutputInfo}
-import org.alephium.flow.handler.{AllHandlers, TxHandler}
-import org.alephium.flow.io.{Storages, StoragesFixture}
-import org.alephium.flow.mempool.MemPool
-import org.alephium.flow.mempool.MemPool.AddedToMemPool
-import org.alephium.flow.network._
-import org.alephium.flow.network.bootstrap.{InfoFixture, IntraCliqueInfo}
-import org.alephium.flow.network.broker.MisbehaviorManager
-import org.alephium.flow.setting.{AlephiumConfig, AlephiumConfigFixture}
-import org.alephium.io.IOResult
-import org.alephium.json.Json._
-import org.alephium.protocol._
-import org.alephium.protocol.model._
-import org.alephium.protocol.model.ModelGenerators
-import org.alephium.protocol.model.UnsignedTransaction.TxOutputInfo
-import org.alephium.protocol.vm._
-import org.alephium.protocol.vm.nodeindexes.{TxIdTxOutputLocators, TxOutputLocator}
-import org.alephium.serde.serialize
-import org.alephium.util._
-import org.alephium.util.Hex.HexStringSyntax
+import org.oxygenium.api.ApiModelCodec
+import org.oxygenium.api.model.{AssetOutput => _, ContractOutput => _, Transaction => _, _}
+import org.oxygenium.crypto.{Blake2b, Byte32}
+import org.oxygenium.flow.client.Node
+import org.oxygenium.flow.core._
+import org.oxygenium.flow.core.BlockChain.TxIndex
+import org.oxygenium.flow.core.FlowUtils.{AssetOutputInfo, OutputInfo}
+import org.oxygenium.flow.handler.{AllHandlers, TxHandler}
+import org.oxygenium.flow.io.{Storages, StoragesFixture}
+import org.oxygenium.flow.mempool.MemPool
+import org.oxygenium.flow.mempool.MemPool.AddedToMemPool
+import org.oxygenium.flow.network._
+import org.oxygenium.flow.network.bootstrap.{InfoFixture, IntraCliqueInfo}
+import org.oxygenium.flow.network.broker.MisbehaviorManager
+import org.oxygenium.flow.setting.{AlephiumConfig, AlephiumConfigFixture}
+import org.oxygenium.io.IOResult
+import org.oxygenium.json.Json._
+import org.oxygenium.protocol._
+import org.oxygenium.protocol.model._
+import org.oxygenium.protocol.model.ModelGenerators
+import org.oxygenium.protocol.model.UnsignedTransaction.TxOutputInfo
+import org.oxygenium.protocol.vm._
+import org.oxygenium.protocol.vm.nodeindexes.{TxIdTxOutputLocators, TxOutputLocator}
+import org.oxygenium.serde.serialize
+import org.oxygenium.util._
+import org.oxygenium.util.Hex.HexStringSyntax
 
 trait ServerFixture
     extends InfoFixture

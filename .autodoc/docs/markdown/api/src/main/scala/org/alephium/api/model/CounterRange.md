@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/CounterRange.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/CounterRange.scala)
 
 This file contains a Scala case class called `CounterRange` and a companion object with a custom `Validator` for validating instances of the case class. 
 

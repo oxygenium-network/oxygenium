@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.protocol.vm
+package org.oxygenium.protocol.vm
 
 import java.math.BigInteger
 import java.nio.charset.StandardCharsets
@@ -26,14 +26,14 @@ import akka.util.ByteString
 import org.scalacheck.Arbitrary.arbitrary
 import org.scalacheck.Gen
 
-import org.alephium.crypto
-import org.alephium.protocol._
-import org.alephium.protocol.config.{NetworkConfig, NetworkConfigFixture}
-import org.alephium.protocol.config.NetworkConfigFixture.{Genesis, Leman}
-import org.alephium.protocol.model.{NetworkId => _, _}
-import org.alephium.protocol.model.NetworkId.AlephiumMainNet
-import org.alephium.serde._
-import org.alephium.util._
+import org.oxygenium.crypto
+import org.oxygenium.protocol._
+import org.oxygenium.protocol.config.{NetworkConfig, NetworkConfigFixture}
+import org.oxygenium.protocol.config.NetworkConfigFixture.{Genesis, Leman}
+import org.oxygenium.protocol.model.{NetworkId => _, _}
+import org.oxygenium.protocol.model.NetworkId.AlephiumMainNet
+import org.oxygenium.serde._
+import org.oxygenium.util._
 
 // scalastyle:off file.size.limit no.equal number.of.methods number.of.types
 class InstrSpec extends AlephiumSpec with NumericHelpers {

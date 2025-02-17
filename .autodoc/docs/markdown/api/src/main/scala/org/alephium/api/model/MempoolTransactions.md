@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/MempoolTransactions.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/MempoolTransactions.scala)
 
 This code defines a case class called `MempoolTransactions` which is used to represent a group of transactions in the Alephium project's mempool. The mempool is a data structure used by nodes in a blockchain network to store unconfirmed transactions before they are added to a block and confirmed by the network.
 
@@ -11,9 +11,9 @@ This code is used in the larger Alephium project to manage the mempool and handl
 Here is an example of how this code might be used in the Alephium project:
 
 ```scala
-import org.alephium.api.model.MempoolTransactions
-import org.alephium.util.AVector
-import org.alephium.api.model.TransactionTemplate
+import org.oxygenium.api.model.MempoolTransactions
+import org.oxygenium.util.AVector
+import org.oxygenium.api.model.TransactionTemplate
 
 // create some transaction templates
 val tx1 = TransactionTemplate(...)

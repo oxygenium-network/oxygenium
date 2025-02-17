@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/BlockSolution.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/BlockSolution.scala)
 
 This code defines a case class called `BlockSolution` which is used to represent a solution to a block in the Alephium project. The `BlockSolution` class has two fields: `blockBlob` and `miningCount`. 
 
@@ -12,8 +12,8 @@ Here is an example of how this `BlockSolution` class might be used in the Alephi
 
 ```scala
 import akka.util.ByteString
-import org.alephium.api.model.BlockSolution
-import org.alephium.util.U256
+import org.oxygenium.api.model.BlockSolution
+import org.oxygenium.util.U256
 
 val blockBlob: ByteString = ByteString(Array[Byte](0x01, 0x02, 0x03))
 val miningCount: U256 = U256.fromBigInt(BigInt(100))

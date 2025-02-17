@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/macros)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/macros)
 
 The `.autodoc/docs/json/macros` folder contains Scala macros and annotations that help generate boilerplate code and improve code efficiency in the Alephium project. These macros and annotations are used to automatically generate code for serialization, hashing, enumeration of sealed traits, and C-style for loops.
 
@@ -39,7 +39,7 @@ The `.autodoc/docs/json/macros` folder contains Scala macros and annotations tha
 
    Example usage:
    ```scala
-   import org.alephium.macros.HPC._
+   import org.oxygenium.macros.HPC._
 
    cfor(0)(_ < 10, _ + 1) { i =>
      println(i)
@@ -50,7 +50,7 @@ The `.autodoc/docs/json/macros` folder contains Scala macros and annotations tha
 
    Example usage:
    ```scala
-   import org.alephium.macros.HashSerde
+   import org.oxygenium.macros.HashSerde
 
    @HashSerde
    case class Person(name: String, age: Int)

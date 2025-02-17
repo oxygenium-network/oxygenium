@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/core/ContractUtils.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/core/ContractUtils.scala)
 
 This code defines a trait called `ContractUtils` which provides utility functions related to contracts in the Alephium project. The trait is dependent on another trait called `FlowUtils`. 
 
@@ -22,6 +22,6 @@ groupResult match {
  1. What is the purpose of this code?
    - This code defines a trait called `ContractUtils` which provides methods for getting the group index of a contract in the Alephium project.
 2. What external dependencies does this code have?
-   - This code imports two classes from the `org.alephium.protocol.model` package: `ContractId` and `GroupIndex`. It also relies on a `brokerConfig` object which is not defined in this file.
+   - This code imports two classes from the `org.oxygenium.protocol.model` package: `ContractId` and `GroupIndex`. It also relies on a `brokerConfig` object which is not defined in this file.
 3. What license is this code released under?
    - This code is released under the GNU Lesser General Public License, either version 3 or any later version.

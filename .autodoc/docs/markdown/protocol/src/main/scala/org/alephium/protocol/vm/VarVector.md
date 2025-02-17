@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/vm/VarVector.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/vm/VarVector.scala)
 
 This file contains the implementation of a VarVector class that is used in the Alephium project. The VarVector is a wrapper around a mutable ArraySeq that provides a way to access and modify a subset of the underlying array. 
 

@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.flow.network.sync
+package org.oxygenium.flow.network.sync
 
 import scala.collection.mutable
 import scala.reflect.ClassTag
@@ -22,20 +22,20 @@ import scala.reflect.ClassTag
 import akka.actor.PoisonPill
 import akka.testkit.{EventFilter, TestActorRef, TestProbe}
 
-import org.alephium.flow.FlowFixture
-import org.alephium.flow.handler.{ChainHandler, DependencyHandler, FlowHandler, TestUtils}
-import org.alephium.flow.model.DataOrigin
-import org.alephium.flow.network.InterCliqueManager
-import org.alephium.flow.network.broker.{
+import org.oxygenium.flow.FlowFixture
+import org.oxygenium.flow.handler.{ChainHandler, DependencyHandler, FlowHandler, TestUtils}
+import org.oxygenium.flow.model.DataOrigin
+import org.oxygenium.flow.network.InterCliqueManager
+import org.oxygenium.flow.network.broker.{
   BrokerHandler,
   ChainTipInfo,
   InboundConnection,
   MisbehaviorManager
 }
-import org.alephium.protocol.Generators
-import org.alephium.protocol.message.{P2PV1, P2PV2, P2PVersion}
-import org.alephium.protocol.model._
-import org.alephium.util.{ActorRefT, AlephiumActorSpec, AVector, TimeStamp}
+import org.oxygenium.protocol.Generators
+import org.oxygenium.protocol.message.{P2PV1, P2PV2, P2PVersion}
+import org.oxygenium.protocol.model._
+import org.oxygenium.util.{ActorRefT, AlephiumActorSpec, AVector, TimeStamp}
 
 // scalastyle:off file.size.limit
 class BlockFlowSynchronizerSpec extends AlephiumActorSpec {
@@ -45,7 +45,7 @@ class BlockFlowSynchronizerSpec extends AlephiumActorSpec {
 
   trait Fixture extends FlowFixture with Generators {
     override val configValues: Map[String, Any] = Map(
-      ("alephium.network.enable-p2p-v2", false)
+      ("oxygenium.network.enable-p2p-v2", false)
     )
 
     lazy val (allHandlers, allProbes) = TestUtils.createAllHandlersProbe
@@ -155,8 +155,8 @@ class BlockFlowSynchronizerSpec extends AlephiumActorSpec {
     import SyncState._
 
     override val configValues: Map[String, Any] = Map(
-      ("alephium.broker.broker-num", 1),
-      ("alephium.network.enable-p2p-v2", true)
+      ("oxygenium.broker.broker-num", 1),
+      ("oxygenium.network.enable-p2p-v2", true)
     )
 
     def addBroker(version: P2PVersion = P2PV2): (BrokerActor, BrokerStatus, TestProbe) = {
@@ -653,9 +653,9 @@ class BlockFlowSynchronizerSpec extends AlephiumActorSpec {
   it should "download blocks from multiple peers" in new BlockFlowSynchronizerV2Fixture {
     import SyncState._
     override val configValues: Map[String, Any] = Map(
-      ("alephium.broker.broker-num", 1),
-      ("alephium.broker.groups", 4),
-      ("alephium.network.enable-p2p-v2", true)
+      ("oxygenium.broker.broker-num", 1),
+      ("oxygenium.broker.groups", 4),
+      ("oxygenium.network.enable-p2p-v2", true)
     )
 
     val (brokerActor0, brokerStatus0, probe0) = addBroker()
@@ -706,9 +706,9 @@ class BlockFlowSynchronizerSpec extends AlephiumActorSpec {
     import SyncState._
 
     override val configValues: Map[String, Any] = Map(
-      ("alephium.broker.broker-num", 1),
-      ("alephium.broker.groups", 4),
-      ("alephium.network.enable-p2p-v2", true)
+      ("oxygenium.broker.broker-num", 1),
+      ("oxygenium.broker.groups", 4),
+      ("oxygenium.network.enable-p2p-v2", true)
     )
 
     val (brokerActor, brokerStatus, probe) = addBroker()

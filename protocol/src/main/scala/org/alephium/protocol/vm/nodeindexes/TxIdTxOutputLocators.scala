@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -13,11 +13,11 @@
 //
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
-package org.alephium.protocol.vm.nodeindexes
+package org.oxygenium.protocol.vm.nodeindexes
 
-import org.alephium.protocol.model.TransactionId
-import org.alephium.serde.{avectorSerde, Serde}
-import org.alephium.util.AVector
+import org.oxygenium.protocol.model.TransactionId
+import org.oxygenium.serde.{avectorSerde, Serde}
+import org.oxygenium.util.AVector
 
 final case class TxIdTxOutputLocators(
     txId: TransactionId,

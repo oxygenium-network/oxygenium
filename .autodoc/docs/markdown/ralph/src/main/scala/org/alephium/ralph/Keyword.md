@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/ralph/src/main/scala/org/alephium/ralph/Keyword.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/ralph/src/main/scala/org/oxygenium/ralph/Keyword.scala)
 
 This code defines a sealed trait hierarchy for keywords used in the Alephium programming language. The `Keyword` trait is sealed, meaning that all implementations of the trait must be defined in this file. The `Keyword` trait extends the `Product` trait, which allows for the `name` method to be defined on all implementations of `Keyword`. 
 

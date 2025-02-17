@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/app/src/it/scala/org/alephium/app/InterCliqueSyncTest.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/app/src/it/scala/org/oxygenium/app/InterCliqueSyncTest.scala)
 
 The code provided is a part of the Alephium project and contains several classes and methods. The main purpose of this code is to provide a network layer for the Alephium blockchain. The network layer is responsible for handling communication between nodes in the network. 
 

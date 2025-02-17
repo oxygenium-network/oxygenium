@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/config/CliqueConfig.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/config/CliqueConfig.scala)
 
 The code above defines a trait called `CliqueConfig` which extends another trait called `GroupConfig`. This trait is used to configure a specific aspect of the Alephium project, namely the Clique consensus algorithm. 
 

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/network/DiscoveryServerState.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/network/DiscoveryServerState.scala)
 
 The `DiscoveryServerState` trait in this code is responsible for managing the state of the Alephium network's discovery server. It maintains a table of known peers, their statuses, and unreachable peers. The discovery server is responsible for finding and maintaining connections with other peers in the network, which is essential for the proper functioning of the Alephium blockchain.
 

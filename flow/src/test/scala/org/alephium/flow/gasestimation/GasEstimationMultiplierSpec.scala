@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,13 +14,13 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.flow.gasestimation
+package org.oxygenium.flow.gasestimation
 
 import scala.util.Random
 
-import org.alephium.protocol.model._
-import org.alephium.protocol.vm.GasBox
-import org.alephium.util.AlephiumSpec
+import org.oxygenium.protocol.model._
+import org.oxygenium.protocol.vm.GasBox
+import org.oxygenium.util.AlephiumSpec
 
 class GasEstimationMultiplierSpec extends AlephiumSpec {
   it should "validate gas estimation multiplier" in {

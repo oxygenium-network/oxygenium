@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/model/BrokerDiscoveryState.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/model/BrokerDiscoveryState.scala)
 
 This code defines a case class called `BrokerDiscoveryState` which represents the state of a broker in the Alephium project. The state includes the broker's network address and a unique identifier called `brokerNum`. 
 
@@ -11,8 +11,8 @@ The `BrokerDiscoveryState` class and its associated `Serde` instance are likely 
 Example usage:
 
 ```scala
-import org.alephium.flow.model.BrokerDiscoveryState
-import org.alephium.serde.Serde
+import org.oxygenium.flow.model.BrokerDiscoveryState
+import org.oxygenium.serde.Serde
 
 // Create a new BrokerDiscoveryState instance
 val state = BrokerDiscoveryState(new InetSocketAddress("localhost", 1234), 1)

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/wallet/src/main/scala/org/alephium/wallet/json/ModelCodecs.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/wallet/src/main/scala/org/oxygenium/wallet/json/ModelCodecs.scala)
 
 This code defines a set of implicit JSON codecs for various models used in the Alephium wallet. These codecs allow for easy serialization and deserialization of these models to and from JSON format. 
 
@@ -17,4 +17,4 @@ Overall, this code plays an important role in enabling communication between the
 - This code is licensed under the GNU Lesser General Public License, version 3 or later.
 
 3. What other Alephium modules or libraries are imported in this code?
-- This code imports modules and libraries from org.alephium.api, org.alephium.crypto.wallet, org.alephium.json, and org.alephium.protocol.config.
+- This code imports modules and libraries from org.oxygenium.api, org.oxygenium.crypto.wallet, org.oxygenium.json, and org.oxygenium.protocol.config.

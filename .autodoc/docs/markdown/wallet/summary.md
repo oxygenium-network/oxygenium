@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/wallet)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/wallet)
 
 The `wallet` folder in the Alephium project is responsible for managing wallets, addresses, balances, and transactions. It provides a convenient and type-safe way for users to interact with their wallets and the Alephium blockchain.
 

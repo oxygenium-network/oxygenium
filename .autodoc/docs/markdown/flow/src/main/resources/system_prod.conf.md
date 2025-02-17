@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/resources/system_prod.conf.tmpl)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/resources/system_prod.conf.tmpl)
 
 This code is a configuration file for the Alephium project. It sets various parameters for different components of the project, such as consensus, mining, network, discovery, mempool, api, wallet, and node. 
 
@@ -26,11 +26,11 @@ network {
 }
 ```
 ## Questions: 
- 1. What is the purpose of the `alephium` project and what does this code file specifically control?
-- The `alephium` project is not described in this code file, so a smart developer might want to know what the project is and what it does. This code file controls various settings related to consensus, mining, network, discovery, mempool, API, wallet, and node functionality within the `alephium` project.
+ 1. What is the purpose of the `oxygenium` project and what does this code file specifically control?
+- The `oxygenium` project is not described in this code file, so a smart developer might want to know what the project is and what it does. This code file controls various settings related to consensus, mining, network, discovery, mempool, API, wallet, and node functionality within the `oxygenium` project.
 
 2. What is the significance of the different frequency settings in the `network` section?
 - The different frequency settings control various aspects of network behavior, such as how often peers ping each other, how often block templates are polled, how often sync and cleanup operations occur, and how often transactions are broadcast. A smart developer might want to know how these settings affect network performance and what the optimal values might be.
 
 3. What is the purpose of the `akka` section and how does it relate to the rest of the code?
-- The `akka` section contains settings related to the Akka framework, which is used for concurrency and distribution in the `alephium` project. A smart developer might want to know how these settings affect the behavior of the project and how they interact with the other settings in the code file.
+- The `akka` section contains settings related to the Akka framework, which is used for concurrency and distribution in the `oxygenium` project. A smart developer might want to know how these settings affect the behavior of the project and how they interact with the other settings in the code file.

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/tools/src/main/scala/org/alephium/tools/OpenApiUpdate.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/tools/src/main/scala/org/oxygenium/tools/OpenApiUpdate.scala)
 
 This code is responsible for generating and updating the OpenAPI documentation for the Alephium project. OpenAPI is a specification for building APIs that allows for easy documentation and client generation. The code imports several classes from the Alephium project, including `WalletDocumentation`, `GroupConfig`, and `Documentation`. 
 

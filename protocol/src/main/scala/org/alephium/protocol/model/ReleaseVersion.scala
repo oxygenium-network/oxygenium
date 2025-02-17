@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,13 +14,13 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.protocol.model
+package org.oxygenium.protocol.model
 
-import org.alephium.protocol.BuildInfo
-import org.alephium.protocol.config.NetworkConfig
-import org.alephium.protocol.message.P2PVersion
-import org.alephium.serde.{intSerde, Serde}
-import org.alephium.util.TimeStamp
+import org.oxygenium.protocol.BuildInfo
+import org.oxygenium.protocol.config.NetworkConfig
+import org.oxygenium.protocol.message.P2PVersion
+import org.oxygenium.serde.{intSerde, Serde}
+import org.oxygenium.util.TimeStamp
 
 final case class ReleaseVersion(major: Int, minor: Int, patch: Int)
     extends Ordered[ReleaseVersion] {
@@ -61,7 +61,7 @@ object ReleaseVersion {
   )
 
   def clientId(p2pVersion: P2PVersion): String = {
-    s"scala-alephium/$current/${System.getProperty("os.name")}/${p2pVersion}"
+    s"scala-oxygenium/$current/${System.getProperty("os.name")}/${p2pVersion}"
   }
 
   def fromClientId(

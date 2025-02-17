@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/ralph/src/main/scala/org/alephium/ralph)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/ralph/src/main/scala/org/oxygenium/ralph)
 
 The code in this folder is primarily focused on the implementation of the Alephium programming language, specifically the compiler, lexer, and static analysis components. It also includes code for managing scopes, types, and keywords in the language, as well as error handling and formatting.
 
@@ -13,7 +13,7 @@ Error handling is addressed in the `error` subfolder, which contains code for ha
 Here's an example of how the `Lexer` and `Keyword` components might be used together:
 
 ```scala
-import org.alephium.ralph.{Lexer, Keyword}
+import org.oxygenium.ralph.{Lexer, Keyword}
 
 val code = "let x = 42"
 val tokens = Lexer.tokenize(code)

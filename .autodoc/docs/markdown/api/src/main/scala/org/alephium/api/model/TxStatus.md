@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/TxStatus.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/TxStatus.scala)
 
 This file contains code that defines a set of classes and traits related to transaction status in the Alephium project. The code is written in Scala and is part of the Alephium API model.
 
@@ -11,7 +11,7 @@ These classes are used throughout the Alephium project to represent the status o
 Here is an example of how this code might be used in the larger project:
 
 ```scala
-import org.alephium.api.model._
+import org.oxygenium.api.model._
 
 val txStatus: TxStatus = // some code that retrieves the status of a transaction
 

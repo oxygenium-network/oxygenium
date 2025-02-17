@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/core/BlockPool.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/core/BlockPool.scala)
 
 This code defines a trait called `BlockPool` which extends another trait called `BlockHashPool`. The purpose of this trait is to provide a set of methods for managing a pool of blocks in the Alephium project. 
 
@@ -24,7 +24,7 @@ In this example, we initialize a block pool and retrieve a block using its hash.
    - This code file defines a trait called `BlockPool` which extends another trait called `BlockHashPool`. It contains methods for adding, retrieving, and checking the existence of blocks in the pool.
 
 2. What other files or libraries does this code file depend on?
-   - This code file imports several classes from other packages, including `org.alephium.io.IOResult`, `org.alephium.protocol.model.{Block, BlockHash, Weight}`, and `org.alephium.util.AVector`. It is not clear from this code file alone what other dependencies the `alephium` project has.
+   - This code file imports several classes from other packages, including `org.oxygenium.io.IOResult`, `org.oxygenium.protocol.model.{Block, BlockHash, Weight}`, and `org.oxygenium.util.AVector`. It is not clear from this code file alone what other dependencies the `oxygenium` project has.
 
 3. What is the purpose of the `TODO` comment in this code file?
    - The `TODO` comment suggests that the code should be updated to use a different data structure (`ChainSlice`) instead of `AVector[Block]`. It is not clear from this code file alone why this change is necessary or what benefits it would provide.

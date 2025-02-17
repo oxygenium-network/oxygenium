@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,15 +14,15 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.wallet.storage
+package org.oxygenium.wallet.storage
 
 import java.io.{File, PrintWriter}
 import java.nio.file.Files
 
-import org.alephium.crypto.wallet.{BIP32, Mnemonic}
-import org.alephium.protocol.{Generators, Hash}
-import org.alephium.util.{AlephiumSpec, AVector, Hex}
-import org.alephium.wallet.Constants
+import org.oxygenium.crypto.wallet.{BIP32, Mnemonic}
+import org.oxygenium.protocol.{Generators, Hash}
+import org.oxygenium.util.{AlephiumSpec, AVector, Hex}
+import org.oxygenium.wallet.Constants
 
 class SecretStorageSpec() extends AlephiumSpec with Generators {
 

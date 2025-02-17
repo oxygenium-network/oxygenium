@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/ChainParams.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/ChainParams.scala)
 
 This code defines a case class called `ChainParams` which is used to store various parameters related to the Alephium blockchain network. The `ChainParams` class has four fields: `networkId`, `numZerosAtLeastInHash`, `groupNumPerBroker`, and `groups`. 
 
@@ -9,8 +9,8 @@ This `ChainParams` class is used throughout the Alephium project to store and pa
 Here is an example of how the `ChainParams` class might be used in the context of the Alephium project:
 
 ```scala
-import org.alephium.api.model.ChainParams
-import org.alephium.protocol.model.NetworkId
+import org.oxygenium.api.model.ChainParams
+import org.oxygenium.protocol.model.NetworkId
 
 val mainNetParams = ChainParams(
   networkId = NetworkId.MainNet,

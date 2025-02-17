@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/io/src/main/scala/org/alephium/io/SparseMerkleTrie.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/io/src/main/scala/org/oxygenium/io/SparseMerkleTrie.scala)
 
 This code defines a Sparse Merkle Trie (SMT) data structure, which is a tree-based data structure used for efficient storage and verification of key-value pairs. SMT is particularly useful in blockchain projects like Alephium, where it can be used to store and verify the state of the blockchain.
 
@@ -9,8 +9,8 @@ The code provides several utility functions for working with paths, such as conv
 Here's an example of how to use the `SparseMerkleTrie`:
 
 ```scala
-import org.alephium.io._
-import org.alephium.serde._
+import org.oxygenium.io._
+import org.oxygenium.serde._
 
 // Define key-value types and their serialization
 implicit val keySerde: Serde[String] = Serde.stringSerde

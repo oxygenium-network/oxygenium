@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/wallet/src/main/scala/org/alephium/wallet/web)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/wallet/src/main/scala/org/oxygenium/wallet/web)
 
 The code in this folder provides wallet-related functionality for the Alephium project, allowing users to interact with the Alephium blockchain through various wallet operations. The main components are the `BlockFlowClient`, `WalletEndpointsLogic`, and `WalletServer`.
 

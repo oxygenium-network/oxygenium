@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,17 +14,17 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.flow.core
+package org.oxygenium.flow.core
 
 import scala.language.reflectiveCalls
 
 import org.scalatest.Assertion
 
-import org.alephium.flow.AlephiumFlowSpec
-import org.alephium.flow.io.ChainStateStorage
-import org.alephium.io.IOResult
-import org.alephium.protocol.model.{BlockHash, ChainIndex}
-import org.alephium.util.{ConcurrentHashMap, TimeStamp}
+import org.oxygenium.flow.AlephiumFlowSpec
+import org.oxygenium.flow.io.ChainStateStorage
+import org.oxygenium.io.IOResult
+import org.oxygenium.protocol.model.{BlockHash, ChainIndex}
+import org.oxygenium.util.{ConcurrentHashMap, TimeStamp}
 
 class BlockHashChainStateSpec extends AlephiumFlowSpec { Test =>
   trait Fixture {

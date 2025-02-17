@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/crypto/src/main/scala/org/alephium/crypto/BIP340Schnorr.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/crypto/src/main/scala/org/oxygenium/crypto/BIP340Schnorr.scala)
 
 The code provided is part of the Alephium project and implements the BIP340 Schnorr signature scheme. The Schnorr signature scheme is a digital signature algorithm that provides a more efficient and secure alternative to the widely used ECDSA signature scheme. The BIP340 Schnorr signature scheme is a specific implementation of the Schnorr signature scheme that is optimized for the secp256k1 elliptic curve, which is used in Bitcoin.
 

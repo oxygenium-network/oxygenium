@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/app/src/main/scala/org/alephium/app/Documentation.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/app/src/main/scala/org/oxygenium/app/Documentation.scala)
 
 The `Documentation` trait is a part of the Alephium project and provides functionality for generating documentation for the Alephium API. It defines an `openAPI` object that represents the OpenAPI specification for the API, which can be used to generate documentation for the API.
 

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/Token.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/Token.scala)
 
 This code defines a Scala case class called `Token` that represents a token in the Alephium blockchain. A token is identified by its `id`, which is of type `TokenId`, and has an associated `amount`, which is of type `U256`. 
 
@@ -9,9 +9,9 @@ This `Token` class is used throughout the Alephium project to represent tokens i
 Here is an example of how the `Token` class might be used in a transaction output:
 
 ```scala
-import org.alephium.api.model.Token
-import org.alephium.protocol.model.TokenId
-import org.alephium.util.U256
+import org.oxygenium.api.model.Token
+import org.oxygenium.protocol.model.TokenId
+import org.oxygenium.util.U256
 
 val tokenId = TokenId.fromValidHex("0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef")
 val amount = U256.fromBigInt(1000000000000000000L)
@@ -25,7 +25,7 @@ In this example, we create a new `Token` object with a `tokenId` of `0123456789a
 ## Questions: 
  1. What is the purpose of the `Token` case class?
    - The `Token` case class represents a token with an `id` of type `TokenId` and an `amount` of type `U256`.
-2. What is the significance of the `org.alephium.protocol.model.TokenId` and `org.alephium.util.U256` imports?
-   - The `org.alephium.protocol.model.TokenId` import is used to define the `id` field of the `Token` case class, while the `org.alephium.util.U256` import is used to define the `amount` field of the `Token` case class.
+2. What is the significance of the `org.oxygenium.protocol.model.TokenId` and `org.oxygenium.util.U256` imports?
+   - The `org.oxygenium.protocol.model.TokenId` import is used to define the `id` field of the `Token` case class, while the `org.oxygenium.util.U256` import is used to define the `amount` field of the `Token` case class.
 3. What licensing terms apply to this code?
    - This code is licensed under the GNU Lesser General Public License, version 3 or later.

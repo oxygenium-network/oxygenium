@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/io/NodeStateStorage.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/io/NodeStateStorage.scala)
 
 This code defines a trait `NodeStateStorage` and a class `NodeStateRockDBStorage` that implement a storage interface for the Alephium project. The storage is implemented using RocksDB, a high-performance key-value store. The `NodeStateStorage` trait defines methods for storing and retrieving various types of data, including a flag indicating whether the node has been initialized, bootstrap information, and the version of the database. It also defines a method for getting a `ChainStateStorage` object for a given chain index, which can be used to store and retrieve the state of a block hash chain.
 
@@ -56,7 +56,7 @@ heightIndexStorage.clearHeightIndex()
 - This code defines a trait `NodeStateStorage` and a class `NodeStateRockDBStorage` that implement a storage interface for the Alephium project. It provides methods for storing and retrieving data related to the state of the node, such as whether it has been initialized, the database version, and chain state information.
 
 2. What external libraries or dependencies does this code rely on?
-- This code relies on several external libraries, including `akka`, `rocksdb`, and `org.alephium` packages. It also imports several classes and traits from these packages, such as `ByteString`, `Deserializer`, and `RocksDBSource`.
+- This code relies on several external libraries, including `akka`, `rocksdb`, and `org.oxygenium` packages. It also imports several classes and traits from these packages, such as `ByteString`, `Deserializer`, and `RocksDBSource`.
 
 3. What is the purpose of the `checkDatabaseCompatibility` method and how does it work?
 - The `checkDatabaseCompatibility` method checks whether the current database version is compatible with the expected version for the Alephium project. It does this by retrieving the current database version from storage and comparing it to the expected version. If the current version is greater than the expected version, an error is thrown. If the current version is less than the expected version, the database version is updated to the expected version. If the current version matches the expected version, no action is taken.

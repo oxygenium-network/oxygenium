@@ -1,6 +1,6 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/macros/src/main/scala/org/alephium/macros)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/macros/src/main/scala/org/oxygenium/macros)
 
-The `.autodoc/docs/json/macros/src/main/scala/org/alephium/macros` folder contains Scala macros and annotations that help generate boilerplate code and improve code efficiency in the Alephium project. These macros and annotations are used to automatically generate code for serialization, hashing, enumeration of sealed traits, and C-style for loops.
+The `.autodoc/docs/json/macros/src/main/scala/org/oxygenium/macros` folder contains Scala macros and annotations that help generate boilerplate code and improve code efficiency in the Alephium project. These macros and annotations are used to automatically generate code for serialization, hashing, enumeration of sealed traits, and C-style for loops.
 
 1. **ByteCode.scala**: This file defines a `ByteCode` macro annotation that adds a `code` method to case classes, returning a `Byte` value from the companion object. This can be useful when you need to associate a unique byte code with each case class instance.
 
@@ -39,7 +39,7 @@ The `.autodoc/docs/json/macros/src/main/scala/org/alephium/macros` folder contai
 
    Example usage:
    ```scala
-   import org.alephium.macros.HPC._
+   import org.oxygenium.macros.HPC._
 
    cfor(0)(_ < 10, _ + 1) { i =>
      println(i)
@@ -50,7 +50,7 @@ The `.autodoc/docs/json/macros/src/main/scala/org/alephium/macros` folder contai
 
    Example usage:
    ```scala
-   import org.alephium.macros.HashSerde
+   import org.oxygenium.macros.HashSerde
 
    @HashSerde
    case class Person(name: String, age: Int)

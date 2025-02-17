@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/util/src/main/scala/org/alephium/util/RWLock.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/util/src/main/scala/org/oxygenium/util/RWLock.scala)
 
 This code defines three traits that are used for locking in the Alephium project. The purpose of these traits is to provide a way to synchronize access to shared resources in a multi-threaded environment. 
 

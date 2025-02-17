@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/ralph/src/main/scala/org/alephium/ralph/Warnings.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/ralph/src/main/scala/org/oxygenium/ralph/Warnings.scala)
 
 This file defines a trait called Warnings that provides methods for generating warnings during the compilation of Alephium code. The trait contains a mutable ArrayBuffer of strings that stores the warnings generated during compilation. The trait also defines a method called getWarnings that returns an immutable AVector of the warnings generated so far.
 

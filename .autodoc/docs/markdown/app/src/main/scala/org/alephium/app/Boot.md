@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/app/src/main/scala/org/alephium/app/Boot.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/app/src/main/scala/org/oxygenium/app/Boot.scala)
 
 The `Boot` object is the entry point of the Alephium application. It initializes the system by calling the `BootUp` class, which is responsible for setting up the application environment. 
 

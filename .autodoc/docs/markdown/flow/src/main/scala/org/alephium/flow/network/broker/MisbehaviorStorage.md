@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/network/broker/MisbehaviorStorage.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/network/broker/MisbehaviorStorage.scala)
 
 This code defines a trait called `MisbehaviorStorage` that is used to manage misbehavior of peers in the Alephium network. The trait contains several methods that allow for the storage and retrieval of information related to misbehavior, such as penalties and bans.
 

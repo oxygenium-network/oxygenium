@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/app/src/it/scala/org/alephium/app/IntraCliqueSyncTest.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/app/src/it/scala/org/oxygenium/app/IntraCliqueSyncTest.scala)
 
 This file contains code for testing the synchronization of nodes within a clique in the Alephium project. The code defines a class called `IntraCliqueSyncTest` which extends `AlephiumActorSpec`, a class used for testing actors in the Alephium project. 
 
@@ -16,7 +16,7 @@ This code is used to test the synchronization of nodes within a clique in the Al
 - The `IntraCliqueSyncTest` class is a test class that tests the synchronization of nodes within a clique.
 
 2. What external libraries or dependencies does this code use?
-- This code imports `sttp.model.StatusCode` and uses classes from `org.alephium.api.model`, `org.alephium.protocol.model`, and `org.alephium.util`.
+- This code imports `sttp.model.StatusCode` and uses classes from `org.oxygenium.api.model`, `org.oxygenium.protocol.model`, and `org.oxygenium.util`.
 
 3. What is the expected behavior of the `it should "boot and sync two nodes clique"` test case?
 - The `it should "boot and sync two nodes clique"` test case is expected to boot two nodes in a clique, mine blocks, synchronize the blocks between the two nodes, and then stop the nodes.

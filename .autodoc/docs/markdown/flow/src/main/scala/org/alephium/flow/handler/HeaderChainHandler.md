@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/handler/HeaderChainHandler.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/handler/HeaderChainHandler.scala)
 
 This file contains the implementation of the `HeaderChainHandler` class, which is responsible for handling block headers in the Alephium project. The purpose of this class is to validate incoming block headers, add them to the block flow, and notify the broker of the added header. 
 
@@ -18,7 +18,7 @@ Overall, the `HeaderChainHandler` class is an important component of the Alephiu
 - This code file contains the implementation of a handler for validating and adding block headers to a block chain.
 
 2. What external libraries or dependencies does this code use?
-- This code uses Akka for actor-based concurrency, io.prometheus.client for metrics collection, and org.alephium packages for various Alephium-specific functionality.
+- This code uses Akka for actor-based concurrency, io.prometheus.client for metrics collection, and org.oxygenium packages for various Alephium-specific functionality.
 
 3. What is the license for this code?
 - This code is licensed under the GNU Lesser General Public License, version 3 or later.

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/io/src/main/scala/org/alephium/io/KeyValueSource.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/io/src/main/scala/org/oxygenium/io/KeyValueSource.scala)
 
 The code above defines a trait called `KeyValueSource` which is a part of the Alephium project. A trait is similar to an interface in other programming languages and defines a set of methods that a class implementing the trait must implement. 
 
@@ -9,7 +9,7 @@ The `close()` method is used to close the key-value store in a safe manner, mean
 Classes that implement this trait will be able to interact with a key-value store in a standardized way. For example, a class that implements this trait could be used to store and retrieve data for the Alephium project. Here is an example of how a class could implement this trait:
 
 ```scala
-import org.alephium.io.KeyValueSource
+import org.oxygenium.io.KeyValueSource
 
 class MyKeyValueStore extends KeyValueSource {
   // implementation of close(), closeUnsafe(), dESTROY(), and dESTROYUnsafe() methods

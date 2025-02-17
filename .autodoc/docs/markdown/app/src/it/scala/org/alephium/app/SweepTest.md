@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/app/src/it/scala/org/alephium/app/SweepTest.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/app/src/it/scala/org/oxygenium/app/SweepTest.scala)
 
 This code defines a set of tests for sweeping funds from Alephium wallets. The tests are defined in the `SweepTest` abstract class, which is then extended by two concrete classes: `SweepMiner` and `SweepNoneMiner`. These classes differ only in the number of addresses they use for testing, with `SweepMiner` using four addresses and `SweepNoneMiner` using only one.
 
@@ -17,4 +17,4 @@ Overall, this code provides a set of tests for ensuring that funds can be swept 
 - The `SweepFixture` trait is a trait that defines a set of variables and methods that are used by the tests in the `SweepTest` class. It sets up a test environment with a single node running the Alephium protocol, creates a wallet with a specified number of addresses, and sends transfers to those addresses.
 
 3. What is the purpose of the `request` method and where is it defined?
-- The `request` method is used to send HTTP requests to the Alephium node's REST API and receive the corresponding responses. It is defined in the `org.alephium.util` package, which is imported at the beginning of the file.
+- The `request` method is used to send HTTP requests to the Alephium node's REST API and receive the corresponding responses. It is defined in the `org.oxygenium.util` package, which is imported at the beginning of the file.

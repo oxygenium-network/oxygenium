@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/model/HardFork.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/model/HardFork.scala)
 
 This code defines a class and an object related to hard forks in the Alephium blockchain protocol. A hard fork is a change to the protocol that is not backwards-compatible, meaning that nodes running the old version of the protocol will not be able to validate blocks created by nodes running the new version. 
 

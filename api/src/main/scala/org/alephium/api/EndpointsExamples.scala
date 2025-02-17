@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,17 +14,17 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.api
+package org.oxygenium.api
 
 import java.math.BigInteger
 import java.net.{InetAddress, InetSocketAddress}
 
 import sttp.tapir.EndpointIO.Example
 
-import org.alephium.api.model._
-import org.alephium.protocol._
-import org.alephium.protocol.model
-import org.alephium.protocol.model.{
+import org.oxygenium.api.model._
+import org.oxygenium.protocol._
+import org.oxygenium.protocol.model
+import org.oxygenium.protocol.model.{
   Address,
   BlockHash,
   CliqueId,
@@ -33,10 +33,10 @@ import org.alephium.protocol.model.{
   TokenId,
   TransactionId
 }
-import org.alephium.protocol.vm.{LockupScript, StatefulContract, UnlockScript}
-import org.alephium.serde._
-import org.alephium.util._
-import org.alephium.util.Hex.HexStringSyntax
+import org.oxygenium.protocol.vm.{LockupScript, StatefulContract, UnlockScript}
+import org.oxygenium.serde._
+import org.oxygenium.util._
+import org.oxygenium.util.Hex.HexStringSyntax
 
 @SuppressWarnings(Array("org.wartremover.warts.OptionPartial"))
 // scalastyle:off magic.number file.size.limit

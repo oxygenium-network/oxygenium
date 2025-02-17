@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/app/src/it/scala/org/alephium/app/BroadcastTxTest.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/app/src/it/scala/org/oxygenium/app/BroadcastTxTest.scala)
 
 The `BroadcastTxTest` class is a test suite for testing the broadcasting of transactions in the Alephium network. The class contains two test cases that test the broadcasting of transactions within a clique and between inter-clique nodes.
 
@@ -6,7 +6,7 @@ The first test case tests the broadcasting of transactions within a clique. It c
 
 The second test case tests the broadcasting of transactions between inter-clique nodes. It creates multiple cliques and connects them together. It then creates multiple transactions and verifies that the transactions are added to the mempool of all nodes. It then confirms the transactions by starting mining and checking that the transactions are included in the block.
 
-The `BroadcastTxTest` class uses the `AlephiumActorSpec` class, which is a base class for testing actors in the Alephium network. It also uses several utility classes and methods from the `org.alephium` package, such as `Address`, `BrokerInfo`, `GroupIndex`, and `transfer`.
+The `BroadcastTxTest` class uses the `AlephiumActorSpec` class, which is a base class for testing actors in the Alephium network. It also uses several utility classes and methods from the `org.oxygenium` package, such as `Address`, `BrokerInfo`, `GroupIndex`, and `transfer`.
 
 Overall, the `BroadcastTxTest` class is an important part of the Alephium project as it ensures that transactions are broadcasted correctly within and between cliques, which is essential for the proper functioning of the network.
 ## Questions: 

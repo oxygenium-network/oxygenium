@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/serde/src/main/scala/org/alephium/serde/SerdeError.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/serde/src/main/scala/org/oxygenium/serde/SerdeError.scala)
 
 This code defines a set of error classes that can be used in the Alephium project's serialization and deserialization code. The `SerdeError` class is an abstract class that extends `AppException`, which is a custom exception class used throughout the project. The `SerdeError` class is sealed, which means that all of its subclasses must be defined in this file. 
 
@@ -10,7 +10,7 @@ Overall, this code provides a set of error classes and methods that can be used 
 ## Questions: 
  1. What is the purpose of the `SerdeError` class and its subclasses?
    
-   The `SerdeError` class and its subclasses define custom exceptions for serialization and deserialization errors in the `org.alephium.serde` package.
+   The `SerdeError` class and its subclasses define custom exceptions for serialization and deserialization errors in the `org.oxygenium.serde` package.
 
 2. What is the difference between the `notEnoughBytes` and `incompleteData` methods in the `SerdeError` object?
    

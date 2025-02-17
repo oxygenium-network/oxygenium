@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/serde/src/main/scala/org/alephium/serde/CompactInteger.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/serde/src/main/scala/org/oxygenium/serde/CompactInteger.scala)
 
 The code in this file is part of the Alephium project and provides a compact integer encoding and decoding mechanism for both signed and unsigned integers. The encoding is heavily influenced by Polkadot's SCALE Codec and is designed to be space-efficient for small integers while still supporting large integers up to 2^536.
 
@@ -11,7 +11,7 @@ The `Mode` trait and its implementations (`SingleByte`, `TwoByte`, `FourByte`, a
 Here's an example of encoding and decoding an unsigned integer:
 
 ```scala
-import org.alephium.serde.CompactInteger.Unsigned
+import org.oxygenium.serde.CompactInteger.Unsigned
 import akka.util.ByteString
 
 val number = 42

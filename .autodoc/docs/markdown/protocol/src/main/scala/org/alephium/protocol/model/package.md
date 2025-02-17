@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/model/package.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/model/package.scala)
 
 This file contains a package object that defines various constants and values used throughout the Alephium project. The purpose of this code is to provide a centralized location for these values, making it easier to manage and update them as needed.
 

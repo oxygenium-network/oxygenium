@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/ralph/src/main/scala/org/alephium/ralph/error/CompilerError.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/ralph/src/main/scala/org/oxygenium/ralph/error/CompilerError.scala)
 
 This file contains code related to typed compiler errors for the Alephium project. The code defines a set of error messages that can be produced by the compiler, which are used to provide feedback to the user when there is an issue with their code. 
 

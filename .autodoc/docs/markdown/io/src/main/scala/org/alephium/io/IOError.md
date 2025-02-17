@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/io/src/main/scala/org/alephium/io/IOError.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/io/src/main/scala/org/oxygenium/io/IOError.scala)
 
 This file contains code related to error handling for input/output (IO) operations in the Alephium project. The purpose of this code is to define a set of error types that can be thrown when an IO operation fails, and to provide a way to handle those errors in a consistent manner throughout the project.
 
@@ -11,7 +11,7 @@ The `IOError` class and its subclasses are used throughout the project to handle
 Here is an example of how the `KeyNotFound` error might be used in the project:
 
 ```scala
-import org.alephium.io.IOError
+import org.oxygenium.io.IOError
 
 try {
   val value = dataStore.get(key)

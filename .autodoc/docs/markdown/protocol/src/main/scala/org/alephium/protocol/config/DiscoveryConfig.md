@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/config/DiscoveryConfig.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/config/DiscoveryConfig.scala)
 
 The code defines a trait called `DiscoveryConfig` which contains various configuration parameters related to peer discovery in the Alephium project. 
 
@@ -13,7 +13,7 @@ This trait is likely used by other components in the Alephium project that are r
 Here is an example of how this trait may be used in code:
 
 ```scala
-import org.alephium.protocol.config.DiscoveryConfig
+import org.oxygenium.protocol.config.DiscoveryConfig
 
 class PeerDiscovery(config: DiscoveryConfig) {
   // Use the `scanFrequency` parameter to determine how often to scan for new peers

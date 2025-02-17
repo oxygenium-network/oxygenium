@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/conf)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/conf)
 
 The code in the `.autodoc/docs/json/conf/src` folder plays a crucial role in managing various configurations within the Alephium project. These configurations ensure the proper functioning of the blockchain, consensus algorithm, mining process, and network communication.
 

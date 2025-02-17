@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/network/broker/BackoffStrategy.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/network/broker/BackoffStrategy.scala)
 
 This code defines two classes and a trait that implement backoff strategies for network communication in the Alephium project. The backoff strategy is a technique used to handle network errors by retrying requests with increasing delays between them. The purpose of this code is to provide a flexible and configurable way to implement backoff strategies for different network settings.
 
@@ -9,8 +9,8 @@ The `DefaultBackoffStrategy` and `ResetBackoffStrategy` classes have companion o
 Overall, this code provides a useful abstraction for implementing backoff strategies in network communication that can be easily customized and configured based on the network settings. Here is an example of how to use the `DefaultBackoffStrategy`:
 
 ```
-import org.alephium.flow.network.broker.{BackoffStrategy, DefaultBackoffStrategy}
-import org.alephium.flow.setting.NetworkSetting
+import org.oxygenium.flow.network.broker.{BackoffStrategy, DefaultBackoffStrategy}
+import org.oxygenium.flow.setting.NetworkSetting
 
 implicit val network: NetworkSetting = NetworkSetting.default
 

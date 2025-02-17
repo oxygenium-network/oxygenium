@@ -1,17 +1,17 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/BuildSweepAddressTransactions.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/BuildSweepAddressTransactions.scala)
 
 The code defines a case class called `BuildSweepAddressTransactions` which is used to build transactions for sweeping assets from one address to another. The class takes in several parameters including the public key of the sender, the address of the receiver, the maximum amount of assets that can be transferred per UTXO (unspent transaction output), the lock time for the transaction, the gas amount and gas price for the transaction, and the target block hash.
 
-This class is part of the `org.alephium.api.model` package and is used in the Alephium project to facilitate the transfer of assets between addresses. The `BuildSweepAddressTransactions` class is used to create a transaction that transfers assets from one address to another in a single transaction. This is useful when a user wants to consolidate their assets into a single address or when they want to transfer assets to a new address.
+This class is part of the `org.oxygenium.api.model` package and is used in the Alephium project to facilitate the transfer of assets between addresses. The `BuildSweepAddressTransactions` class is used to create a transaction that transfers assets from one address to another in a single transaction. This is useful when a user wants to consolidate their assets into a single address or when they want to transfer assets to a new address.
 
 Here is an example of how the `BuildSweepAddressTransactions` class can be used:
 
 ```scala
-import org.alephium.api.model.BuildSweepAddressTransactions
-import org.alephium.protocol.PublicKey
-import org.alephium.protocol.model.{Address, BlockHash}
-import org.alephium.protocol.vm.{GasBox, GasPrice}
-import org.alephium.util.TimeStamp
+import org.oxygenium.api.model.BuildSweepAddressTransactions
+import org.oxygenium.protocol.PublicKey
+import org.oxygenium.protocol.model.{Address, BlockHash}
+import org.oxygenium.protocol.vm.{GasBox, GasPrice}
+import org.oxygenium.util.TimeStamp
 
 val fromPublicKey = PublicKey("...")
 val toAddress = Address.Asset("...")

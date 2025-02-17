@@ -1,17 +1,17 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/NeighborPeers.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/NeighborPeers.scala)
 
 This code defines a case class called `NeighborPeers` that contains a vector of `BrokerInfo` objects. The purpose of this class is to represent a list of neighboring peers in the Alephium network. 
 
-The `BrokerInfo` class is defined in the `org.alephium.protocol.model` package and contains information about a broker node in the Alephium network, such as its IP address and port number. The `AVector` class is defined in the `org.alephium.util` package and is a custom implementation of an immutable vector data structure.
+The `BrokerInfo` class is defined in the `org.oxygenium.protocol.model` package and contains information about a broker node in the Alephium network, such as its IP address and port number. The `AVector` class is defined in the `org.oxygenium.util` package and is a custom implementation of an immutable vector data structure.
 
 By encapsulating a vector of `BrokerInfo` objects in a case class, this code provides a convenient way to pass around a list of neighboring peers in the Alephium network. For example, this class could be used in the implementation of a peer discovery algorithm that allows nodes to find and connect to other nodes in the network.
 
 Here is an example of how this class could be used:
 
 ```scala
-import org.alephium.api.model.NeighborPeers
-import org.alephium.protocol.model.BrokerInfo
-import org.alephium.util.AVector
+import org.oxygenium.api.model.NeighborPeers
+import org.oxygenium.protocol.model.BrokerInfo
+import org.oxygenium.util.AVector
 
 // create a vector of BrokerInfo objects
 val brokers = AVector(BrokerInfo("192.168.1.1", 1234), BrokerInfo("192.168.1.2", 5678))

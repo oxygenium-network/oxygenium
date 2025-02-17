@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/docker/grafana/provisioning/dashboards)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/docker/grafana/provisioning/dashboards)
 
 The `dashboard.yml` file in the `.autodoc/docs/json/docker/grafana/provisioning/dashboards` folder is a configuration file that enables the Alephium project to integrate with Prometheus, a popular monitoring and alerting tool. This integration allows Alephium to retrieve monitoring data from Prometheus and display it in a Grafana dashboard.
 

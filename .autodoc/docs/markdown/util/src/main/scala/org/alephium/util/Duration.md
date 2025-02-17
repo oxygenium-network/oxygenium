@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/util/src/main/scala/org/alephium/util/Duration.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/util/src/main/scala/org/oxygenium/util/Duration.scala)
 
 The code defines a `Duration` class that represents a duration of time in milliseconds. It provides methods to convert the duration to seconds, minutes, and hours. It also provides methods to perform arithmetic operations on durations, such as addition, subtraction, multiplication, and division. 
 
@@ -11,7 +11,7 @@ The `Duration` class also provides a method to convert a duration to a `scala.co
 Overall, this code provides a convenient and efficient way to work with durations of time in the Alephium project. It can be used to represent timeouts, intervals, and other time-related concepts. Here is an example of how to use the `Duration` class:
 
 ```scala
-import org.alephium.util.Duration
+import org.oxygenium.util.Duration
 
 val timeout = Duration.ofSeconds(30).getOrElse(Duration.zero)
 val interval = Duration.ofMinutesUnsafe(5)

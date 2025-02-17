@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/setting/ConfigUtils.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/setting/ConfigUtils.scala)
 
 The `ConfigUtils` object provides utility functions for parsing and reading configuration values used in the Alephium project. The object contains several implicit value readers that allow for the conversion of configuration values to their corresponding types. 
 

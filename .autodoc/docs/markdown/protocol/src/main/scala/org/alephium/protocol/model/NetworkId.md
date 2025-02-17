@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/model/NetworkId.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/model/NetworkId.scala)
 
 This code defines a model for the network ID of the Alephium blockchain. The `NetworkId` class is a simple wrapper around a `Byte` value, representing the ID of the network. It provides methods to get the network type, verbose name, and node folder based on the ID. The `networkType` method returns a `NetworkId.Type` value, which is an enumeration of the three possible network types: `MainNet`, `TestNet`, and `DevNet`. The `verboseName` method returns a string that combines the network type and ID, e.g., "mainnet-0". The `nodeFolder` method returns a string that represents the folder name for the node data based on the network ID.
 

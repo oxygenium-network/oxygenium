@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,16 +14,16 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.flow.network.bootstrap
+package org.oxygenium.flow.network.bootstrap
 
 import akka.io.{IO, Tcp}
 import akka.testkit.{SocketUtil, TestProbe}
 import akka.util.ByteString
 
-import org.alephium.flow.AlephiumFlowActorSpec
-import org.alephium.flow.network.Bootstrapper
-import org.alephium.serde.Staging
-import org.alephium.util.ActorRefT
+import org.oxygenium.flow.AlephiumFlowActorSpec
+import org.oxygenium.flow.network.Bootstrapper
+import org.oxygenium.serde.Staging
+import org.oxygenium.util.ActorRefT
 
 class BrokerSpec extends AlephiumFlowActorSpec with InfoFixture {
   it should "follow this workflow" in {

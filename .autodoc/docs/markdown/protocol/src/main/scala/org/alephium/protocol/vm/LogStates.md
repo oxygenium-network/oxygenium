@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/vm/LogStates.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/vm/LogStates.scala)
 
 This file contains several case classes and objects that are used to represent and serialize/deserialize log states in the Alephium project's virtual machine (VM). 
 

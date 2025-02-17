@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/ralphc/src/main/scala/org/alephium/ralphc/Config.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/ralphc/src/main/scala/org/oxygenium/ralphc/Config.scala)
 
 The code defines two case classes, `Configs` and `Config`, that are used to store and retrieve configuration options for the Alephium project's Ralph compiler. 
 
@@ -13,7 +13,7 @@ Overall, this code provides a flexible and extensible way to configure and run t
 Example usage:
 
 ```scala
-import org.alephium.ralphc._
+import org.oxygenium.ralphc._
 
 // create a new Configs object with custom options and paths
 val configs = Configs(

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/tools/src/main/scala/org/alephium/tools/ValidateDifficultyBombPatch.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/tools/src/main/scala/org/oxygenium/tools/ValidateDifficultyBombPatch.scala)
 
 The `ValidateDifficultyBombPatch` object is a tool used to validate the difficulty bomb patch in the Alephium blockchain. The difficulty bomb is a mechanism that increases the difficulty of mining blocks over time, making it harder to mine new blocks. The purpose of the difficulty bomb patch is to prevent the difficulty from increasing too quickly, which could lead to a slowdown in block production.
 
@@ -23,7 +23,7 @@ This tool is used to ensure that the difficulty bomb patch is working as intende
 
 2. What dependencies does this code have?
    
-   This code depends on several libraries and modules, including `java.nio.file.Path`, `org.alephium.flow.core.BlockFlow`, `org.alephium.flow.io.Storages`, `org.alephium.flow.setting.AlephiumConfig`, `org.alephium.io.RocksDBSource.Settings`, `org.alephium.protocol.ALPH`, `org.alephium.protocol.mining.HashRate`, `org.alephium.protocol.model.BlockDeps`, `org.alephium.protocol.model.Target`, `org.alephium.protocol.vm.LockupScript`, and `org.alephium.util.Env`.
+   This code depends on several libraries and modules, including `java.nio.file.Path`, `org.oxygenium.flow.core.BlockFlow`, `org.oxygenium.flow.io.Storages`, `org.oxygenium.flow.setting.AlephiumConfig`, `org.oxygenium.io.RocksDBSource.Settings`, `org.oxygenium.protocol.ALPH`, `org.oxygenium.protocol.mining.HashRate`, `org.oxygenium.protocol.model.BlockDeps`, `org.oxygenium.protocol.model.Target`, `org.oxygenium.protocol.vm.LockupScript`, and `org.oxygenium.util.Env`.
 
 3. What is the expected output of this code?
    

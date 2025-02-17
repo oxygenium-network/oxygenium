@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/protocol/src/main/scala/org/alephium/protocol/vm/event)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/protocol/src/main/scala/org/oxygenium/protocol/vm/event)
 
 The code in this folder is responsible for managing event logs in the Alephium project. It provides a caching mechanism to improve performance by reducing the number of reads and writes to the underlying storage. The main components of this folder are the `CachedLog`, `CachedLogPageCounter`, `LogStorage`, `MutableLog`, `StagingLog`, and `StagingLogPageCounter` classes.
 
@@ -15,8 +15,8 @@ The `StagingLogPageCounter` class is used to keep track of the number of log pag
 Example usage:
 
 ```scala
-import org.alephium.protocol.vm.event._
-import org.alephium.io.MemoryKeyValueStorage
+import org.oxygenium.protocol.vm.event._
+import org.oxygenium.io.MemoryKeyValueStorage
 
 val storage = new MemoryKeyValueStorage[String, Int]()
 val counter = CachedLogPageCounter.from(storage)

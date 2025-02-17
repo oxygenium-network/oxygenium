@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/core/TxUtils.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/core/TxUtils.scala)
 
 This code is part of the Alephium project and provides utility functions for handling transactions. The `TxUtils` trait is mixed with the `FlowUtils` trait to provide a set of methods for creating, validating, and managing transactions in the Alephium blockchain.
 

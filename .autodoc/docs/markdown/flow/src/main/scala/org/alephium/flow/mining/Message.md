@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/mining/Message.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/mining/Message.scala)
 
 This code defines a set of messages and their serialization and deserialization methods for the Alephium mining flow. The messages are used to communicate between the mining client and the mining server. 
 

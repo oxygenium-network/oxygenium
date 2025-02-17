@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/serde/src/main/scala/org/alephium/serde/package.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/serde/src/main/scala/org/oxygenium/serde/package.scala)
 
 This file contains code related to serialization and deserialization of data types used in the Alephium project. It defines a number of implicit Serde instances for various data types, which are used to convert data to and from a binary format. 
 

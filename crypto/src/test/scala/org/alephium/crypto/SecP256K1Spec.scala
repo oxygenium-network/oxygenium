@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.crypto
+package org.oxygenium.crypto
 
 import java.io.ByteArrayInputStream
 import java.math.BigInteger
@@ -22,9 +22,9 @@ import java.math.BigInteger
 import akka.util.ByteString
 import org.bouncycastle.asn1.{ASN1Integer, ASN1StreamParser, DLSequence}
 
-import org.alephium.serde.byteAVectorSerde
-import org.alephium.util.{AlephiumSpec, AVector}
-import org.alephium.util.Hex._
+import org.oxygenium.serde.byteAVectorSerde
+import org.oxygenium.util.{AlephiumSpec, AVector}
+import org.oxygenium.util.Hex._
 
 class SecP256K1Spec extends AlephiumSpec {
   def nonCanonical(signature: SecP256K1Signature): SecP256K1Signature = {

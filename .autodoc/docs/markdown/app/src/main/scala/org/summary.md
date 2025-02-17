@@ -1,6 +1,6 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/app/src/main/scala/org)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/app/src/main/scala/org)
 
-The `.autodoc/docs/json/app/src/main/scala/org/alephium/app` folder contains essential Scala files for the Alephium project, a blockchain platform. These files handle API configurations, block exporting and importing, application booting, CPU solo mining, API documentation generation, and REST and WebSocket server management.
+The `.autodoc/docs/json/app/src/main/scala/org/oxygenium/app` folder contains essential Scala files for the Alephium project, a blockchain platform. These files handle API configurations, block exporting and importing, application booting, CPU solo mining, API documentation generation, and REST and WebSocket server management.
 
 For instance, `ApiConfig.scala` defines the `ApiConfig` class and its companion object, responsible for loading and validating configuration parameters for the Alephium API. This makes it easy to pass around and use these parameters in other parts of the codebase.
 

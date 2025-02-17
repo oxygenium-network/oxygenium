@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/ralph/src/main/scala/org/alephium)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/ralph/src/main/scala/org/oxygenium)
 
 The code in the `ralph` folder plays a crucial role in the Alephium project, providing the necessary components for compiling, analyzing, and executing Alephium code. The various components work together to ensure that the Alephium programming language is robust, efficient, and easy to use for developers.
 
@@ -13,7 +13,7 @@ Error handling is addressed in the `error` subfolder, which contains code for ha
 Here's an example of how the `Lexer` and `Keyword` components might be used together:
 
 ```scala
-import org.alephium.ralph.{Lexer, Keyword}
+import org.oxygenium.ralph.{Lexer, Keyword}
 
 val code = "let x = 42"
 val tokens = Lexer.tokenize(code)

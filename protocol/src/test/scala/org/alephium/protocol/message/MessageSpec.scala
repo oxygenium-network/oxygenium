@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,15 +14,15 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.protocol.message
+package org.oxygenium.protocol.message
 
 import akka.util.ByteString
 
-import org.alephium.protocol.Hash
-import org.alephium.protocol.config.{GroupConfig, NetworkConfig, NetworkConfigFixture}
-import org.alephium.protocol.model.NetworkId
-import org.alephium.serde._
-import org.alephium.util.{AlephiumSpec, Bytes, DjbHash, Hex, TimeStamp}
+import org.oxygenium.protocol.Hash
+import org.oxygenium.protocol.config.{GroupConfig, NetworkConfig, NetworkConfigFixture}
+import org.oxygenium.protocol.model.NetworkId
+import org.oxygenium.serde._
+import org.oxygenium.util.{AlephiumSpec, Bytes, DjbHash, Hex, TimeStamp}
 
 class MessageSpec extends AlephiumSpec with NetworkConfigFixture.Default {
 

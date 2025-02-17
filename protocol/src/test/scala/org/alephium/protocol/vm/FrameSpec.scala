@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,19 +14,19 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.protocol.vm
+package org.oxygenium.protocol.vm
 
 import scala.collection.mutable.ArrayBuffer
 
 import org.scalatestplus.scalacheck.ScalaCheckDrivenPropertyChecks
 import scala.reflect.ClassTag
 
-import org.alephium.protocol.ALPH
-import org.alephium.protocol.config.{NetworkConfig, NetworkConfigFixture}
-import org.alephium.protocol.model._
-import org.alephium.protocol.vm.ContractPool.ContractAssetInUsing
-import org.alephium.protocol.vm.nodeindexes.TxOutputLocator
-import org.alephium.util.{AlephiumSpec, AVector}
+import org.oxygenium.protocol.ALPH
+import org.oxygenium.protocol.config.{NetworkConfig, NetworkConfigFixture}
+import org.oxygenium.protocol.model._
+import org.oxygenium.protocol.vm.ContractPool.ContractAssetInUsing
+import org.oxygenium.protocol.vm.nodeindexes.TxOutputLocator
+import org.oxygenium.util.{AlephiumSpec, AVector}
 
 class FrameSpec extends AlephiumSpec with FrameFixture {
   it should "initialize frame and use operand stack for method args" in {

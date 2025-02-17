@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/core/FlowTips.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/core/FlowTips.scala)
 
 This file contains the definition of the `FlowTips` class and the `FlowTips.Light` case class, as well as a companion object for `FlowTips`. 
 

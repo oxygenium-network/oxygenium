@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/message/Payload.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/message/Payload.scala)
 
 This code defines the `Payload` trait and its implementations for the Alephium project. The `Payload` trait represents different types of messages that can be exchanged between nodes in the Alephium network. These messages are used for various purposes such as handshaking, requesting and responding with blocks, headers, and transactions.
 

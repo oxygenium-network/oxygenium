@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -86,7 +86,7 @@ object Boilerplate {
 
   object GenProductSerde extends Template {
     override def filename(root: File): File =
-      root / "org" / "alephium" / "serde" / "ProductSerde.scala"
+      root / "org" / "oxygenium" / "serde" / "ProductSerde.scala"
 
     // scalastyle:off method.length
     override def content(tv: TemplateVals): String = {
@@ -107,7 +107,7 @@ object Boilerplate {
       val deVals = arities.map(n => s"pair$n.value").mkString(", ")
 
       block"""
-        |package org.alephium.serde
+        |package org.oxygenium.serde
         |
         |import akka.util.ByteString
         |
@@ -148,7 +148,7 @@ object Boilerplate {
 
   object GenProductSerializer extends Template {
     override def filename(root: File): File =
-      root / "org" / "alephium" / "serde" / "ProductSerializer.scala"
+      root / "org" / "oxygenium" / "serde" / "ProductSerializer.scala"
 
     // scalastyle:off method.length
     override def content(tv: TemplateVals): String = {
@@ -170,7 +170,7 @@ object Boilerplate {
       val deVals = arities.map(n => s"pair$n.value").mkString(", ")
 
       block"""
-        |package org.alephium.serde
+        |package org.oxygenium.serde
         |
         |import akka.util.ByteString
         |
@@ -199,7 +199,7 @@ object Boilerplate {
 
   object GenProductSerdeTest extends TemplateTest {
     override def filename(root: File): File =
-      root / "org" / "alephium" / "serde" / "ProductSerdeSpec.scala"
+      root / "org" / "oxygenium" / "serde" / "ProductSerdeSpec.scala"
 
     override def content(tv: TemplateVals): String = {
       import tv._
@@ -209,9 +209,9 @@ object Boilerplate {
       val accesses = synVals.map(v => s"t.$v").mkString(", ")
 
       block"""
-        |package org.alephium.serde
+        |package org.oxygenium.serde
         |
-        |import org.alephium.util.AlephiumSpec
+        |import org.oxygenium.util.AlephiumSpec
         |
         |class ProductSerdeSpec extends AlephiumSpec {
         |

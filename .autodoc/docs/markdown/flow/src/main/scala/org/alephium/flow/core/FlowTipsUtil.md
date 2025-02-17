@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/core/FlowTipsUtil.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/core/FlowTipsUtil.scala)
 
 The `FlowTipsUtil` trait in the Alephium project provides utility methods for managing the flow of tips in a blockchain. Tips are the latest blocks in a blockchain, and this trait helps in handling the dependencies between blocks, merging tips, and calculating the differences between tips.
 

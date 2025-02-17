@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/util/src/main/scala/org/alephium/util/DjbHash.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/util/src/main/scala/org/oxygenium/util/DjbHash.scala)
 
 The code provided is a Scala implementation of the DJB hash function. The DJB hash function is a non-cryptographic hash function that is designed to be fast and produce a good distribution of hash values. The hash function takes an input of bytes and returns an integer hash value.
 
@@ -9,7 +9,7 @@ The purpose of this code is to provide a fast and efficient implementation of th
 Here is an example of how the DjbHash object can be used to generate a hash value for a ByteString:
 
 ```
-import org.alephium.util.DjbHash
+import org.oxygenium.util.DjbHash
 import akka.util.ByteString
 
 val data = ByteString("Hello, world!")

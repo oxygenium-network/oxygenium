@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.flow.setting
+package org.oxygenium.flow.setting
 
 import java.math.BigInteger
 import java.net.InetSocketAddress
@@ -29,11 +29,11 @@ import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import net.ceedubs.ficus.readers.ValueReader
 
-import org.alephium.conf._
-import org.alephium.protocol.ALPH
-import org.alephium.protocol.config.GroupConfig
-import org.alephium.protocol.mining.HashRate
-import org.alephium.protocol.model.{
+import org.oxygenium.conf._
+import org.oxygenium.protocol.ALPH
+import org.oxygenium.protocol.config.GroupConfig
+import org.oxygenium.protocol.mining.HashRate
+import org.oxygenium.protocol.model.{
   Address,
   ContractId,
   Difficulty,
@@ -41,16 +41,16 @@ import org.alephium.protocol.model.{
   HardFork,
   NetworkId
 }
-import org.alephium.protocol.vm.{LogConfig, NodeIndexesConfig}
-import org.alephium.util.{AlephiumSpec, AVector, Duration, Env, Files, Hex, TimeStamp}
+import org.oxygenium.protocol.vm.{LogConfig, NodeIndexesConfig}
+import org.oxygenium.util.{AlephiumSpec, AVector, Duration, Env, Files, Hex, TimeStamp}
 
 class AlephiumConfigSpec extends AlephiumSpec {
   import ConfigUtils._
-  it should "load alephium config" in new AlephiumConfigFixture {
+  it should "load oxygenium config" in new AlephiumConfigFixture {
     override val configValues: Map[String, Any] = Map(
-      ("alephium.broker.groups", "12"),
-      ("alephium.consensus.mainnet.block-target-time", "11 seconds"),
-      ("alephium.consensus.rhone.block-target-time", "4 seconds")
+      ("oxygenium.broker.groups", "12"),
+      ("oxygenium.consensus.mainnet.block-target-time", "11 seconds"),
+      ("oxygenium.consensus.rhone.block-target-time", "4 seconds")
     )
 
     config.broker.groups is 12
@@ -67,7 +67,7 @@ class AlephiumConfigSpec extends AlephiumSpec {
 
   it should "load mainnet config" in {
     val rootPath = Files.tmpDir
-    val config   = AlephiumConfig.load(Env.Prod, rootPath, "alephium")
+    val config   = AlephiumConfig.load(Env.Prod, rootPath, "oxygenium")
 
     config.network.networkId is NetworkId.AlephiumMainNet
     config.broker.groups is 4
@@ -80,7 +80,7 @@ class AlephiumConfigSpec extends AlephiumSpec {
         config.broker
       )
     initialHashRate is HashRate.unsafe(new BigInteger("549756862464"))
-    config.discovery.bootstrap.head is new InetSocketAddress("bootstrap0.alephium.org", 9973)
+    config.discovery.bootstrap.head is new InetSocketAddress("bootstrap0.oxygenium.org", 9973)
     config.genesis.allocations.length is 858
     config.genesis.allocations.sumBy(_.amount.value.v) is ALPH.alph(140000000).v
     config.network.lemanHardForkTimestamp is TimeStamp.unsafe(1680170400000L)
@@ -95,7 +95,7 @@ class AlephiumConfigSpec extends AlephiumSpec {
 
   it should "load rhone config" in {
     val rootPath = Files.tmpDir
-    val config   = AlephiumConfig.load(Env.Prod, rootPath, "alephium")
+    val config   = AlephiumConfig.load(Env.Prod, rootPath, "oxygenium")
 
     config.broker.groups is 4
     config.consensus.rhone.numZerosAtLeastInHash is 37
@@ -115,19 +115,19 @@ class AlephiumConfigSpec extends AlephiumSpec {
 
   it should "throw error when mainnet config has invalid hardfork timestamp" in new AlephiumConfigFixture {
     override val configValues: Map[String, Any] = Map(
-      ("alephium.network.network-id", 0),
-      ("alephium.network.leman-hard-fork-timestamp", 0)
+      ("oxygenium.network.network-id", 0),
+      ("oxygenium.network.leman-hard-fork-timestamp", 0)
     )
     assertThrows[IllegalArgumentException](config.network.networkId is NetworkId.AlephiumMainNet)
   }
 
   it should "check rhone hardfork timestamp" in new AlephiumConfigFixture {
     override val configValues: Map[String, Any] = Map(
-      ("alephium.network.network-id", 0),
-      ("alephium.network.rhone-hard-fork-timestamp", 0)
+      ("oxygenium.network.network-id", 0),
+      ("oxygenium.network.rhone-hard-fork-timestamp", 0)
     )
     intercept[RuntimeException](
-      AlephiumConfig.load(buildNewConfig(), "alephium")
+      AlephiumConfig.load(buildNewConfig(), "oxygenium")
     ).getMessage is
       "Invalid timestamp for rhone hard fork"
   }
@@ -201,12 +201,12 @@ class AlephiumConfigSpec extends AlephiumSpec {
 
     override val configValues: Map[String, Any] = Map(
       (
-        "alephium.mining.miner-addresses",
+        "oxygenium.mining.miner-addresses",
         ConfigValueFactory.fromIterable(minerAddresses.toSeq.asJava)
       )
     )
 
-    assertThrows[ConfigException](AlephiumConfig.load(newConfig, "alephium"))
+    assertThrows[ConfigException](AlephiumConfig.load(newConfig, "oxygenium"))
   }
 
   class MinerFixture(groupIndexes: Seq[Int]) extends AlephiumConfigFixture {
@@ -221,7 +221,7 @@ class AlephiumConfigSpec extends AlephiumSpec {
 
     override val configValues: Map[String, Any] = Map(
       (
-        "alephium.mining.miner-addresses",
+        "oxygenium.mining.miner-addresses",
         ConfigValueFactory.fromIterable(minerAddresses.toSeq.asJava)
       )
     )
@@ -230,7 +230,7 @@ class AlephiumConfigSpec extends AlephiumSpec {
   it should "fail to load if miner's addresses are of wrong indexes" in new MinerFixture(
     Seq(0, 1, 1)
   ) {
-    assertThrows[ConfigException](AlephiumConfig.load(newConfig, "alephium"))
+    assertThrows[ConfigException](AlephiumConfig.load(newConfig, "oxygenium"))
   }
 
   it should "load if miner's addresses are of correct indexes" in new MinerFixture(

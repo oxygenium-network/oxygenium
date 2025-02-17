@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/CallContract.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/CallContract.scala)
 
 The `CallContract` and `MultipleCallContract` classes are part of the Alephium project and are used to represent a call to a smart contract on the Alephium blockchain. 
 
@@ -22,7 +22,7 @@ These classes are used in the Alephium project to interact with smart contracts 
    - This code defines case classes for making calls to Alephium smart contracts and validating them.
 
 2. What dependencies does this code have?
-   - This code imports several classes from the `org.alephium` package, including `BrokerConfig`, `Address`, `BlockHash`, `ChainIndex`, `TransactionId`, and `AVector`.
+   - This code imports several classes from the `org.oxygenium` package, including `BrokerConfig`, `Address`, `BlockHash`, `ChainIndex`, `TransactionId`, and `AVector`.
 
 3. What is the expected input and output of the `validate` method?
    - The `validate` method takes an implicit `BrokerConfig` parameter and returns a `Try[GroupIndex]`. It validates the `group` and `worldStateBlockHash` fields of the `CallContract` instance and returns the corresponding `GroupIndex` if successful.

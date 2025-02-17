@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/tools/src/main/scala/org/alephium/tools/MiningRewards.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/tools/src/main/scala/org/oxygenium/tools/MiningRewards.scala)
 
 The `MiningRewards` object is a tool that calculates the inflation rate of the Alephium cryptocurrency based on different parameters. The inflation rate is the rate at which the total supply of a cryptocurrency increases over time. The tool calculates the inflation rate based on the hashrate of the network and the number of years since the network's inception.
 
@@ -20,7 +20,7 @@ Overall, the `MiningRewards` object is a useful tool for developers working on t
    - This code calculates the inflation rate of the Alephium cryptocurrency based on hash rate and time.
 
 2. What external libraries or dependencies does this code use?
-   - This code imports classes from the `org.alephium` and `org.alephium.util` packages, but it is unclear what external libraries or dependencies are required.
+   - This code imports classes from the `org.oxygenium` and `org.oxygenium.util` packages, but it is unclear what external libraries or dependencies are required.
 
 3. What is the output of this code?
    - This code prints two tables to the console: one showing the inflation rate based on hash rate, and another showing the inflation rate based on time. Each table includes three columns: the hash rate or year, the inflation rate as a decimal, and the yearly reward in ALPH.

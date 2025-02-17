@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/UnsignedTx.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/UnsignedTx.scala)
 
 The `UnsignedTx` class and its companion object are part of the Alephium project and are used to represent unsigned transactions. Transactions are the fundamental building blocks of the Alephium blockchain, and they are used to transfer assets between accounts. 
 
@@ -9,7 +9,7 @@ The `UnsignedTx` class is used in the larger Alephium project to represent unsig
 Here is an example of how to create an instance of `UnsignedTx`:
 
 ```scala
-import org.alephium.api.model._
+import org.oxygenium.api.model._
 
 val txId = TransactionId(Array[Byte](1, 2, 3))
 val version = 1.toByte

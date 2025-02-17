@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/Destination.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/Destination.scala)
 
 The code above defines a case class called `Destination` which is used to represent a destination for a transaction in the Alephium project. 
 
@@ -13,9 +13,9 @@ This class is used in various parts of the Alephium project where transactions a
 
 Here is an example of how a `Destination` object might be created and used in a transaction:
 ```
-import org.alephium.api.model.Destination
-import org.alephium.protocol.model.Address
-import org.alephium.util.Amount
+import org.oxygenium.api.model.Destination
+import org.oxygenium.protocol.model.Address
+import org.oxygenium.util.Amount
 
 val destAddress = Address.fromString("ALPH-abc123")
 val alphAmount = Amount.fromAlph(10)

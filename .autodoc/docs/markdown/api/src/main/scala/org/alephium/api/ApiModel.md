@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/ApiModel.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/ApiModel.scala)
 
 This code file is part of the Alephium project and defines the API model and its serialization/deserialization logic. The purpose of this code is to provide a way to interact with the Alephium blockchain through a well-defined API. It includes various data models, codecs, and utility functions to facilitate the conversion between internal data structures and JSON representations that can be used in API requests and responses.
 

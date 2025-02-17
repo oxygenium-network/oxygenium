@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/util/src/main/scala/org/alephium/util/ConcurrentHashMap.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/util/src/main/scala/org/oxygenium/util/ConcurrentHashMap.scala)
 
 This code defines a ConcurrentHashMap class that extends the SimpleMap trait. The ConcurrentHashMap is a thread-safe implementation of the Map interface that allows multiple threads to read and write to the map concurrently without the need for external synchronization. 
 

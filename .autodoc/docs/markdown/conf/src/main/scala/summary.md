@@ -1,6 +1,6 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/conf/src/main/scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/conf/src/main/scala)
 
-The code in the `.autodoc/docs/json/conf/src/main/scala/org/alephium/conf` folder is responsible for managing the various configurations used throughout the Alephium project. These configurations are essential for the proper functioning of the blockchain, consensus algorithm, mining process, and network communication.
+The code in the `.autodoc/docs/json/conf/src/main/scala/org/oxygenium/conf` folder is responsible for managing the various configurations used throughout the Alephium project. These configurations are essential for the proper functioning of the blockchain, consensus algorithm, mining process, and network communication.
 
 For instance, the `AlephiumConfig.scala` file contains the main configuration class `AlephiumConfig`, which is responsible for loading and managing all the configurations for the Alephium project. It includes configurations for network settings, consensus settings, mining settings, and more. The `AlephiumConfig` class is used throughout the project to access these configurations. For example, to get the network settings, you can use `AlephiumConfig.network`.
 

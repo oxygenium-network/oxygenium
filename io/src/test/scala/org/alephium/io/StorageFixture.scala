@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,13 +14,13 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.io
+package org.oxygenium.io
 
 import java.nio.file.{Files => JFiles}
 
-import org.alephium.crypto.Keccak256
-import org.alephium.serde.Serde
-import org.alephium.util.{AlephiumFixture, AlephiumSpec, Env, Files}
+import org.oxygenium.crypto.Keccak256
+import org.oxygenium.serde.Serde
+import org.oxygenium.util.{AlephiumFixture, AlephiumSpec, Env, Files}
 
 trait StorageFixture extends AlephiumFixture {
 

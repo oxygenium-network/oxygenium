@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/model/TransactionId.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/model/TransactionId.scala)
 
 This file contains the implementation of the `TransactionId` class and its companion object. The `TransactionId` class is a wrapper around a `Hash` value and is used to represent the unique identifier of a transaction in the Alephium blockchain. The `TransactionId` class is defined as a `final case class` which means that it is immutable and has a default implementation of `equals`, `hashCode`, and `toString` methods. The `TransactionId` class extends the `RandomBytes` trait which provides a `bytes` method that returns the byte representation of the `Hash` value.
 
@@ -15,4 +15,4 @@ Overall, this file provides the implementation of the `TransactionId` class and 
 - This code is licensed under the GNU Lesser General Public License, version 3 or later.
 
 3. What other dependencies does this code have?
-- This code imports several other classes and objects from the `org.alephium` package, including `ByteString`, `HashUtils`, `Hash`, `Serde`, and `byteStringOrdering`. It also depends on the `akka.util.ByteString` class.
+- This code imports several other classes and objects from the `org.oxygenium` package, including `ByteString`, `HashUtils`, `Hash`, `Serde`, and `byteStringOrdering`. It also depends on the `akka.util.ByteString` class.

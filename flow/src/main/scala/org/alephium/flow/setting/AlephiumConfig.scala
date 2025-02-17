@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.flow.setting
+package org.oxygenium.flow.setting
 
 import java.math.BigInteger
 import java.net.{InetAddress, InetSocketAddress}
@@ -30,15 +30,15 @@ import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import net.ceedubs.ficus.readers.ValueReader
 
-import org.alephium.conf._
-import org.alephium.flow.core.maxForkDepth
-import org.alephium.flow.network.nat.Upnp
-import org.alephium.protocol.{ALPH, Hash}
-import org.alephium.protocol.config._
-import org.alephium.protocol.mining.Emission
-import org.alephium.protocol.model.{Address, Block, Difficulty, HardFork, NetworkId, Target, Weight}
-import org.alephium.protocol.vm.{LogConfig, NodeIndexesConfig}
-import org.alephium.util._
+import org.oxygenium.conf._
+import org.oxygenium.flow.core.maxForkDepth
+import org.oxygenium.flow.network.nat.Upnp
+import org.oxygenium.protocol.{ALPH, Hash}
+import org.oxygenium.protocol.config._
+import org.oxygenium.protocol.mining.Emission
+import org.oxygenium.protocol.model.{Address, Block, Difficulty, HardFork, NetworkId, Target, Weight}
+import org.oxygenium.protocol.vm.{LogConfig, NodeIndexesConfig}
+import org.oxygenium.util._
 
 final case class BrokerSetting(groups: Int, brokerNum: Int, brokerId: Int) extends BrokerConfig {
   override lazy val groupNumPerBroker: Int = groups / brokerNum
@@ -404,8 +404,8 @@ object AlephiumConfig {
           if (discovery.bootstrap.isEmpty) {
             discovery.copy(bootstrap =
               ArraySeq(
-                new InetSocketAddress("bootstrap0.testnet.alephium.org", 9973),
-                new InetSocketAddress("bootstrap1.testnet.alephium.org", 9973)
+                new InetSocketAddress("bootstrap0.testnet.oxygenium.org", 9973),
+                new InetSocketAddress("bootstrap1.testnet.oxygenium.org", 9973)
               )
             )
           } else {
@@ -432,7 +432,7 @@ object AlephiumConfig {
     }
   }
 
-  implicit val alephiumValueReader: ValueReader[AlephiumConfig] =
+  implicit val oxygeniumValueReader: ValueReader[AlephiumConfig] =
     valueReader { implicit cfg =>
       TempAlephiumConfig(
         as[BrokerSetting]("broker"),
@@ -456,7 +456,7 @@ object AlephiumConfig {
     load(Env.currentEnv, rootPath, configPath)
   def load(config: Config, configPath: String): AlephiumConfig =
     sanityCheck(config.as[AlephiumConfig](configPath))
-  def load(config: Config): AlephiumConfig = load(config, "alephium")
+  def load(config: Config): AlephiumConfig = load(config, "oxygenium")
 
   def sanityCheck(config: AlephiumConfig): AlephiumConfig = {
     if (

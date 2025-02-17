@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.flow.network.sync
+package org.oxygenium.flow.network.sync
 
 import java.net.InetSocketAddress
 
@@ -23,18 +23,18 @@ import scala.collection.mutable
 import akka.actor.{Props, Terminated}
 import com.typesafe.scalalogging.LazyLogging
 
-import org.alephium.flow.core.{maxSyncBlocksPerChain, BlockFlow}
-import org.alephium.flow.handler._
-import org.alephium.flow.model.DataOrigin
-import org.alephium.flow.network._
-import org.alephium.flow.network.broker.{BrokerHandler, ChainTipInfo, MisbehaviorManager}
-import org.alephium.flow.setting.NetworkSetting
-import org.alephium.protocol.ALPH
-import org.alephium.protocol.config.BrokerConfig
-import org.alephium.protocol.message.{P2PV1, P2PV2, P2PVersion}
-import org.alephium.protocol.model._
-import org.alephium.util.{ActorRefT, AVector}
-import org.alephium.util.EventStream.{Publisher, Subscriber}
+import org.oxygenium.flow.core.{maxSyncBlocksPerChain, BlockFlow}
+import org.oxygenium.flow.handler._
+import org.oxygenium.flow.model.DataOrigin
+import org.oxygenium.flow.network._
+import org.oxygenium.flow.network.broker.{BrokerHandler, ChainTipInfo, MisbehaviorManager}
+import org.oxygenium.flow.setting.NetworkSetting
+import org.oxygenium.protocol.ALPH
+import org.oxygenium.protocol.config.BrokerConfig
+import org.oxygenium.protocol.message.{P2PV1, P2PV2, P2PVersion}
+import org.oxygenium.protocol.model._
+import org.oxygenium.util.{ActorRefT, AVector}
+import org.oxygenium.util.EventStream.{Publisher, Subscriber}
 
 // scalastyle:off file.size.limit
 object BlockFlowSynchronizer {

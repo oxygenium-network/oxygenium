@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.app
+package org.oxygenium.app
 
 import java.net.InetSocketAddress
 import java.nio.file.Path
@@ -23,15 +23,15 @@ import akka.actor.{ActorRef, ActorSystem}
 import com.typesafe.config.Config
 import com.typesafe.scalalogging.StrictLogging
 
-import org.alephium.flow.mining.{ExternalMinerMock, Miner}
-import org.alephium.flow.setting.{AlephiumConfig, Configs, Platform}
-import org.alephium.util.{AVector, Env}
+import org.oxygenium.flow.mining.{ExternalMinerMock, Miner}
+import org.oxygenium.flow.setting.{AlephiumConfig, Configs, Platform}
+import org.oxygenium.util.{AVector, Env}
 
 object CpuSoloMiner extends App {
   val rootPath: Path = Platform.getRootPath()
   val typesafeConfig: Config =
     Configs.parseConfigAndValidate(Env.currentEnv, rootPath, overwrite = false)
-  val config: AlephiumConfig = AlephiumConfig.load(typesafeConfig, "alephium")
+  val config: AlephiumConfig = AlephiumConfig.load(typesafeConfig, "oxygenium")
   val system: ActorSystem    = ActorSystem("cpu-miner", typesafeConfig)
 
   new CpuSoloMiner(config, system, args.headOption)

@@ -1,6 +1,6 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/PeerMisbehavior.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/PeerMisbehavior.scala)
 
-The code above defines a case class called `PeerMisbehavior` which is used to represent a peer's misbehavior and its status. This class is part of the `org.alephium.api.model` package.
+The code above defines a case class called `PeerMisbehavior` which is used to represent a peer's misbehavior and its status. This class is part of the `org.oxygenium.api.model` package.
 
 The `PeerMisbehavior` class has two properties: `peer` and `status`. The `peer` property is of type `InetAddress` and represents the IP address of the misbehaving peer. The `status` property is of type `PeerStatus` and represents the status of the misbehaving peer.
 
@@ -9,7 +9,7 @@ This class is likely used in the larger Alephium project to keep track of peers 
 Here is an example of how this class might be used in the context of the Alephium project:
 
 ```scala
-import org.alephium.api.model.PeerMisbehavior
+import org.oxygenium.api.model.PeerMisbehavior
 
 // Assume we have a list of peers on the network
 val peers: List[InetAddress] = List(

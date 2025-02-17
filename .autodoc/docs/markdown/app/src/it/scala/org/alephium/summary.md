@@ -1,6 +1,6 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/app/src/it/scala/org/alephium)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/app/src/it/scala/org/oxygenium)
 
-The folder located at `.autodoc/docs/json/app/src/it/scala/org/alephium` contains integration tests for the Alephium project. These tests are written in Scala and are designed to ensure that the various components of the Alephium project work together correctly.
+The folder located at `.autodoc/docs/json/app/src/it/scala/org/oxygenium` contains integration tests for the Alephium project. These tests are written in Scala and are designed to ensure that the various components of the Alephium project work together correctly.
 
 ### Files
 

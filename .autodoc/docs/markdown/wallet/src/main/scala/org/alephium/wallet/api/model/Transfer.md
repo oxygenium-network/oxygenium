@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/wallet/src/main/scala/org/alephium/wallet/api/model/Transfer.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/wallet/src/main/scala/org/oxygenium/wallet/api/model/Transfer.scala)
 
 This file contains code for the Transfer model and related classes used in the Alephium wallet API. The Transfer model represents a transfer of funds from one or more source addresses to one or more destination addresses. It contains a list of Destination objects, which represent the destination addresses and the amount of funds to be transferred to each address. 
 
@@ -11,11 +11,11 @@ This code is an important part of the Alephium wallet API, as it provides a way 
 Example usage:
 
 ```
-import org.alephium.wallet.api.model.Transfer
-import org.alephium.api.model.Destination
-import org.alephium.protocol.vm.GasBox
-import org.alephium.protocol.vm.GasPrice
-import org.alephium.util.AVector
+import org.oxygenium.wallet.api.model.Transfer
+import org.oxygenium.api.model.Destination
+import org.oxygenium.protocol.vm.GasBox
+import org.oxygenium.protocol.vm.GasPrice
+import org.oxygenium.util.AVector
 
 // Create a transfer request with two destinations and gas and gas price specified
 val destinations = AVector(Destination("address1", 100), Destination("address2", 200))
@@ -24,7 +24,7 @@ val gasPrice = GasPrice(100)
 val transfer = Transfer(destinations, Some(gasBox), Some(gasPrice))
 
 // Send the transfer request to the Alephium network for processing
-val transferResult = alephiumApi.sendTransfer(transfer)
+val transferResult = oxygeniumApi.sendTransfer(transfer)
 
 // Retrieve the transaction ID and group indices from the transfer result
 val txId = transferResult.txId

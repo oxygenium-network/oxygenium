@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/BuildTxCommon.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/BuildTxCommon.scala)
 
 This file contains code related to building transactions in the Alephium project. The code defines several traits and objects that are used to create transaction-related data structures and functions.
 

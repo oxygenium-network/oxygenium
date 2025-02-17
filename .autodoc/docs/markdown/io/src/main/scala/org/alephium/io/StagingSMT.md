@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/io/src/main/scala/org/alephium/io/StagingSMT.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/io/src/main/scala/org/oxygenium/io/StagingSMT.scala)
 
 The code is a part of the Alephium project and is written in Scala. It defines a class called `StagingSMT` which is used to stage modifications to a `CachedSMT` data structure. 
 

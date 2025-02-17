@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/wallet/src/main/scala/org/alephium/wallet/config/WalletConfig.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/wallet/src/main/scala/org/oxygenium/wallet/config/WalletConfig.scala)
 
 This code defines the configuration for the Alephium wallet. The `WalletConfig` case class contains various parameters that can be set to configure the wallet, such as the port number to listen on, the directory to store secret information, the timeout for locking, and the `BlockFlow` configuration. The `BlockFlow` case class contains information about the blockflow service, which is used to retrieve information about the blockchain.
 
@@ -9,7 +9,7 @@ The `BlockFlow` object contains a `uri` field that is used to construct the URI 
 Overall, this code provides a way to configure the Alephium wallet and connect it to the blockflow service. It can be used to customize the behavior of the wallet and to authenticate requests to the API and blockflow service. Here is an example of how this code might be used to create a `WalletConfig` object:
 
 ```scala
-import org.alephium.wallet.config.WalletConfig
+import org.oxygenium.wallet.config.WalletConfig
 
 val config = WalletConfig(
   port = Some(8080),

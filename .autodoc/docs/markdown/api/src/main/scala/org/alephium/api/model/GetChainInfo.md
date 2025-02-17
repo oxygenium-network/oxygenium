@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/GetChainInfo.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/GetChainInfo.scala)
 
 The code above defines a case class called `GetChainInfo` which is used in the Alephium project's API model. The purpose of this case class is to represent a request for information about a chain of blocks in the Alephium blockchain. 
 
@@ -16,5 +16,5 @@ Overall, the `GetChainInfo` case class is a simple but important component of th
 2. What is the significance of the copyright and license information at the top of the file?
    - The copyright and license information indicates that the code is part of the Alephium project and is licensed under the GNU Lesser General Public License, which allows for redistribution and modification of the code.
    
-3. What is the `org.alephium.api.model` package used for?
-   - The `org.alephium.api.model` package is likely used to contain various models and data structures used in the Alephium API. The `GetChainInfo` case class is an example of such a model.
+3. What is the `org.oxygenium.api.model` package used for?
+   - The `org.oxygenium.api.model` package is likely used to contain various models and data structures used in the Alephium API. The `GetChainInfo` case class is an example of such a model.

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/docker)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/docker)
 
 The `.autodoc/docs/json/docker` folder contains essential files for running and monitoring the Alephium blockchain node using Docker. It also includes configurations for the Alephium blockchain explorer and a GPU miner service. The folder is organized into several subfolders, each containing specific configurations and settings for different aspects of the Alephium project.
 
@@ -6,7 +6,7 @@ The `docker-compose.yml` file defines the services and configurations for runnin
 
 The `docker-compose.explorer.yml` file defines the services and configurations needed to run the Alephium blockchain explorer, which allows users to view and analyze data on the Alephium blockchain network. To start the explorer, navigate to the directory containing the docker-compose file and run `docker-compose up`.
 
-The `docker-compose.gpu-miner.yml` file defines a service called `alephium_gpu_miner` for running a GPU miner for the Alephium cryptocurrency. To start the GPU miner service, run `docker-compose up -d`.
+The `docker-compose.gpu-miner.yml` file defines a service called `oxygenium_gpu_miner` for running a GPU miner for the Alephium cryptocurrency. To start the GPU miner service, run `docker-compose up -d`.
 
 The `grafana` subfolder contains configuration files and provisioning settings for integrating the Alephium project with Grafana, a popular open-source platform for monitoring and observability. This integration allows Alephium to display monitoring data from Prometheus in a Grafana dashboard, providing valuable insights into the performance and health of the project.
 

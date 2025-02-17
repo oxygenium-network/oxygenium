@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/app/src/it/scala/org/alephium/app/ConfigTest.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/app/src/it/scala/org/oxygenium/app/ConfigTest.scala)
 
 The code is a test file for the Alephium project's configuration settings. The purpose of this file is to test if the configuration settings are correctly loaded and if the genesis blocks are created as expected. The `ConfigTest` class extends the `AlephiumActorSpec` class, which is a testing utility class that provides a test environment for actors in the Alephium project. 
 
@@ -17,4 +17,4 @@ Example usage of this test file would be to run it as part of the Alephium proje
 - This code is released under the GNU Lesser General Public License.
 
 3. What other packages or classes are being imported and used in this code?
-- This code imports and uses the `org.alephium.protocol.ALPH` and `org.alephium.util.AlephiumActorSpec` packages, as well as the `ConfigTest` and `CliqueFixture` classes.
+- This code imports and uses the `org.oxygenium.protocol.ALPH` and `org.oxygenium.util.AlephiumActorSpec` packages, as well as the `ConfigTest` and `CliqueFixture` classes.

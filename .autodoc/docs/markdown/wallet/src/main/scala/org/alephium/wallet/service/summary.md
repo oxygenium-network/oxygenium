@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/wallet/src/main/scala/org/alephium/wallet/service)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/wallet/src/main/scala/org/oxygenium/wallet/service)
 
 The `WalletService.scala` file is a crucial part of the Alephium project, providing a high-level interface for users to manage wallets, addresses, and transactions on the Alephium blockchain. It interacts with the `BlockFlowClient` to fetch balance and transaction-related information and uses the `SecretStorage` to securely store and manage wallet secrets, such as private keys and mnemonics.
 

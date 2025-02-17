@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/project)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/project)
 
 The `.autodoc/docs/json/project` folder contains essential files for the Alephium project, including code generation, dependency management, versioning, and code style configuration.
 
@@ -6,7 +6,7 @@ The `.autodoc/docs/json/project` folder contains essential files for the Alephiu
 
 ```scala
 import java.io.File
-import org.alephium.serde.Boilerplate
+import org.oxygenium.serde.Boilerplate
 
 val srcDir: File = ???
 val testDir: File = ???

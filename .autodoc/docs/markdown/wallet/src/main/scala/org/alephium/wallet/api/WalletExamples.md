@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/wallet/src/main/scala/org/alephium/wallet/api/WalletExamples.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/wallet/src/main/scala/org/oxygenium/wallet/api/WalletExamples.scala)
 
 This file contains code for the `WalletExamples` trait, which provides examples of various API requests and responses for the Alephium wallet. The trait imports several classes and objects from other parts of the Alephium project, including `Amount`, `Mnemonic`, `PublicKey`, `GroupConfig`, and `Hex`. 
 

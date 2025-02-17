@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/crypto/src/main/scala/org/alephium/crypto/HashSchema.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/crypto/src/main/scala/org/oxygenium/crypto/HashSchema.scala)
 
 This file contains code related to cryptographic hash functions used in the Alephium project. The code is licensed under the GNU Lesser General Public License and is free software. 
 

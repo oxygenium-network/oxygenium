@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/network/bootstrap/Message.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/network/bootstrap/Message.scala)
 
 This file contains code related to message serialization and deserialization for the Alephium network bootstrap process. The purpose of this code is to define a set of message types that can be sent between nodes during the bootstrap process, and to provide methods for serializing and deserializing these messages into a binary format that can be transmitted over the network.
 

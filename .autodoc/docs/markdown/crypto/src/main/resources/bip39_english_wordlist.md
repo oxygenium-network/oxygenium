@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/crypto/src/main/resources/bip39_english_wordlist.txt)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/crypto/src/main/resources/bip39_english_wordlist.txt)
 
 This code file is a comprehensive list of English words, which can be used in various applications within the Alephium project. The list contains a wide range of words, including nouns, verbs, adjectives, and adverbs. It can be utilized for different purposes, such as generating random strings, creating word-based identifiers, or even implementing natural language processing tasks.
 

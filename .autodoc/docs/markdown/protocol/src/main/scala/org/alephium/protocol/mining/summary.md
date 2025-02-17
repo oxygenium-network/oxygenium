@@ -1,6 +1,6 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/protocol/src/main/scala/org/alephium/protocol/mining)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/protocol/src/main/scala/org/oxygenium/protocol/mining)
 
-The `org.alephium.protocol.mining` package in the Alephium project contains essential classes and objects for managing the mining process and calculating mining rewards. The package consists of three main components: `Emission.scala`, `HashRate.scala`, and `PoW.scala`.
+The `org.oxygenium.protocol.mining` package in the Alephium project contains essential classes and objects for managing the mining process and calculating mining rewards. The package consists of three main components: `Emission.scala`, `HashRate.scala`, and `PoW.scala`.
 
 `Emission.scala` is responsible for calculating mining rewards based on various parameters such as time, target, and hash rate. It defines the `Emission` class, which takes block target time and group configuration as input parameters. The class has several methods for calculating mining rewards, such as `rewardWrtTime`, `rewardWrtTarget`, and `rewardWrtHashRate`. It also has a method `shouldEnablePoLW` to determine whether to enable Proof of Linear Work (PoLW) based on the target of the mining process. The `Emission` class is used to incentivize miners to participate in the mining process and maintain the security of the blockchain.
 
@@ -32,4 +32,4 @@ val isValid = PoW.checkWork(flowData, target)
 val isMined = PoW.checkMined(flowData, chainIndex)
 ```
 
-Overall, the `org.alephium.protocol.mining` package plays a crucial role in the Alephium project by providing essential functionality for managing the mining process, calculating mining rewards, and handling PoW mining. These components are likely used extensively throughout the Alephium codebase to ensure the security and integrity of the blockchain.
+Overall, the `org.oxygenium.protocol.mining` package plays a crucial role in the Alephium project by providing essential functionality for managing the mining process, calculating mining rewards, and handling PoW mining. These components are likely used extensively throughout the Alephium codebase to ensure the security and integrity of the blockchain.

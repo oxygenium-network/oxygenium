@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/tools/src/main/scala/org/alephium/tools/WalletGen.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/tools/src/main/scala/org/oxygenium/tools/WalletGen.scala)
 
 The `WalletGen` object is a tool for generating wallets for the Alephium cryptocurrency. It is used to generate a set of public and private keys, along with their corresponding addresses and mnemonics. 
 
@@ -9,10 +9,10 @@ The `WalletGen` object also contains a `main` method that generates wallets for 
 Here is an example of how to use the `WalletGen` tool:
 
 ```scala
-import org.alephium.tools.WalletGen
-import org.alephium.protocol.config.GroupConfig
-import org.alephium.protocol.model.GroupIndex
-import org.alephium.protocol.model.NetworkId
+import org.oxygenium.tools.WalletGen
+import org.oxygenium.protocol.config.GroupConfig
+import org.oxygenium.protocol.model.GroupIndex
+import org.oxygenium.protocol.model.NetworkId
 
 implicit val config: GroupConfig = new GroupConfig {
   override def groups: Int = 4
@@ -34,7 +34,7 @@ This code generates a wallet for the first group of the default network ID (1). 
 
 2. What external libraries or dependencies does this code use?
    
-   This code imports several libraries from the Alephium project, including `org.alephium.crypto`, `org.alephium.crypto.wallet`, `org.alephium.protocol`, and `org.alephium.wallet.Constants`.
+   This code imports several libraries from the Alephium project, including `org.oxygenium.crypto`, `org.oxygenium.crypto.wallet`, `org.oxygenium.protocol`, and `org.oxygenium.wallet.Constants`.
 
 3. What is the output of this code?
    

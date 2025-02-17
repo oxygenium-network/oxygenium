@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/SafeSerde.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/SafeSerde.scala)
 
 This code defines two traits, `SafeSerde` and `SafeSerdeImpl`, which are used for serialization and deserialization of data in the Alephium project. Serialization is the process of converting an object into a format that can be stored or transmitted, while deserialization is the reverse process of converting the serialized data back into an object.
 

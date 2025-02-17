@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/flow/src/main/scala/org/alephium/flow/client)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/flow/src/main/scala/org/oxygenium/flow/client)
 
 The `Node.scala` file in the Alephium project defines the structure and behavior of a node in the Alephium network. It consists of a `Node` trait and a `Node` object, which provide the necessary components and methods for managing a node in the network.
 
@@ -9,8 +9,8 @@ The `Node` object provides a default implementation of the `Node` trait and defi
 Here's an example of how the `Node` object might be used to create a new node:
 
 ```scala
-import org.alephium.flow.client.Node
-import org.alephium.flow.storage.Storages
+import org.oxygenium.flow.client.Node
+import org.oxygenium.flow.storage.Storages
 import akka.actor.ActorSystem
 
 val storages = Storages.default()

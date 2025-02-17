@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/model/Address.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/model/Address.scala)
 
 This code defines the `Address` and `SchnorrAddress` classes, which are used to represent addresses in the Alephium blockchain. 
 

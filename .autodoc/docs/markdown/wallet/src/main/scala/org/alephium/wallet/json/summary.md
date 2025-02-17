@@ -1,6 +1,6 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/wallet/src/main/scala/org/alephium/wallet/json)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/wallet/src/main/scala/org/oxygenium/wallet/json)
 
-The `ModelCodecs.scala` file in the `org.alephium.wallet.json` package plays a crucial role in the Alephium wallet project by providing a set of implicit JSON codecs for various models used in the wallet. These codecs enable easy serialization and deserialization of the models to and from JSON format, facilitating communication between the Alephium wallet and the Alephium API.
+The `ModelCodecs.scala` file in the `org.oxygenium.wallet.json` package plays a crucial role in the Alephium wallet project by providing a set of implicit JSON codecs for various models used in the wallet. These codecs enable easy serialization and deserialization of the models to and from JSON format, facilitating communication between the Alephium wallet and the Alephium API.
 
 The `ModelCodecs` trait extends the `ApiModelCodec` trait and defines implicit codecs for numerous models, such as `Addresses`, `AddressInfo`, `MinerAddressesInfo`, `Balances.AddressBalance`, `Balances`, `ChangeActiveAddress`, `Transfer`, `Sign`, `SignResult`, `Sweep`, `TransferResult`, `TransferResults`, `Mnemonic`, `WalletUnlock`, `WalletDeletion`, `WalletRestore`, `WalletRestoreResult`, `WalletCreation`, `WalletCreationResult`, `WalletStatus`, `RevealMnemonic`, and `RevealMnemonicResult`.
 
@@ -11,8 +11,8 @@ These codecs are utilized throughout the Alephium wallet to serialize and deseri
 Here's an example of how the `transferRW` codec might be used:
 
 ```scala
-import org.alephium.wallet.json.ModelCodecs._
-import org.alephium.protocol.model.Transfer
+import org.oxygenium.wallet.json.ModelCodecs._
+import org.oxygenium.protocol.model.Transfer
 import upickle.default._
 
 val transfer = Transfer("source-address", "destination-address", 1000, None)

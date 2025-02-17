@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,17 +14,17 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.protocol.model
+package org.oxygenium.protocol.model
 
 import akka.util.ByteString
 import org.scalacheck.Gen
 
-import org.alephium.protocol._
-import org.alephium.protocol.config.NetworkConfigFixture
-import org.alephium.protocol.model.TokenId
-import org.alephium.protocol.vm._
-import org.alephium.serde._
-import org.alephium.util.{AlephiumSpec, AVector, Hex, TimeStamp, U256}
+import org.oxygenium.protocol._
+import org.oxygenium.protocol.config.NetworkConfigFixture
+import org.oxygenium.protocol.model.TokenId
+import org.oxygenium.protocol.vm._
+import org.oxygenium.serde._
+import org.oxygenium.util.{AlephiumSpec, AVector, Hex, TimeStamp, U256}
 
 class TransactionSpec
     extends AlephiumSpec

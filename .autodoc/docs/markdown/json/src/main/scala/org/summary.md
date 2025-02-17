@@ -1,6 +1,6 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/json/src/main/scala/org)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/json/src/main/scala/org)
 
-The `Json.scala` file in the `org.alephium.json` package provides a set of utility functions for working with JSON data in the Alephium project. It is implemented using the `upickle` library, a lightweight JSON serialization library for Scala.
+The `Json.scala` file in the `org.oxygenium.json` package provides a set of utility functions for working with JSON data in the Alephium project. It is implemented using the `upickle` library, a lightweight JSON serialization library for Scala.
 
 The `Json` object offers several implicit conversions for JSON data manipulation:
 

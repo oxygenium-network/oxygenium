@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,18 +14,18 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.flow.mining
+package org.oxygenium.flow.mining
 
 import akka.actor.Props
 
-import org.alephium.flow.client.Node
-import org.alephium.flow.handler.{AllHandlers, BlockChainHandler, ViewHandler}
-import org.alephium.flow.model.BlockFlowTemplate
-import org.alephium.flow.setting.{AlephiumConfig, MiningSetting}
-import org.alephium.protocol.config.BrokerConfig
-import org.alephium.protocol.model.{Block, ChainIndex}
-import org.alephium.serde.serialize
-import org.alephium.util.ActorRefT
+import org.oxygenium.flow.client.Node
+import org.oxygenium.flow.handler.{AllHandlers, BlockChainHandler, ViewHandler}
+import org.oxygenium.flow.model.BlockFlowTemplate
+import org.oxygenium.flow.setting.{AlephiumConfig, MiningSetting}
+import org.oxygenium.protocol.config.BrokerConfig
+import org.oxygenium.protocol.model.{Block, ChainIndex}
+import org.oxygenium.serde.serialize
+import org.oxygenium.util.ActorRefT
 
 object CpuMiner {
   def props(node: Node)(implicit config: AlephiumConfig): Props = {

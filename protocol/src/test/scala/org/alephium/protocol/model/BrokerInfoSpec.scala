@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,13 +14,13 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.protocol.model
+package org.oxygenium.protocol.model
 
 import org.scalacheck.Gen
 
-import org.alephium.protocol.Generators
-import org.alephium.protocol.config.{BrokerConfig, CliqueConfig, GroupConfig, GroupConfigFixture}
-import org.alephium.util.AlephiumSpec
+import org.oxygenium.protocol.Generators
+import org.oxygenium.protocol.config.{BrokerConfig, CliqueConfig, GroupConfig, GroupConfigFixture}
+import org.oxygenium.util.AlephiumSpec
 
 class BrokerInfoSpec extends AlephiumSpec {
   it should "check if group included" in {

@@ -1,6 +1,6 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/ALPH.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/ALPH.scala)
 
-The `ALPH` object in the `org.alephium.protocol` package contains constants and utility functions related to the Alephium cryptocurrency. 
+The `ALPH` object in the `org.oxygenium.protocol` package contains constants and utility functions related to the Alephium cryptocurrency. 
 
 The object defines several constants related to the Alephium currency, such as the number of coins in one ALPH, one cent, and one nanoALPH. It also defines the maximum value of an ALPH, the height, weight, and timestamp of the genesis block, and the launch timestamp of the Alephium network. Additionally, it defines several constants related to the difficulty bomb, such as the timestamp when the pre-Leman difficulty bomb is enabled, the duration of the exponential difficulty period, the timestamp when the difficulty bomb patch is enabled, and the height difference between the difficulty bomb patch and the pre-Leman difficulty bomb.
 

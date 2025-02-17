@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/io/ChainStateStorage.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/io/ChainStateStorage.scala)
 
 This file contains a trait called `ChainStateStorage` which defines three methods for updating, loading, and clearing the state of a `BlockHashChain`. 
 
@@ -13,9 +13,9 @@ By defining this trait, the Alephium project can support different storage mecha
 Here is an example of how this trait could be used in the larger Alephium project:
 
 ```scala
-import org.alephium.flow.core.BlockHashChain
-import org.alephium.flow.io.ChainStateStorage
-import org.alephium.io.IOResult
+import org.oxygenium.flow.core.BlockHashChain
+import org.oxygenium.flow.io.ChainStateStorage
+import org.oxygenium.io.IOResult
 
 class DatabaseChainStateStorage extends ChainStateStorage {
   override def updateState(state: BlockHashChain.State): IOResult[Unit] = {

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/vm/ContractPool.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/vm/ContractPool.scala)
 
 This code defines the `ContractPool` trait, which is used to manage the contracts and their assets in the Alephium project. The `ContractPool` trait extends the `CostStrategy` trait, which provides methods to calculate the cost of executing a contract. 
 

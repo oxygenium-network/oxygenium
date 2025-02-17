@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/handler/ViewHandler.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/handler/ViewHandler.scala)
 
 This file contains the implementation of the `ViewHandler` class, which is responsible for handling the view of the block flow. The block flow is a directed acyclic graph (DAG) of blocks that represents the state of the Alephium blockchain. The `ViewHandler` class is used to prepare and update the templates of the block flow, which are used by miners to create new blocks.
 
@@ -14,7 +14,7 @@ The `ViewHandler` object defines the `props` method, which creates a new instanc
 - This code defines a ViewHandler class and its companion object, which handle subscriptions and updates for mining templates in the Alephium network.
 
 2. What external dependencies does this code have?
-- This code imports several classes and objects from other packages, including akka.actor, org.alephium.flow.core, org.alephium.flow.mining, org.alephium.flow.network, org.alephium.flow.setting, org.alephium.io, org.alephium.protocol.config, org.alephium.protocol.model, and org.alephium.util.
+- This code imports several classes and objects from other packages, including akka.actor, org.oxygenium.flow.core, org.oxygenium.flow.mining, org.oxygenium.flow.network, org.oxygenium.flow.setting, org.oxygenium.io, org.oxygenium.protocol.config, org.oxygenium.protocol.model, and org.oxygenium.util.
 
 3. What is the role of the `minerAddressesOpt` variable?
 - `minerAddressesOpt` is an optional variable that stores a vector of lockup scripts for miner addresses. It is used to prepare mining templates and update subscribers when new blocks are added to the chain.

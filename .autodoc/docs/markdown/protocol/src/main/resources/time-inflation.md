@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/resources/time-inflation.csv)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/resources/time-inflation.csv)
 
 This code appears to be a data file containing information about a cryptocurrency called Alephium. Each line represents a different block in the Alephium blockchain and contains three pieces of information: the block number, the block reward (in Alephium coins), and the total supply of Alephium coins at that block. 
 
@@ -10,7 +10,7 @@ Here is an example of how this data could be visualized using Python and the mat
 import matplotlib.pyplot as plt
 
 # read in the data from the file
-with open('alephium_data.txt', 'r') as f:
+with open('oxygenium_data.txt', 'r') as f:
     data = f.readlines()
 
 # extract the block numbers, rewards, and supplies into separate lists

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/UTXO.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/UTXO.scala)
 
 This file contains the definition of a UTXO (Unspent Transaction Output) class and its companion object. UTXOs are outputs of previous transactions that have not been spent yet and can be used as inputs for new transactions. 
 

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/validation/package.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/validation/package.scala)
 
 This code defines several type aliases that are used throughout the Alephium project for validation of blocks and transactions. The purpose of this code is to provide a standardized way of handling validation errors and results across the project.
 
@@ -11,7 +11,7 @@ Finally, the `HeaderValidationResult`, `TxValidationResult`, and `BlockValidatio
 Overall, this code provides a standardized way of handling validation errors and results across the Alephium project, making it easier to write and maintain code that performs validation operations. Here is an example of how these types might be used in practice:
 
 ```scala
-import org.alephium.flow.validation._
+import org.oxygenium.flow.validation._
 
 def validateBlock(block: Block): BlockValidationResult[Block] = {
   // perform validation logic
@@ -23,8 +23,8 @@ def validateBlock(block: Block): BlockValidationResult[Block] = {
 }
 ```
 ## Questions: 
- 1. What is the purpose of the `alephium.flow.validation` package?
-- The `alephium.flow.validation` package contains type aliases for block and transaction validation errors and results.
+ 1. What is the purpose of the `oxygenium.flow.validation` package?
+- The `oxygenium.flow.validation` package contains type aliases for block and transaction validation errors and results.
 
 2. What is the meaning of the `Either` type used in the type aliases?
 - The `Either` type represents a value that can be one of two possible types, in this case either an `IOError` or an `InvalidStatus`.

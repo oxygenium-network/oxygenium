@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/wallet/src/main/resources/application.conf)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/wallet/src/main/resources/application.conf)
 
 The code above defines the configuration settings for the Alephium wallet. The wallet is a key component of the Alephium project, which is a decentralized blockchain platform. The wallet allows users to store, send, and receive Alephium coins.
 

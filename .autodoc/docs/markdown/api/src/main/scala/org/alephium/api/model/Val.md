@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/Val.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/Val.scala)
 
 This code defines a set of classes and traits that represent different types of values that can be used in the Alephium project. These values are used in the context of the Alephium protocol and virtual machine (VM). 
 

@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,13 +14,13 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.app
+package org.oxygenium.app
 
 import sttp.model.StatusCode
 
-import org.alephium.api.model.SelfClique
-import org.alephium.protocol.model.ChainIndex
-import org.alephium.util._
+import org.oxygenium.api.model.SelfClique
+import org.oxygenium.protocol.model.ChainIndex
+import org.oxygenium.util._
 
 class IntraCliqueSyncTest extends AlephiumActorSpec {
   it should "boot and sync single node clique" in new CliqueFixture {

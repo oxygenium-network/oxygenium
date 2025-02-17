@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/ralph/src/main/scala/org/alephium/ralph/error/FastParseErrorUtil.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/ralph/src/main/scala/org/oxygenium/ralph/error/FastParseErrorUtil.scala)
 
 The `FastParseErrorUtil` object is a utility module that provides a set of functions to handle errors that occur during parsing of Alephium code. The module is part of the Alephium project and is licensed under the GNU Lesser General Public License.
 
@@ -11,7 +11,7 @@ The `FastParseErrorUtil` object is used in the Alephium project to handle parsin
 Example usage:
 
 ```scala
-import org.alephium.ralph.error.FastParseErrorUtil
+import org.oxygenium.ralph.error.FastParseErrorUtil
 import fastparse.Parsed
 
 val input = "1 + 2 * 3"

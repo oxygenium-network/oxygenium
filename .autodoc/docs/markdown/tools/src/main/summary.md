@@ -1,11 +1,11 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/tools/src/main)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/tools/src/main)
 
 The `.autodoc/docs/json/tools/src/main` folder contains essential tools and utilities for the Alephium project, which are crucial for tasks such as generating documentation, calculating inflation rates, validating patches, and generating wallets. These tools help developers understand and work with the Alephium protocol more effectively.
 
 `BuiltInFunctions.scala` is a tool that generates a JSON file containing information about the built-in functions in the Alephium protocol. This JSON file can be used by other tools to provide information about the functions to users, such as an IDE or a web-based documentation tool. Example usage:
 
 ```scala
-import org.alephium.tools.BuiltInFunctions
+import org.oxygenium.tools.BuiltInFunctions
 
 // Generate JSON file containing built-in function information
 BuiltInFunctions.main(Array())
@@ -16,7 +16,7 @@ BuiltInFunctions.main(Array())
 `MiningRewards.scala` is a tool that calculates the inflation rate of the Alephium cryptocurrency based on different parameters, such as the hashrate of the network and the number of years since the network's inception. This tool is useful for developers working on the Alephium project who need to calculate the inflation rate of the cryptocurrency based on different parameters.
 
 ```scala
-import org.alephium.tools.MiningRewards
+import org.oxygenium.tools.MiningRewards
 
 // Calculate inflation rate
 MiningRewards.main(Array())
@@ -34,9 +34,9 @@ OpenApiUpdate.main(Array())
 `WalletGen.scala` is a tool for generating wallets for the Alephium cryptocurrency. It generates a set of public and private keys, along with their corresponding addresses and mnemonics. Example usage:
 
 ```scala
-import org.alephium.tools.WalletGen
-import org.alephium.protocol.config.GroupConfig
-import org.alephium.protocol.model.GroupIndex
+import org.oxygenium.tools.WalletGen
+import org.oxygenium.protocol.config.GroupConfig
+import org.oxygenium.protocol.model.GroupIndex
 
 implicit val config: GroupConfig = new GroupConfig {
   override def groups: Int = 4

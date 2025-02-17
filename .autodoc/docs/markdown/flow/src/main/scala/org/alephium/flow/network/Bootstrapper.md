@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/network/Bootstrapper.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/network/Bootstrapper.scala)
 
 This code defines the `Bootstrapper` class and its related classes and methods. The `Bootstrapper` class is responsible for bootstrapping the network by connecting nodes and creating cliques. The code is part of the Alephium project, which is a decentralized blockchain platform.
 

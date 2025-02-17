@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/ralph/src/main/scala/org/alephium/ralph/StaticAnalysis.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/ralph/src/main/scala/org/oxygenium/ralph/StaticAnalysis.scala)
 
 The `StaticAnalysis` object provides a set of functions that perform static analysis on Alephium smart contracts. These functions are used to check the correctness of the contracts before they are deployed on the blockchain. 
 

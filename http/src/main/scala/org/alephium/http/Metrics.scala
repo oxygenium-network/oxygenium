@@ -1,5 +1,5 @@
 // Copyright 2018 The Alephium Authors
-// This file is part of the alephium project.
+// This file is part of the oxygenium project.
 //
 // The library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the library. If not, see <http://www.gnu.org/licenses/>.
 
-package org.alephium.http
+package org.oxygenium.http
 
 import scala.concurrent.Future
 
@@ -24,7 +24,7 @@ import sttp.tapir.server.metrics.prometheus.PrometheusMetrics
 
 object Metrics {
   val defaultRegistry: PrometheusRegistry = PrometheusRegistry.defaultRegistry
-  val namespace                           = "alephium"
+  val namespace                           = "oxygenium"
   val prometheus: PrometheusMetrics[Future] = PrometheusMetrics[Future](
     namespace = namespace,
     registry = defaultRegistry,

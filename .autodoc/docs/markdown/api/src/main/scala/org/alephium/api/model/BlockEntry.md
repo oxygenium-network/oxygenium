@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/BlockEntry.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/BlockEntry.scala)
 
 The `BlockEntry` class is a model that represents a block in the Alephium blockchain. It contains various properties of a block such as its hash, timestamp, height, dependencies, transactions, nonce, version, depStateHash, txsHash, and target. 
 

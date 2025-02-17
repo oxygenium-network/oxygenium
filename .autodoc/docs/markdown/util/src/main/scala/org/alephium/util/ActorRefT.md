@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/util/src/main/scala/org/alephium/util/ActorRefT.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/util/src/main/scala/org/oxygenium/util/ActorRefT.scala)
 
 This file contains the implementation of the `ActorRefT` class and its companion object. The purpose of this class is to provide a type-safe wrapper around an `ActorRef` instance, which is a reference to an actor in the Akka actor system. 
 
@@ -17,7 +17,7 @@ myActor ! MyActor.Message("hello")
 ```
 ## Questions: 
  1. What is the purpose of this code?
-   - This code defines a class `ActorRefT` and an object `ActorRefT` in the `org.alephium.util` package, which provide additional functionality to Akka `ActorRef`s.
+   - This code defines a class `ActorRefT` and an object `ActorRefT` in the `org.oxygenium.util` package, which provide additional functionality to Akka `ActorRef`s.
 
 2. What is the license for this code?
    - This code is licensed under the GNU Lesser General Public License version 3 or later.

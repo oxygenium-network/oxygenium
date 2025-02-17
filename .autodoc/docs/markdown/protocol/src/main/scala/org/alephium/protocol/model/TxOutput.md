@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/model/TxOutput.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/model/TxOutput.scala)
 
 This file contains code related to transaction outputs in the Alephium project. A transaction output is an amount of ALPH (the native token of the Alephium blockchain) or other tokens that are locked up and can be spent only by the owner of the corresponding private key. 
 

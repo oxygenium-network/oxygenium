@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/crypto/src/main/scala/org/alephium/crypto/Blake2b.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/crypto/src/main/scala/org/oxygenium/crypto/Blake2b.scala)
 
 The code defines a class and an object related to the Blake2b cryptographic hash function. The purpose of this code is to provide a way to generate a Blake2b hash from a given input. 
 
@@ -13,7 +13,7 @@ Overall, this code provides a way to generate Blake2b hashes in a standardized w
 Example usage:
 
 ```
-import org.alephium.crypto.Blake2b
+import org.oxygenium.crypto.Blake2b
 import akka.util.ByteString
 
 val input = ByteString("hello world")

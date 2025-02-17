@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/mining/MinerState.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/mining/MinerState.scala)
 
 This code defines a trait called `MinerState` which provides a set of methods and variables that are used by the mining process in the Alephium project. The trait defines several abstract methods that must be implemented by any class that extends it. These methods include `brokerConfig` and `miningConfig`, which are used to provide configuration settings for the mining process.
 
@@ -16,7 +16,7 @@ Overall, the `MinerState` trait provides a set of methods and variables that are
 - This code defines a trait `MinerState` which provides methods for managing mining tasks and state.
 
 2. What other files or packages does this code depend on?
-- This code depends on several other packages including `org.alephium.flow.model`, `org.alephium.flow.setting`, `org.alephium.protocol.config`, and `org.alephium.protocol.model`.
+- This code depends on several other packages including `org.oxygenium.flow.model`, `org.oxygenium.flow.setting`, `org.oxygenium.protocol.config`, and `org.oxygenium.protocol.model`.
 
 3. What is the license for this code?
 - This code is licensed under the GNU Lesser General Public License, version 3 or later.

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/model/BlockHash.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/model/BlockHash.scala)
 
 This file contains the implementation of the `BlockHash` class and its companion object. The `BlockHash` class is a wrapper around the `Blake3` hash function, which is used to compute the hash of a block in the Alephium blockchain. The `BlockHash` class is defined as a `final case class` with a private constructor, which means that instances of this class can only be created using the `apply` method defined in the companion object.
 
@@ -12,20 +12,20 @@ Overall, this file provides a simple and efficient implementation of the `BlockH
 
 ```scala
 import akka.util.ByteString
-import org.alephium.protocol.model.BlockHash
+import org.oxygenium.protocol.model.BlockHash
 
 val bytes = ByteString("hello world")
 val hash = BlockHash.hash(bytes)
 println(hash.bytes)
 ```
 ## Questions: 
- 1. What is the purpose of the `BlockHash` class and how is it used in the `alephium` project?
+ 1. What is the purpose of the `BlockHash` class and how is it used in the `oxygenium` project?
    
-   The `BlockHash` class represents a hash value for a block in the `alephium` project. It is used to generate, store, and compare block hashes.
+   The `BlockHash` class represents a hash value for a block in the `oxygenium` project. It is used to generate, store, and compare block hashes.
 
 2. What is the `Serde` trait and how is it used in the `BlockHash` companion object?
    
-   The `Serde` trait is used for serialization and deserialization of objects in the `alephium` project. In the `BlockHash` companion object, it is used to define a serializer for the `BlockHash` class.
+   The `Serde` trait is used for serialization and deserialization of objects in the `oxygenium` project. In the `BlockHash` companion object, it is used to define a serializer for the `BlockHash` class.
 
 3. What is the purpose of the `unsafe` methods in the `BlockHash` companion object?
    

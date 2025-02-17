@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/network/bootstrap/PeerInfo.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/network/bootstrap/PeerInfo.scala)
 
 This code defines a case class called `PeerInfo` and an object with the same name. The `PeerInfo` class represents information about a peer in the Alephium network, including its ID, external and internal addresses, and various ports. The `PeerInfo` object provides methods for serializing and deserializing `PeerInfo` instances, as well as validating them against a `GroupConfig` instance.
 
@@ -12,7 +12,7 @@ Overall, this code provides a way to represent and validate information about pe
 
 ```scala
 import java.net.InetSocketAddress
-import org.alephium.flow.network.bootstrap.PeerInfo
+import org.oxygenium.flow.network.bootstrap.PeerInfo
 
 val peerInfo = PeerInfo.unsafe(
   id = 1,

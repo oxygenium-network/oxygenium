@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/app/src/it/scala/org/alephium/app/ItConfigFixture.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/app/src/it/scala/org/oxygenium/app/ItConfigFixture.scala)
 
 The code defines a trait called `ItConfigFixture` which extends another trait called `AlephiumConfigFixture`. The purpose of this trait is to generate random ports for various services used in the Alephium project. The generated ports are used for WebSocket, REST, and miner API services. 
 

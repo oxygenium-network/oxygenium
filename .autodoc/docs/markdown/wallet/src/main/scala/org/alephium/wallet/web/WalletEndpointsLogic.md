@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/wallet/src/main/scala/org/alephium/wallet/web/WalletEndpointsLogic.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/wallet/src/main/scala/org/oxygenium/wallet/web/WalletEndpointsLogic.scala)
 
 This code defines a trait called `WalletEndpointsLogic` that provides the implementation for various endpoints related to wallet functionality. The trait extends another trait called `WalletEndpoints` which defines the signatures of these endpoints. The `WalletEndpointsLogic` trait is used to implement these endpoints by providing the necessary logic for each endpoint.
 
@@ -16,7 +16,7 @@ Overall, this code provides the implementation for various wallet-related endpoi
 - This code defines the logic for various wallet-related endpoints in the Alephium project's web API.
 
 2. What dependencies does this code have?
-- This code imports various classes and traits from other packages in the Alephium project, including `scala.concurrent`, `org.alephium.api.model`, `org.alephium.crypto.wallet`, `org.alephium.protocol.config`, `org.alephium.util`, `org.alephium.wallet.api`, and `org.alephium.wallet.service`.
+- This code imports various classes and traits from other packages in the Alephium project, including `scala.concurrent`, `org.oxygenium.api.model`, `org.oxygenium.crypto.wallet`, `org.oxygenium.protocol.config`, `org.oxygenium.util`, `org.oxygenium.wallet.api`, and `org.oxygenium.wallet.service`.
 
 3. What are some of the endpoints that this code defines?
 - This code defines the logic for endpoints related to creating, restoring, locking, unlocking, deleting, and getting information about wallets, as well as endpoints related to getting balances, addresses, and miner addresses, revealing mnemonics, transferring funds, sweeping addresses, signing data, deriving addresses, and listing wallets.

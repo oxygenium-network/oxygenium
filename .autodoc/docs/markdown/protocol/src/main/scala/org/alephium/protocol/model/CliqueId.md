@@ -1,6 +1,6 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/model/CliqueId.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/model/CliqueId.scala)
 
-The `CliqueId` class in the `org.alephium.protocol.model` package is a 160-bit identifier of a peer in the Alephium network. It is used to identify and compare peers in the network. The class takes a `PublicKey` object as a parameter and generates a `ByteString` object from it. The `PublicKey` object is a cryptographic public key used to verify digital signatures and encrypt messages.
+The `CliqueId` class in the `org.oxygenium.protocol.model` package is a 160-bit identifier of a peer in the Alephium network. It is used to identify and compare peers in the network. The class takes a `PublicKey` object as a parameter and generates a `ByteString` object from it. The `PublicKey` object is a cryptographic public key used to verify digital signatures and encrypt messages.
 
 The `CliqueId` class implements the `RandomBytes` trait, which provides a method to generate random bytes. It also implements the `Ordered` trait, which allows instances of the class to be compared with each other. The `compare` method is used to compare two `CliqueId` objects based on their byte strings.
 
@@ -12,9 +12,9 @@ The `CliqueId` object provides a `hammingDist` method that calculates the Hammin
 
 Overall, the `CliqueId` class and object are used to identify and compare peers in the Alephium network based on their public keys. The `hammingDist` and `hammingOrder` methods are used to determine the similarity between peers and sort them accordingly.
 ## Questions: 
- 1. What is the purpose of the `CliqueId` class and how is it used in the `alephium` project?
+ 1. What is the purpose of the `CliqueId` class and how is it used in the `oxygenium` project?
    
-   The `CliqueId` class represents a 160-bit identifier of a peer and is used in the `alephium` protocol model. It contains a public key and methods for calculating the Hamming distance between two `CliqueId` instances.
+   The `CliqueId` class represents a 160-bit identifier of a peer and is used in the `oxygenium` protocol model. It contains a public key and methods for calculating the Hamming distance between two `CliqueId` instances.
 
 2. What is the `hammingDist` method used for and how is it implemented?
    

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/api/src/main/scala/org/alephium/api/model/TestContract.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/api/src/main/scala/org/oxygenium/api/model/TestContract.scala)
 
 This file contains the implementation of a `TestContract` class and a `Complete` case class. The purpose of this code is to provide a way to test smart contracts in the Alephium project. 
 

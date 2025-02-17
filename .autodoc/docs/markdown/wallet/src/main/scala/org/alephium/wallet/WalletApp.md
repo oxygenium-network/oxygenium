@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/wallet/src/main/scala/org/alephium/wallet/WalletApp.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/wallet/src/main/scala/org/oxygenium/wallet/WalletApp.scala)
 
 The `WalletApp` class is a component of the Alephium project that provides a wallet service. It is responsible for starting and stopping the wallet service, which listens for HTTP requests on a specified port. The wallet service provides a RESTful API for interacting with the Alephium blockchain. 
 

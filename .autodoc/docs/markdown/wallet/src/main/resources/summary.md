@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/wallet/src/main/resources)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/wallet/src/main/resources)
 
 The `.autodoc/docs/json/wallet/src/main/resources` folder contains two important configuration files for the Alephium wallet: `application.conf` and `logback.xml`.
 

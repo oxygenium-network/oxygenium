@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/network/CliqueManager.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/network/CliqueManager.scala)
 
 This code defines the `CliqueManager` class, which is responsible for managing the communication between different cliques in the Alephium network. A clique is a group of nodes that are connected to each other and share the same blockchain. The `CliqueManager` class is an Akka actor that coordinates the creation of intra-clique and inter-clique managers.
 
@@ -14,7 +14,7 @@ The `CliqueManager` class is used in the Alephium network to manage the communic
 - The `CliqueManager` class is responsible for managing the intra and inter clique managers, and ensuring that the self-clique is synced. It receives messages such as `Start`, `Synced`, and `IsSelfCliqueReady` to perform its tasks.
 
 2. What other classes or libraries does this code import and use?
-- The code imports several classes and libraries such as `akka.actor`, `akka.io.Tcp`, `org.alephium.flow.core.BlockFlow`, `org.alephium.flow.handler.AllHandlers`, `org.alephium.flow.network.sync.BlockFlowSynchronizer`, `org.alephium.flow.setting.NetworkSetting`, `org.alephium.protocol.config.BrokerConfig`, and `org.alephium.protocol.model`.
+- The code imports several classes and libraries such as `akka.actor`, `akka.io.Tcp`, `org.oxygenium.flow.core.BlockFlow`, `org.oxygenium.flow.handler.AllHandlers`, `org.oxygenium.flow.network.sync.BlockFlowSynchronizer`, `org.oxygenium.flow.setting.NetworkSetting`, `org.oxygenium.protocol.config.BrokerConfig`, and `org.oxygenium.protocol.model`.
 
 3. What is the license for this code and where can it be found?
 - The code is licensed under the GNU Lesser General Public License, and the license can be found in the comments at the beginning of the file, as well as at the specified URL.

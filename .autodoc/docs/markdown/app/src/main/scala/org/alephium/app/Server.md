@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/app/src/main/scala/org/alephium/app/Server.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/app/src/main/scala/org/oxygenium/app/Server.scala)
 
 This code defines a trait called `Server` that is used to create a server for the Alephium project. The `Server` trait is a service that can be started and stopped. It defines several abstract methods and values that must be implemented by any concrete implementation of the trait. 
 
@@ -18,7 +18,7 @@ Overall, this code defines a trait that is used to create a server for the Aleph
 - This code defines a trait `Server` and its implementation `Impl` which sets up a server for the Alephium project, including a REST server, a WebSocket server, and a miner.
 
 2. What dependencies does this code have?
-- This code depends on several libraries and modules, including Akka, RocksDB, and Alephium-specific modules such as `org.alephium.flow.client.Node` and `org.alephium.flow.mining.CpuMiner`.
+- This code depends on several libraries and modules, including Akka, RocksDB, and Alephium-specific modules such as `org.oxygenium.flow.client.Node` and `org.oxygenium.flow.mining.CpuMiner`.
 
 3. What is the license for this code?
 - This code is licensed under the GNU Lesser General Public License version 3 or later.

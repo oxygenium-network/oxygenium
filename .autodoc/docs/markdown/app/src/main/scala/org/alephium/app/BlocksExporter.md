@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/app/src/main/scala/org/alephium/app/BlocksExporter.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/app/src/main/scala/org/oxygenium/app/BlocksExporter.scala)
 
 The `BlocksExporter` class is responsible for exporting blocks from the Alephium blockchain to a file. The class takes in a `BlockFlow` instance, which is responsible for managing the blockchain, and a `Path` instance, which represents the root directory where the exported file will be stored. The `GroupConfig` instance is also passed in implicitly.
 
@@ -18,7 +18,7 @@ Overall, the `BlocksExporter` class provides a convenient way to export blocks f
 
 2. What external dependencies does this code have?
     
-    This code depends on several external libraries, including `com.typesafe.scalalogging`, `org.alephium.flow.core`, `org.alephium.io`, `org.alephium.protocol.config`, `org.alephium.protocol.model`, `org.alephium.serde`, and `org.alephium.util`.
+    This code depends on several external libraries, including `com.typesafe.scalalogging`, `org.oxygenium.flow.core`, `org.oxygenium.io`, `org.oxygenium.protocol.config`, `org.oxygenium.protocol.model`, `org.oxygenium.serde`, and `org.oxygenium.util`.
 
 3. What is the license for this code?
     

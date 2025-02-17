@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/handler/IOBaseActor.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/handler/IOBaseActor.scala)
 
 This file contains a trait called `IOBaseActor` which provides error handling functionality for input/output (IO) operations. The purpose of this trait is to provide a common set of error handling methods that can be used by other actors in the Alephium project that perform IO operations.
 
@@ -9,8 +9,8 @@ The `escapeIOError` method with one argument takes an `IOResult[Unit]` object an
 Overall, this trait provides a convenient way to handle IO errors in a consistent way across actors in the Alephium project. Here is an example of how this trait can be used:
 
 ```scala
-import org.alephium.flow.handler.IOBaseActor
-import org.alephium.io.{IOError, IOResult}
+import org.oxygenium.flow.handler.IOBaseActor
+import org.oxygenium.io.{IOError, IOResult}
 
 class MyActor extends IOBaseActor {
   def performIOOperation(): IOResult[String] = {

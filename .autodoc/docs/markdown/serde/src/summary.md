@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/serde/src)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/serde/src)
 
 The `serde` package in the Alephium project provides a serialization and deserialization library that is essential for data exchange and storage. It includes predefined serializers and deserializers for common data types and utility methods for composing and transforming them.
 
@@ -13,7 +13,7 @@ The `SerdeError.scala` file defines a set of error classes that can be used in t
 Here's an example of how to use the library to serialize and deserialize a custom data type:
 
 ```scala
-import org.alephium.serde._
+import org.oxygenium.serde._
 import akka.util.ByteString
 
 // Define a custom data type

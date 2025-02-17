@@ -1,8 +1,8 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/message/Header.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/message/Header.scala)
 
 This code defines a class called `Header` and an object with the same name. The `Header` class has a single field called `version` of type `WireVersion`. The `Header` object provides a way to serialize and deserialize `Header` objects using the `Serde` library.
 
-The `Header` class is used to represent the header of a message in the Alephium protocol. The `version` field indicates the version of the protocol that the message is using. The `WireVersion` class is defined in another file in the `org.alephium.protocol` package and provides a way to represent different versions of the protocol.
+The `Header` class is used to represent the header of a message in the Alephium protocol. The `version` field indicates the version of the protocol that the message is using. The `WireVersion` class is defined in another file in the `org.oxygenium.protocol` package and provides a way to represent different versions of the protocol.
 
 The `Header` object provides a way to serialize and deserialize `Header` objects using the `Serde` library. The `Serde` library is a serialization and deserialization library that is used throughout the Alephium codebase. The `Header` object defines an implicit `Serde` instance for the `Header` class that uses the `WireVersion` `Serde` instance to serialize and deserialize the `version` field.
 

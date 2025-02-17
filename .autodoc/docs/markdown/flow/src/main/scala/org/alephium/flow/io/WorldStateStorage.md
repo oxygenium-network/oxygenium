@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/io/WorldStateStorage.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/io/WorldStateStorage.scala)
 
 This code defines a trait and a class that implement a storage mechanism for world states in the Alephium project. The WorldStateStorage trait extends the KeyValueStorage trait and defines methods for getting and putting world states, as well as getting the hash of a world state. It also defines three properties: trieStorage, trieImmutableStateStorage, and logStorage, which are KeyValueStorage objects for storing trie nodes, immutable contract storage states, and logs, respectively.
 

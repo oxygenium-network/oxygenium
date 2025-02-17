@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/protocol/src/main/scala/org/alephium/protocol/model/Difficulty.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/protocol/src/main/scala/org/oxygenium/protocol/model/Difficulty.scala)
 
 This code defines a Difficulty class and its companion object in the Alephium project. The Difficulty class is a wrapper around a BigInteger value and is defined as a final case class. The companion object provides factory methods to create instances of the Difficulty class.
 

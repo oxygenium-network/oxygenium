@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/.autodoc/docs/json/flow/src/main/scala/org/alephium/flow/network/interclique)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/.autodoc/docs/json/flow/src/main/scala/org/oxygenium/flow/network/interclique)
 
 The code in this folder is part of the Alephium project's interclique network module, which is responsible for managing communication between different cliques (subnetworks) in the Alephium network. The folder contains three files: `BrokerHandler.scala`, `InboundBrokerHandler.scala`, and `OutboundBrokerHandler.scala`.
 

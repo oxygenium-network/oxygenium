@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/http/src/main/scala/org/alephium/http/EndpointSender.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/http/src/main/scala/org/oxygenium/http/EndpointSender.scala)
 
 The `EndpointSender` class is a part of the Alephium project and is used to send HTTP requests to endpoints defined in the project. It extends the `BaseEndpoint` trait and uses the `SttpClientInterpreter` to create requests. The class takes an optional `ApiKey` parameter and an `ExecutionContext` parameter in its constructor.
 
@@ -16,7 +16,7 @@ Overall, the `EndpointSender` class provides a convenient way to send HTTP reque
 
 2. What external libraries does this code use?
    
-   This code uses the `sttp` library for sending HTTP requests, `sttp.tapir` for defining endpoints, `com.typesafe.scalalogging` for logging, and `org.alephium` for other utility classes.
+   This code uses the `sttp` library for sending HTTP requests, `sttp.tapir` for defining endpoints, `com.typesafe.scalalogging` for logging, and `org.oxygenium` for other utility classes.
 
 3. What is the license for this code?
    

@@ -1,6 +1,6 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/network/interclique/OutboundBrokerHandler.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/network/interclique/OutboundBrokerHandler.scala)
 
-This code defines a class called `OutboundBrokerHandler` and an object called `OutboundBrokerHandler` in the `org.alephium.flow.network.interclique` package. The purpose of this code is to handle outbound connections to other brokers in the Alephium network. 
+This code defines a class called `OutboundBrokerHandler` and an object called `OutboundBrokerHandler` in the `org.oxygenium.flow.network.interclique` package. The purpose of this code is to handle outbound connections to other brokers in the Alephium network. 
 
 The `OutboundBrokerHandler` class extends `BaseOutboundBrokerHandler` and implements the `BrokerHandler` trait. It takes in several parameters including `selfCliqueInfo`, `expectedRemoteBroker`, `blockflow`, `allHandlers`, `cliqueManager`, and `blockFlowSynchronizer`. These parameters are used to initialize the class and are passed in through the `props` method defined in the `OutboundBrokerHandler` object. 
 
@@ -27,6 +27,6 @@ val outboundBrokerHandler = system.actorOf(
  1. What is the purpose of this code file?
    - This code file contains the implementation of an outbound broker handler for the Alephium project's interclique network. It is used to handle handshake information between brokers.
 2. What dependencies does this code file have?
-   - This code file imports several dependencies from other packages, including `akka.actor.Props`, `org.alephium.flow.core.BlockFlow`, and `org.alephium.protocol.model.BrokerInfo`, among others.
+   - This code file imports several dependencies from other packages, including `akka.actor.Props`, `org.oxygenium.flow.core.BlockFlow`, and `org.oxygenium.protocol.model.BrokerInfo`, among others.
 3. What license is this code file released under?
    - This code file is released under the GNU Lesser General Public License, version 3 or later.

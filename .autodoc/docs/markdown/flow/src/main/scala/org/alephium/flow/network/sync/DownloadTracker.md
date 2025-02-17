@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/network/sync/DownloadTracker.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/network/sync/DownloadTracker.scala)
 
 This code defines a trait called `DownloadTracker` that is used to track the download progress of blocks in the Alephium network. The trait extends `BaseActor`, which is a base class for actors in the Akka framework used by Alephium. 
 

@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/project/Boilerplate.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/project/Boilerplate.scala)
 
 This file contains the `Boilerplate` object which provides functionality for generating boilerplate code for the Alephium project. The code is licensed under the GNU Lesser General Public License. 
 
@@ -16,7 +16,7 @@ Example usage of the `Boilerplate` object:
 
 ```scala
 import java.io.File
-import org.alephium.serde.Boilerplate
+import org.oxygenium.serde.Boilerplate
 
 val srcDir: File = ???
 val testDir: File = ???

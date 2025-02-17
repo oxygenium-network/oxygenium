@@ -1,4 +1,4 @@
-[View code on GitHub](https://github.com/alephium/alephium/flow/src/main/scala/org/alephium/flow/core/BlockHashChain.scala)
+[View code on GitHub](https://github.com/oxygenium/oxygenium/flow/src/main/scala/org/oxygenium/flow/core/BlockHashChain.scala)
 
 The `BlockHashChain` code is a part of the Alephium project and serves as a core component for managing the blockchain's state. It provides functionalities to add, update, and query block hashes, their states, and their relationships in the blockchain. The code also handles the storage and retrieval of block states and height indices.
 
