@@ -24,12 +24,12 @@ import org.oxygenium.util.{AVector, TimeStamp}
 @SuppressWarnings(Array("org.wartremover.warts.DefaultArguments"))
 final case class Destination(
     address: Address.Asset,
-    attoAlphAmount: Option[Amount] = None,
+    attoOxmAmount: Option[Amount] = None,
     tokens: Option[AVector[Token]] = None,
     lockTime: Option[TimeStamp] = None,
     message: Option[ByteString] = None
 ) {
-  def getAttoAlphAmount(): Amount = {
-    attoAlphAmount.getOrElse(Amount.Zero)
+  def getAttoOxmAmount(): Amount = {
+    attoOxmAmount.getOrElse(Amount.Zero)
   }
 }

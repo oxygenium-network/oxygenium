@@ -20,7 +20,7 @@ import sttp.tapir._
 import sttp.tapir.generic.auto._
 
 import org.oxygenium.api.{BaseEndpoint, TapirCodecs, TapirSchemasLike}
-import org.oxygenium.api.Endpoints.{jsonBody, jsonBodyWithAlph}
+import org.oxygenium.api.Endpoints.{jsonBody, jsonBodyWithOxm}
 import org.oxygenium.api.UtilJson._
 import org.oxygenium.protocol.model.{Address, GroupIndex}
 import org.oxygenium.util.AVector
@@ -96,13 +96,13 @@ trait WalletEndpoints
   val getBalances: BaseEndpoint[String, Balances] =
     wallet.get
       .in("balances")
-      .out(jsonBodyWithAlph[Balances])
+      .out(jsonBodyWithOxm[Balances])
       .summary("Get your total balance")
 
   val transfer: BaseEndpoint[(String, Transfer), TransferResult] =
     wallet.post
       .in("transfer")
-      .in(jsonBodyWithAlph[Transfer])
+      .in(jsonBodyWithOxm[Transfer])
       .out(jsonBody[TransferResult])
       .summary("Transfer OXM from the active address")
 

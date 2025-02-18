@@ -28,8 +28,8 @@ import org.oxygenium.util.U256
 final case class MutBalanceState(remaining: MutBalances, approved: MutBalances) {
   def approveOXM(lockupScript: LockupScript, amount: U256): Option[Unit] = {
     for {
-      _ <- remaining.subAlph(lockupScript, amount)
-      _ <- approved.addAlph(lockupScript, amount)
+      _ <- remaining.subOxm(lockupScript, amount)
+      _ <- approved.addOxm(lockupScript, amount)
     } yield ()
   }
 
@@ -41,7 +41,7 @@ final case class MutBalanceState(remaining: MutBalances, approved: MutBalances) 
   }
 
   def alphRemaining(lockupScript: LockupScript): Option[U256] = {
-    remaining.getBalances(lockupScript).map(_.attoAlphAmount)
+    remaining.getBalances(lockupScript).map(_.attoOxmAmount)
   }
 
   def alphRemainingUnsafe(lockupScript: LockupScript): U256 = {
@@ -73,8 +73,8 @@ final case class MutBalanceState(remaining: MutBalances, approved: MutBalances) 
     approved.useAll(lockupScript)
   }
 
-  def useAlph(lockupScript: LockupScript, amount: U256): Option[Unit] = {
-    remaining.subAlph(lockupScript, amount)
+  def useOxm(lockupScript: LockupScript, amount: U256): Option[Unit] = {
+    remaining.subOxm(lockupScript, amount)
   }
 
   def useToken(lockupScript: LockupScript, tokenId: TokenId, amount: U256): Option[Unit] = {

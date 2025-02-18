@@ -186,7 +186,7 @@ class FlowUtilsSpec extends OxygeniumSpec {
       val block                   = transfer(blockFlow, genesisKey, publicKey, OXM.alph(10))
       addAndCheck(blockFlow, block)
       block.coinbase.unsigned.gasAmount is minimalGas
-      transfer(blockFlow, privateKey, to, OXM.oneAlph).nonCoinbase.head
+      transfer(blockFlow, privateKey, to, OXM.oneOxm).nonCoinbase.head
     }
 
     def prepareTxs(gas: Int) = {
@@ -487,7 +487,7 @@ class FlowUtilsSpec extends OxygeniumSpec {
         blockFlow,
         priKey,
         fromPubKey,
-        OXM.oneAlph,
+        OXM.oneOxm,
         gasPrice
       ).nonCoinbase.head.toTemplate
     }
@@ -767,7 +767,7 @@ class FlowUtilsSpec extends OxygeniumSpec {
     val tx0               = transferTx(fromPrivateKey0, toPublicKey0, OXM.alph(5))
     val (_, toPublicKey1) = chainIndex.to.generateKey
     val tx1               = transferTx(fromPrivateKey0, toPublicKey1, OXM.alph(5), gasPrice)
-    val tx2               = transferTx(fromPrivateKey0, toPublicKey1, OXM.oneAlph)
+    val tx2               = transferTx(fromPrivateKey0, toPublicKey1, OXM.oneOxm)
 
     (tx1.unsigned.gasPrice.value > tx0.unsigned.gasPrice.value) is true
     tx1.unsigned.inputs.forall(input => tx0.fixedOutputRefs.contains(input.outputRef)) is true
@@ -825,8 +825,8 @@ class FlowUtilsSpec extends OxygeniumSpec {
       val fromIndex        = Random.nextInt(keys.length)
       val toIndex          = (fromIndex + 1) % keys.length
       val (fromKey, toKey) = (keys(fromIndex), keys(toIndex))
-      val balance          = getAlphBalance(blockFlow, LockupScript.p2pkh(fromKey._2))
-      if (balance < OXM.oneAlph) {
+      val balance          = getOxmBalance(blockFlow, LockupScript.p2pkh(fromKey._2))
+      if (balance < OXM.oneOxm) {
         randomTransferTx
       } else {
         val transferAmount = balance.divUnsafe(U256.Two)
@@ -857,7 +857,7 @@ class FlowUtilsSpec extends OxygeniumSpec {
 
     val chainIndex1     = ChainIndex.unsafe(0, 1)
     val (_, publicKey1) = GroupIndex.unsafe(1).generateKey
-    val tx0 = transfer(blockFlow, privateKey0, publicKey1, OXM.oneAlph).nonCoinbase.head.toTemplate
+    val tx0 = transfer(blockFlow, privateKey0, publicKey1, OXM.oneOxm).nonCoinbase.head.toTemplate
     val now = TimeStamp.now()
     blockFlow.grandPool.add(chainIndex1, tx0, now)
 
@@ -865,7 +865,7 @@ class FlowUtilsSpec extends OxygeniumSpec {
     var sourceTx        = tx0
     val sequentialTxs = AVector.from(0 until 5).map { index =>
       val tx =
-        transfer(blockFlow, privateKey0, publicKey2, OXM.oneAlph).nonCoinbase.head.toTemplate
+        transfer(blockFlow, privateKey0, publicKey2, OXM.oneOxm).nonCoinbase.head.toTemplate
       tx.unsigned.inputs.forall(input => sourceTx.fixedOutputRefs.contains(input.outputRef)) is true
       blockFlow.grandPool.add(chainIndex0, tx, now.plusMillisUnsafe(index.toLong))
       sourceTx = tx

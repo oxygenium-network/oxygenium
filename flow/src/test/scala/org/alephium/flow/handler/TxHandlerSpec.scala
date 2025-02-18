@@ -521,7 +521,7 @@ class TxHandlerSpec extends OxygeniumFlowActorSpec {
     val balance0         = blockFlow.getBalance(genesisAddress0, Int.MaxValue, true).rightValue._1
     val balance1         = blockFlow.getBalance(genesisAddress1, Int.MaxValue, true).rightValue._1
 
-    val block = transfer(blockFlow, privKey0, pubKey1, OXM.oneAlph)
+    val block = transfer(blockFlow, privKey0, pubKey1, OXM.oneOxm)
     val tx    = block.transactions.head
     txHandler ! addTx(tx)
     expectMsg(TxHandler.ProcessedByMemPool(tx.toTemplate, AddedToMemPool))
@@ -545,8 +545,8 @@ class TxHandlerSpec extends OxygeniumFlowActorSpec {
 
     val balance01 = blockFlow.getBalance(genesisAddress0, Int.MaxValue, true).rightValue._1
     val balance11 = blockFlow.getBalance(genesisAddress1, Int.MaxValue, true).rightValue._1
-    (balance01 < balance0.subUnsafe(OXM.oneAlph)) is true // due to gas fee
-    balance11 is balance1.addUnsafe(OXM.oneAlph)
+    (balance01 < balance0.subUnsafe(OXM.oneOxm)) is true // due to gas fee
+    balance11 is balance1.addUnsafe(OXM.oneOxm)
 
     val block0 = transfer(blockFlow, ChainIndex.unsafe(0, 0))
     val block1 = transfer(blockFlow, ChainIndex.unsafe(1, 1))
@@ -554,8 +554,8 @@ class TxHandlerSpec extends OxygeniumFlowActorSpec {
     addAndCheck(blockFlow, block1)
     val balance02 = blockFlow.getBalance(genesisAddress0, Int.MaxValue, true).rightValue._1
     val balance12 = blockFlow.getBalance(genesisAddress1, Int.MaxValue, true).rightValue._1
-    balance02 is balance01.subUnsafe(OXM.oneAlph)
-    balance12 is balance11.subUnsafe(OXM.oneAlph)
+    balance02 is balance01.subUnsafe(OXM.oneOxm)
+    balance12 is balance11.subUnsafe(OXM.oneOxm)
   }
 
   it should "remove tx from the orphan pool after tx is added to mempool" in new Fixture {
@@ -672,7 +672,7 @@ class TxHandlerSpec extends OxygeniumFlowActorSpec {
         blockFlow,
         fromPrivateKey,
         toPublicKey,
-        OXM.oneAlph,
+        OXM.oneOxm,
         gasPrice
       ).nonCoinbase.head
       txHandler ! addTx(tx)

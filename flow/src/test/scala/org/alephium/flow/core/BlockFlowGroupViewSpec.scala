@@ -89,7 +89,7 @@ class BlockFlowGroupViewSpec extends OxygeniumFlowSpec {
 
     val outputInfos = tx1.unsigned.inputs.map { input =>
       input.outputRef -> AssetOutput(
-        OXM.oneAlph,
+        OXM.oneOxm,
         lockupScript,
         TimeStamp.zero,
         AVector.empty,

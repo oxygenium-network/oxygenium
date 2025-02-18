@@ -15,7 +15,7 @@ import org.oxygenium.util.TimeStamp
 
 val fromPublicKey = PublicKey("...")
 val toAddress = Address.Asset("...")
-val maxAttoAlphPerUTXO = Some(100000000000L)
+val maxAttoOxmPerUTXO = Some(100000000000L)
 val lockTime = Some(TimeStamp.now())
 val gasAmount = Some(GasBox(100000L))
 val gasPrice = Some(GasPrice(100L))
@@ -24,7 +24,7 @@ val targetBlockHash = Some(BlockHash("..."))
 val tx = BuildSweepAddressTransactions(
   fromPublicKey,
   toAddress,
-  maxAttoAlphPerUTXO,
+  maxAttoOxmPerUTXO,
   lockTime,
   gasAmount,
   gasPrice,
@@ -32,7 +32,7 @@ val tx = BuildSweepAddressTransactions(
 )
 ```
 
-In this example, a new `BuildSweepAddressTransactions` object is created with the specified parameters. This object can then be used to create a transaction that transfers assets from the `fromPublicKey` address to the `toAddress` address. The `maxAttoAlphPerUTXO`, `lockTime`, `gasAmount`, `gasPrice`, and `targetBlockHash` parameters are optional and can be omitted if not needed.
+In this example, a new `BuildSweepAddressTransactions` object is created with the specified parameters. This object can then be used to create a transaction that transfers assets from the `fromPublicKey` address to the `toAddress` address. The `maxAttoOxmPerUTXO`, `lockTime`, `gasAmount`, `gasPrice`, and `targetBlockHash` parameters are optional and can be omitted if not needed.
 
 Overall, the `BuildSweepAddressTransactions` class is an important part of the Oxygenium project as it allows users to easily transfer assets between addresses in a single transaction.
 ## Questions: 
@@ -40,7 +40,7 @@ Overall, the `BuildSweepAddressTransactions` class is an important part of the O
 - The `BuildSweepAddressTransactions` case class is used to build transactions that sweep all UTXOs (unspent transaction outputs) of a given asset from a specific address to another address.
 
 2. What are the optional parameters of the `BuildSweepAddressTransactions` case class?
-- The optional parameters of the `BuildSweepAddressTransactions` case class are `maxAttoAlphPerUTXO`, `lockTime`, `gasAmount`, `gasPrice`, and `targetBlockHash`. These parameters allow for customization of the transaction, such as setting a maximum amount of asset per UTXO, specifying a lock time, setting gas limits and prices, and targeting a specific block hash.
+- The optional parameters of the `BuildSweepAddressTransactions` case class are `maxAttoOxmPerUTXO`, `lockTime`, `gasAmount`, `gasPrice`, and `targetBlockHash`. These parameters allow for customization of the transaction, such as setting a maximum amount of asset per UTXO, specifying a lock time, setting gas limits and prices, and targeting a specific block hash.
 
 3. What is the purpose of the `BuildTxCommon` trait?
 - The `BuildTxCommon` trait is a common trait for building transactions that provides common functionality and fields that are shared across different types of transactions.

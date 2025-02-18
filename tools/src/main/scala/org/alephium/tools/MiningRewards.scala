@@ -30,7 +30,7 @@ object MiningRewards extends App {
   val emission: Emission        = Emission.mainnet(groupConfig, blockTargetTime)
 
   private def calInflation(yearlyReward: U256): BigDecimal = {
-    val alphReward = yearlyReward.divUnsafe(OXM.oneAlph).v
+    val alphReward = yearlyReward.divUnsafe(OXM.oneOxm).v
     BigDecimal(alphReward) / BigDecimal.valueOf(Number.billion)
   }
 

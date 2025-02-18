@@ -1152,7 +1152,7 @@
                     "destinations": [
                       {
                         "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                        "attoAlphAmount": "2000000000000000000"
+                        "attoOxmAmount": "2000000000000000000"
                       }
                     ]
                   }
@@ -1163,7 +1163,7 @@
                     "destinations": [
                       {
                         "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                        "attoAlphAmount": "2000000000000000000",
+                        "attoOxmAmount": "2000000000000000000",
                         "tokens": [
                           {
                             "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -3981,7 +3981,7 @@
                                 {
                                   "hint": 1,
                                   "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                                  "attoAlphAmount": "2000000000000000000",
+                                  "attoOxmAmount": "2000000000000000000",
                                   "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                                   "tokens": [
                                     {
@@ -4010,7 +4010,7 @@
                                 "type": "AssetOutput",
                                 "hint": 1,
                                 "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                                "attoAlphAmount": "2000000000000000000",
+                                "attoOxmAmount": "2000000000000000000",
                                 "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                                 "tokens": [
                                   {
@@ -4029,7 +4029,7 @@
                                 "type": "ContractOutput",
                                 "hint": 1,
                                 "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                                "attoAlphAmount": "2000000000000000000",
+                                "attoOxmAmount": "2000000000000000000",
                                 "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
                                 "tokens": [
                                   {
@@ -4223,7 +4223,7 @@
                                   {
                                     "hint": 1,
                                     "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                                    "attoAlphAmount": "2000000000000000000",
+                                    "attoOxmAmount": "2000000000000000000",
                                     "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                                     "tokens": [
                                       {
@@ -4252,7 +4252,7 @@
                                   "type": "AssetOutput",
                                   "hint": 1,
                                   "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                                  "attoAlphAmount": "2000000000000000000",
+                                  "attoOxmAmount": "2000000000000000000",
                                   "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                                   "tokens": [
                                     {
@@ -4271,7 +4271,7 @@
                                   "type": "ContractOutput",
                                   "hint": 1,
                                   "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                                  "attoAlphAmount": "2000000000000000000",
+                                  "attoOxmAmount": "2000000000000000000",
                                   "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
                                   "tokens": [
                                     {
@@ -4476,7 +4476,7 @@
                                     "hint": 23412,
                                     "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
                                     "unlockScript": "00d1b70d2226308b46da297486adb6b4f1a8c1842cb159ac5ec04f384fe2d6f5da28",
-                                    "attoAlphAmount": "1000000000000000000",
+                                    "attoOxmAmount": "1000000000000000000",
                                     "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                                     "tokens": [
                                       {
@@ -4494,7 +4494,7 @@
                                   {
                                     "hint": 1,
                                     "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                                    "attoAlphAmount": "2000000000000000000",
+                                    "attoOxmAmount": "2000000000000000000",
                                     "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                                     "tokens": [
                                       {
@@ -4518,7 +4518,7 @@
                                   "type": "ContractOutput",
                                   "hint": 1,
                                   "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                                  "attoAlphAmount": "2000000000000000000",
+                                  "attoOxmAmount": "2000000000000000000",
                                   "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
                                   "tokens": [
                                     {
@@ -4715,7 +4715,7 @@
                           {
                             "hint": 1,
                             "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                            "attoAlphAmount": "2000000000000000000",
+                            "attoOxmAmount": "2000000000000000000",
                             "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                             "tokens": [
                               {
@@ -4744,7 +4744,7 @@
                           "type": "AssetOutput",
                           "hint": 1,
                           "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                          "attoAlphAmount": "2000000000000000000",
+                          "attoOxmAmount": "2000000000000000000",
                           "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                           "tokens": [
                             {
@@ -4763,7 +4763,7 @@
                           "type": "ContractOutput",
                           "hint": 1,
                           "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                          "attoAlphAmount": "2000000000000000000",
+                          "attoOxmAmount": "2000000000000000000",
                           "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
                           "tokens": [
                             {
@@ -4939,7 +4939,7 @@
                           {
                             "hint": 1,
                             "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                            "attoAlphAmount": "2000000000000000000",
+                            "attoOxmAmount": "2000000000000000000",
                             "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                             "tokens": [
                               {
@@ -4968,7 +4968,7 @@
                           "type": "AssetOutput",
                           "hint": 1,
                           "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                          "attoAlphAmount": "2000000000000000000",
+                          "attoOxmAmount": "2000000000000000000",
                           "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                           "tokens": [
                             {
@@ -4987,7 +4987,7 @@
                           "type": "ContractOutput",
                           "hint": 1,
                           "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                          "attoAlphAmount": "2000000000000000000",
+                          "attoOxmAmount": "2000000000000000000",
                           "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
                           "tokens": [
                             {
@@ -5164,7 +5164,7 @@
                             {
                               "hint": 1,
                               "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                              "attoAlphAmount": "2000000000000000000",
+                              "attoOxmAmount": "2000000000000000000",
                               "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                               "tokens": [
                                 {
@@ -5193,7 +5193,7 @@
                             "type": "AssetOutput",
                             "hint": 1,
                             "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                            "attoAlphAmount": "2000000000000000000",
+                            "attoOxmAmount": "2000000000000000000",
                             "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                             "tokens": [
                               {
@@ -5212,7 +5212,7 @@
                             "type": "ContractOutput",
                             "hint": 1,
                             "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                            "attoAlphAmount": "2000000000000000000",
+                            "attoOxmAmount": "2000000000000000000",
                             "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
                             "tokens": [
                               {
@@ -5400,7 +5400,7 @@
                               "hint": 23412,
                               "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
                               "unlockScript": "00d1b70d2226308b46da297486adb6b4f1a8c1842cb159ac5ec04f384fe2d6f5da28",
-                              "attoAlphAmount": "1000000000000000000",
+                              "attoOxmAmount": "1000000000000000000",
                               "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                               "tokens": [
                                 {
@@ -5418,7 +5418,7 @@
                             {
                               "hint": 1,
                               "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                              "attoAlphAmount": "2000000000000000000",
+                              "attoOxmAmount": "2000000000000000000",
                               "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                               "tokens": [
                                 {
@@ -5442,7 +5442,7 @@
                             "type": "ContractOutput",
                             "hint": 1,
                             "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                            "attoAlphAmount": "2000000000000000000",
+                            "attoOxmAmount": "2000000000000000000",
                             "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
                             "tokens": [
                               {
@@ -6520,7 +6520,7 @@
                     "destinations": [
                       {
                         "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                        "attoAlphAmount": "2000000000000000000"
+                        "attoOxmAmount": "2000000000000000000"
                       }
                     ]
                   }
@@ -6533,7 +6533,7 @@
                     "destinations": [
                       {
                         "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                        "attoAlphAmount": "2000000000000000000",
+                        "attoOxmAmount": "2000000000000000000",
                         "tokens": [
                           {
                             "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -6799,7 +6799,7 @@
                     "destinations": [
                       {
                         "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                        "attoAlphAmount": "2000000000000000000"
+                        "attoOxmAmount": "2000000000000000000"
                       }
                     ]
                   }
@@ -6812,7 +6812,7 @@
                     "destinations": [
                       {
                         "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                        "attoAlphAmount": "2000000000000000000",
+                        "attoOxmAmount": "2000000000000000000",
                         "tokens": [
                           {
                             "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -6971,7 +6971,7 @@
                         "destinations": [
                           {
                             "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                            "attoAlphAmount": "2000000000000000000"
+                            "attoOxmAmount": "2000000000000000000"
                           }
                         ]
                       }
@@ -7110,7 +7110,7 @@
                   "value": {
                     "fromPublicKey": "d1b70d2226308b46da297486adb6b4f1a8c1842cb159ac5ec04f384fe2d6f5da28",
                     "toAddress": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                    "maxAttoAlphPerUTXO": "1000000000000000000",
+                    "maxAttoOxmPerUTXO": "1000000000000000000",
                     "lockTime": 1611041396892,
                     "gasAmount": 20000,
                     "gasPrice": "100000000000"
@@ -7395,7 +7395,7 @@
                       {
                         "hint": 1,
                         "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                        "attoAlphAmount": "2000000000000000000",
+                        "attoOxmAmount": "2000000000000000000",
                         "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                         "tokens": [
                           {
@@ -7565,7 +7565,7 @@
                           {
                             "hint": 1,
                             "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                            "attoAlphAmount": "2000000000000000000",
+                            "attoOxmAmount": "2000000000000000000",
                             "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                             "tokens": [
                               {
@@ -7594,7 +7594,7 @@
                           "type": "AssetOutput",
                           "hint": 1,
                           "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                          "attoAlphAmount": "2000000000000000000",
+                          "attoOxmAmount": "2000000000000000000",
                           "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                           "tokens": [
                             {
@@ -7613,7 +7613,7 @@
                           "type": "ContractOutput",
                           "hint": 1,
                           "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                          "attoAlphAmount": "2000000000000000000",
+                          "attoOxmAmount": "2000000000000000000",
                           "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
                           "tokens": [
                             {
@@ -7781,7 +7781,7 @@
                             "hint": 23412,
                             "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
                             "unlockScript": "00d1b70d2226308b46da297486adb6b4f1a8c1842cb159ac5ec04f384fe2d6f5da28",
-                            "attoAlphAmount": "1000000000000000000",
+                            "attoOxmAmount": "1000000000000000000",
                             "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                             "tokens": [
                               {
@@ -7799,7 +7799,7 @@
                           {
                             "hint": 1,
                             "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                            "attoAlphAmount": "2000000000000000000",
+                            "attoOxmAmount": "2000000000000000000",
                             "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                             "tokens": [
                               {
@@ -7823,7 +7823,7 @@
                           "type": "ContractOutput",
                           "hint": 1,
                           "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                          "attoAlphAmount": "2000000000000000000",
+                          "attoOxmAmount": "2000000000000000000",
                           "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
                           "tokens": [
                             {
@@ -8386,7 +8386,7 @@
                             {
                               "hint": 1,
                               "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                              "attoAlphAmount": "2000000000000000000",
+                              "attoOxmAmount": "2000000000000000000",
                               "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                               "tokens": [
                                 {
@@ -8997,7 +8997,7 @@
                     "fromPublicKey": "d1b70d2226308b46da297486adb6b4f1a8c1842cb159ac5ec04f384fe2d6f5da28",
                     "fromPublicKeyType": "default",
                     "bytecode": "35d1b2a520a0da34c5eb8d712aa9cc",
-                    "attoAlphAmount": "1000000000000000",
+                    "attoOxmAmount": "1000000000000000",
                     "tokens": [
                       {
                         "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -9036,7 +9036,7 @@
                     "contractInputs": [
                       {
                         "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                        "attoAlphAmount": "1000000000000000",
+                        "attoOxmAmount": "1000000000000000",
                         "tokens": [
                           {
                             "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -9046,7 +9046,7 @@
                       },
                       {
                         "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
-                        "attoAlphAmount": "100000000000000000",
+                        "attoOxmAmount": "100000000000000000",
                         "tokens": [
                           {
                             "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -9062,7 +9062,7 @@
                     "generatedOutputs": [
                       {
                         "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                        "attoAlphAmount": "1000000000000000",
+                        "attoOxmAmount": "1000000000000000",
                         "tokens": [
                           {
                             "id": "bd165d20bd063c7a023d22232a1e75bf46e904067f92b49323fe89fa0fd586bf",
@@ -9072,7 +9072,7 @@
                       },
                       {
                         "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
-                        "attoAlphAmount": "100000000000000000",
+                        "attoOxmAmount": "100000000000000000",
                         "tokens": [
                           {
                             "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -9771,7 +9771,7 @@
                     "fromPublicKey": "d1b70d2226308b46da297486adb6b4f1a8c1842cb159ac5ec04f384fe2d6f5da28",
                     "fromPublicKeyType": "bip340-schnorr",
                     "bytecode": "35d1b2a520a0da34c5eb8d712aa9cc",
-                    "initialAttoAlphAmount": "2000000000000000000",
+                    "initialAttoOxmAmount": "2000000000000000000",
                     "initialTokenAmounts": [
                       {
                         "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -9922,7 +9922,7 @@
                         "destinations": [
                           {
                             "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                            "attoAlphAmount": "2000000000000000000"
+                            "attoOxmAmount": "2000000000000000000"
                           }
                         ]
                       }
@@ -9947,7 +9947,7 @@
                         "destinations": [
                           {
                             "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                            "attoAlphAmount": "2000000000000000000",
+                            "attoOxmAmount": "2000000000000000000",
                             "tokens": [
                               {
                                 "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -9977,7 +9977,7 @@
                         "fromPublicKey": "d1b70d2226308b46da297486adb6b4f1a8c1842cb159ac5ec04f384fe2d6f5da28",
                         "fromPublicKeyType": "default",
                         "bytecode": "35d1b2a520a0da34c5eb8d712aa9cc",
-                        "attoAlphAmount": "1000000000000000",
+                        "attoOxmAmount": "1000000000000000",
                         "tokens": [
                           {
                             "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -10035,7 +10035,7 @@
                         "contractInputs": [
                           {
                             "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                            "attoAlphAmount": "1000000000000000",
+                            "attoOxmAmount": "1000000000000000",
                             "tokens": [
                               {
                                 "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -10045,7 +10045,7 @@
                           },
                           {
                             "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
-                            "attoAlphAmount": "100000000000000000",
+                            "attoOxmAmount": "100000000000000000",
                             "tokens": [
                               {
                                 "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -10061,7 +10061,7 @@
                         "generatedOutputs": [
                           {
                             "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                            "attoAlphAmount": "1000000000000000",
+                            "attoOxmAmount": "1000000000000000",
                             "tokens": [
                               {
                                 "id": "bd165d20bd063c7a023d22232a1e75bf46e904067f92b49323fe89fa0fd586bf",
@@ -10071,7 +10071,7 @@
                           },
                           {
                             "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
-                            "attoAlphAmount": "100000000000000000",
+                            "attoOxmAmount": "100000000000000000",
                             "tokens": [
                               {
                                 "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -10217,7 +10217,7 @@
                     }
                   ],
                   "asset": {
-                    "attoAlphAmount": "2000000000000000000",
+                    "attoOxmAmount": "2000000000000000000",
                     "tokens": [
                       {
                         "id": "bd165d20bd063c7a023d22232a1e75bf46e904067f92b49323fe89fa0fd586bf",
@@ -10454,7 +10454,7 @@
                   }
                 ],
                 "initialAsset": {
-                  "attoAlphAmount": "1000000000000000000",
+                  "attoOxmAmount": "1000000000000000000",
                   "tokens": [
                     {
                       "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -10488,7 +10488,7 @@
                       }
                     ],
                     "asset": {
-                      "attoAlphAmount": "2000000000000000000",
+                      "attoOxmAmount": "2000000000000000000",
                       "tokens": [
                         {
                           "id": "bd165d20bd063c7a023d22232a1e75bf46e904067f92b49323fe89fa0fd586bf",
@@ -10502,7 +10502,7 @@
                   {
                     "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                     "asset": {
-                      "attoAlphAmount": "3000000000000000000",
+                      "attoOxmAmount": "3000000000000000000",
                       "tokens": [
                         {
                           "id": "20aa1fcc865087d7788302d087e4bc76691218ce5d5013dd1cedaabfac19cca4",
@@ -10554,7 +10554,7 @@
                         }
                       ],
                       "asset": {
-                        "attoAlphAmount": "2000000000000000000",
+                        "attoOxmAmount": "2000000000000000000",
                         "tokens": [
                           {
                             "id": "bd165d20bd063c7a023d22232a1e75bf46e904067f92b49323fe89fa0fd586bf",
@@ -10572,7 +10572,7 @@
                       "type": "ContractOutput",
                       "hint": 1234,
                       "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                      "attoAlphAmount": "1000000000000000000",
+                      "attoOxmAmount": "1000000000000000000",
                       "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
                       "tokens": [
                         {
@@ -10727,7 +10727,7 @@
                   {
                     "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                     "asset": {
-                      "attoAlphAmount": "3000000000000000000",
+                      "attoOxmAmount": "3000000000000000000",
                       "tokens": [
                         {
                           "id": "20aa1fcc865087d7788302d087e4bc76691218ce5d5013dd1cedaabfac19cca4",
@@ -10778,7 +10778,7 @@
                         }
                       ],
                       "asset": {
-                        "attoAlphAmount": "2000000000000000000",
+                        "attoOxmAmount": "2000000000000000000",
                         "tokens": [
                           {
                             "id": "bd165d20bd063c7a023d22232a1e75bf46e904067f92b49323fe89fa0fd586bf",
@@ -10796,7 +10796,7 @@
                       "type": "ContractOutput",
                       "hint": 1,
                       "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                      "attoAlphAmount": "1000000000000000000",
+                      "attoOxmAmount": "1000000000000000000",
                       "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
                       "tokens": [
                         {
@@ -10953,7 +10953,7 @@
                       {
                         "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
                         "asset": {
-                          "attoAlphAmount": "3000000000000000000",
+                          "attoOxmAmount": "3000000000000000000",
                           "tokens": [
                             {
                               "id": "20aa1fcc865087d7788302d087e4bc76691218ce5d5013dd1cedaabfac19cca4",
@@ -11008,7 +11008,7 @@
                             }
                           ],
                           "asset": {
-                            "attoAlphAmount": "2000000000000000000",
+                            "attoOxmAmount": "2000000000000000000",
                             "tokens": [
                               {
                                 "id": "bd165d20bd063c7a023d22232a1e75bf46e904067f92b49323fe89fa0fd586bf",
@@ -11026,7 +11026,7 @@
                           "type": "ContractOutput",
                           "hint": 1,
                           "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                          "attoAlphAmount": "1000000000000000000",
+                          "attoOxmAmount": "1000000000000000000",
                           "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
                           "tokens": [
                             {
@@ -11574,7 +11574,7 @@
                         }
                       ],
                       "asset": {
-                        "attoAlphAmount": "2000000000000000000",
+                        "attoOxmAmount": "2000000000000000000",
                         "tokens": [
                           {
                             "id": "bd165d20bd063c7a023d22232a1e75bf46e904067f92b49323fe89fa0fd586bf",
@@ -11592,7 +11592,7 @@
                       "type": "ContractOutput",
                       "hint": 1,
                       "key": "798e9e137aec7c2d59d9655b4ffa640f301f628bf7c365083bb255f6aa5f89ef",
-                      "attoAlphAmount": "1000000000000000000",
+                      "attoOxmAmount": "1000000000000000000",
                       "address": "uomjgUz6D4tLejTkQtbNJMY8apAjTm1bgQf7em1wDV7S",
                       "tokens": [
                         {
@@ -11839,7 +11839,7 @@
                     "destinations": [
                       {
                         "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                        "attoAlphAmount": "2000000000000000000"
+                        "attoOxmAmount": "2000000000000000000"
                       }
                     ]
                   }
@@ -11854,7 +11854,7 @@
                     "destinations": [
                       {
                         "address": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                        "attoAlphAmount": "2000000000000000000",
+                        "attoOxmAmount": "2000000000000000000",
                         "tokens": [
                           {
                             "id": "2d11fd6c12435ffb07aaed4d190a505b621b927a5f6e51b61ce0ebe186397bdd",
@@ -12010,7 +12010,7 @@
                       "d1b70d2226308b46da297486adb6b4f1a8c1842cb159ac5ec04f384fe2d6f5da28"
                     ],
                     "toAddress": "1AujpupFP4KWeZvqA7itsHY9cLJmx4qTzojVZrg8W9y",
-                    "maxAttoAlphPerUTXO": "1000000000000000000",
+                    "maxAttoOxmPerUTXO": "1000000000000000000",
                     "lockTime": 1611041396892,
                     "gasAmount": 20000,
                     "gasPrice": "100000000000",
@@ -13582,14 +13582,14 @@
         "type": "object",
         "required": [
           "address",
-          "attoAlphAmount"
+          "attoOxmAmount"
         ],
         "properties": {
           "address": {
             "type": "string",
             "format": "address"
           },
-          "attoAlphAmount": {
+          "attoOxmAmount": {
             "type": "string",
             "format": "uint256"
           },
@@ -13704,7 +13704,7 @@
         "required": [
           "hint",
           "key",
-          "attoAlphAmount",
+          "attoOxmAmount",
           "address",
           "tokens",
           "lockTime",
@@ -13720,7 +13720,7 @@
             "type": "string",
             "format": "32-byte-hash"
           },
-          "attoAlphAmount": {
+          "attoOxmAmount": {
             "type": "string",
             "format": "uint256"
           },
@@ -13751,10 +13751,10 @@
         "title": "AssetState",
         "type": "object",
         "required": [
-          "attoAlphAmount"
+          "attoOxmAmount"
         ],
         "properties": {
-          "attoAlphAmount": {
+          "attoOxmAmount": {
             "type": "string",
             "format": "uint256"
           },
@@ -14261,7 +14261,7 @@
             "type": "string",
             "format": "hex-string"
           },
-          "initialAttoAlphAmount": {
+          "initialAttoOxmAmount": {
             "type": "string",
             "format": "uint256"
           },
@@ -14355,7 +14355,7 @@
             "type": "string",
             "format": "hex-string"
           },
-          "attoAlphAmount": {
+          "attoOxmAmount": {
             "type": "string",
             "format": "uint256"
           },
@@ -14549,7 +14549,7 @@
             "type": "string",
             "format": "address"
           },
-          "maxAttoAlphPerUTXO": {
+          "maxAttoOxmPerUTXO": {
             "type": "string",
             "format": "uint256"
           },
@@ -14624,7 +14624,7 @@
             "type": "string",
             "format": "address"
           },
-          "maxAttoAlphPerUTXO": {
+          "maxAttoOxmPerUTXO": {
             "type": "string",
             "format": "uint256"
           },
@@ -15440,7 +15440,7 @@
         "required": [
           "hint",
           "key",
-          "attoAlphAmount",
+          "attoOxmAmount",
           "address",
           "tokens",
           "type"
@@ -15454,7 +15454,7 @@
             "type": "string",
             "format": "32-byte-hash"
           },
-          "attoAlphAmount": {
+          "attoOxmAmount": {
             "type": "string",
             "format": "uint256"
           },
@@ -15593,7 +15593,7 @@
             "type": "string",
             "format": "address"
           },
-          "attoAlphAmount": {
+          "attoOxmAmount": {
             "type": "string",
             "format": "uint256"
           },
@@ -15727,7 +15727,7 @@
         "required": [
           "hint",
           "key",
-          "attoAlphAmount",
+          "attoOxmAmount",
           "address",
           "tokens",
           "lockTime",
@@ -15742,7 +15742,7 @@
             "type": "string",
             "format": "32-byte-hash"
           },
-          "attoAlphAmount": {
+          "attoOxmAmount": {
             "type": "string",
             "format": "uint256"
           },
@@ -16371,7 +16371,7 @@
           "hint",
           "key",
           "unlockScript",
-          "attoAlphAmount",
+          "attoOxmAmount",
           "address",
           "tokens"
         ],
@@ -16388,7 +16388,7 @@
             "type": "string",
             "format": "hex-string"
           },
-          "attoAlphAmount": {
+          "attoOxmAmount": {
             "type": "string",
             "format": "uint256"
           },
@@ -16526,7 +16526,7 @@
         "required": [
           "hint",
           "key",
-          "attoAlphAmount",
+          "attoOxmAmount",
           "address",
           "tokens"
         ],
@@ -16539,7 +16539,7 @@
             "type": "string",
             "format": "32-byte-hash"
           },
-          "attoAlphAmount": {
+          "attoOxmAmount": {
             "type": "string",
             "format": "uint256"
           },

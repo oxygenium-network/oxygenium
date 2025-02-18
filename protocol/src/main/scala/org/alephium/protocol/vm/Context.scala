@@ -405,7 +405,7 @@ trait StatefulContext extends StatelessContext with ContractPool {
     }
 
     val contractOutput = ContractOutput(
-      initialBalances.attoAlphAmount,
+      initialBalances.attoOxmAmount,
       LockupScript.p2c(contractId),
       initialBalances.tokenVector
     )
@@ -622,7 +622,7 @@ object StatefulContext {
             .from(preOutputs, txEnv.fixedOutputs)
             .toRight(Right(InvalidBalances))
           _ <- balances
-            .subAlph(preOutputs.head.lockupScript, txEnv.gasFeeUnsafe)
+            .subOxm(preOutputs.head.lockupScript, txEnv.gasFeeUnsafe)
             .toRight(Right(UnableToPayGasFee))
         } yield balances
       } else {

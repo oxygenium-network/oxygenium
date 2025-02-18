@@ -75,7 +75,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     val block = transfer(blockFlow, genesisPriKey, toPriKey.publicKey, amount = dustUtxoAmount)
     val tx    = block.nonCoinbase.head
     tx.gasFeeUnsafe is nonCoinbaseMinGasFee
-    nonCoinbaseMinGasFee is OXM.nanoAlph(20000 * 100)
+    nonCoinbaseMinGasFee is OXM.nanoOxm(20000 * 100)
   }
 
   trait UnsignedTxFixture extends FlowFixture {
@@ -137,7 +137,7 @@ class TxUtilsSpec extends OxygeniumSpec {
 
     def test() = {
       unsignedTx.fixedOutputs.length is 2
-      unsignedTx.fixedOutputs(0).amount is OXM.oneAlph
+      unsignedTx.fixedOutputs(0).amount is OXM.oneOxm
       unsignedTx.fixedOutputs(1).amount is genesisChange
       blockFlow
         .getBalance(genesisLockup, defaultUtxoLimit, true)
@@ -269,7 +269,7 @@ class TxUtilsSpec extends OxygeniumSpec {
         AVector.empty,
         AVector.empty,
         genesisLockup,
-        minimalAlphInContract
+        minimalOxmInContract
       )
     val block = payableCall(blockFlow, chainIndex, txScript)
     val contractOutputRef =
@@ -476,14 +476,14 @@ class TxUtilsSpec extends OxygeniumSpec {
 
   "UnsignedTransaction.buildTransferTx" should "build transaction successfully" in new UnsignedTransactionFixture {
     val inputs = {
-      val input1 = input("input1", OXM.oneAlph, fromLockupScript)
+      val input1 = input("input1", OXM.oneOxm, fromLockupScript)
       val input2 = input("input2", OXM.cent(50), fromLockupScript)
 
       AVector(input1, input2)
     }
 
     val outputs = {
-      val output1 = output(LockupScript.p2pkh(toPubKey), OXM.oneAlph)
+      val output1 = output(LockupScript.p2pkh(toPubKey), OXM.oneOxm)
       AVector(output1)
     }
 
@@ -503,7 +503,7 @@ class TxUtilsSpec extends OxygeniumSpec {
 
   it should "fail without enough OXM" in new UnsignedTransactionFixture {
     val inputs = {
-      val input1 = input("input1", OXM.oneAlph, fromLockupScript)
+      val input1 = input("input1", OXM.oneOxm, fromLockupScript)
       val input2 = input("input2", OXM.cent(50), fromLockupScript)
 
       AVector(input1, input2)
@@ -528,12 +528,12 @@ class TxUtilsSpec extends OxygeniumSpec {
 
   it should "fail without enough Gas" in new UnsignedTransactionFixture {
     val inputs = {
-      val input1 = input("input1", OXM.oneAlph, fromLockupScript)
+      val input1 = input("input1", OXM.oneOxm, fromLockupScript)
       AVector(input1)
     }
 
     val outputs = {
-      val output1 = output(LockupScript.p2pkh(toPubKey), OXM.oneAlph)
+      val output1 = output(LockupScript.p2pkh(toPubKey), OXM.oneOxm)
       AVector(output1)
     }
 
@@ -554,13 +554,13 @@ class TxUtilsSpec extends OxygeniumSpec {
     val tokenId2 = TokenId.hash("tokenId2")
 
     val inputs = {
-      val input1 = input("input1", OXM.oneAlph, fromLockupScript, (tokenId2, U256.unsafe(10)))
+      val input1 = input("input1", OXM.oneOxm, fromLockupScript, (tokenId2, U256.unsafe(10)))
       val input2 = input("input2", OXM.alph(3), fromLockupScript, (tokenId1, U256.unsafe(50)))
       AVector(input1, input2)
     }
 
     val outputs = {
-      val output1 = output(LockupScript.p2pkh(toPubKey), OXM.oneAlph, (tokenId1, U256.unsafe(10)))
+      val output1 = output(LockupScript.p2pkh(toPubKey), OXM.oneOxm, (tokenId1, U256.unsafe(10)))
       val output2 = output(
         LockupScript.p2pkh(toPubKey),
         OXM.alph(2),
@@ -592,7 +592,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     unsignedTx.fixedOutputs(6).tokens is AVector(tokenId1 -> U256.One)
     unsignedTx
       .fixedOutputs(7)
-      .amount is OXM.oneAlph.subUnsafe(nonCoinbaseMinGasFee).subUnsafe(dustUtxoAmount * 2)
+      .amount is OXM.oneOxm.subUnsafe(nonCoinbaseMinGasFee).subUnsafe(dustUtxoAmount * 2)
     unsignedTx.fixedOutputs(7).tokens.isEmpty is true
   }
 
@@ -601,13 +601,13 @@ class TxUtilsSpec extends OxygeniumSpec {
     val tokenId2 = TokenId.hash("tokenId2")
 
     val inputs = {
-      val input1 = input("input1", OXM.oneAlph, fromLockupScript, (tokenId2, U256.unsafe(10)))
+      val input1 = input("input1", OXM.oneOxm, fromLockupScript, (tokenId2, U256.unsafe(10)))
       val input2 = input("input2", OXM.cent(50), fromLockupScript)
       AVector(input1, input2)
     }
 
     val outputs = {
-      val output1 = output(LockupScript.p2pkh(toPubKey), OXM.oneAlph, (tokenId1, U256.unsafe(10)))
+      val output1 = output(LockupScript.p2pkh(toPubKey), OXM.oneOxm, (tokenId1, U256.unsafe(10)))
       AVector(output1)
     }
 
@@ -628,13 +628,13 @@ class TxUtilsSpec extends OxygeniumSpec {
     val tokenId2 = TokenId.hash("tokenId2")
 
     val inputs = {
-      val input1 = input("input1", OXM.oneAlph, fromLockupScript, (tokenId2, U256.unsafe(10)))
+      val input1 = input("input1", OXM.oneOxm, fromLockupScript, (tokenId2, U256.unsafe(10)))
       val input2 = input("input2", OXM.alph(3), fromLockupScript, (tokenId1, U256.unsafe(50)))
       AVector(input1, input2)
     }
 
     val outputs = {
-      val output1 = output(LockupScript.p2pkh(toPubKey), OXM.oneAlph, (tokenId2, U256.unsafe(11)))
+      val output1 = output(LockupScript.p2pkh(toPubKey), OXM.oneOxm, (tokenId2, U256.unsafe(11)))
       AVector(output1)
     }
 
@@ -650,21 +650,21 @@ class TxUtilsSpec extends OxygeniumSpec {
       .leftValue is s"Not enough balance for token $tokenId2"
   }
 
-  it should "fail when outputs have too small amount of Alph" in new UnsignedTransactionFixture {
+  it should "fail when outputs have too small amount of Oxm" in new UnsignedTransactionFixture {
     {
       info("with tokens")
       val tokenId1 = TokenId.hash("tokenId1")
       val tokenId2 = TokenId.hash("tokenId2")
 
       val inputs = {
-        val input1 = input("input1", OXM.oneAlph, fromLockupScript, (tokenId2, U256.unsafe(10)))
+        val input1 = input("input1", OXM.oneOxm, fromLockupScript, (tokenId2, U256.unsafe(10)))
         val input2 = input("input2", OXM.alph(3), fromLockupScript, (tokenId1, U256.unsafe(50)))
         AVector(input1, input2)
       }
 
       val outputs = {
         val output1 =
-          output(LockupScript.p2pkh(toPubKey), OXM.nanoAlph(900), (tokenId2, U256.unsafe(11)))
+          output(LockupScript.p2pkh(toPubKey), OXM.nanoOxm(900), (tokenId2, U256.unsafe(11)))
         AVector(output1)
       }
 
@@ -683,13 +683,13 @@ class TxUtilsSpec extends OxygeniumSpec {
     {
       info("without tokens")
       val inputs = {
-        val input1 = input("input1", OXM.oneAlph, fromLockupScript)
+        val input1 = input("input1", OXM.oneOxm, fromLockupScript)
         val input2 = input("input2", OXM.alph(3), fromLockupScript)
         AVector(input1, input2)
       }
 
       val outputs = {
-        val output1 = output(LockupScript.p2pkh(toPubKey), OXM.nanoAlph(900))
+        val output1 = output(LockupScript.p2pkh(toPubKey), OXM.nanoOxm(900))
         AVector(output1)
       }
 
@@ -706,7 +706,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     }
   }
 
-  it should "fail when change output doesn't have minimal amount of Alph" in new UnsignedTransactionFixture {
+  it should "fail when change output doesn't have minimal amount of Oxm" in new UnsignedTransactionFixture {
     {
       info("with tokens")
       val tokenId1 = TokenId.hash("tokenId1")
@@ -722,7 +722,7 @@ class TxUtilsSpec extends OxygeniumSpec {
 
       val outputs = {
         val output1 =
-          output(LockupScript.p2pkh(toPubKey), OXM.oneAlph, (tokenId1, U256.unsafe(10)))
+          output(LockupScript.p2pkh(toPubKey), OXM.oneOxm, (tokenId1, U256.unsafe(10)))
         val output2 = output(
           LockupScript.p2pkh(toPubKey),
           OXM.alph(2),
@@ -754,7 +754,7 @@ class TxUtilsSpec extends OxygeniumSpec {
       }
 
       val outputs = {
-        val output1 = output(LockupScript.p2pkh(toPubKey), OXM.oneAlph)
+        val output1 = output(LockupScript.p2pkh(toPubKey), OXM.oneOxm)
         val output2 = output(LockupScript.p2pkh(toPubKey), OXM.alph(2))
         AVector(output1, output2)
       }
@@ -779,7 +779,7 @@ class TxUtilsSpec extends OxygeniumSpec {
       AVector(input1, input2)
     }
 
-    val outputs = AVector(output(LockupScript.p2pkh(toPubKey), OXM.oneAlph))
+    val outputs = AVector(output(LockupScript.p2pkh(toPubKey), OXM.oneOxm))
 
     UnsignedTransaction
       .buildTransferTx(
@@ -829,7 +829,7 @@ class TxUtilsSpec extends OxygeniumSpec {
       val block     = transfer(blockflow, ChainIndex.unsafe(0, 0))
       val tx        = block.nonCoinbase.head
       val output    = tx.unsigned.fixedOutputs.head
-      val outputs   = AVector.fill(inputNum)(output.copy(amount = OXM.oneAlph))
+      val outputs   = AVector.fill(inputNum)(output.copy(amount = OXM.oneOxm))
       val newTx     = Transaction.from(tx.unsigned.inputs, outputs, tx.inputSignatures)
       val newBlock  = block.copy(transactions = AVector(newTx))
       addAndUpdateView(blockflow, newBlock)
@@ -860,7 +860,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     (2 to 10).foreach(test(_, 1))
   }
 
-  trait SweepAlphFixture extends FlowFixture {
+  trait SweepOxmFixture extends FlowFixture {
     lazy val isConsolidation         = Random.nextBoolean()
     lazy val chainIndex              = ChainIndex.unsafe(0, 0)
     lazy val (privateKey, publicKey) = chainIndex.from.generateKey
@@ -896,29 +896,29 @@ class TxUtilsSpec extends OxygeniumSpec {
       addAndCheck(blockFlow, block)
     }
 
-    def getAlphOutputs(amounts: AVector[U256]): AVector[AssetOutputInfo] = {
+    def getOxmOutputs(amounts: AVector[U256]): AVector[AssetOutputInfo] = {
       var index = 0
       val genAmount = () => {
         val amount = amounts(index)
         index += 1
         amount
       }
-      getAlphOutputs(amounts.length, genAmount()).sortBy(_.output.amount)
+      getOxmOutputs(amounts.length, genAmount()).sortBy(_.output.amount)
     }
 
-    def getAlphOutputs(
+    def getOxmOutputs(
         numOfUtxos: Int,
-        amountPerUtxo: => U256 = OXM.oneAlph
+        amountPerUtxo: => U256 = OXM.oneOxm
     ): AVector[AssetOutputInfo] = {
       val prevAllUtxos  = blockFlow.getUsableUtxos(fromLockupScript, Int.MaxValue).rightValue
-      val prevAlphUtxos = prevAllUtxos.filter(_.output.tokens.isEmpty)
+      val prevOxmUtxos = prevAllUtxos.filter(_.output.tokens.isEmpty)
       val txNum         = numOfUtxos / 200
       val remainder     = numOfUtxos % 200
       (0 until txNum).foreach(_ => transferFromGenesisAddress(200, amountPerUtxo))
       if (remainder != 0) transferFromGenesisAddress(remainder, amountPerUtxo)
       val allUtxos  = blockFlow.getUsableUtxos(fromLockupScript, Int.MaxValue).rightValue
       val alphUtxos = allUtxos.filter(_.output.tokens.isEmpty)
-      val utxos     = alphUtxos.filter(utxo => !prevAlphUtxos.exists(_.ref == utxo.ref))
+      val utxos     = alphUtxos.filter(utxo => !prevOxmUtxos.exists(_.ref == utxo.ref))
       utxos.length is numOfUtxos
       utxos
     }
@@ -943,7 +943,7 @@ class TxUtilsSpec extends OxygeniumSpec {
         gasOpt: Option[GasBox] = None,
         lockTimeOpt: Option[TimeStamp] = None
     ) = {
-      val (unsignedTxs, _) = blockFlow.buildSweepAlphTxs(
+      val (unsignedTxs, _) = blockFlow.buildSweepOxmTxs(
         fromLockupScript,
         fromUnlockScript,
         toLockupScript,
@@ -959,9 +959,9 @@ class TxUtilsSpec extends OxygeniumSpec {
     }
 
     def getBalances(lockupScript: LockupScript.Asset): (U256, AVector[(TokenId, U256)]) = {
-      val (alph, lockedAlph, tokens, lockedTokens, _) =
+      val (alph, lockedOxm, tokens, lockedTokens, _) =
         blockFlow.getBalance(lockupScript, Int.MaxValue, true).rightValue
-      lockedAlph is U256.Zero
+      lockedOxm is U256.Zero
       lockedTokens.isEmpty is true
       (alph, tokens)
     }
@@ -1003,20 +1003,20 @@ class TxUtilsSpec extends OxygeniumSpec {
     }
   }
 
-  it should "sweep OXM" in new SweepAlphFixture {
+  it should "sweep OXM" in new SweepOxmFixture {
     override lazy val isConsolidation = false
     val numOfUtxos                    = Random.between(1, 1000)
-    val utxos                         = getAlphOutputs(numOfUtxos)
+    val utxos                         = getOxmOutputs(numOfUtxos)
     utxos.length is numOfUtxos
     val txs = testSweepOXM(utxos)
     txs.length is (utxos.length - 1) / OXM.MaxTxInputNum + 1
     submitSweepTxsAndCheckBalances(txs)
   }
 
-  it should "consolidate OXM" in new SweepAlphFixture {
+  it should "consolidate OXM" in new SweepOxmFixture {
     override lazy val isConsolidation = true
     val numOfUtxos                    = Random.between(1, 1000)
-    val utxos                         = getAlphOutputs(numOfUtxos)
+    val utxos                         = getOxmOutputs(numOfUtxos)
     utxos.length is numOfUtxos
     val txs = testSweepOXM(utxos)
     val numOfTxs =
@@ -1025,10 +1025,10 @@ class TxUtilsSpec extends OxygeniumSpec {
     submitSweepTxsAndCheckBalances(txs)
   }
 
-  it should "sweep OXM by ascending order" in new SweepAlphFixture {
+  it should "sweep OXM by ascending order" in new SweepOxmFixture {
     val numOfUtxos  = 300
     val alphAmounts = AVector.from(1 to numOfUtxos).map(dustUtxoAmount.mulUnsafe(_))
-    val utxos       = getAlphOutputs(alphAmounts)
+    val utxos       = getOxmOutputs(alphAmounts)
     utxos.length is numOfUtxos
 
     utxos.foreachWithIndex { case (utxo, index) =>
@@ -1045,36 +1045,36 @@ class TxUtilsSpec extends OxygeniumSpec {
     submitSweepTxsAndCheckBalances(txs)
   }
 
-  it should "not create txs if there is only one utxo left when consolidating" in new SweepAlphFixture {
+  it should "not create txs if there is only one utxo left when consolidating" in new SweepOxmFixture {
     override lazy val isConsolidation = true
 
-    val utxos0   = getAlphOutputs(1)
+    val utxos0   = getOxmOutputs(1)
     val lockTime = Some(TimeStamp.zero)
     utxos0.length is 1
     testSweepOXM(utxos0).length is 0
     testSweepOXM(utxos0, None, lockTime).length is 1
 
-    val utxos1 = getAlphOutputs(OXM.MaxTxInputNum - 1) ++ utxos0
+    val utxos1 = getOxmOutputs(OXM.MaxTxInputNum - 1) ++ utxos0
     utxos1.length is OXM.MaxTxInputNum
     testSweepOXM(utxos1).length is 1
     testSweepOXM(utxos1, None, lockTime).length is 1
 
-    val utxos2 = getAlphOutputs(1) ++ utxos1
+    val utxos2 = getOxmOutputs(1) ++ utxos1
     utxos2.length is OXM.MaxTxInputNum + 1
     testSweepOXM(utxos2).length is 1
     testSweepOXM(utxos2, None, lockTime).length is 2
 
-    val utxos3 = getAlphOutputs(1) ++ utxos2
+    val utxos3 = getOxmOutputs(1) ++ utxos2
     utxos3.length is OXM.MaxTxInputNum + 2
     val txs = testSweepOXM(utxos3, None, lockTime)
     txs.length is 2
     submitSweepTxsAndCheckBalances(txs)
   }
 
-  it should "return an error if there is not enough OXM for transaction output" in new SweepAlphFixture {
-    val utxos = getAlphOutputs(2, dustUtxoAmount)
+  it should "return an error if there is not enough OXM for transaction output" in new SweepOxmFixture {
+    val utxos = getOxmOutputs(2, dustUtxoAmount)
     blockFlow
-      .tryBuildSweepAlphTx(
+      .tryBuildSweepOxmTx(
         fromLockupScript,
         fromUnlockScript,
         toLockupScript,
@@ -1086,10 +1086,10 @@ class TxUtilsSpec extends OxygeniumSpec {
       .leftValue is "Not enough OXM for transaction output in sweeping"
   }
 
-  it should "return an error if the specified gas is not enough: sweep OXM" in new SweepAlphFixture {
-    val utxos = getAlphOutputs(7)
+  it should "return an error if the specified gas is not enough: sweep OXM" in new SweepOxmFixture {
+    val utxos = getOxmOutputs(7)
     blockFlow
-      .tryBuildSweepAlphTx(
+      .tryBuildSweepOxmTx(
         fromLockupScript,
         fromUnlockScript,
         toLockupScript,
@@ -1102,12 +1102,12 @@ class TxUtilsSpec extends OxygeniumSpec {
       .startsWith("The specified gas amount is not enough") is true
   }
 
-  it should "return an error if the sweep of OXM fails due to too small output amount" in new SweepAlphFixture {
-    getAlphOutputs(2, dustUtxoAmount)
+  it should "return an error if the sweep of OXM fails due to too small output amount" in new SweepOxmFixture {
+    getOxmOutputs(2, dustUtxoAmount)
     sweep().leftValue is "Tx output value is too small, avoid spreading dust"
   }
 
-  trait SweepTokenFixture extends SweepAlphFixture {
+  trait SweepTokenFixture extends SweepOxmFixture {
     def getTokenOutputs(
         numOfTokens: Int,
         numOfUtxosPerToken: Int,
@@ -1150,7 +1150,7 @@ class TxUtilsSpec extends OxygeniumSpec {
         lockTimeOpt: Option[TimeStamp] = None,
         checker: AVector[AssetOutputInfo] => Assertion = _ => Succeeded
     ) = {
-      val (sweepTokenTxs, restAlphUtxos, _) = blockFlow.buildSweepTokenTxs(
+      val (sweepTokenTxs, restOxmUtxos, _) = blockFlow.buildSweepTokenTxs(
         fromLockupScript,
         fromUnlockScript,
         toLockupScript,
@@ -1160,14 +1160,14 @@ class TxUtilsSpec extends OxygeniumSpec {
         gasOpt,
         nonCoinbaseMinGasPrice
       )
-      checker(restAlphUtxos)
+      checker(restOxmUtxos)
       sweepTokenTxs.length is numOfTxs
-      val sweepAlphTxs = if (restAlphUtxos.nonEmpty) {
-        testSweepOXM(restAlphUtxos, gasOpt, lockTimeOpt)
+      val sweepOxmTxs = if (restOxmUtxos.nonEmpty) {
+        testSweepOXM(restOxmUtxos, gasOpt, lockTimeOpt)
       } else {
         AVector.empty
       }
-      sweepTokenTxs.map(checkAndSignTx) ++ sweepAlphTxs
+      sweepTokenTxs.map(checkAndSignTx) ++ sweepOxmTxs
     }
   }
 
@@ -1223,7 +1223,7 @@ class TxUtilsSpec extends OxygeniumSpec {
       txs0.exists(_.unsigned.inputs.exists(_.outputRef == output.ref)) is true
     }
 
-    val alphOutputs = getAlphOutputs(2)
+    val alphOutputs = getOxmOutputs(2)
     val txs1        = testSweepToken(allTokenOutputs, alphOutputs, 2, None, lockTime)
     tokenOutputs0.foreach { output =>
       txs1.exists(_.unsigned.inputs.exists(_.outputRef == output.ref)) is true
@@ -1237,13 +1237,13 @@ class TxUtilsSpec extends OxygeniumSpec {
   it should "return empty txs if all tokens have only one utxo when consolidating" in new SweepTokenFixture {
     override lazy val isConsolidation = true
     val tokenOutputs                  = getTokenOutputs(100, 1, U256.One)
-    val alphOutputs                   = getAlphOutputs(1)
+    val alphOutputs                   = getOxmOutputs(1)
     testSweepToken(tokenOutputs, alphOutputs, 0)
   }
 
   it should "not use OXM utxos if token utxos can cover the gas fee" in new SweepTokenFixture {
     val tokenOutputs = getTokenOutputs(3, 40)
-    val alphOutputs  = getAlphOutputs(2)
+    val alphOutputs  = getOxmOutputs(2)
     val txs          = testSweepToken(tokenOutputs, alphOutputs, 1, None, None, _ is alphOutputs)
     submitSweepTxsAndCheckBalances(txs)
   }
@@ -1251,7 +1251,7 @@ class TxUtilsSpec extends OxygeniumSpec {
   it should "use OXM utxos if token utxos cannot cover the gas fee" in new SweepTokenFixture {
     override lazy val isConsolidation = false
     val tokenOutputs                  = getTokenOutputs(500, 1)
-    val alphOutputs                   = getAlphOutputs(4)
+    val alphOutputs                   = getOxmOutputs(4)
     val txs = testSweepToken(tokenOutputs, alphOutputs, 4, None, None, _.isEmpty is true)
     submitSweepTxsAndCheckBalances(txs)
   }
@@ -1274,7 +1274,7 @@ class TxUtilsSpec extends OxygeniumSpec {
 
   it should "return an error if the specified gas is not enough: sweep tokens" in new SweepTokenFixture {
     val tokenOutputs = getTokenOutputs(3, 2)
-    val alphOutputs  = getAlphOutputs(1)
+    val alphOutputs  = getOxmOutputs(1)
     blockFlow
       .tryBuildSweepTokenTx(
         fromLockupScript,
@@ -1292,8 +1292,8 @@ class TxUtilsSpec extends OxygeniumSpec {
 
   it should "fall back to the descending order when ascending order doesn't work" in new SweepTokenFixture {
     val tokenOutputs = getTokenOutputs(3, 2)
-    val alphAmounts  = AVector(dustUtxoAmount, dustUtxoAmount, dustUtxoAmount, OXM.oneAlph)
-    val alphOutputs  = getAlphOutputs(alphAmounts)
+    val alphAmounts  = AVector(dustUtxoAmount, dustUtxoAmount, dustUtxoAmount, OXM.oneOxm)
+    val alphOutputs  = getOxmOutputs(alphAmounts)
     alphOutputs.map(_.output.amount) is alphAmounts
 
     val gas = GasEstimation.estimateWithSameP2PKHInputs(7, 4)
@@ -1326,7 +1326,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     override lazy val isConsolidation = false
     OXM.MaxTxInputNum / 2 is 128
     val tokenOutputs = getTokenOutputs(128, 1)
-    val alphOutputs  = getAlphOutputs(128, dustUtxoAmount)
+    val alphOutputs  = getOxmOutputs(128, dustUtxoAmount)
     val txs          = testSweepToken(tokenOutputs, alphOutputs, 1)
     submitSweepTxsAndCheckBalances(txs)
   }
@@ -1334,7 +1334,7 @@ class TxUtilsSpec extends OxygeniumSpec {
   it should "complete the sweep in multiple rounds" in new SweepTokenFixture {
     override lazy val isConsolidation = true
     getTokenOutputs(2, 200)
-    getAlphOutputs(OXM.MaxTxInputNum + 1, dustUtxoAmount)
+    getOxmOutputs(OXM.MaxTxInputNum + 1, dustUtxoAmount)
     val (alph0, tokens0) = getBalances(fromLockupScript)
 
     val txs0 = sweep().rightValue
@@ -1352,7 +1352,7 @@ class TxUtilsSpec extends OxygeniumSpec {
 
   it should "return an error if the sweep of token fails" in new SweepTokenFixture {
     getTokenOutputs(1, 2)
-    getAlphOutputs(2, dustUtxoAmount)
+    getOxmOutputs(2, dustUtxoAmount)
     sweep().leftValue is "Not enough OXM for gas fee in sweeping"
   }
 
@@ -1385,7 +1385,7 @@ class TxUtilsSpec extends OxygeniumSpec {
 
     def buildOutputs(
         targetGroups: AVector[GroupIndex],
-        amount: U256 = OXM.oneAlph,
+        amount: U256 = OXM.oneOxm,
         tokens: AVector[(TokenId, U256)] = AVector.empty
     ): AVector[TxOutputInfo] = {
       targetGroups
@@ -1450,7 +1450,7 @@ class TxUtilsSpec extends OxygeniumSpec {
           actualBalance is expectedDestBalance
 
           val txsFee         = U256.from(txs.map(_.gasFeeUnsafe.v).sum).get
-          val senderHasSpent = U256.from(outputs.map(_.attoAlphAmount.v).sum).get + txsFee
+          val senderHasSpent = U256.from(outputs.map(_.attoOxmAmount.v).sum).get + txsFee
           val expectedSenderBalanceWithGas = initialSenderBalance - senderHasSpent
 
           val sendersBalance =
@@ -1470,7 +1470,7 @@ class TxUtilsSpec extends OxygeniumSpec {
 
     val n = 3 * OXM.MaxTxInputNum
 
-    val outputs  = AVector.fill(n)(output.copy(amount = OXM.oneAlph))
+    val outputs  = AVector.fill(n)(output.copy(amount = OXM.oneOxm))
     val newTx    = Transaction.from(tx.unsigned.inputs, outputs, tx.inputSignatures)
     val newBlock = block.copy(transactions = AVector(newTx))
     addAndUpdateView(blockFlow, newBlock)
@@ -1608,7 +1608,7 @@ class TxUtilsSpec extends OxygeniumSpec {
           None,
           None,
           nonCoinbaseMinGasPrice,
-          Some(OXM.oneAlph),
+          Some(OXM.oneOxm),
           Int.MaxValue
         )
         .rightValue
@@ -1658,11 +1658,11 @@ class TxUtilsSpec extends OxygeniumSpec {
           genesisUnlockScript,
           AVector(inputUtxoWithTokens),
           AVector(outputUtxoWithTokens),
-          GasPrice(OXM.nanoAlph(10))
+          GasPrice(OXM.nanoOxm(10))
         )
         .rightValue
 
-    alphRemainder is halfOfInputAmount - GasPrice(OXM.nanoAlph(10)) * minimalGas
+    alphRemainder is halfOfInputAmount - GasPrice(OXM.nanoOxm(10)) * minimalGas
     tokenRemainder is halfOfInputTokens
   }
 
@@ -1826,7 +1826,7 @@ class TxUtilsSpec extends OxygeniumSpec {
       AVector.fill(outputsCount) {
         TxOutputInfo(
           Address.p2pkh(genesisKeys(0)._2).lockupScript,
-          OXM.oneAlph,
+          OXM.oneOxm,
           tokens,
           None
         )
@@ -1845,7 +1845,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     testTransferFromOneToManyGroups(genesisPrivateKey_0, genesisPublicKey_0, Some(1), outputs)(
       expectedSenderUtxosCount = 1,
       expectedDestUtxosCount = 2,
-      expectedDestBalance = OXM.oneAlph * 2,
+      expectedDestBalance = OXM.oneOxm * 2,
       expectedTxsCount = 2
     ) isE Succeeded
   }
@@ -1878,7 +1878,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     testTransferFromOneToManyGroups(genesisPrivateKey_0, genesisPublicKey_0, Some(2), outputs)(
       expectedSenderUtxosCount = 2,
       expectedDestUtxosCount = 2,
-      expectedDestBalance = OXM.oneAlph * 2,
+      expectedDestBalance = OXM.oneOxm * 2,
       expectedTxsCount = 2
     ) isE Succeeded
   }
@@ -1893,7 +1893,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     )(
       expectedSenderUtxosCount = 2,
       expectedDestUtxosCount = 257,
-      expectedDestBalance = OXM.oneAlph * 257,
+      expectedDestBalance = OXM.oneOxm * 257,
       expectedTxsCount = 2
     ) isE Succeeded
   }
@@ -1922,7 +1922,7 @@ class TxUtilsSpec extends OxygeniumSpec {
          |}
          |""".stripMargin
     val tokens = AVector.fill(10)(issueToken(contract, LockupScript.p2pkh(genesisPublicKey_0)))
-    val outputsWithTokens = buildOutputs(AVector(GroupIndex.unsafe(0)), OXM.oneAlph, tokens)
+    val outputsWithTokens = buildOutputs(AVector(GroupIndex.unsafe(0)), OXM.oneOxm, tokens)
     testTransferFromOneToManyGroups(
       genesisPrivateKey_0,
       genesisPublicKey_0,
@@ -1931,7 +1931,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     )(
       expectedSenderUtxosCount = 1,
       expectedDestUtxosCount = 11,
-      expectedDestBalance = OXM.oneAlph,
+      expectedDestBalance = OXM.oneOxm,
       expectedTxsCount = 1
     ) isE Succeeded
   }
@@ -1947,7 +1947,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     )(
       expectedSenderUtxosCount = 1, // change
       expectedDestUtxosCount = 255,
-      expectedDestBalance = OXM.oneAlph * 255,
+      expectedDestBalance = OXM.oneOxm * 255,
       expectedTxsCount = 1
     ) isE Succeeded
   }
@@ -1957,7 +1957,7 @@ class TxUtilsSpec extends OxygeniumSpec {
       AVector(0, 1, 2).map { groupIndex =>
         TxOutputInfo(
           Address.p2pkh(GroupIndex.unsafe(groupIndex).generateKey._2).lockupScript,
-          OXM.oneAlph,
+          OXM.oneOxm,
           AVector.empty,
           Option.empty
         )
@@ -1971,7 +1971,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     )(
       expectedSenderUtxosCount = 1,
       expectedDestUtxosCount = 3,
-      expectedDestBalance = OXM.oneAlph * 3,
+      expectedDestBalance = OXM.oneOxm * 3,
       expectedTxsCount = 3
     ) isE Succeeded
 
@@ -1983,7 +1983,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     )(
       expectedSenderUtxosCount = 1,
       expectedDestUtxosCount = 6,
-      expectedDestBalance = OXM.oneAlph * 6,
+      expectedDestBalance = OXM.oneOxm * 6,
       expectedTxsCount = 3
     ) isE Succeeded
 
@@ -1995,7 +1995,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     )(
       expectedSenderUtxosCount = 1,
       expectedDestUtxosCount = 9,
-      expectedDestBalance = OXM.oneAlph * 9,
+      expectedDestBalance = OXM.oneOxm * 9,
       expectedTxsCount = 3
     ) isE Succeeded
 
@@ -2069,11 +2069,11 @@ class TxUtilsSpec extends OxygeniumSpec {
     }
 
     forAll(assetOutputsGen) { assetOutputs =>
-      val (attoAlphBalance, attoAlphLockedBalance, tokenBalances, lockedTokenBalances) =
+      val (attoOxmBalance, attoOxmLockedBalance, tokenBalances, lockedTokenBalances) =
         TxUtils.getBalance(assetOutputs.as[TxOutput])
 
-      attoAlphBalance is U256.unsafe(assetOutputs.sumBy(_.amount.v))
-      attoAlphLockedBalance is U256.unsafe(assetOutputs.filter(_.lockTime > now).sumBy(_.amount.v))
+      attoOxmBalance is U256.unsafe(assetOutputs.sumBy(_.amount.v))
+      attoOxmLockedBalance is U256.unsafe(assetOutputs.filter(_.lockTime > now).sumBy(_.amount.v))
 
       val expectedTokenBalances       = getTokenBalances(assetOutputs)
       val expectedLockedTokenBalances = getTokenBalances(assetOutputs.filter(_.lockTime > now))
@@ -2134,10 +2134,10 @@ class TxUtilsSpec extends OxygeniumSpec {
   }
 
   it should "get balance for contract address" in new ContractFixture {
-    val (attoAlphBalance, attoAlphLockedBalance, tokenBalances, tokenLockedBalances, utxosNum) =
+    val (attoOxmBalance, attoOxmLockedBalance, tokenBalances, tokenLockedBalances, utxosNum) =
       blockFlow.getBalance(contractOutputScript, Int.MaxValue, true).rightValue
-    attoAlphBalance is minimalAlphInContract
-    attoAlphLockedBalance is U256.Zero
+    attoOxmBalance is minimalOxmInContract
+    attoOxmLockedBalance is U256.Zero
     tokenBalances is AVector(TokenId.from(contractId) -> U256.unsafe(1))
     tokenLockedBalances.length is 0
     utxosNum is 1
@@ -2149,7 +2149,7 @@ class TxUtilsSpec extends OxygeniumSpec {
     utxos.length is 1
     utxo.ref is contractOutputRef
     utxo.output.lockupScript is contractOutputScript
-    utxo.output.amount is minimalAlphInContract
+    utxo.output.amount is minimalOxmInContract
     utxo.output.tokens is AVector(TokenId.from(contractId) -> U256.unsafe(1))
   }
 
@@ -2185,7 +2185,7 @@ class TxUtilsSpec extends OxygeniumSpec {
         None,
         schnorrAddress.lockupScript,
         schnorrAddress.unlockScript,
-        AVector(TxOutputInfo(LockupScript.p2pkh(genesisPubKey), OXM.oneAlph, AVector.empty, None)),
+        AVector(TxOutputInfo(LockupScript.p2pkh(genesisPubKey), OXM.oneOxm, AVector.empty, None)),
         None,
         nonCoinbaseMinGasPrice,
         Int.MaxValue,
@@ -2636,7 +2636,7 @@ class TxUtilsSpec extends OxygeniumSpec {
 
     protected def buildScriptTx(
         inputs: AVector[(AssetOutputRef, AssetOutput)],
-        approvedAlph: U256,
+        approvedOxm: U256,
         approvedTokens: (TokenId, U256)*
     ) = {
       val result = UnsignedTransaction
@@ -2645,7 +2645,7 @@ class TxUtilsSpec extends OxygeniumSpec {
           fromLockupScript,
           fromUnlockScript,
           inputs,
-          approvedAlph,
+          approvedOxm,
           AVector.from(approvedTokens),
           minimalGas,
           nonCoinbaseMinGasPrice
@@ -2662,69 +2662,69 @@ class TxUtilsSpec extends OxygeniumSpec {
   "UnsignedTransaction.buildScriptTx" should "fail because of not enough assets" in new BuildScriptTxFixture {
     {
       info("not enough OXM")
-      val inputs = AVector(input("input1", OXM.oneAlph, fromLockupScript))
-      buildScriptTx(inputs, OXM.oneAlph.subUnsafe(defaultGasFee)).isRight is true
-      buildScriptTx(inputs, OXM.oneAlph.addOneUnsafe()).leftValue is "Not enough balance"
+      val inputs = AVector(input("input1", OXM.oneOxm, fromLockupScript))
+      buildScriptTx(inputs, OXM.oneOxm.subUnsafe(defaultGasFee)).isRight is true
+      buildScriptTx(inputs, OXM.oneOxm.addOneUnsafe()).leftValue is "Not enough balance"
     }
 
     {
       info("not enough token")
       val inputs = AVector(
-        input("input1", OXM.oneAlph, fromLockupScript),
-        input("input2", dustUtxoAmount, fromLockupScript, (tokenId, OXM.oneAlph))
+        input("input1", OXM.oneOxm, fromLockupScript),
+        input("input2", dustUtxoAmount, fromLockupScript, (tokenId, OXM.oneOxm))
       )
 
-      buildScriptTx(inputs, OXM.cent(10), (tokenId, OXM.oneAlph)).isRight is true
+      buildScriptTx(inputs, OXM.cent(10), (tokenId, OXM.oneOxm)).isRight is true
       buildScriptTx(
         inputs,
         OXM.cent(10),
-        (tokenId, OXM.oneAlph.addOneUnsafe())
+        (tokenId, OXM.oneOxm.addOneUnsafe())
       ).leftValue is s"Not enough balance for token $tokenId"
     }
 
     {
       info("not enough gas fee")
       val inputs = AVector(
-        input("input1", OXM.oneAlph.addUnsafe(defaultGasFee).subOneUnsafe(), fromLockupScript)
+        input("input1", OXM.oneOxm.addUnsafe(defaultGasFee).subOneUnsafe(), fromLockupScript)
       )
 
-      buildScriptTx(inputs, OXM.oneAlph.subOneUnsafe()).isRight is true
-      buildScriptTx(inputs, OXM.oneAlph).leftValue is "Not enough balance for gas fee"
+      buildScriptTx(inputs, OXM.oneOxm.subOneUnsafe()).isRight is true
+      buildScriptTx(inputs, OXM.oneOxm).leftValue is "Not enough balance for gas fee"
     }
   }
 
   "UnsignedTransaction.buildScriptTx" should "fail because of not enough OXM for change output" in new BuildScriptTxFixture {
     {
       info("not enough OXM for OXM change output")
-      val inputs       = AVector(input("input1", OXM.oneAlph, fromLockupScript))
-      val approvedAlph = OXM.oneAlph.subUnsafe(defaultGasFee)
+      val inputs       = AVector(input("input1", OXM.oneOxm, fromLockupScript))
+      val approvedOxm = OXM.oneOxm.subUnsafe(defaultGasFee)
 
-      buildScriptTx(inputs, approvedAlph).isRight is true
-      buildScriptTx(inputs, approvedAlph.subUnsafe(dustUtxoAmount)).isRight is true
+      buildScriptTx(inputs, approvedOxm).isRight is true
+      buildScriptTx(inputs, approvedOxm.subUnsafe(dustUtxoAmount)).isRight is true
       buildScriptTx(
         inputs,
-        approvedAlph.subOneUnsafe()
+        approvedOxm.subOneUnsafe()
       ).leftValue is "Not enough OXM for OXM change output, expected 1000000000000000, got 1"
     }
 
     {
       info("not enough OXM for token change output")
       val inputs = AVector(
-        input("input1", OXM.oneAlph, fromLockupScript),
-        input("input2", dustUtxoAmount, fromLockupScript, (tokenId, OXM.oneAlph))
+        input("input1", OXM.oneOxm, fromLockupScript),
+        input("input2", dustUtxoAmount, fromLockupScript, (tokenId, OXM.oneOxm))
       )
-      val availableAlph = OXM.oneAlph.subUnsafe(defaultGasFee)
+      val availableOxm = OXM.oneOxm.subUnsafe(defaultGasFee)
 
-      buildScriptTx(inputs, availableAlph, (tokenId, OXM.oneAlph)).isRight is true
+      buildScriptTx(inputs, availableOxm, (tokenId, OXM.oneOxm)).isRight is true
       buildScriptTx(
         inputs,
-        availableAlph.subUnsafe(dustUtxoAmount),
-        (tokenId, OXM.oneAlph.subOneUnsafe())
+        availableOxm.subUnsafe(dustUtxoAmount),
+        (tokenId, OXM.oneOxm.subOneUnsafe())
       ).isRight is true
       buildScriptTx(
         inputs,
-        availableAlph.subOneUnsafe(),
-        (tokenId, OXM.oneAlph.subOneUnsafe())
+        availableOxm.subOneUnsafe(),
+        (tokenId, OXM.oneOxm.subOneUnsafe())
       ).leftValue is "Not enough OXM for OXM and token change output, expected 2000000000000000, got 1000000000000001"
     }
   }
@@ -2735,7 +2735,7 @@ class TxUtilsSpec extends OxygeniumSpec {
       input("input1", OXM.alph(2), fromLockupScript)
     )
 
-    buildScriptTx(inputs, OXM.oneAlph).leftValue is "Inputs not unique"
+    buildScriptTx(inputs, OXM.oneOxm).leftValue is "Inputs not unique"
   }
 
   "UnsignedTransaction.buildScriptTx" should "fail because of the number of inputs exceeds MaxTxInputNum" in new BuildScriptTxFixture {
@@ -2746,10 +2746,10 @@ class TxUtilsSpec extends OxygeniumSpec {
       .from(0 to OXM.MaxTxInputNum)
       .map(idx => input(s"input${idx}", OXM.alph(1), fromLockupScript))
 
-    buildScriptTx(inputs0, OXM.oneAlph).isRight is true
+    buildScriptTx(inputs0, OXM.oneOxm).isRight is true
     buildScriptTx(
       inputs1,
-      OXM.oneAlph
+      OXM.oneOxm
     ).leftValue is "Too many inputs for the transfer, consider to reduce the amount to send, or use the `sweep-address` endpoint to consolidate the inputs first"
   }
 
@@ -2898,12 +2898,12 @@ class TxUtilsSpec extends OxygeniumSpec {
 
   private def output(
       lockupScript: LockupScript.Asset,
-      attoAlphAmount: U256,
+      attoOxmAmount: U256,
       tokens: (TokenId, U256)*
   ): UnsignedTransaction.TxOutputInfo = {
     UnsignedTransaction.TxOutputInfo(
       lockupScript,
-      attoAlphAmount,
+      attoOxmAmount,
       AVector.from(tokens),
       lockTime = None
     )

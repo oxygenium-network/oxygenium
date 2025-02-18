@@ -23,7 +23,7 @@ import org.oxygenium.protocol.model._
 import org.oxygenium.util.{AVector, TimeStamp, U256}
 
 final case class MutBalancesPerLockup(
-    var attoAlphAmount: U256,
+    var attoOxmAmount: U256,
     tokenAmounts: mutable.Map[TokenId, U256],
     scopeDepth: Int
 ) {
@@ -34,8 +34,8 @@ final case class MutBalancesPerLockup(
 
   def getTokenAmount(tokenId: TokenId): Option[U256] = tokenAmounts.get(tokenId)
 
-  def addAlph(amount: U256): Option[Unit] = {
-    attoAlphAmount.add(amount).map(attoAlphAmount = _)
+  def addOxm(amount: U256): Option[Unit] = {
+    attoOxmAmount.add(amount).map(attoOxmAmount = _)
   }
 
   def addToken(tokenId: TokenId, amount: U256): Option[Unit] = {
@@ -48,8 +48,8 @@ final case class MutBalancesPerLockup(
     }
   }
 
-  def subAlph(amount: U256): Option[Unit] = {
-    attoAlphAmount.sub(amount).map(attoAlphAmount = _)
+  def subOxm(amount: U256): Option[Unit] = {
+    attoOxmAmount.sub(amount).map(attoOxmAmount = _)
   }
 
   def subToken(tokenId: TokenId, amount: U256): Option[Unit] = {
@@ -60,8 +60,8 @@ final case class MutBalancesPerLockup(
 
   def add(another: MutBalancesPerLockup): Option[Unit] =
     Try {
-      attoAlphAmount =
-        attoAlphAmount.add(another.attoAlphAmount).getOrElse(throw MutBalancesPerLockup.error)
+      attoOxmAmount =
+        attoOxmAmount.add(another.attoOxmAmount).getOrElse(throw MutBalancesPerLockup.error)
       another.tokenAmounts.foreachEntry { case (tokenId, amount) =>
         tokenAmounts.get(tokenId) match {
           case Some(currentAmount) =>
@@ -75,8 +75,8 @@ final case class MutBalancesPerLockup(
 
   def sub(another: MutBalancesPerLockup): Option[Unit] =
     Try {
-      attoAlphAmount =
-        attoAlphAmount.sub(another.attoAlphAmount).getOrElse(throw MutBalancesPerLockup.error)
+      attoOxmAmount =
+        attoOxmAmount.sub(another.attoOxmAmount).getOrElse(throw MutBalancesPerLockup.error)
       another.tokenAmounts.foreachEntry { case (tokenId, amount) =>
         tokenAmounts.get(tokenId) match {
           case Some(currentAmount) =>
@@ -101,25 +101,25 @@ final case class MutBalancesPerLockup(
       hardFork: HardFork
   ): ExeResult[AVector[TxOutput]] = {
     val tokens = tokenVector
-    if (attoAlphAmount.isZero) {
+    if (attoOxmAmount.isZero) {
       if (tokens.isEmpty) {
         Right(AVector.empty)
       } else {
-        failed(InvalidOutputBalances(lockupScript, tokens.length, attoAlphAmount))
+        failed(InvalidOutputBalances(lockupScript, tokens.length, attoOxmAmount))
       }
     } else {
       lockupScript match {
         case l: LockupScript.Asset =>
           TxOutput
-            .from(attoAlphAmount, tokens, l, lockTime)
-            .toRight(Right(InvalidOutputBalances(lockupScript, tokens.length, attoAlphAmount)))
+            .from(attoOxmAmount, tokens, l, lockTime)
+            .toRight(Right(InvalidOutputBalances(lockupScript, tokens.length, attoOxmAmount)))
         case l: LockupScript.P2C =>
-          if (attoAlphAmount < minimalContractStorageDeposit(hardFork)) {
-            failed(LowerThanContractMinimalBalance(Address.Contract(l), attoAlphAmount))
+          if (attoOxmAmount < minimalContractStorageDeposit(hardFork)) {
+            failed(LowerThanContractMinimalBalance(Address.Contract(l), attoOxmAmount))
           } else if (tokens.length > maxTokenPerContractUtxo) {
             failed(InvalidTokenNumForContractOutput(Address.Contract(l), tokens.length))
           } else {
-            Right(AVector[TxOutput](ContractOutput(attoAlphAmount, l, tokens)))
+            Right(AVector[TxOutput](ContractOutput(attoOxmAmount, l, tokens)))
           }
       }
     }
@@ -127,14 +127,14 @@ final case class MutBalancesPerLockup(
 
   def toTxOutputDeprecated(lockupScript: LockupScript): ExeResult[AVector[TxOutput]] = {
     val tokens = tokenVector
-    if (attoAlphAmount.isZero) {
+    if (attoOxmAmount.isZero) {
       if (tokens.isEmpty) {
         Right(AVector.empty)
       } else {
-        failed(InvalidOutputBalances(lockupScript, tokens.length, attoAlphAmount))
+        failed(InvalidOutputBalances(lockupScript, tokens.length, attoOxmAmount))
       }
     } else {
-      Right(AVector(TxOutput.fromDeprecated(attoAlphAmount, tokens, lockupScript)))
+      Right(AVector(TxOutput.fromDeprecated(attoOxmAmount, tokens, lockupScript)))
     }
   }
 

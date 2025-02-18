@@ -124,7 +124,7 @@ class TransactionSpec
   }
 
   it should "cap the gas reward" in {
-    val hardReward = OXM.oneAlph
+    val hardReward = OXM.oneOxm
     Transaction.totalReward(1, 100, HardFork.Mainnet) is U256.unsafe(100)
     Transaction.totalReward(2, 100, HardFork.Mainnet) is U256.unsafe(101)
     Transaction.totalReward(200, 100, HardFork.Mainnet) is U256.unsafe(200)
@@ -136,7 +136,7 @@ class TransactionSpec
   }
 
   it should "ignore gas fee for Leman upgrade" in {
-    val hardReward = OXM.oneAlph
+    val hardReward = OXM.oneOxm
     Transaction.totalReward(1, 100, HardFork.Leman) is U256.unsafe(100)
     Transaction.totalReward(2, 100, HardFork.Leman) is U256.unsafe(100)
     Transaction.totalReward(200, 100, HardFork.Leman) is U256.unsafe(100)
@@ -265,11 +265,11 @@ class TransactionSpec
 //           |@using(preapprovedAssets = true, assetsInContract = true)
 //           |TxScript Main {
 //           |  verifyTxSignature!(#${pubKey1.toHexString})
-//           |  transferAlphFromSelf!(@$address1, 1)
+//           |  transferOxmFromSelf!(@$address1, 1)
 //           |  transferTokenToSelf!(@$address1, #${tokenId.toHexString}, 42)
 //           |
 //           |  verifyTxSignature!(#${pubKey2.toHexString})
-//           |  transferAlphFromSelf!(@$address2, 5)
+//           |  transferOxmFromSelf!(@$address2, 5)
 //           |}
 //           |""".stripMargin
       // Compiled from the script above
@@ -288,7 +288,7 @@ class TransactionSpec
               VerifyTxSignature,
               AddressConst(vm.Val.Address(LockupScript.p2pkh(pubKey1))),
               vm.U256Const1,
-              vm.TransferAlphFromSelf,
+              vm.TransferOxmFromSelf,
               AddressConst(vm.Val.Address(LockupScript.p2pkh(pubKey1))),
               BytesConst(vm.Val.ByteVec(tokenId.bytes)),
               U256Const(vm.Val.U256(42)),
@@ -297,7 +297,7 @@ class TransactionSpec
               VerifyTxSignature,
               AddressConst(vm.Val.Address(LockupScript.p2pkh(pubKey2))),
               vm.U256Const5,
-              vm.TransferAlphFromSelf
+              vm.TransferOxmFromSelf
             )
           )
         )
@@ -499,7 +499,7 @@ class TransactionSpec
 //             |@using(preapprovedAssets = true, assetsInContract = true)
 //             |TxScript Main {
 //             |  verifyTxSignature!(#${pubKey1.toHexString})
-//             |  transferAlphFromSelf!(@$contractAddress, 1000)
+//             |  transferOxmFromSelf!(@$contractAddress, 1000)
 //             |}
 //             |""".stripMargin
 //
@@ -521,7 +521,7 @@ class TransactionSpec
               VerifyTxSignature,
               AddressConst(vm.Val.Address(contractLockupScript)),
               U256Const(vm.Val.U256(1000)),
-              vm.TransferAlphFromSelf
+              vm.TransferOxmFromSelf
             )
           )
         )

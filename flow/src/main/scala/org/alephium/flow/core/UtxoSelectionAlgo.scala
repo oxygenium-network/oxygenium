@@ -36,12 +36,12 @@ import org.oxygenium.util._
 // scalastyle:off parameter.number
 object UtxoSelectionAlgo extends StrictLogging {
   trait AssetOrder {
-    def byAlph: Ordering[Asset]
+    def byOxm: Ordering[Asset]
     def byToken(id: TokenId): Ordering[Asset]
   }
 
   object AssetAscendingOrder extends AssetOrder {
-    val byAlph: Ordering[Asset] = (x: Asset, y: Asset) => {
+    val byOxm: Ordering[Asset] = (x: Asset, y: Asset) => {
       val compare1 = x.outputType.cachedLevel.compareTo(y.outputType.cachedLevel)
       if (compare1 != 0) {
         compare1
@@ -59,19 +59,19 @@ object UtxoSelectionAlgo extends StrictLogging {
             compare1
           } else {
             amountX.compareTo(amountY) match {
-              case 0 => byAlph.compare(x, y)
+              case 0 => byOxm.compare(x, y)
               case v => v
             }
           }
         case (Some(_), None) => -1
         case (None, Some(_)) => 1
-        case (None, None)    => byAlph.compare(x, y)
+        case (None, None)    => byOxm.compare(x, y)
       }
     }
   }
 
   object AssetDescendingOrder extends AssetOrder {
-    val byAlph: Ordering[Asset]               = AssetAscendingOrder.byAlph.reverse
+    val byOxm: Ordering[Asset]               = AssetAscendingOrder.byOxm.reverse
     def byToken(id: TokenId): Ordering[Asset] = AssetAscendingOrder.byToken(id).reverse
   }
 
@@ -172,10 +172,10 @@ object UtxoSelectionAlgo extends StrictLogging {
                 }
             }
             scriptGasFee = gasPrice * scriptGas
-            totalAttoAlphAmount <- scriptGasFee
+            totalAttoOxmAmount <- scriptGasFee
               .add(amounts.alph)
               .toRight("OXM balance overflow with estimated script gas")
-            amountsWithScriptGas = AssetAmounts(totalAttoAlphAmount, amounts.tokens)
+            amountsWithScriptGas = AssetAmounts(totalAttoOxmAmount, amounts.tokens)
             utxosWithGas <- selectUtxos(
               amountsWithScriptGas,
               utxos,
@@ -241,22 +241,22 @@ object UtxoSelectionAlgo extends StrictLogging {
         (utxosForTokens, remainingUtxos) = tokensFoundResult
         alphSelected = utxosForTokens.fold(U256.Zero)(_ addUnsafe _.output.amount)
         alphToSelect = amounts.alph.sub(alphSelected).getOrElse(U256.Zero)
-        alphFoundResult <- selectForAmount(alphToSelect, sortAlph(remainingUtxos))(asset =>
+        alphFoundResult <- selectForAmount(alphToSelect, sortOxm(remainingUtxos))(asset =>
           Some(asset.output.amount)
         )
       } yield {
-        val (utxosForAlph, restOfUtxos) = alphFoundResult
-        val foundUtxos                  = utxosForTokens ++ utxosForAlph
-        val attoAlphAmountWithoutGas    = foundUtxos.fold(U256.Zero)(_ addUnsafe _.output.amount)
-        SelectedSoFar(attoAlphAmountWithoutGas, foundUtxos, restOfUtxos)
+        val (utxosForOxm, restOfUtxos) = alphFoundResult
+        val foundUtxos                  = utxosForTokens ++ utxosForOxm
+        val attoOxmAmountWithoutGas    = foundUtxos.fold(U256.Zero)(_ addUnsafe _.output.amount)
+        SelectedSoFar(attoOxmAmountWithoutGas, foundUtxos, restOfUtxos)
       }
     }
 
-    def sortAlph(assets: AVector[Asset]): AVector[Asset] = {
+    def sortOxm(assets: AVector[Asset]): AVector[Asset] = {
       val assetsWithoutTokens = assets.filter(_.output.tokens.isEmpty)
       val assetsWithTokens    = assets.filter(_.output.tokens.nonEmpty)
-      assetsWithoutTokens.sorted(assetOrder.byAlph) ++
-        assetsWithTokens.sorted(assetOrder.byAlph)
+      assetsWithoutTokens.sorted(assetOrder.byOxm) ++
+        assetsWithTokens.sorted(assetOrder.byOxm)
     }
 
     private def selectForAmount(
@@ -334,7 +334,7 @@ object UtxoSelectionAlgo extends StrictLogging {
         unlockScript: UnlockScript,
         txOutputsLength: Int,
         selectedSoFar: SelectedSoFar,
-        totalAttoAlphAmount: U256,
+        totalAttoOxmAmount: U256,
         assetScriptGasEstimator: AssetScriptGasEstimator
     ): Either[String, (SelectedSoFar, GasBox)] = {
       val selectedUTXOs       = selectedSoFar.selected
@@ -357,7 +357,7 @@ object UtxoSelectionAlgo extends StrictLogging {
         estimatedGas match {
           case Right(gas) =>
             val gasFee = gasPrice * gas
-            if (sum >= totalAttoAlphAmount.addUnsafe(gasFee)) {
+            if (sum >= totalAttoOxmAmount.addUnsafe(gasFee)) {
               Right((sum, index, gas))
             } else {
               if (index == restOfUtxos.length) {

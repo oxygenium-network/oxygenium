@@ -229,13 +229,13 @@ class UtxoSelectionAlgoSpec extends OxygeniumSpec with LockupScriptGenerators {
     val tokenId3 = TokenId.hash("tokenId3")
     val tokenId4 = TokenId.hash("tokenId4")
 
-    def checkOrderByAlph(
+    def checkOrderByOxm(
         input: AVector[Asset],
         utxoIndexes: Int*
     ) = {
       val ascending = AVector.from(utxoIndexes).map(input(_))
-      input.sorted(AssetAscendingOrder.byAlph) is ascending
-      input.sorted(AssetDescendingOrder.byAlph) is ascending.reverse
+      input.sorted(AssetAscendingOrder.byOxm) is ascending
+      input.sorted(AssetDescendingOrder.byOxm) is ascending.reverse
     }
 
     def checkOrderByToken(
@@ -257,13 +257,13 @@ class UtxoSelectionAlgoSpec extends OxygeniumSpec with LockupScriptGenerators {
       (30, AVector((tokenId1, 2), (tokenId3, 10)))
     )
 
-    checkOrderByAlph(AVector.empty)
+    checkOrderByOxm(AVector.empty)
     checkOrderByToken(AVector.empty, tokenId1)
     checkOrderByToken(AVector.empty, tokenId2)
     checkOrderByToken(AVector.empty, tokenId3)
     checkOrderByToken(AVector.empty, tokenId4)
 
-    checkOrderByAlph(utxos, 4, 2, 3, 1, 0, 5)
+    checkOrderByOxm(utxos, 4, 2, 3, 1, 0, 5)
     checkOrderByToken(utxos, tokenId1, 5, 4, 3, 0, 2, 1)
     checkOrderByToken(utxos, tokenId2, 0, 3, 4, 2, 1, 5)
     checkOrderByToken(utxos, tokenId3, 5, 4, 2, 3, 1, 0)
@@ -297,29 +297,29 @@ class UtxoSelectionAlgoSpec extends OxygeniumSpec with LockupScriptGenerators {
 
     UtxoSelection(0).verifyCanSelect()
 
-    val firstAlphAmount = amounts.head._1
-    UtxoSelection(firstAlphAmount).verifyCanSelect()
-    UtxoSelection(firstAlphAmount, (tokenIds(100), tokenAmounts(100))).verifyCanSelect()
+    val firstOxmAmount = amounts.head._1
+    UtxoSelection(firstOxmAmount).verifyCanSelect()
+    UtxoSelection(firstOxmAmount, (tokenIds(100), tokenAmounts(100))).verifyCanSelect()
     UtxoSelection(
-      firstAlphAmount,
+      firstOxmAmount,
       (tokenIds(1), tokenAmounts(1)),
       (tokenIds(51), tokenAmounts(51)),
       (tokenIds(151), tokenAmounts(151))
     ).verifyCanSelect()
 
-    val firstTenAlphAmount = amounts.take(10).map(_._1).sum
-    UtxoSelection(firstTenAlphAmount).verifyCanSelect()
-    UtxoSelection(firstTenAlphAmount, (tokenIds(100), tokenAmounts(100))).verifyCanSelect()
+    val firstTenOxmAmount = amounts.take(10).map(_._1).sum
+    UtxoSelection(firstTenOxmAmount).verifyCanSelect()
+    UtxoSelection(firstTenOxmAmount, (tokenIds(100), tokenAmounts(100))).verifyCanSelect()
     UtxoSelection(
-      firstTenAlphAmount,
+      firstTenOxmAmount,
       (tokenIds(1), tokenAmounts(1)),
       (tokenIds(51), tokenAmounts(51)),
       (tokenIds(151), tokenAmounts(151))
     ).verifyCanSelect()
 
-    val allAlphAmount = amounts.map(_._1).sum
-    UtxoSelection(allAlphAmount).verifyCanNotSelect()
-    UtxoSelection(allAlphAmount, (tokenIds(101), tokenAmounts(101))).verifyCanNotSelect()
+    val allOxmAmount = amounts.map(_._1).sum
+    UtxoSelection(allOxmAmount).verifyCanNotSelect()
+    UtxoSelection(allOxmAmount, (tokenIds(101), tokenAmounts(101))).verifyCanNotSelect()
   }
 
   trait Fixture extends OxygeniumConfigFixture {
@@ -356,7 +356,7 @@ class UtxoSelectionAlgoSpec extends OxygeniumSpec with LockupScriptGenerators {
     case class UtxoSelection(alph: U256, tokens: (TokenId, U256)*)(implicit
         utxos: AVector[Asset]
     ) {
-      val utxosSorted            = utxos.sorted(AssetAscendingOrder.byAlph)
+      val utxosSorted            = utxos.sorted(AssetAscendingOrder.byOxm)
       var gasOpt: Option[GasBox] = None
       val outputs = {
         val lockupScript1 = p2pkhLockupGen(GroupIndex.unsafe(0)).sample.value

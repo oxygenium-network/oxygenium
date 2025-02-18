@@ -50,7 +50,7 @@ class BuiltInSpec extends OxygeniumSpec {
         case _: Any => Seq.empty[Instr[_]]
       }
       .toSet is StaticAnalysis.contractAssetsInstrs.--(
-      Set(SelfAddress, TransferAlphFromSelf, TransferAlphToSelf)
+      Set(SelfAddress, TransferOxmFromSelf, TransferOxmToSelf)
     )
   }
 

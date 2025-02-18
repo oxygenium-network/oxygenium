@@ -334,7 +334,7 @@ class BlockSpec extends OxygeniumSpec with NoIndexModelGenerators {
 //           |@using(preapprovedAssets = true, assetsInContract = true)
 //           |TxScript Main {
 //           |  verifyTxSignature!(#${pubKey2.toHexString})
-//           |  transferAlphFromSelf!(@$address, 5)
+//           |  transferOxmFromSelf!(@$address, 5)
 //           |}
 //           |""".stripMargin
       // Compiled from the script above
@@ -353,7 +353,7 @@ class BlockSpec extends OxygeniumSpec with NoIndexModelGenerators {
               vm.VerifyTxSignature,
               vm.AddressConst(vm.Val.Address(LockupScript.p2pkh(pubKey2))),
               vm.U256Const5,
-              vm.TransferAlphFromSelf
+              vm.TransferOxmFromSelf
             )
           )
         )

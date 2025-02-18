@@ -26,7 +26,7 @@ import org.oxygenium.util.{AVector, TimeStamp}
 sealed trait Output {
   def hint: Int
   def key: Hash
-  def attoAlphAmount: Amount
+  def attoOxmAmount: Amount
   def address: Address
   def tokens: AVector[Token]
   def toProtocol(): model.TxOutput
@@ -71,7 +71,7 @@ object Output {
 final case class AssetOutput(
     hint: Int,
     key: Hash,
-    attoAlphAmount: Amount,
+    attoOxmAmount: Amount,
     address: Address.Asset,
     tokens: AVector[Token],
     lockTime: TimeStamp,
@@ -79,7 +79,7 @@ final case class AssetOutput(
 ) extends Output {
   def toProtocol(): model.AssetOutput = {
     model.AssetOutput(
-      attoAlphAmount.value,
+      attoOxmAmount.value,
       address.lockupScript,
       lockTime,
       tokens.map { token => (token.id, token.amount) },
@@ -92,13 +92,13 @@ final case class AssetOutput(
 final case class ContractOutput(
     hint: Int,
     key: Hash,
-    attoAlphAmount: Amount,
+    attoOxmAmount: Amount,
     address: Address.Contract,
     tokens: AVector[Token]
 ) extends Output {
   def toProtocol(): model.ContractOutput = {
     model.ContractOutput(
-      attoAlphAmount.value,
+      attoOxmAmount.value,
       address.lockupScript,
       tokens.map(token => (token.id, token.amount))
     )
@@ -108,7 +108,7 @@ final case class ContractOutput(
 final case class FixedAssetOutput(
     hint: Int,
     key: Hash,
-    attoAlphAmount: Amount,
+    attoOxmAmount: Amount,
     address: Address.Asset,
     tokens: AVector[Token],
     lockTime: TimeStamp,
@@ -116,7 +116,7 @@ final case class FixedAssetOutput(
 ) {
   def toProtocol(): model.AssetOutput = {
     model.AssetOutput(
-      attoAlphAmount.value,
+      attoOxmAmount.value,
       address.lockupScript,
       lockTime,
       tokens.map { token => (token.id, token.amount) },
@@ -125,7 +125,7 @@ final case class FixedAssetOutput(
   }
 
   def upCast(): AssetOutput = {
-    AssetOutput(hint, key, attoAlphAmount, address, tokens, lockTime, message)
+    AssetOutput(hint, key, attoOxmAmount, address, tokens, lockTime, message)
   }
 }
 

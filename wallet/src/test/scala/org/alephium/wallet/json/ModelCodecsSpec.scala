@@ -37,7 +37,7 @@ class ModelCodecsSpec extends OxygeniumSpec with ModelCodecs {
   val blockflowFetchMaxAge = Duration.unsafe(1000)
   val address              = Address.p2pkh(PublicKey.generate)
   val group                = GroupIndex.unsafe(1)
-  val balance              = Amount(OXM.oneAlph)
+  val balance              = Amount(OXM.oneOxm)
   val lockedBalance        = Amount(OXM.alph(2))
   val hash                 = Hash.generate
   val txId                 = TransactionId.generate
@@ -97,7 +97,7 @@ class ModelCodecsSpec extends OxygeniumSpec with ModelCodecs {
   }
 
   it should "Transfer" in {
-    val json     = s"""{"destinations":[{"address":"$address","attoAlphAmount":"$balance"}]}"""
+    val json     = s"""{"destinations":[{"address":"$address","attoOxmAmount":"$balance"}]}"""
     val transfer = Transfer(AVector(Destination(address, Some(balance))))
     check(transfer, json)
   }

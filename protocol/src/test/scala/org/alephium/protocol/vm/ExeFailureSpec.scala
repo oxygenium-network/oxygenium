@@ -31,7 +31,7 @@ class ExeFailureSpec extends OxygeniumSpec {
 
     NotEnoughApprovedBalance(lockupScript, tokenId, OXM.alph(1), U256.Zero).toString is
       "Not enough approved balance for address 1G5fKUFGRFEHXcTeCfgKQNppbumd8E9G8vA6p2wf4n2L6, tokenId: cee16cdfad98e8943fd9a5b45e1765e0a6895608efe3eeeb41a60db55f605b46, expected: 1000000000000000000, got: 0"
-    NotEnoughApprovedBalance(lockupScript, TokenId.alph, OXM.alph(2), OXM.oneAlph).toString is
+    NotEnoughApprovedBalance(lockupScript, TokenId.alph, OXM.alph(2), OXM.oneOxm).toString is
       "Not enough approved balance for address 1G5fKUFGRFEHXcTeCfgKQNppbumd8E9G8vA6p2wf4n2L6, tokenId: OXM, expected: 2000000000000000000, got: 1000000000000000000"
   }
 
@@ -42,19 +42,19 @@ class ExeFailureSpec extends OxygeniumSpec {
     InvalidOutputBalances(lockupScript, 2, U256.Zero).toString is
       s"Invalid OXM balance for address $address, expected 0.002 OXM, got 0 OXM, you need to transfer more OXM to this address"
 
-    val attoAlphAmount0 = dustUtxoAmount.subUnsafe(U256.One)
-    InvalidOutputBalances(lockupScript, 0, attoAlphAmount0).toString is
+    val attoOxmAmount0 = dustUtxoAmount.subUnsafe(U256.One)
+    InvalidOutputBalances(lockupScript, 0, attoOxmAmount0).toString is
       s"Invalid OXM balance for address $address, expected 0.001 OXM, got 0.000999999999999999 OXM, you need to transfer more OXM to this address"
 
     InvalidOutputBalances(lockupScript, 2, dustUtxoAmount).toString is
       s"Invalid OXM balance for address $address, expected 0.002 OXM, got 0.001 OXM, you need to transfer more OXM to this address"
 
-    val attoAlphAmount1 = dustUtxoAmount.addUnsafe(U256.One)
-    InvalidOutputBalances(lockupScript, 2, attoAlphAmount1).toString is
+    val attoOxmAmount1 = dustUtxoAmount.addUnsafe(U256.One)
+    InvalidOutputBalances(lockupScript, 2, attoOxmAmount1).toString is
       s"Invalid OXM balance for address $address, expected 0.002 OXM, got 0.001000000000000001 OXM, you need to transfer more OXM to this address"
 
-    val attoAlphAmount2 = dustUtxoAmount.mulUnsafe(U256.unsafe(3)).subUnsafe(U256.One)
-    InvalidOutputBalances(lockupScript, 2, attoAlphAmount2).toString is
+    val attoOxmAmount2 = dustUtxoAmount.mulUnsafe(U256.unsafe(3)).subUnsafe(U256.One)
+    InvalidOutputBalances(lockupScript, 2, attoOxmAmount2).toString is
       s"Invalid OXM balance for address $address, expected 0.003 OXM, got 0.002999999999999999 OXM, you need to transfer more OXM to this address"
   }
 

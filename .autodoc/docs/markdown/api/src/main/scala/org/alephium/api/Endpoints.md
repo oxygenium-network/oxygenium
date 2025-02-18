@@ -13,7 +13,7 @@ val getBalance: BaseEndpoint[Address, Balance] =
   addressesEndpoint.get
     .in(path[Address]("address"))
     .in("balance")
-    .out(jsonBodyWithAlph[Balance])
+    .out(jsonBodyWithOxm[Balance])
     .summary("Get the balance of an address")
 ```
 

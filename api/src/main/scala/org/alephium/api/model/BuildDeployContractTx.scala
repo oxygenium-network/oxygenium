@@ -30,7 +30,7 @@ final case class BuildDeployContractTx(
     fromPublicKey: ByteString,
     fromPublicKeyType: Option[BuildTxCommon.PublicKeyType] = None,
     bytecode: ByteString,
-    initialAttoAlphAmount: Option[Amount] = None,
+    initialAttoOxmAmount: Option[Amount] = None,
     initialTokenAmounts: Option[AVector[Token]] = None,
     issueTokenAmount: Option[Amount] = None,
     issueTokenTo: Option[Address.Asset] = None,

@@ -882,9 +882,9 @@ class CompilerSpec extends OxygeniumSpec with ContextGenerators {
          |  mut btcReserve: U256
          |) {
          |  @using(updateFields = true)
-         |  pub fn exchange(attoAlphAmount: U256) -> (U256) {
-         |    let tokenAmount = btcReserve * attoAlphAmount / (alphReserve + attoAlphAmount)
-         |    alphReserve = alphReserve + attoAlphAmount
+         |  pub fn exchange(attoOxmAmount: U256) -> (U256) {
+         |    let tokenAmount = btcReserve * attoOxmAmount / (alphReserve + attoOxmAmount)
+         |    alphReserve = alphReserve + attoOxmAmount
          |    btcReserve = btcReserve - tokenAmount
          |    return tokenAmount
          |  }
@@ -2547,7 +2547,7 @@ class CompilerSpec extends OxygeniumSpec with ContextGenerators {
          |@using(preapprovedAssets = true, assetsInContract = false)
          |TxScript Main(address: Address, tokenId: ByteVec, tokenAmount: U256, swapContractKey: ByteVec) {
          |  let swap = Swap(swapContractKey)
-         |  swap.swapAlph{
+         |  swap.swapOxm{
          |    address -> tokenId: tokenAmount
          |  }(address, tokenAmount)
          |}
@@ -2555,7 +2555,7 @@ class CompilerSpec extends OxygeniumSpec with ContextGenerators {
          |@using(methodSelector = false)
          |Interface Swap {
          |  @using(preapprovedAssets = true, assetsInContract = true)
-         |  pub fn swapAlph(buyer: Address, tokenAmount: U256) -> ()
+         |  pub fn swapOxm(buyer: Address, tokenAmount: U256) -> ()
          |}
          |""".stripMargin
     val script = Compiler.compileTxScript(code).rightValue
@@ -2719,7 +2719,7 @@ class CompilerSpec extends OxygeniumSpec with ContextGenerators {
     }
   }
 
-  it should "use ApproveAlph instr for approve OXM" in {
+  it should "use ApproveOxm instr for approve OXM" in {
     val code =
       s"""
          |TxScript Main(address: Address, fooId: ByteVec) {
@@ -4037,11 +4037,11 @@ class CompilerSpec extends OxygeniumSpec with ContextGenerators {
       TransferTokenFromSelf
     )
     val alphInstrs = Seq(
-      ApproveAlph,
-      AlphRemaining,
-      TransferAlph,
-      TransferAlphToSelf,
-      TransferAlphFromSelf
+      ApproveOxm,
+      OxmRemaining,
+      TransferOxm,
+      TransferOxmToSelf,
+      TransferOxmFromSelf
     )
     val method0 = compileContract(code).rightValue.methods(0)
     tokenInstrs.foreach(instr => method0.instrs.contains(instr) is false)

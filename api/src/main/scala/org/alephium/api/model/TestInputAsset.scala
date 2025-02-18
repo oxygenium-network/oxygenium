@@ -26,7 +26,7 @@ import org.oxygenium.util.{AVector, TimeStamp, U256}
 final case class TestInputAsset(address: Address.Asset, asset: AssetState) {
   def toAssetOutput: AssetOutput =
     AssetOutput(
-      asset.attoAlphAmount,
+      asset.attoOxmAmount,
       address.lockupScript,
       TimeStamp.zero,
       asset.flatTokens.map(token => (token.id, token.amount)),
@@ -35,14 +35,14 @@ final case class TestInputAsset(address: Address.Asset, asset: AssetState) {
 
   def approveAll(gasFeeOpt: Option[U256]): AVector[Instr[StatefulContext]] = {
     val addressConst = AddressConst(vm.Val.Address(address.lockupScript))
-    val attoAlphAmount = gasFeeOpt match {
-      case Some(gasFee) => asset.attoAlphAmount.subUnsafe(gasFee)
-      case None         => asset.attoAlphAmount
+    val attoOxmAmount = gasFeeOpt match {
+      case Some(gasFee) => asset.attoOxmAmount.subUnsafe(gasFee)
+      case None         => asset.attoOxmAmount
     }
     val alphInstrs = AVector[Instr[StatefulContext]](
       addressConst,
-      U256Const(vm.Val.U256(attoAlphAmount)),
-      ApproveAlph
+      U256Const(vm.Val.U256(attoOxmAmount)),
+      ApproveOxm
     )
     val tokenInstrs = asset.flatTokens.flatMap[Instr[StatefulContext]] { token =>
       AVector(

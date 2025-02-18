@@ -128,7 +128,7 @@ class BroadcastTxTest extends OxygeniumActorSpec {
       transfer(
         publicKey,
         toAddress,
-        OXM.oneAlph,
+        OXM.oneOxm,
         privateKey,
         restPort(masterPortClique1)
       )

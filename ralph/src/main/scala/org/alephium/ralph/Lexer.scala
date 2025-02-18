@@ -99,7 +99,7 @@ class Lexer(fileURI: Option[java.net.URI]) {
       val baseWidth = input.length
       val width =
         if (unit == "alph") {
-          num = num.multiply(new BigDecimal(OXM.oneAlph.toBigInt))
+          num = num.multiply(new BigDecimal(OXM.oneOxm.toBigInt))
           baseWidth + spaces.length + unit.length
         } else {
           baseWidth

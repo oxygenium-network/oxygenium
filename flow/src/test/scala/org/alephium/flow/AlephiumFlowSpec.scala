@@ -162,7 +162,7 @@ trait FlowFixture
         } else {
           require(outputsLimit > 0, "Number of outputs must be greater than 0")
           val amountPerOutput =
-            getAlphBalance(blockFlow, lockupScript).divUnsafe(U256.unsafe(outputsLimit))
+            getOxmBalance(blockFlow, lockupScript).divUnsafe(U256.unsafe(outputsLimit))
           val outputs = AVector.fill(outputsLimit - initialUtxos.length) {
             TxOutputInfo(lockupScript, amountPerOutput, AVector.empty, None)
           }
@@ -759,7 +759,7 @@ trait FlowFixture
     tips ++ bestDeps
   }
 
-  def getAlphBalance(blockFlow: BlockFlow, lockupScript: LockupScript.Asset): U256 = {
+  def getOxmBalance(blockFlow: BlockFlow, lockupScript: LockupScript.Asset): U256 = {
     brokerConfig.contains(lockupScript.groupIndex) is true
     val query = blockFlow.getUsableUtxos(lockupScript, defaultUtxoLimit)
     U256.unsafe(query.rightValue.sumBy(_.output.amount.v: BigInt).underlying())
@@ -880,7 +880,7 @@ trait FlowFixture
       initialImmState: AVector[Val],
       initialMutState: AVector[Val],
       lockupScript: LockupScript.Asset,
-      attoAlphAmount: U256,
+      attoOxmAmount: U256,
       tokenIssuanceInfo: Option[TokenIssuance.Info] = None
   ): StatefulScript = {
     val address     = Address.Asset(lockupScript)
@@ -889,13 +889,13 @@ trait FlowFixture
     val mutStateRaw = Hex.toHexString(serialize(initialMutState))
     val creation = tokenIssuanceInfo match {
       case Some(TokenIssuance.Info(amount, None)) =>
-        s"createContractWithToken!{@$address -> OXM: ${attoAlphAmount.v}}(#$codeRaw, #$immStateRaw, #$mutStateRaw, ${amount.v})"
+        s"createContractWithToken!{@$address -> OXM: ${attoOxmAmount.v}}(#$codeRaw, #$immStateRaw, #$mutStateRaw, ${amount.v})"
       case Some(TokenIssuance.Info(amount, Some(transferTo))) => {
         val toAddress = Address.from(transferTo).toBase58
-        s"createContractWithToken!{@$address -> OXM: ${attoAlphAmount.v}}(#$codeRaw, #$immStateRaw, #$mutStateRaw, ${amount.v}, @${toAddress})"
+        s"createContractWithToken!{@$address -> OXM: ${attoOxmAmount.v}}(#$codeRaw, #$immStateRaw, #$mutStateRaw, ${amount.v}, @${toAddress})"
       }
       case None =>
-        s"createContract!{@$address -> OXM: ${attoAlphAmount.v}}(#$codeRaw, #$immStateRaw, #$mutStateRaw)"
+        s"createContract!{@$address -> OXM: ${attoOxmAmount.v}}(#$codeRaw, #$immStateRaw, #$mutStateRaw)"
     }
     val scriptRaw =
       s"""
@@ -940,7 +940,7 @@ trait FlowFixture
       initialImmState: AVector[Val] = AVector.empty,
       initialMutState: AVector[Val] = AVector.empty,
       tokenIssuanceInfo: Option[TokenIssuance.Info] = None,
-      initialAttoAlphAmount: U256 = minimalAlphInContract,
+      initialAttoOxmAmount: U256 = minimalOxmInContract,
       chainIndex: ChainIndex = ChainIndex.unsafe(0, 0)
   ): (ContractId, ContractOutputRef, Block) = {
     val contract = Compiler.compileContract(input).rightValue
@@ -949,7 +949,7 @@ trait FlowFixture
       initialImmState,
       initialMutState,
       tokenIssuanceInfo,
-      initialAttoAlphAmount,
+      initialAttoOxmAmount,
       chainIndex
     )
   }
@@ -959,7 +959,7 @@ trait FlowFixture
       initialImmState: AVector[Val] = AVector.empty,
       initialMutState: AVector[Val] = AVector.empty,
       tokenIssuanceInfo: Option[TokenIssuance.Info] = None,
-      initialAttoAlphAmount: U256 = minimalAlphInContract,
+      initialAttoOxmAmount: U256 = minimalOxmInContract,
       chainIndex: ChainIndex = ChainIndex.unsafe(0, 0)
   ): (ContractId, ContractOutputRef, Block) = {
     val genesisLockup = getGenesisLockupScript(chainIndex)
@@ -969,7 +969,7 @@ trait FlowFixture
         initialImmState,
         initialMutState,
         genesisLockup,
-        initialAttoAlphAmount,
+        initialAttoOxmAmount,
         tokenIssuanceInfo
       )
     val block = payableCall(blockFlow, chainIndex, txScript)
@@ -1019,7 +1019,7 @@ trait FlowFixture
     def createTx(): Transaction = {
       val (fromPriKey, _, lastAmount) = keys.last
       val (toPriKey, toPubKey)        = brokerConfig.randomGroupIndex().generateKey
-      val amount                      = lastAmount.subUnsafe(OXM.oneAlph)
+      val amount                      = lastAmount.subUnsafe(OXM.oneOxm)
       val block                       = transfer(tmpBlockFlow, fromPriKey, toPubKey, amount)
       val chainIndex                  = block.chainIndex
       addAndCheck(tmpBlockFlow, block)

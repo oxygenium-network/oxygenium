@@ -262,7 +262,7 @@ class VMSpec extends OxygeniumSpec with ContextGenerators with NetworkConfigFixt
     val (_, pubKey1) = SignatureSchema.generatePriPub()
     val address1     = Val.Address(LockupScript.p2pkh(pubKey1))
     val tokenId      = TokenId.random
-    val balances1    = MutBalancesPerLockup(OXM.oneAlph, mutable.Map(tokenId -> 99), 0)
+    val balances1    = MutBalancesPerLockup(OXM.oneOxm, mutable.Map(tokenId -> 99), 0)
 
     def mockContext(): StatefulContext =
       new StatefulContext with NetworkConfigFixture.Default with GroupConfigFixture.Default {
@@ -331,14 +331,14 @@ class VMSpec extends OxygeniumSpec with ContextGenerators with NetworkConfigFixt
   it should "show remaining balances" in new BalancesFixture {
     val instrs = AVector[Instr[StatefulContext]](
       AddressConst(address0),
-      AlphRemaining,
+      OxmRemaining,
       AddressConst(address1),
-      AlphRemaining,
+      OxmRemaining,
       AddressConst(address1),
       BytesConst(Val.ByteVec(tokenId.bytes)),
       TokenRemaining
     )
-    pass(instrs, AVector[Val](Val.U256(OXM.alph(100)), Val.U256(OXM.oneAlph), Val.U256(99)))
+    pass(instrs, AVector[Val](Val.U256(OXM.alph(100)), Val.U256(OXM.oneOxm), Val.U256(99)))
   }
 
   it should "succeed when there is no token balances" in new BalancesFixture {
@@ -354,43 +354,43 @@ class VMSpec extends OxygeniumSpec with ContextGenerators with NetworkConfigFixt
     val instrs = AVector[Instr[StatefulContext]](
       AddressConst(address0),
       U256Const(Val.U256(OXM.alph(10))),
-      ApproveAlph,
+      ApproveOxm,
       AddressConst(address0),
-      AlphRemaining,
+      OxmRemaining,
       AddressConst(address1),
       BytesConst(Val.ByteVec(tokenId.bytes)),
       U256Const(Val.U256(10)),
       ApproveToken,
       AddressConst(address1),
-      AlphRemaining,
+      OxmRemaining,
       AddressConst(address1),
       BytesConst(Val.ByteVec(tokenId.bytes)),
       TokenRemaining
     )
-    pass(instrs, AVector[Val](Val.U256(OXM.alph(90)), Val.U256(OXM.oneAlph), Val.U256(89)))
+    pass(instrs, AVector[Val](Val.U256(OXM.alph(90)), Val.U256(OXM.oneOxm), Val.U256(89)))
   }
 
   it should "pass approved tokens to function call" in new BalancesFixture {
     val instrs0 = AVector[Instr[StatefulContext]](
       AddressConst(address0),
       U256Const(Val.U256(10)),
-      ApproveAlph,
+      ApproveOxm,
       CallLocal(1),
       AddressConst(address0),
       U256Const(Val.U256(20)),
-      ApproveAlph,
+      ApproveOxm,
       CallLocal(2)
     )
     val instrs1 = AVector[Instr[StatefulContext]](
       AddressConst(address0),
-      AlphRemaining,
+      OxmRemaining,
       U256Const(Val.U256(10)),
       U256Eq,
       Assert
     )
     val instrs2 = AVector[Instr[StatefulContext]](
       AddressConst(address0),
-      AlphRemaining,
+      OxmRemaining,
       U256Const(Val.U256(20)),
       U256Eq,
       Assert
@@ -416,25 +416,25 @@ class VMSpec extends OxygeniumSpec with ContextGenerators with NetworkConfigFixt
       AddressConst(address0),
       AddressConst(address1),
       U256Const(Val.U256(OXM.alph(10))),
-      TransferAlph,
+      TransferOxm,
       AddressConst(address1),
       AddressConst(address0),
       BytesConst(Val.ByteVec(tokenId.bytes)),
       U256Const(Val.U256(1)),
       TransferToken,
       AddressConst(address0),
-      AlphRemaining,
+      OxmRemaining,
       AddressConst(address1),
-      AlphRemaining,
+      OxmRemaining,
       AddressConst(address1),
       BytesConst(Val.ByteVec(tokenId.bytes)),
       TokenRemaining
     )
 
     val context =
-      pass(instrs, AVector[Val](Val.U256(OXM.alph(90)), Val.U256(OXM.oneAlph), Val.U256(98)))
-    context.outputBalances.getAttoAlphAmount(address0.lockupScript).get is OXM.alph(90)
-    context.outputBalances.getAttoAlphAmount(address1.lockupScript).get is OXM.alph(11)
+      pass(instrs, AVector[Val](Val.U256(OXM.alph(90)), Val.U256(OXM.oneOxm), Val.U256(98)))
+    context.outputBalances.getAttoOxmAmount(address0.lockupScript).get is OXM.alph(90)
+    context.outputBalances.getAttoOxmAmount(address1.lockupScript).get is OXM.alph(11)
     context.outputBalances.getTokenAmount(address0.lockupScript, tokenId).get is 1
     context.outputBalances.getTokenAmount(address1.lockupScript, tokenId).get is 98
   }
@@ -444,7 +444,7 @@ class VMSpec extends OxygeniumSpec with ContextGenerators with NetworkConfigFixt
       val instrs = AVector[Instr[StatefulContext]](
         AddressConst(address0),
         U256Const(Val.U256(10)),
-        ApproveAlph,
+        ApproveOxm,
         BytesConst(Val.ByteVec(serialize(contract))),
         BytesConst(Val.ByteVec(serialize(AVector.empty[Val]))),
         BytesConst(Val.ByteVec(serialize(AVector.empty[Val]))),
@@ -617,45 +617,45 @@ class VMSpec extends OxygeniumSpec with ContextGenerators with NetworkConfigFixt
       )
     }
 
-    val output00 = genAssetOutput(minimalAlphInContractPreRhone - 1)
-    val output01 = genAssetOutput(minimalAlphInContractPreRhone)
-    val output02 = genAssetOutput(minimalAlphInContract - 1)
-    val output03 = genAssetOutput(minimalAlphInContract)
-    val output10 = genContractOutput(minimalAlphInContractPreRhone - 1)
-    val output11 = genContractOutput(minimalAlphInContractPreRhone)
-    val output12 = genContractOutput(minimalAlphInContract - 1)
-    val output13 = genContractOutput(minimalAlphInContract)
+    val output00 = genAssetOutput(minimalOxmInContractPreRhone - 1)
+    val output01 = genAssetOutput(minimalOxmInContractPreRhone)
+    val output02 = genAssetOutput(minimalOxmInContract - 1)
+    val output03 = genAssetOutput(minimalOxmInContract)
+    val output10 = genContractOutput(minimalOxmInContractPreRhone - 1)
+    val output11 = genContractOutput(minimalOxmInContractPreRhone)
+    val output12 = genContractOutput(minimalOxmInContract - 1)
+    val output13 = genContractOutput(minimalOxmInContract)
 
-    VM.checkContractAttoAlphAmounts(Seq(output00), HardFork.Mainnet) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output01), HardFork.Mainnet) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output02), HardFork.Mainnet) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output03), HardFork.Mainnet) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output10), HardFork.Mainnet) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output11), HardFork.Mainnet) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output12), HardFork.Mainnet) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output13), HardFork.Mainnet) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output00), HardFork.Mainnet) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output01), HardFork.Mainnet) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output02), HardFork.Mainnet) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output03), HardFork.Mainnet) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output10), HardFork.Mainnet) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output11), HardFork.Mainnet) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output12), HardFork.Mainnet) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output13), HardFork.Mainnet) isE ()
 
-    VM.checkContractAttoAlphAmounts(Seq(output00), HardFork.Leman) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output01), HardFork.Leman) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output02), HardFork.Leman) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output03), HardFork.Leman) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output10), HardFork.Leman).leftValue isE
+    VM.checkContractAttoOxmAmounts(Seq(output00), HardFork.Leman) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output01), HardFork.Leman) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output02), HardFork.Leman) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output03), HardFork.Leman) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output10), HardFork.Leman).leftValue isE
       a[LowerThanContractMinimalBalance]
-    VM.checkContractAttoAlphAmounts(Seq(output11), HardFork.Leman) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output12), HardFork.Leman).leftValue isE
+    VM.checkContractAttoOxmAmounts(Seq(output11), HardFork.Leman) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output12), HardFork.Leman).leftValue isE
       a[LowerThanContractMinimalBalance]
-    VM.checkContractAttoAlphAmounts(Seq(output13), HardFork.Leman).leftValue isE
+    VM.checkContractAttoOxmAmounts(Seq(output13), HardFork.Leman).leftValue isE
       a[LowerThanContractMinimalBalance]
 
-    VM.checkContractAttoAlphAmounts(Seq(output00), HardFork.Rhone) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output01), HardFork.Rhone) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output02), HardFork.Rhone) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output03), HardFork.Rhone) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output10), HardFork.Rhone) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output11), HardFork.Rhone) isE ()
-    VM.checkContractAttoAlphAmounts(Seq(output12), HardFork.Rhone).leftValue isE
+    VM.checkContractAttoOxmAmounts(Seq(output00), HardFork.Rhone) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output01), HardFork.Rhone) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output02), HardFork.Rhone) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output03), HardFork.Rhone) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output10), HardFork.Rhone) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output11), HardFork.Rhone) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output12), HardFork.Rhone).leftValue isE
       a[LowerThanContractMinimalBalance]
-    VM.checkContractAttoAlphAmounts(Seq(output13), HardFork.Rhone) isE ()
+    VM.checkContractAttoOxmAmounts(Seq(output13), HardFork.Rhone) isE ()
   }
 
   it should "preserve stack safety" in new StatefulFixture {
@@ -715,7 +715,7 @@ class VMSpec extends OxygeniumSpec with ContextGenerators with NetworkConfigFixt
       val address = if (isContract) contractFrom else assetFrom
       vm.ctx.outputBalances.getBalances(address) match {
         case None           => expectedBalance is U256.Zero
-        case Some(balances) => balances.attoAlphAmount is expectedBalance
+        case Some(balances) => balances.attoOxmAmount is expectedBalance
       }
     }
 
@@ -744,7 +744,7 @@ class VMSpec extends OxygeniumSpec with ContextGenerators with NetworkConfigFixt
           Some(MutBalanceState(bs, MutBalances.empty))
         case ApprovedBalanceOnly =>
           val bs = MutBalances(
-            ArrayBuffer(from -> MutBalancesPerLockup.alph(OXM.oneAlph, scopeDept))
+            ArrayBuffer(from -> MutBalancesPerLockup.alph(OXM.oneOxm, scopeDept))
           )
           Some(MutBalanceState(MutBalances.empty, bs))
       }
@@ -782,11 +782,11 @@ class VMSpec extends OxygeniumSpec with ContextGenerators with NetworkConfigFixt
             ) {
               addAndCheckBalance(0, isContract = currentUseAsset != UsePreapproved)
             } else {
-              addAndCheckBalance(OXM.oneAlph, isContract = currentUseAsset != UsePreapproved)
+              addAndCheckBalance(OXM.oneOxm, isContract = currentUseAsset != UsePreapproved)
             }
           } else {
             if (previousBalanceType == NoBalance) {
-              addAndCheckBalance(OXM.oneAlph, isContract = currentUseAsset != UsePreapproved)
+              addAndCheckBalance(OXM.oneOxm, isContract = currentUseAsset != UsePreapproved)
             } else {
               addAndCheckBalance(0, isContract = true)
               addAndCheckBalance(0, isContract = false)
@@ -816,10 +816,10 @@ class VMSpec extends OxygeniumSpec with ContextGenerators with NetworkConfigFixt
         case NoBalance => addAndCheckBalance(0)
         case _ =>
           if (currentScoptDepth == 0) {
-            addAndCheckBalance(OXM.oneAlph, isContract = currentUseAsset != UsePreapproved)
+            addAndCheckBalance(OXM.oneOxm, isContract = currentUseAsset != UsePreapproved)
           } else {
             if (previousBalanceType == NoBalance) {
-              addAndCheckBalance(OXM.oneAlph, isContract = currentUseAsset != UsePreapproved)
+              addAndCheckBalance(OXM.oneOxm, isContract = currentUseAsset != UsePreapproved)
             } else {
               addAndCheckBalance(0, isContract = true)
               addAndCheckBalance(0, isContract = false)
@@ -854,7 +854,7 @@ class VMSpec extends OxygeniumSpec with ContextGenerators with NetworkConfigFixt
           case NoBalance => addAndCheckBalance(0)
           case _ =>
             if (currentScoptDepth == 0) {
-              addAndCheckBalance(OXM.oneAlph, isContract = currentUseAsset != UsePreapproved)
+              addAndCheckBalance(OXM.oneOxm, isContract = currentUseAsset != UsePreapproved)
             } else {
               addAndCheckBalance(0, isContract = true)
               addAndCheckBalance(0, isContract = false)

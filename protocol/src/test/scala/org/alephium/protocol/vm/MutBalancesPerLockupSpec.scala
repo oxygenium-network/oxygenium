@@ -29,19 +29,19 @@ import org.oxygenium.util.Bytes.byteStringOrdering
 class MutBalancesPerLockupSpec extends OxygeniumSpec {
 
   it should "tokenVector" in new Fixture {
-    val tokens = mutable.Map(tokenId -> OXM.oneAlph)
-    MutBalancesPerLockup(OXM.oneAlph, tokens, 1).tokenVector is AVector((tokenId, OXM.oneAlph))
+    val tokens = mutable.Map(tokenId -> OXM.oneOxm)
+    MutBalancesPerLockup(OXM.oneOxm, tokens, 1).tokenVector is AVector((tokenId, OXM.oneOxm))
 
     val tokenIdZero = TokenId.generate
     tokens.addOne((tokenIdZero, U256.Zero))
 
-    MutBalancesPerLockup(OXM.oneAlph, tokens, 1).tokenVector is AVector((tokenId, OXM.oneAlph))
+    MutBalancesPerLockup(OXM.oneOxm, tokens, 1).tokenVector is AVector((tokenId, OXM.oneOxm))
 
     tokens.remove(tokenIdZero)
 
     forAll(hashGen) { newTokenIdValue =>
-      tokens.addOne((TokenId.unsafe(newTokenIdValue), OXM.oneAlph))
-      MutBalancesPerLockup(OXM.oneAlph, tokens, 1).tokenVector is AVector.from(
+      tokens.addOne((TokenId.unsafe(newTokenIdValue), OXM.oneOxm))
+      MutBalancesPerLockup(OXM.oneOxm, tokens, 1).tokenVector is AVector.from(
         tokens.toSeq.sortBy(_._1.bytes)
       )
     }
@@ -51,37 +51,37 @@ class MutBalancesPerLockupSpec extends OxygeniumSpec {
     val tokenId2 = TokenId.generate
     val tokens   = mutable.Map(tokenId -> U256.One, tokenId2 -> U256.Two)
 
-    val balancesPerLockup = MutBalancesPerLockup(OXM.oneAlph, tokens, 1)
+    val balancesPerLockup = MutBalancesPerLockup(OXM.oneOxm, tokens, 1)
 
     balancesPerLockup.getTokenAmount(tokenId) is Some(U256.One)
     balancesPerLockup.getTokenAmount(tokenId2) is Some(U256.Two)
     balancesPerLockup.getTokenAmount(TokenId.generate) is None
   }
 
-  it should "addAlph" in new Fixture {
-    val balancesPerLockup = MutBalancesPerLockup(OXM.oneAlph, mutable.Map.empty, 1)
+  it should "addOxm" in new Fixture {
+    val balancesPerLockup = MutBalancesPerLockup(OXM.oneOxm, mutable.Map.empty, 1)
 
-    var current = OXM.oneAlph
+    var current = OXM.oneOxm
 
     forAll(amountGen(1)) { amount =>
       current.add(amount) match {
         case Some(newCurrent) =>
           current = newCurrent
-          balancesPerLockup.addAlph(amount) is Some(())
+          balancesPerLockup.addOxm(amount) is Some(())
         case None =>
-          balancesPerLockup.addAlph(amount) is None
+          balancesPerLockup.addOxm(amount) is None
       }
-      balancesPerLockup.attoAlphAmount is current
+      balancesPerLockup.attoOxmAmount is current
     }
 
-    balancesPerLockup.addAlph(U256.MaxValue) is None
+    balancesPerLockup.addOxm(U256.MaxValue) is None
   }
 
   it should "addToken" in new Fixture {
-    val tokens            = mutable.Map(tokenId -> OXM.oneAlph)
-    val balancesPerLockup = MutBalancesPerLockup(OXM.oneAlph, tokens, 1)
+    val tokens            = mutable.Map(tokenId -> OXM.oneOxm)
+    val balancesPerLockup = MutBalancesPerLockup(OXM.oneOxm, tokens, 1)
 
-    balancesPerLockup.addToken(tokenId, OXM.oneAlph) is Some(())
+    balancesPerLockup.addToken(tokenId, OXM.oneOxm) is Some(())
     balancesPerLockup.getTokenAmount(tokenId) is Some(OXM.alph(2))
 
     balancesPerLockup.addToken(tokenId, U256.MaxValue) is None
@@ -89,11 +89,11 @@ class MutBalancesPerLockupSpec extends OxygeniumSpec {
 
     val tokenId2 = TokenId.generate
     balancesPerLockup.getTokenAmount(tokenId2) is None
-    balancesPerLockup.addToken(tokenId2, OXM.oneAlph) is Some(())
-    balancesPerLockup.getTokenAmount(tokenId2) is Some(OXM.oneAlph)
+    balancesPerLockup.addToken(tokenId2, OXM.oneOxm) is Some(())
+    balancesPerLockup.getTokenAmount(tokenId2) is Some(OXM.oneOxm)
   }
 
-  it should "subAlph" in new Fixture {
+  it should "subOxm" in new Fixture {
     val balancesPerLockup = MutBalancesPerLockup(U256.HalfMaxValue, mutable.Map.empty, 1)
 
     var current = U256.HalfMaxValue
@@ -102,21 +102,21 @@ class MutBalancesPerLockupSpec extends OxygeniumSpec {
       current.sub(amount) match {
         case Some(newCurrent) =>
           current = newCurrent
-          balancesPerLockup.subAlph(amount) is Some(())
+          balancesPerLockup.subOxm(amount) is Some(())
         case None =>
-          balancesPerLockup.subAlph(amount) is None
+          balancesPerLockup.subOxm(amount) is None
       }
-      balancesPerLockup.attoAlphAmount is current
+      balancesPerLockup.attoOxmAmount is current
     }
 
-    balancesPerLockup.subAlph(U256.MaxValue) is None
+    balancesPerLockup.subOxm(U256.MaxValue) is None
   }
 
   it should "subToken" in new Fixture {
-    val tokens            = mutable.Map(tokenId -> OXM.oneAlph)
-    val balancesPerLockup = MutBalancesPerLockup(OXM.oneAlph, tokens, 1)
+    val tokens            = mutable.Map(tokenId -> OXM.oneOxm)
+    val balancesPerLockup = MutBalancesPerLockup(OXM.oneOxm, tokens, 1)
 
-    balancesPerLockup.subToken(tokenId, OXM.oneAlph) is Some(())
+    balancesPerLockup.subToken(tokenId, OXM.oneOxm) is Some(())
     balancesPerLockup.getTokenAmount(tokenId) is Some(U256.Zero)
 
     balancesPerLockup.subToken(tokenId, U256.MaxValue) is None
@@ -124,51 +124,51 @@ class MutBalancesPerLockupSpec extends OxygeniumSpec {
 
     val tokenId2 = TokenId.generate
     balancesPerLockup.getTokenAmount(tokenId2) is None
-    balancesPerLockup.subToken(tokenId2, OXM.oneAlph) is None
+    balancesPerLockup.subToken(tokenId2, OXM.oneOxm) is None
     balancesPerLockup.getTokenAmount(tokenId2) is None
   }
 
   it should "add" in new Fixture {
     val balancesPerLockup =
-      MutBalancesPerLockup(OXM.oneAlph, mutable.Map(tokenId -> OXM.oneAlph), 1)
+      MutBalancesPerLockup(OXM.oneOxm, mutable.Map(tokenId -> OXM.oneOxm), 1)
 
     val tokenId2 = TokenId.generate
     val balancesPerLockup2 = MutBalancesPerLockup(
-      OXM.oneAlph,
-      mutable.Map(tokenId -> OXM.oneAlph, tokenId2 -> OXM.oneAlph),
+      OXM.oneOxm,
+      mutable.Map(tokenId -> OXM.oneOxm, tokenId2 -> OXM.oneOxm),
       1
     )
 
     balancesPerLockup.add(balancesPerLockup2) is Some(())
     balancesPerLockup is MutBalancesPerLockup(
       OXM.alph(2),
-      mutable.Map(tokenId -> OXM.alph(2), tokenId2 -> OXM.oneAlph),
+      mutable.Map(tokenId -> OXM.alph(2), tokenId2 -> OXM.oneOxm),
       1
     )
 
     balancesPerLockup.add(MutBalancesPerLockup(U256.MaxValue, mutable.Map.empty, 1)) is None
     balancesPerLockup.add(
-      MutBalancesPerLockup(OXM.oneAlph, mutable.Map(tokenId -> U256.MaxValue), 1)
+      MutBalancesPerLockup(OXM.oneOxm, mutable.Map(tokenId -> U256.MaxValue), 1)
     ) is None
   }
 
   it should "sub" in new Fixture {
     val balancesPerLockup =
-      MutBalancesPerLockup(OXM.oneAlph, mutable.Map(tokenId -> OXM.oneAlph), 1)
+      MutBalancesPerLockup(OXM.oneOxm, mutable.Map(tokenId -> OXM.oneOxm), 1)
 
     val tokenId2 = TokenId.generate
     val balancesPerLockup2 =
-      MutBalancesPerLockup(OXM.oneAlph, mutable.Map(tokenId -> OXM.oneAlph), 1)
+      MutBalancesPerLockup(OXM.oneOxm, mutable.Map(tokenId -> OXM.oneOxm), 1)
 
     balancesPerLockup.sub(balancesPerLockup2) is Some(())
     balancesPerLockup is MutBalancesPerLockup(U256.Zero, mutable.Map(tokenId -> U256.Zero), 1)
 
     balancesPerLockup.sub(MutBalancesPerLockup(U256.MaxValue, mutable.Map.empty, 1)) is None
     balancesPerLockup.sub(
-      MutBalancesPerLockup(OXM.oneAlph, mutable.Map(tokenId -> U256.MaxValue), 1)
+      MutBalancesPerLockup(OXM.oneOxm, mutable.Map(tokenId -> U256.MaxValue), 1)
     ) is None
     balancesPerLockup.sub(
-      MutBalancesPerLockup(OXM.oneAlph, mutable.Map(tokenId2 -> OXM.oneAlph), 1)
+      MutBalancesPerLockup(OXM.oneOxm, mutable.Map(tokenId2 -> OXM.oneOxm), 1)
     ) is None
   }
 
@@ -230,13 +230,13 @@ class MutBalancesPerLockupSpec extends OxygeniumSpec {
 
   it should "toTxOutput for Genesis fork" in new ToTxOutputFixture {
     Test(0).expectGenesis()
-    Test(OXM.oneAlph, tokenId -> 1).expectGenesis(
-      OXM.oneAlph -> Seq(tokenId -> 1)
+    Test(OXM.oneOxm, tokenId -> 1).expectGenesis(
+      OXM.oneOxm -> Seq(tokenId -> 1)
     )
-    Test(OXM.oneAlph, tokenId0 -> 1, tokenId1 -> 2).expectGenesis(
-      OXM.oneAlph -> Seq(tokenId0 -> 1, tokenId1 -> 2)
+    Test(OXM.oneOxm, tokenId0 -> 1, tokenId1 -> 2).expectGenesis(
+      OXM.oneOxm -> Seq(tokenId0 -> 1, tokenId1 -> 2)
     )
-    Test(OXM.oneAlph).expectGenesis(OXM.oneAlph -> Seq.empty)
+    Test(OXM.oneOxm).expectGenesis(OXM.oneOxm -> Seq.empty)
     Test(0, tokenId -> 1).failGenesis()
   }
 
@@ -246,7 +246,7 @@ class MutBalancesPerLockupSpec extends OxygeniumSpec {
     Test(0).expectLeman()
     Test(dustUtxoAmount - 1).failLeman()
     Test(dustUtxoAmount).expectLeman(dustUtxoAmount -> Seq.empty)
-    Test(OXM.oneAlph).expectLeman(OXM.oneAlph     -> Seq.empty)
+    Test(OXM.oneOxm).expectLeman(OXM.oneOxm     -> Seq.empty)
 
     Test(0, tokenId -> 1).failLeman()
     Test(dustUtxoAmount - 1, tokenId -> 1).failLeman()
@@ -258,9 +258,9 @@ class MutBalancesPerLockupSpec extends OxygeniumSpec {
       dustUtxoAmount -> Seq(tokenId -> 1),
       dustUtxoAmount -> Seq.empty
     )
-    Test(OXM.oneAlph, tokenId -> 1).expectLeman(
+    Test(OXM.oneOxm, tokenId -> 1).expectLeman(
       dustUtxoAmount                         -> Seq(tokenId -> 1),
-      OXM.oneAlph.subUnsafe(dustUtxoAmount) -> Seq.empty
+      OXM.oneOxm.subUnsafe(dustUtxoAmount) -> Seq.empty
     )
 
     Test(0, tokenId0 -> 1, tokenId1 -> 2).failLeman()
@@ -275,10 +275,10 @@ class MutBalancesPerLockupSpec extends OxygeniumSpec {
       dustUtxoAmount -> Seq(tokenId1 -> 2),
       dustUtxoAmount -> Seq.empty
     )
-    Test(OXM.oneAlph, tokenId0 -> 1, tokenId1 -> 2).expectLeman(
+    Test(OXM.oneOxm, tokenId0 -> 1, tokenId1 -> 2).expectLeman(
       dustUtxoAmount                             -> Seq(tokenId0 -> 1),
       dustUtxoAmount                             -> Seq(tokenId1 -> 2),
-      OXM.oneAlph.subUnsafe(dustUtxoAmount * 2) -> Seq.empty
+      OXM.oneOxm.subUnsafe(dustUtxoAmount * 2) -> Seq.empty
     )
   }
 
@@ -287,26 +287,26 @@ class MutBalancesPerLockupSpec extends OxygeniumSpec {
     val address                             = Address.from(lockupScript)
 
     Test(0).expectLeman()
-    Test(OXM.oneAlph - 1).failLeman(LowerThanContractMinimalBalance(address, OXM.oneAlph - 1))
-    Test(OXM.oneAlph).expectLeman(OXM.oneAlph -> Seq.empty)
+    Test(OXM.oneOxm - 1).failLeman(LowerThanContractMinimalBalance(address, OXM.oneOxm - 1))
+    Test(OXM.oneOxm).expectLeman(OXM.oneOxm -> Seq.empty)
 
     Test(0, tokenId -> 1).failLeman()
-    Test(OXM.oneAlph - 1, tokenId -> 1)
-      .failLeman(LowerThanContractMinimalBalance(address, OXM.oneAlph - 1))
-    Test(OXM.oneAlph, tokenId -> 1).expectLeman(
-      OXM.oneAlph -> Seq(tokenId -> 1)
+    Test(OXM.oneOxm - 1, tokenId -> 1)
+      .failLeman(LowerThanContractMinimalBalance(address, OXM.oneOxm - 1))
+    Test(OXM.oneOxm, tokenId -> 1).expectLeman(
+      OXM.oneOxm -> Seq(tokenId -> 1)
     )
-    Test(OXM.oneAlph, tokens.init.map(_ -> U256.One).toSeq: _*).expectLeman(
-      OXM.oneAlph -> tokens.init.map(_ -> U256.One).toSeq
+    Test(OXM.oneOxm, tokens.init.map(_ -> U256.One).toSeq: _*).expectLeman(
+      OXM.oneOxm -> tokens.init.map(_ -> U256.One).toSeq
     )
-    Test(OXM.oneAlph, tokens.map(_ -> U256.One).toSeq: _*)
+    Test(OXM.oneOxm, tokens.map(_ -> U256.One).toSeq: _*)
       .failLeman(InvalidTokenNumForContractOutput(address, tokens.length))
   }
 
   it should "toTxOutput for rhone fork + contract lockup script" in new ToTxOutputFixture {
     override val lockupScript: LockupScript = LockupScript.p2c(ContractId.generate)
     val address                             = Address.from(lockupScript)
-    val minimalDeposit                      = OXM.oneAlph.divUnsafe(U256.unsafe(10))
+    val minimalDeposit                      = OXM.oneOxm.divUnsafe(U256.unsafe(10))
 
     Test(0).expectRhone()
     Test(minimalDeposit - 1).failRhone(LowerThanContractMinimalBalance(address, minimalDeposit - 1))

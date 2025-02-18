@@ -404,7 +404,7 @@ class BlockFlowSpec extends OxygeniumSpec {
       consensusConfig.emission.lowHashRateInitialRewardPerChain,
       consensusConfig.emission.stableMaxRewardPerChain
     ).min
-    (block.coinbase.attoAlphAmountInOutputs.get > minimalReward.subUnsafe(
+    (block.coinbase.attoOxmAmountInOutputs.get > minimalReward.subUnsafe(
       nonCoinbaseMinGasFee
     )) is true
   }
@@ -722,7 +722,7 @@ class BlockFlowSpec extends OxygeniumSpec {
           fromPubKey,
           toLockupScript,
           None,
-          OXM.oneAlph,
+          OXM.oneOxm,
           None,
           nonCoinbaseMinGasPrice,
           defaultUtxoLimit
@@ -735,7 +735,7 @@ class BlockFlowSpec extends OxygeniumSpec {
       theGrandPool.add(chainIndex, tx, TimeStamp.now())
       theMemPool.contains(tx.id) is true
 
-      val balance = initialAmount - (OXM.oneAlph + nonCoinbaseMinGasFee).mulUnsafe(txCount)
+      val balance = initialAmount - (OXM.oneOxm + nonCoinbaseMinGasFee).mulUnsafe(txCount)
       blockFlow
         .getBalance(fromLockup, Int.MaxValue, true)
         .rightValue is ((

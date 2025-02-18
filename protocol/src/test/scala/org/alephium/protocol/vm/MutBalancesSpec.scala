@@ -31,9 +31,9 @@ class MutBalancesSpec extends OxygeniumSpec {
     balances.getBalances(lockupScriptGen.sample.get) is None
   }
 
-  it should "getAttoAlphAmount" in new Fixture {
-    balances.getAttoAlphAmount(lockupScript) is Some(balancesPerLockup.attoAlphAmount)
-    balances.getAttoAlphAmount(lockupScriptGen.sample.get) is None
+  it should "getAttoOxmAmount" in new Fixture {
+    balances.getAttoOxmAmount(lockupScript) is Some(balancesPerLockup.attoOxmAmount)
+    balances.getAttoOxmAmount(lockupScriptGen.sample.get) is None
   }
 
   it should "getTokenAmount" in new Fixture {
@@ -42,26 +42,26 @@ class MutBalancesSpec extends OxygeniumSpec {
   }
 
   it should "addAmount" in new Fixture {
-    balances.addAlph(lockupScript, OXM.oneAlph) is Some(())
+    balances.addOxm(lockupScript, OXM.oneOxm) is Some(())
 
     balances is MutBalances(
-      ArrayBuffer((lockupScript, balancesPerLockup.copy(attoAlphAmount = OXM.alph(2))))
+      ArrayBuffer((lockupScript, balancesPerLockup.copy(attoOxmAmount = OXM.alph(2))))
     )
 
     val lockupScript2 = lockupScriptGen.sample.get
-    balances.addAlph(lockupScript2, OXM.oneAlph) is Some(())
+    balances.addOxm(lockupScript2, OXM.oneOxm) is Some(())
     balances is MutBalances(
       ArrayBuffer(
-        (lockupScript, balancesPerLockup.copy(attoAlphAmount = OXM.alph(2))),
-        (lockupScript2, MutBalancesPerLockup(OXM.oneAlph, mutable.Map.empty, 0))
+        (lockupScript, balancesPerLockup.copy(attoOxmAmount = OXM.alph(2))),
+        (lockupScript2, MutBalancesPerLockup(OXM.oneOxm, mutable.Map.empty, 0))
       )
     )
 
-    balances.addAlph(lockupScript, U256.MaxValue) is None
+    balances.addOxm(lockupScript, U256.MaxValue) is None
   }
 
   it should "addToken" in new Fixture {
-    balances.addToken(lockupScript, tokenId, OXM.oneAlph) is Some(())
+    balances.addToken(lockupScript, tokenId, OXM.oneOxm) is Some(())
 
     balances is MutBalances(
       ArrayBuffer(
@@ -74,7 +74,7 @@ class MutBalancesSpec extends OxygeniumSpec {
 
     val tokenId2 = TokenId.generate
 
-    balances.addToken(lockupScript, tokenId2, OXM.oneAlph) is Some(())
+    balances.addToken(lockupScript, tokenId2, OXM.oneOxm) is Some(())
     balances is MutBalances(
       ArrayBuffer(
         (
@@ -87,7 +87,7 @@ class MutBalancesSpec extends OxygeniumSpec {
     )
 
     val lockupScript2 = lockupScriptGen.sample.get
-    balances.addToken(lockupScript2, tokenId, OXM.oneAlph) is Some(())
+    balances.addToken(lockupScript2, tokenId, OXM.oneOxm) is Some(())
     balances is MutBalances(
       ArrayBuffer(
         (
@@ -103,21 +103,21 @@ class MutBalancesSpec extends OxygeniumSpec {
     balances.addToken(lockupScript, tokenId, U256.MaxValue) is None
   }
 
-  it should "subAlph" in new Fixture {
-    balances.subAlph(lockupScript, OXM.oneAlph) is Some(())
+  it should "subOxm" in new Fixture {
+    balances.subOxm(lockupScript, OXM.oneOxm) is Some(())
 
     balances is MutBalances(
-      ArrayBuffer((lockupScript, balancesPerLockup.copy(attoAlphAmount = U256.Zero)))
+      ArrayBuffer((lockupScript, balancesPerLockup.copy(attoOxmAmount = U256.Zero)))
     )
 
-    balances.subAlph(lockupScript, U256.MaxValue) is None
+    balances.subOxm(lockupScript, U256.MaxValue) is None
 
     val lockupScript2 = lockupScriptGen.sample.get
-    balances.subAlph(lockupScript2, OXM.oneAlph) is None
+    balances.subOxm(lockupScript2, OXM.oneOxm) is None
   }
 
   it should "subToken" in new Fixture {
-    balances.subToken(lockupScript, tokenId, OXM.oneAlph) is Some(())
+    balances.subToken(lockupScript, tokenId, OXM.oneOxm) is Some(())
 
     balances is MutBalances(
       ArrayBuffer(
@@ -130,10 +130,10 @@ class MutBalancesSpec extends OxygeniumSpec {
 
     val tokenId2 = TokenId.generate
 
-    balances.subToken(lockupScript, tokenId2, OXM.oneAlph) is None
+    balances.subToken(lockupScript, tokenId2, OXM.oneOxm) is None
 
     val lockupScript2 = lockupScriptGen.sample.get
-    balances.subToken(lockupScript2, tokenId, OXM.oneAlph) is None
+    balances.subToken(lockupScript2, tokenId, OXM.oneOxm) is None
 
     balances.subToken(lockupScript, tokenId, U256.MaxValue) is None
   }
@@ -147,7 +147,7 @@ class MutBalancesSpec extends OxygeniumSpec {
         (
           lockupScript,
           balancesPerLockup.copy(
-            attoAlphAmount = OXM.alph(2),
+            attoOxmAmount = OXM.alph(2),
             tokenAmounts = mutable.Map(tokenId -> OXM.alph(2))
           )
         )
@@ -163,7 +163,7 @@ class MutBalancesSpec extends OxygeniumSpec {
           lockupScript,
           balancesPerLockup
             .copy(
-              attoAlphAmount = OXM.alph(2),
+              attoOxmAmount = OXM.alph(2),
               tokenAmounts = mutable.Map(tokenId -> OXM.alph(2))
             )
         ),
@@ -181,7 +181,7 @@ class MutBalancesSpec extends OxygeniumSpec {
         (
           lockupScript,
           balancesPerLockup.copy(
-            attoAlphAmount = U256.Zero,
+            attoOxmAmount = U256.Zero,
             tokenAmounts = mutable.Map(tokenId -> U256.Zero)
           )
         )
@@ -235,7 +235,7 @@ class MutBalancesSpec extends OxygeniumSpec {
         (
           lockupScript2,
           balancesPerLockup.copy(
-            attoAlphAmount = OXM.alph(2),
+            attoOxmAmount = OXM.alph(2),
             tokenAmounts = mutable.Map(tokenId -> OXM.alph(2))
           )
         )
@@ -244,7 +244,7 @@ class MutBalancesSpec extends OxygeniumSpec {
 
     val balances3 =
       MutBalances(
-        ArrayBuffer((lockupScript2, balancesPerLockup.copy(attoAlphAmount = U256.MaxValue)))
+        ArrayBuffer((lockupScript2, balancesPerLockup.copy(attoOxmAmount = U256.MaxValue)))
       )
 
     balances.merge(balances3) is None
@@ -257,8 +257,8 @@ class MutBalancesSpec extends OxygeniumSpec {
     balances.merge(balances2)
 
     balances.toOutputs() is Some(
-      TxOutput.from(OXM.oneAlph, AVector.from(tokens), lockupScript).value ++
-        TxOutput.from(OXM.oneAlph, AVector.from(tokens), lockupScript2).value
+      TxOutput.from(OXM.oneOxm, AVector.from(tokens), lockupScript).value ++
+        TxOutput.from(OXM.oneOxm, AVector.from(tokens), lockupScript2).value
     )
   }
 
@@ -270,9 +270,9 @@ class MutBalancesSpec extends OxygeniumSpec {
 
     val tokenId    = TokenId.generate
     val scopeDepth = 1
-    val tokens     = mutable.Map(tokenId -> OXM.oneAlph)
+    val tokens     = mutable.Map(tokenId -> OXM.oneOxm)
     val balancesPerLockup =
-      MutBalancesPerLockup(OXM.oneAlph, tokens, scopeDepth)
+      MutBalancesPerLockup(OXM.oneOxm, tokens, scopeDepth)
     val lockupScript = p2pkhLockupGen(GroupIndex.unsafe(0)).sample.get
 
     val balances = MutBalances(ArrayBuffer((lockupScript, balancesPerLockup)))

@@ -285,7 +285,7 @@ trait VotingFixture extends WalletFixture {
       adminWallet.publicKey.toHexString,
       allocationScript,
       adminWallet.creation.walletName,
-      attoAlphAmount = Some(Amount(dustUtxoAmount * votersWallets.size))
+      attoOxmAmount = Some(Amount(dustUtxoAmount * votersWallets.size))
     )
   }
 
@@ -308,7 +308,7 @@ trait VotingFixture extends WalletFixture {
       voterWallet.publicKey.toHexString,
       votingScript,
       voterWallet.creation.walletName,
-      attoAlphAmount = Some(Amount(dustUtxoAmount)),
+      attoOxmAmount = Some(Amount(dustUtxoAmount)),
       tokens = Some(TokenId.from(Hex.unsafe(contractId)).value -> 1)
     )
   }
@@ -381,7 +381,7 @@ trait WalletFixture extends CliqueFixture {
       publicKey: String,
       code: String,
       walletName: String,
-      attoAlphAmount: Option[Amount] = None,
+      attoOxmAmount: Option[Amount] = None,
       tokens: Option[(TokenId, U256)] = None
   ) = {
     val compileResult = request[CompileScriptResult](compileScript(code), restPort)
@@ -389,7 +389,7 @@ trait WalletFixture extends CliqueFixture {
       buildExecuteScriptTx(
         fromPublicKey = publicKey,
         code = compileResult.bytecodeTemplate,
-        attoAlphAmount = attoAlphAmount,
+        attoOxmAmount = attoOxmAmount,
         tokens = tokens
       ),
       restPort

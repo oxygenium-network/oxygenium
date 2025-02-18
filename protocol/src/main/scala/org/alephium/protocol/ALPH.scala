@@ -25,7 +25,7 @@ object OXM {
   // scalastyle:off magic.number
   val CoinInOneOXM: U256     = U256.unsafe(Number.quintillion)
   val CoinInOneCent: U256     = CoinInOneOXM divUnsafe U256.unsafe(100)
-  val CoinInOneNanoAlph: U256 = U256.unsafe(Number.billion)
+  val CoinInOneNanoOxm: U256 = U256.unsafe(Number.billion)
 
   val MaxOXMValue: U256 = U256.Billion mulUnsafe CoinInOneOXM
 
@@ -64,13 +64,13 @@ object OXM {
     U256.unsafe(amount).mulUnsafe(CoinInOneCent)
   }
 
-  def nanoAlph(amount: Long): U256 = {
+  def nanoOxm(amount: Long): U256 = {
     assume(amount >= 0)
-    U256.unsafe(amount).mulUnsafe(CoinInOneNanoAlph)
+    U256.unsafe(amount).mulUnsafe(CoinInOneNanoOxm)
   }
 
-  val oneAlph: U256     = CoinInOneOXM
-  val oneNanoAlph: U256 = CoinInOneNanoAlph
+  val oneOxm: U256     = CoinInOneOXM
+  val oneNanoOxm: U256 = CoinInOneNanoOxm
 
   // x.x OXM format
   def alphFromString(string: String): Option[U256] = {
@@ -94,7 +94,7 @@ object OXM {
     if (amount == U256.Zero) {
       "0 OXM"
     } else {
-      val converted = (BigDecimal(amount.v) / BigDecimal(oneAlph.v)).toDouble
+      val converted = (BigDecimal(amount.v) / BigDecimal(oneOxm.v)).toDouble
       s"${format(converted)} OXM"
     }
   }

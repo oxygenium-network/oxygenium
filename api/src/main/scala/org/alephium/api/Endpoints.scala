@@ -291,7 +291,7 @@ trait Endpoints
       .in(path[Address]("address"))
       .in("balance")
       .in(query[Option[Boolean]]("mempool"))
-      .out(jsonBodyWithAlph[Balance])
+      .out(jsonBodyWithOxm[Balance])
       .summary("Get the balance of an address")
 
   // TODO: query based on token id?
@@ -335,7 +335,7 @@ trait Endpoints
   val buildTransferTransaction: BaseEndpoint[BuildTransferTx, BuildTransferTxResult] =
     transactionsEndpoint.post
       .in("build")
-      .in(jsonBodyWithAlph[BuildTransferTx])
+      .in(jsonBodyWithOxm[BuildTransferTx])
       .out(jsonBody[BuildTransferTxResult])
       .summary("Build an unsigned transfer transaction to a number of recipients")
 
@@ -343,7 +343,7 @@ trait Endpoints
       : BaseEndpoint[BuildTransferTx, AVector[BuildTransferTxResult]] =
     transactionsEndpoint.post
       .in("build-transfer-from-one-to-many-groups")
-      .in(jsonBodyWithAlph[BuildTransferTx])
+      .in(jsonBodyWithOxm[BuildTransferTx])
       .out(jsonBody[AVector[BuildTransferTxResult]])
       .summary(
         "Build unsigned transfer transactions from an address of one group to addresses of many groups. " +
@@ -354,7 +354,7 @@ trait Endpoints
       : BaseEndpoint[BuildMultiAddressesTransaction, BuildTransferTxResult] =
     transactionsEndpoint.post
       .in("build-multi-addresses")
-      .in(jsonBodyWithAlph[BuildMultiAddressesTransaction])
+      .in(jsonBodyWithOxm[BuildMultiAddressesTransaction])
       .out(jsonBody[BuildTransferTxResult])
       .summary(
         "Build an unsigned transaction with multiple addresses to a number of recipients"
@@ -401,7 +401,7 @@ trait Endpoints
   val buildMultisigAddress: BaseEndpoint[BuildMultisigAddress, BuildMultisigAddressResult] =
     multisigEndpoint.post
       .in("address")
-      .in(jsonBodyWithAlph[BuildMultisigAddress])
+      .in(jsonBodyWithOxm[BuildMultisigAddress])
       .out(jsonBody[BuildMultisigAddressResult])
       .summary("Create the multisig address and unlock script")
 
@@ -729,14 +729,14 @@ object Endpoints {
     alphJsonBody[T].examples(examples)
   }
 
-  def jsonBodyWithAlph[T: ReadWriter: Schema](implicit
+  def jsonBodyWithOxm[T: ReadWriter: Schema](implicit
       examples: List[Example[T]]
   ): EndpointIO.Body[String, T] = {
     alphJsonBody[T]
       .examples(examples)
       .description(
-        s"Format 1: `${OXM.oneAlph}`\n\n" +
-          s"Format 2: `x.y OXM`, where `1 OXM = ${OXM.oneAlph}\n\n" +
+        s"Format 1: `${OXM.oneOxm}`\n\n" +
+          s"Format 2: `x.y OXM`, where `1 OXM = ${OXM.oneOxm}\n\n" +
           s"Field fromPublicKeyType can be  `default` or `bip340-schnorr`"
       )
   }

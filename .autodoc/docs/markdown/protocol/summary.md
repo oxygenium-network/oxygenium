@@ -6,7 +6,7 @@ For instance, the `OXM.scala` file contains constants and utility functions rela
 
 ```scala
 val amountInWei = OXM.alph(10)
-val amountInNanoAlph = OXM.nanoAlph(1000)
+val amountInNanoOxm = OXM.nanoOxm(1000)
 ```
 
 The `DiscoveryVersion.scala` and `WireVersion.scala` files define case classes and objects for representing the version numbers of the discovery and wire protocols used by the Oxygenium network, ensuring compatibility between nodes:

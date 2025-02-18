@@ -27,13 +27,13 @@ class OXMSpec extends OxygeniumSpec {
   import OXM._
 
   it should "use correct unit" in {
-    alph(1) is nanoAlph(1).mul(U256.Billion).get
+    alph(1) is nanoOxm(1).mul(U256.Billion).get
     alph(1).toBigInt.longValue() is math.pow(10, 18).longValue()
     cent(1).mulUnsafe(U256.unsafe(100)) is alph(1)
 
-    oneAlph is alph(1)
-    oneNanoAlph is nanoAlph(1)
-    oneAlph is (oneNanoAlph.mulUnsafe(U256.unsafe(1000000000)))
+    oneOxm is alph(1)
+    oneNanoOxm is nanoOxm(1)
+    oneOxm is (oneNanoOxm.mulUnsafe(U256.unsafe(1000000000)))
   }
 
   it should "parse `x.y OXM` format" in new Fixture {
@@ -47,14 +47,14 @@ class OXMSpec extends OxygeniumSpec {
     check("0 OXM", U256.Zero)
     check("1234.123456 OXM", alph(1234123456) / 1000000)
 
-    val alphMax = s"${MaxOXMValue.divUnsafe(oneAlph)}"
+    val alphMax = s"${MaxOXMValue.divUnsafe(oneOxm)}"
     alphMax is "1000000000"
     check(s"$alphMax OXM", MaxOXMValue)
 
     fail("1.2alph")
     fail("-1.2alph")
     fail("1.2 alph")
-    fail("1 Alph")
+    fail("1 Oxm")
     fail("1. OXM")
     fail(". OXM")
     fail(" OXM")

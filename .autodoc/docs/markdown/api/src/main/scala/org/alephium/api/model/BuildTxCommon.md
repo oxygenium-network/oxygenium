@@ -4,7 +4,7 @@ This file contains code related to building transactions in the Oxygenium projec
 
 The `BuildTxCommon` trait defines common properties that are used in building transactions. It includes `gasAmount`, `gasPrice`, and `targetBlockHash`, which are all optional. The `FromPublicKey` trait is used to define a public key and its type, which can be either `Default` or `BIP340Schnorr`. The `getLockPair()` function returns a tuple of `LockupScript.Asset` and `UnlockScript` based on the public key type. The `p2pkhLockPair()` function returns a tuple of `LockupScript.Asset` and `UnlockScript` for the `Default` public key type, while the `schnorrLockPair()` function returns the same for the `BIP340Schnorr` public key type.
 
-The `getAlphAndTokenAmounts()` function is used to calculate the amounts of OXM and other tokens involved in a transaction. It takes in an optional `Amount` of OXM and an optional list of `Token`s, and returns a tuple of optional `U256` and a vector of `(TokenId, U256)` pairs. The function checks for overflow errors and returns an error message if any occur.
+The `getOxmAndTokenAmounts()` function is used to calculate the amounts of OXM and other tokens involved in a transaction. It takes in an optional `Amount` of OXM and an optional list of `Token`s, and returns a tuple of optional `U256` and a vector of `(TokenId, U256)` pairs. The function checks for overflow errors and returns an error message if any occur.
 
 The `GasInfo` trait defines properties related to gas, including `gasAmount` and `gasPrice`.
 
@@ -13,8 +13,8 @@ Overall, this file provides essential functionality for building transactions in
  1. What is the purpose of the `BuildTxCommon` trait and its companion object?
 - The `BuildTxCommon` trait defines common properties for building transactions, while its companion object provides utility functions for generating lockup and unlock scripts based on different types of public keys.
 
-2. What is the `getAlphAndTokenAmounts` function used for?
-- The `getAlphAndTokenAmounts` function is used to calculate the total amounts of OXM and other tokens involved in a transaction, based on the specified inputs.
+2. What is the `getOxmAndTokenAmounts` function used for?
+- The `getOxmAndTokenAmounts` function is used to calculate the total amounts of OXM and other tokens involved in a transaction, based on the specified inputs.
 
 3. What is the `GasInfo` trait used for?
 - The `GasInfo` trait defines properties related to gas usage in a transaction, including the amount of gas used and the gas price.

@@ -186,17 +186,17 @@ object VM {
     }
   }
 
-  def checkContractAttoAlphAmounts(
+  def checkContractAttoOxmAmounts(
       outputs: Iterable[TxOutput],
       hardFork: HardFork
   ): ExeResult[Unit] = {
     val minimalStorageDeposit = minimalContractStorageDeposit(hardFork)
-    val contractOutputWithoutEnoughAlphOpt = outputs.find {
+    val contractOutputWithoutEnoughOxmOpt = outputs.find {
       case output: ContractOutput => output.amount < minimalStorageDeposit
       case _                      => false
     }
     if (hardFork.isLemanEnabled()) {
-      contractOutputWithoutEnoughAlphOpt match {
+      contractOutputWithoutEnoughOxmOpt match {
         case Some(output) =>
           failed(LowerThanContractMinimalBalance(Address.from(output.lockupScript), output.amount))
         case None =>
@@ -397,7 +397,7 @@ final class StatefulVM(
       ctx.txEnv.prevOutputs.headOption match {
         case Some(firstInput) =>
           ctx.outputBalances
-            .addAlph(firstInput.lockupScript, gasFeePaid)
+            .addOxm(firstInput.lockupScript, gasFeePaid)
             .toRight(Right(InvalidBalances))
         case None =>
           okay
@@ -570,7 +570,7 @@ object StatefulVM {
   private def prepareResult(context: StatefulContext): ExeResult[TxScriptExecution] = {
     for {
       _ <- checkRemainingSignatures(context)
-      _ <- VM.checkContractAttoAlphAmounts(context.generatedOutputs, context.getHardFork())
+      _ <- VM.checkContractAttoOxmAmounts(context.generatedOutputs, context.getHardFork())
     } yield {
       TxScriptExecution(
         context.gasRemaining,

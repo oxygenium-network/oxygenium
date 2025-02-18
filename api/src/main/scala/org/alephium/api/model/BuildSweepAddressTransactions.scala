@@ -25,7 +25,7 @@ import org.oxygenium.util.TimeStamp
 final case class BuildSweepAddressTransactions(
     fromPublicKey: PublicKey,
     toAddress: Address.Asset,
-    maxAttoAlphPerUTXO: Option[Amount] = None,
+    maxAttoOxmPerUTXO: Option[Amount] = None,
     lockTime: Option[TimeStamp] = None,
     gasAmount: Option[GasBox] = None,
     gasPrice: Option[GasPrice] = None,

@@ -273,7 +273,7 @@ abstract class RestServerSpec(
                 |  "destinations": [
                 |    {
                 |      "address": "$dummyToAddress",
-                |      "attoAlphAmount": "1",
+                |      "attoOxmAmount": "1",
                 |      "tokens": []
                 |    }
                 |  ]
@@ -296,7 +296,7 @@ abstract class RestServerSpec(
                 |  "destinations": [
                 |    {
                 |      "address": "$dummyToAddress",
-                |      "attoAlphAmount": "1",
+                |      "attoOxmAmount": "1",
                 |      "tokens": [],
                 |      "lockTime": "1234"
                 |    }
@@ -330,7 +330,7 @@ abstract class RestServerSpec(
                 |  "destinations": [
                 |    {
                 |      "address": "$dummyToAddress",
-                |      "attoAlphAmount": "1",
+                |      "attoOxmAmount": "1",
                 |      "tokens": []
                 |    }
                 |  ]
@@ -600,7 +600,7 @@ abstract class RestServerSpec(
                 |  "destinations": [
                 |    {
                 |      "address": "$dummyToAddress",
-                |      "attoAlphAmount": "1",
+                |      "attoOxmAmount": "1",
                 |      "tokens": []
                 |    }
                 |  ]
@@ -1585,7 +1585,7 @@ trait RestServerFixture
       blockflowFetchMaxAge = blockflowFetchMaxAge,
       askTimeout = Duration.ofMinutesUnsafe(1),
       apiConfig.apiKey,
-      OXM.oneAlph,
+      OXM.oneOxm,
       utxosLimit,
       maxFormBufferedBytes,
       enableHttpMetrics = true

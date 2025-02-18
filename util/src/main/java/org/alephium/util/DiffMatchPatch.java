@@ -1001,10 +1001,10 @@ public class DiffMatchPatch {
         // rather than force total conformity.
         char char1 = one.charAt(one.length() - 1);
         char char2 = two.charAt(0);
-        boolean nonAlphaNumeric1 = !Character.isLetterOrDigit(char1);
-        boolean nonAlphaNumeric2 = !Character.isLetterOrDigit(char2);
-        boolean whitespace1 = nonAlphaNumeric1 && Character.isWhitespace(char1);
-        boolean whitespace2 = nonAlphaNumeric2 && Character.isWhitespace(char2);
+        boolean nonOxmaNumeric1 = !Character.isLetterOrDigit(char1);
+        boolean nonOxmaNumeric2 = !Character.isLetterOrDigit(char2);
+        boolean whitespace1 = nonOxmaNumeric1 && Character.isWhitespace(char1);
+        boolean whitespace2 = nonOxmaNumeric2 && Character.isWhitespace(char2);
         boolean lineBreak1 = whitespace1
                 && Character.getType(char1) == Character.CONTROL;
         boolean lineBreak2 = whitespace2
@@ -1018,13 +1018,13 @@ public class DiffMatchPatch {
         } else if (lineBreak1 || lineBreak2) {
             // Four points for line breaks.
             return 4;
-        } else if (nonAlphaNumeric1 && !whitespace1 && whitespace2) {
+        } else if (nonOxmaNumeric1 && !whitespace1 && whitespace2) {
             // Three points for end of sentences.
             return 3;
         } else if (whitespace1 || whitespace2) {
             // Two points for whitespace.
             return 2;
-        } else if (nonAlphaNumeric1 || nonAlphaNumeric2) {
+        } else if (nonOxmaNumeric1 || nonOxmaNumeric2) {
             // One point for non-alphanumeric.
             return 1;
         }

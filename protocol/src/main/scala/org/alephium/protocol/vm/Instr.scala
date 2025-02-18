@@ -193,8 +193,8 @@ object Instr {
   )
   val statefulInstrs0: AVector[InstrCompanion[StatefulContext]] = AVector(
     LoadMutField, StoreMutField, CallExternal,
-    ApproveAlph, ApproveToken, AlphRemaining, TokenRemaining, IsPaying,
-    TransferAlph, TransferAlphFromSelf, TransferAlphToSelf, TransferToken, TransferTokenFromSelf, TransferTokenToSelf,
+    ApproveOxm, ApproveToken, OxmRemaining, TokenRemaining, IsPaying,
+    TransferOxm, TransferOxmFromSelf, TransferOxmToSelf, TransferToken, TransferTokenFromSelf, TransferTokenToSelf,
     CreateContract, CreateContractWithToken, CopyCreateContract, DestroySelf, SelfContractId, SelfAddress,
     CallerContractId, CallerAddress, IsCalledFromTxScript, CallerInitialStateHash, CallerCodeHash, ContractInitialStateHash, ContractCodeHash,
     /* Below are instructions for Leman hard fork */
@@ -559,14 +559,14 @@ case object PayGasFee
       payer        <- frame.popOpStackAddress().map(_.lockupScript)
       _            <- checkGasAmount(frame, amount.v)
       _ <- balanceState
-        .useAlph(payer, amount.v)
+        .useOxm(payer, amount.v)
         .toRight(
           Right(
             NotEnoughApprovedBalance(
               payer,
               TokenId.alph,
               amount.v,
-              balanceState.remaining.getAttoAlphAmount(payer).getOrElse(U256.Zero)
+              balanceState.remaining.getAttoOxmAmount(payer).getOrElse(U256.Zero)
             )
           )
         )
@@ -580,7 +580,7 @@ case object MinimalContractDeposit
     with GasBase
     with StatefulInstrCompanion0 {
   def runWithRhone[C <: StatefulContext](frame: Frame[C]): ExeResult[Unit] = {
-    frame.pushOpStack(Val.U256(model.minimalAlphInContract))
+    frame.pushOpStack(Val.U256(model.minimalOxmInContract))
   }
 }
 
@@ -1638,7 +1638,7 @@ object BurnToken extends LemanAssetInstr with StatefulInstrCompanion0 {
       balanceState <- frame.getBalanceState()
       _ <-
         if (tokenId == TokenId.alph) {
-          Left(Right(BurningAlphNotAllowed))
+          Left(Right(BurningOxmNotAllowed))
         } else {
           balanceState
             .useToken(fromAddress.lockupScript, tokenId, tokenAmount.v)
@@ -1735,7 +1735,7 @@ sealed trait ApproveAssetBase {
   }
 }
 
-object ApproveAlph extends AssetInstr with StatefulInstrCompanion0 with ApproveAssetBase {
+object ApproveOxm extends AssetInstr with StatefulInstrCompanion0 with ApproveAssetBase {
   @SuppressWarnings(
     Array(
       "org.wartremover.warts.JavaSerializable",
@@ -1779,7 +1779,7 @@ object ApproveToken extends AssetInstr with StatefulInstrCompanion0 with Approve
   }
 }
 
-object AlphRemaining extends AssetInstr with StatefulInstrCompanion0 {
+object OxmRemaining extends AssetInstr with StatefulInstrCompanion0 {
   def getAmount(
       hardFork: HardFork,
       balanceState: MutBalanceState,
@@ -1789,7 +1789,7 @@ object AlphRemaining extends AssetInstr with StatefulInstrCompanion0 {
     if (hardFork.isRhoneEnabled()) {
       Right(amountOpt.getOrElse(U256.Zero))
     } else {
-      amountOpt.toRight(Right(NoAlphBalanceForTheAddress(Address.from(address.lockupScript))))
+      amountOpt.toRight(Right(NoOxmBalanceForTheAddress(Address.from(address.lockupScript))))
     }
   }
 
@@ -1821,7 +1821,7 @@ object TokenRemaining extends AssetInstr with StatefulInstrCompanion0 {
     } else {
       amountOpt.toRight(
         if (isOXM) {
-          Right(NoAlphBalanceForTheAddress(Address.from(address.lockupScript)))
+          Right(NoOxmBalanceForTheAddress(Address.from(address.lockupScript)))
         } else {
           Right(NoTokenBalanceForTheAddress(tokenId, Address.from(address.lockupScript)))
         }
@@ -1869,7 +1869,7 @@ sealed trait Transfer extends AssetInstr {
     }
   }
 
-  @inline def transferAlph[C <: StatefulContext](
+  @inline def transferOxm[C <: StatefulContext](
       frame: Frame[C],
       from: LockupScript,
       to: LockupScript,
@@ -1881,7 +1881,7 @@ sealed trait Transfer extends AssetInstr {
       for {
         balanceState <- frame.getBalanceState()
         _ <- balanceState
-          .useAlph(from, amount.v)
+          .useOxm(from, amount.v)
           .toRight(
             Right(
               NotEnoughApprovedBalance(
@@ -1893,13 +1893,13 @@ sealed trait Transfer extends AssetInstr {
             )
           )
         _ <- frame.ctx.outputBalances
-          .addAlph(to, amount.v)
+          .addOxm(to, amount.v)
           .toRight(Right(BalanceOverflow))
       } yield ()
     }
   }
 
-  @inline def transferAlph[C <: StatefulContext](
+  @inline def transferOxm[C <: StatefulContext](
       frame: Frame[C],
       fromThunk: => ExeResult[LockupScript],
       toThunk: => ExeResult[LockupScript]
@@ -1908,7 +1908,7 @@ sealed trait Transfer extends AssetInstr {
       amount <- frame.popOpStackU256()
       to     <- toThunk
       from   <- fromThunk
-      _      <- transferAlph(frame, from, to, amount)
+      _      <- transferOxm(frame, from, to, amount)
     } yield ()
   }
 
@@ -1956,7 +1956,7 @@ sealed trait Transfer extends AssetInstr {
       from       <- fromThunk
       _ <-
         if (frame.ctx.getHardFork().isLemanEnabled() && tokenId == TokenId.alph) {
-          transferAlph(frame, from, to, amount)
+          transferOxm(frame, from, to, amount)
         } else {
           transferToken(frame, tokenId, from, to, amount)
         }
@@ -1964,9 +1964,9 @@ sealed trait Transfer extends AssetInstr {
   }
 }
 
-object TransferAlph extends Transfer with StatefulInstrCompanion0 {
+object TransferOxm extends Transfer with StatefulInstrCompanion0 {
   def _runWith[C <: StatefulContext](frame: Frame[C]): ExeResult[Unit] = {
-    transferAlph(
+    transferOxm(
       frame,
       frame.popOpStackAddress().map(_.lockupScript),
       getToAddressFromStack(frame)
@@ -1974,9 +1974,9 @@ object TransferAlph extends Transfer with StatefulInstrCompanion0 {
   }
 }
 
-object TransferAlphFromSelf extends Transfer with StatefulInstrCompanion0 {
+object TransferOxmFromSelf extends Transfer with StatefulInstrCompanion0 {
   def _runWith[C <: StatefulContext](frame: Frame[C]): ExeResult[Unit] = {
-    transferAlph(
+    transferOxm(
       frame,
       getContractLockupScript(frame),
       getToAddressFromStack(frame)
@@ -1984,9 +1984,9 @@ object TransferAlphFromSelf extends Transfer with StatefulInstrCompanion0 {
   }
 }
 
-object TransferAlphToSelf extends Transfer with StatefulInstrCompanion0 {
+object TransferOxmToSelf extends Transfer with StatefulInstrCompanion0 {
   def _runWith[C <: StatefulContext](frame: Frame[C]): ExeResult[Unit] = {
-    transferAlph(
+    transferOxm(
       frame,
       frame.popOpStackAddress().map(_.lockupScript),
       getContractLockupScript(frame)

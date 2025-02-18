@@ -473,7 +473,7 @@ class CliqueFixture(implicit spec: OxygeniumActorSpec)
                   |  "destinations": [
                   |    {
                   |      "address": "$toAddress",
-                  |      "attoAlphAmount": "$amount"
+                  |      "attoOxmAmount": "$amount"
                   |    }
                   |  ]
                   |}
@@ -544,7 +544,7 @@ class CliqueFixture(implicit spec: OxygeniumActorSpec)
     httpPost(
       s"/wallets/${walletName}/transfer",
       Some(
-        s"""{"destinations":[{"address":"${address}","attoAlphAmount":"${amount}","tokens":[]}]}"""
+        s"""{"destinations":[{"address":"${address}","attoOxmAmount":"${amount}","tokens":[]}]}"""
       )
     )
   }
@@ -748,7 +748,7 @@ class CliqueFixture(implicit spec: OxygeniumActorSpec)
   def buildExecuteScriptTx(
       fromPublicKey: String,
       code: String,
-      attoAlphAmount: Option[Amount] = None,
+      attoOxmAmount: Option[Amount] = None,
       tokens: Option[(TokenId, U256)] = None,
       gas: Option[Int] = Some(100000),
       gasPrice: Option[GasPrice] = None
@@ -764,7 +764,7 @@ class CliqueFixture(implicit spec: OxygeniumActorSpec)
            "bytecode": "$code"
            ${gas.map(g => s""","gasAmount": $g""").getOrElse("")}
            ${gasPrice.map(g => s""","gasPrice": "$g"""").getOrElse("")}
-           ${attoAlphAmount.map(a => s""","attoAlphAmount": "${a.value.v}"""").getOrElse("")}
+           ${attoOxmAmount.map(a => s""","attoOxmAmount": "${a.value.v}"""").getOrElse("")}
            ${tokensString}
          }
          """
@@ -793,7 +793,7 @@ class CliqueFixture(implicit spec: OxygeniumActorSpec)
   def buildExecuteScriptTxWithPort(
       code: String,
       restPort: Int,
-      attoAlphAmount: Option[Amount] = None,
+      attoOxmAmount: Option[Amount] = None,
       tokens: Option[(TokenId, U256)] = None,
       gas: Option[Int] = None,
       gasPrice: Option[GasPrice] = None
@@ -803,7 +803,7 @@ class CliqueFixture(implicit spec: OxygeniumActorSpec)
       buildExecuteScriptTx(
         fromPublicKey = publicKey,
         code = compileResult.bytecodeTemplate,
-        attoAlphAmount,
+        attoOxmAmount,
         tokens,
         gas,
         gasPrice
@@ -815,13 +815,13 @@ class CliqueFixture(implicit spec: OxygeniumActorSpec)
   def scriptWithPort(
       code: String,
       restPort: Int,
-      attoAlphAmount: Option[Amount] = None,
+      attoOxmAmount: Option[Amount] = None,
       tokens: Option[(TokenId, U256)] = None,
       gas: Option[Int] = Some(100000),
       gasPrice: Option[GasPrice] = None
   ): BuildExecuteScriptTxResult = {
     val buildResult =
-      buildExecuteScriptTxWithPort(code, restPort, attoAlphAmount, tokens, gas, gasPrice)
+      buildExecuteScriptTxWithPort(code, restPort, attoOxmAmount, tokens, gas, gasPrice)
     submitTxWithPort(buildResult.unsignedTx, buildResult.txId, restPort)
     buildResult
   }

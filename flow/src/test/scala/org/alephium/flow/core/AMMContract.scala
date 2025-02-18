@@ -24,39 +24,39 @@ object AMMContract {
        |// Simple swap contract purely for testing
        |
        |Contract Swap(tokenId: ByteVec, mut alphReserve: U256, mut tokenReserve: U256) {
-       |  event AddLiquidity(lp: Address, attoAlphAmount: U256, tokenAmount: U256)
-       |  event SwapToken(buyer: Address, attoAlphAmount: U256)
-       |  event SwapAlph(buyer: Address, tokenAmount: U256)
+       |  event AddLiquidity(lp: Address, attoOxmAmount: U256, tokenAmount: U256)
+       |  event SwapToken(buyer: Address, attoOxmAmount: U256)
+       |  event SwapOxm(buyer: Address, tokenAmount: U256)
        |
        |  @using(preapprovedAssets = true, assetsInContract = true, updateFields = true)
-       |  pub fn addLiquidity(lp: Address, attoAlphAmount: U256, tokenAmount: U256) -> () {
-       |    emit AddLiquidity(lp, attoAlphAmount, tokenAmount)
+       |  pub fn addLiquidity(lp: Address, attoOxmAmount: U256, tokenAmount: U256) -> () {
+       |    emit AddLiquidity(lp, attoOxmAmount, tokenAmount)
        |
-       |    transferTokenToSelf!(lp, OXM, attoAlphAmount)
+       |    transferTokenToSelf!(lp, OXM, attoOxmAmount)
        |    transferTokenToSelf!(lp, tokenId, tokenAmount)
-       |    alphReserve = alphReserve + attoAlphAmount
+       |    alphReserve = alphReserve + attoOxmAmount
        |    tokenReserve = tokenReserve + tokenAmount
        |  }
        |
        |  @using(preapprovedAssets = true, assetsInContract = true, updateFields = true)
-       |  pub fn swapToken(buyer: Address, attoAlphAmount: U256) -> () {
-       |    emit SwapToken(buyer, attoAlphAmount)
+       |  pub fn swapToken(buyer: Address, attoOxmAmount: U256) -> () {
+       |    emit SwapToken(buyer, attoOxmAmount)
        |
-       |    let tokenAmount = tokenReserve - alphReserve * tokenReserve / (alphReserve + attoAlphAmount)
-       |    transferTokenToSelf!(buyer, OXM, attoAlphAmount)
+       |    let tokenAmount = tokenReserve - alphReserve * tokenReserve / (alphReserve + attoOxmAmount)
+       |    transferTokenToSelf!(buyer, OXM, attoOxmAmount)
        |    transferTokenFromSelf!(buyer, tokenId, tokenAmount)
-       |    alphReserve = alphReserve + attoAlphAmount
+       |    alphReserve = alphReserve + attoOxmAmount
        |    tokenReserve = tokenReserve - tokenAmount
        |  }
        |
        |  @using(preapprovedAssets = true, assetsInContract = true, updateFields = true)
-       |  pub fn swapAlph(buyer: Address, tokenAmount: U256) -> () {
-       |    emit SwapAlph(buyer, tokenAmount)
+       |  pub fn swapOxm(buyer: Address, tokenAmount: U256) -> () {
+       |    emit SwapOxm(buyer, tokenAmount)
        |
-       |    let attoAlphAmount = alphReserve - alphReserve * tokenReserve / (tokenReserve + tokenAmount)
+       |    let attoOxmAmount = alphReserve - alphReserve * tokenReserve / (tokenReserve + tokenAmount)
        |    transferTokenToSelf!(buyer, tokenId, tokenAmount)
-       |    transferTokenFromSelf!(buyer, OXM, attoAlphAmount)
-       |    alphReserve = alphReserve - attoAlphAmount
+       |    transferTokenFromSelf!(buyer, OXM, attoOxmAmount)
+       |    alphReserve = alphReserve - attoOxmAmount
        |    tokenReserve = tokenReserve + tokenAmount
        |  }
        |}
@@ -67,20 +67,20 @@ object AMMContract {
     s"""
        |Contract SwapProxy(swapContract: Swap, tokenId: ByteVec) {
        |  @using(preapprovedAssets = true)
-       |  pub fn addLiquidity(lp: Address, attoAlphAmount: U256, tokenAmount: U256) -> () {
+       |  pub fn addLiquidity(lp: Address, attoOxmAmount: U256, tokenAmount: U256) -> () {
        |    swapContract.addLiquidity{
-       |      lp -> OXM: attoAlphAmount, tokenId: tokenAmount
-       |    }(lp, attoAlphAmount, tokenAmount)
+       |      lp -> OXM: attoOxmAmount, tokenId: tokenAmount
+       |    }(lp, attoOxmAmount, tokenAmount)
        |  }
        |
        |  @using(preapprovedAssets = true)
-       |  pub fn swapToken(buyer: Address, attoAlphAmount: U256) -> () {
-       |    swapContract.swapToken{buyer -> OXM: attoAlphAmount}(buyer, attoAlphAmount)
+       |  pub fn swapToken(buyer: Address, attoOxmAmount: U256) -> () {
+       |    swapContract.swapToken{buyer -> OXM: attoOxmAmount}(buyer, attoOxmAmount)
        |  }
        |
        |  @using(preapprovedAssets = true)
-       |  pub fn swapAlph(buyer: Address, tokenAmount: U256) -> () {
-       |    swapContract.swapAlph{buyer -> tokenId: tokenAmount}(buyer, tokenAmount)
+       |  pub fn swapOxm(buyer: Address, tokenAmount: U256) -> () {
+       |    swapContract.swapOxm{buyer -> tokenId: tokenAmount}(buyer, tokenAmount)
        |  }
        |}
        |

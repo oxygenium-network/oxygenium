@@ -80,19 +80,19 @@ object StaticAnalysis {
 
   private[ralph] lazy val contractAssetsInstrs: Set[vm.Instr[_]] =
     Set(
-      vm.TransferAlphFromSelf,
+      vm.TransferOxmFromSelf,
       vm.TransferTokenFromSelf,
-      vm.TransferAlphToSelf,
+      vm.TransferOxmToSelf,
       vm.TransferTokenToSelf,
       vm.DestroySelf,
       vm.SelfAddress
     )
   private lazy val payToContractInstrs: Set[vm.Instr[_]] =
-    Set(vm.TransferAlphToSelf, vm.TransferTokenToSelf, vm.SelfAddress)
+    Set(vm.TransferOxmToSelf, vm.TransferTokenToSelf, vm.SelfAddress)
   private lazy val spendContractAssetsInstrs: Set[vm.Instr[_]] =
-    Set(vm.TransferAlphFromSelf, vm.TransferTokenFromSelf, vm.DestroySelf)
+    Set(vm.TransferOxmFromSelf, vm.TransferTokenFromSelf, vm.DestroySelf)
   private lazy val payToContractInstrsExceptSelfAddress: Set[vm.Instr[_]] =
-    Set(vm.TransferAlphToSelf, vm.TransferTokenToSelf)
+    Set(vm.TransferOxmToSelf, vm.TransferTokenToSelf)
 
   def checkCodeUsingContractAssets(
       contractId: Ast.TypeId,
@@ -152,7 +152,7 @@ object StaticAnalysis {
   }
 
   private lazy val useAssetsInstrs: Set[vm.Instr[_]] =
-    Set(vm.ApproveAlph, vm.ApproveToken, vm.TransferAlph, vm.TransferToken, vm.BurnToken)
+    Set(vm.ApproveOxm, vm.ApproveToken, vm.TransferOxm, vm.TransferToken, vm.BurnToken)
 
   private def checkCodeUsingAssets(
       contractId: Ast.TypeId,

@@ -225,7 +225,7 @@ class FrameSpec extends OxygeniumSpec with FrameFixture {
     )
 
     val contractId     = ContractId.random
-    val contractOutput = ContractOutput(OXM.oneAlph, LockupScript.p2c(contractId), AVector.empty)
+    val contractOutput = ContractOutput(OXM.oneOxm, LockupScript.p2c(contractId), AVector.empty)
     val contractOutputRef = ContractOutputRef.from(TransactionId.random, contractOutput, 0)
     val (contractObj, _) = prepareContract(
       contract,
@@ -238,7 +238,7 @@ class FrameSpec extends OxygeniumSpec with FrameFixture {
     frame.getNewFrameBalancesState(contractObj, contract.methods.head, 0).rightValue is Some(
       MutBalanceState(
         MutBalances(
-          ArrayBuffer(contractOutput.lockupScript -> MutBalancesPerLockup.alph(OXM.oneAlph))
+          ArrayBuffer(contractOutput.lockupScript -> MutBalancesPerLockup.alph(OXM.oneOxm))
         ),
         MutBalances.empty
       )

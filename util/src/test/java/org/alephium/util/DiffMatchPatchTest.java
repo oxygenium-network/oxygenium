@@ -272,7 +272,7 @@ public class DiffMatchPatchTest {
 
         diffs = diffList(new Diff(EQUAL, "The-c"), new Diff(INSERT, "ow-and-the-c"), new Diff(EQUAL, "at."));
         dmp.diff_cleanupSemanticLossless(diffs);
-        assertEquals("diff_cleanupSemanticLossless: Alphanumeric boundaries.", diffList(new Diff(EQUAL, "The-"), new Diff(INSERT, "cow-and-the-"), new Diff(EQUAL, "cat.")), diffs);
+        assertEquals("diff_cleanupSemanticLossless: Oxmanumeric boundaries.", diffList(new Diff(EQUAL, "The-"), new Diff(INSERT, "cow-and-the-"), new Diff(EQUAL, "cat.")), diffs);
 
         diffs = diffList(new Diff(EQUAL, "a"), new Diff(DELETE, "a"), new Diff(EQUAL, "ax"));
         dmp.diff_cleanupSemanticLossless(diffs);
@@ -574,7 +574,7 @@ public class DiffMatchPatchTest {
     //  MATCH TEST FUNCTIONS
 
 
-    public static void testMatchAlphabet() {
+    public static void testMatchOxmabet() {
         // Initialise the bitmasks for Bitap.
         Map<Character, Integer> bitmask;
         bitmask = new HashMap<Character, Integer>();
@@ -979,7 +979,7 @@ public class DiffMatchPatchTest {
         testDiffBisect();
         testDiffMain();
 
-        testMatchAlphabet();
+        testMatchOxmabet();
         testMatchBitap();
         testMatchMain();
 

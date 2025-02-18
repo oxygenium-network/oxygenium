@@ -27,7 +27,7 @@ final case class BuildExecuteScriptTx(
     fromPublicKey: ByteString,
     fromPublicKeyType: Option[BuildTxCommon.PublicKeyType] = None,
     bytecode: ByteString,
-    attoAlphAmount: Option[Amount] = None,
+    attoOxmAmount: Option[Amount] = None,
     tokens: Option[AVector[Token]] = None,
     gasAmount: Option[GasBox] = None,
     gasPrice: Option[GasPrice] = None,

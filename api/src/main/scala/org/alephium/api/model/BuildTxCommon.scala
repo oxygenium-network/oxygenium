@@ -67,11 +67,11 @@ object BuildTxCommon {
     }
   }
 
-  def getAlphAndTokenAmounts(
-      attoAlphAmount: Option[Amount],
+  def getOxmAndTokenAmounts(
+      attoOxmAmount: Option[Amount],
       tokensAmount: Option[AVector[Token]]
   ): Either[String, (Option[U256], AVector[(TokenId, U256)])] = {
-    val alphAmountOpt = attoAlphAmount.map(_.value)
+    val alphAmountOpt = attoOxmAmount.map(_.value)
     tokensAmount match {
       case None => Right((alphAmountOpt, AVector.empty))
       case Some(tokens) =>

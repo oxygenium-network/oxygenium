@@ -592,7 +592,7 @@ object FlowUtils {
     if (script.entryMethod.usePreapprovedAssets) {
       for {
         balances0 <- MutBalances.from(preOutputs, txTemplate.unsigned.fixedOutputs)
-        _         <- balances0.subAlph(preOutputs.head.lockupScript, txTemplate.gasFeeUnsafe)
+        _         <- balances0.subOxm(preOutputs.head.lockupScript, txTemplate.gasFeeUnsafe)
         outputs   <- balances0.toOutputs()
       } yield {
         Transaction(

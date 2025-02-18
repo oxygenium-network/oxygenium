@@ -64,7 +64,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       blockflowFetchMaxAge = blockflowFetchMaxAge,
       askTimeout = Duration.ofMinutesUnsafe(1),
       AVector.empty,
-      OXM.oneAlph,
+      OXM.oneOxm,
       utxosLimitInApiConfig,
       128,
       enableHttpMetrics = true
@@ -149,7 +149,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
         destinations.map(d =>
           TxOutputInfo(
             d.address.lockupScript,
-            d.getAttoAlphAmount().value,
+            d.getAttoOxmAmount().value,
             AVector.empty,
             Option.empty
           )
@@ -161,7 +161,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
       val txsFee = txs.map(_.gasFeeUnsafe.v).sum
       val senderHasSpent =
-        U256.from(destinations.map(_.getAttoAlphAmount().value.v).sum).get + U256.from(txsFee).get
+        U256.from(destinations.map(_.getAttoOxmAmount().value.v).sum).get + U256.from(txsFee).get
       val expectedSenderBalanceWithGas = initialSenderBalance - senderHasSpent
       checkAddressBalance(
         Address.p2pkh(fromPublicKey),
@@ -250,8 +250,8 @@ class ServerUtilsSpec extends OxygeniumSpec {
       )
 
       val senderBalanceWithGas =
-        genesisBalance - destination1.getAttoAlphAmount().value - destination2
-          .getAttoAlphAmount()
+        genesisBalance - destination1.getAttoOxmAmount().value - destination2
+          .getAttoOxmAmount()
           .value
 
       checkAddressBalance(fromAddress, senderBalanceWithGas - txTemplate.gasFeeUnsafe)
@@ -312,21 +312,21 @@ class ServerUtilsSpec extends OxygeniumSpec {
       )
 
       val senderBalanceWithGas =
-        genesisBalance - destination1.getAttoAlphAmount().value - destination2
-          .getAttoAlphAmount()
+        genesisBalance - destination1.getAttoOxmAmount().value - destination2
+          .getAttoOxmAmount()
           .value
 
       checkAddressBalance(fromAddress, senderBalanceWithGas - txTemplate.gasFeeUnsafe)
-      checkAddressBalance(destination1.address, OXM.oneAlph, 1)
-      checkAddressBalance(destination2.address, OXM.oneAlph, 1)
+      checkAddressBalance(destination1.address, OXM.oneOxm, 1)
+      checkAddressBalance(destination2.address, OXM.oneOxm, 1)
 
       val block0 = mineFromMemPool(blockFlow, chainIndex)
       addAndCheck(blockFlow, block0)
       serverUtils.getTransactionStatus(blockFlow, txTemplate.id, chainIndex) isE
         Confirmed(block0.hash, 0, 1, 0, 0)
       checkAddressBalance(fromAddress, senderBalanceWithGas - txTemplate.gasFeeUnsafe)
-      checkAddressBalance(destination1.address, OXM.oneAlph, 1)
-      checkAddressBalance(destination2.address, OXM.oneAlph, 1)
+      checkAddressBalance(destination1.address, OXM.oneOxm, 1)
+      checkAddressBalance(destination2.address, OXM.oneOxm, 1)
 
       checkTx(blockFlow, block0.nonCoinbase.head, chainIndex)
 
@@ -359,7 +359,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     )(
       expectedSenderUtxosCount = 1,
       expectedDestUtxosCount = 2,
-      expectedDestBalance = OXM.oneAlph * 2,
+      expectedDestBalance = OXM.oneOxm * 2,
       expectedTxsCount = 2
     )
   }
@@ -375,7 +375,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     )(
       expectedSenderUtxosCount = 2,
       expectedDestUtxosCount = 2,
-      expectedDestBalance = OXM.oneAlph * 2,
+      expectedDestBalance = OXM.oneOxm * 2,
       expectedTxsCount = 2
     )
   }
@@ -391,7 +391,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     )(
       expectedSenderUtxosCount = 1,
       expectedDestUtxosCount = 2,
-      expectedDestBalance = OXM.oneAlph * 2,
+      expectedDestBalance = OXM.oneOxm * 2,
       expectedTxsCount = 2
     )
   }
@@ -407,7 +407,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     )(
       expectedSenderUtxosCount = 2,
       expectedDestUtxosCount = 514,
-      expectedDestBalance = OXM.oneAlph * 514,
+      expectedDestBalance = OXM.oneOxm * 514,
       expectedTxsCount = 4
     )
   }
@@ -436,7 +436,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       AVector(0, 1, 2).map { groupIndex =>
         Destination(
           Address.p2pkh(GroupIndex.unsafe(groupIndex).generateKey._2),
-          Some(Amount(OXM.oneAlph))
+          Some(Amount(OXM.oneOxm))
         )
       }
 
@@ -448,7 +448,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     )(
       expectedSenderUtxosCount = 1,
       expectedDestUtxosCount = 3,
-      expectedDestBalance = OXM.oneAlph * 3,
+      expectedDestBalance = OXM.oneOxm * 3,
       expectedTxsCount = 3
     )
 
@@ -460,7 +460,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     )(
       expectedSenderUtxosCount = 1,
       expectedDestUtxosCount = 6,
-      expectedDestBalance = OXM.oneAlph * 6,
+      expectedDestBalance = OXM.oneOxm * 6,
       expectedTxsCount = 3
     )
 
@@ -472,7 +472,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     )(
       expectedSenderUtxosCount = 1,
       expectedDestUtxosCount = 9,
-      expectedDestBalance = OXM.oneAlph * 9,
+      expectedDestBalance = OXM.oneOxm * 9,
       expectedTxsCount = 3
     )
   }
@@ -500,7 +500,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     addAndCheck(blockFlow, confirmBlock)
 
     implicit val serverUtils: ServerUtils = new ServerUtils
-    val destination = Destination(Address.p2pkh(genesisPubKey), Some(Amount(OXM.oneAlph)))
+    val destination = Destination(Address.p2pkh(genesisPubKey), Some(Amount(OXM.oneOxm)))
     val buildTransferTransaction = serverUtils
       .buildTransferTransaction(
         blockFlow,
@@ -540,7 +540,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       val fromGroup                          = chainIndex.from
       val (fromPrivateKey, fromPublicKey, _) = genesisKeys(fromGroup.value)
       val fromAddress                        = Address.p2pkh(fromPublicKey)
-      val selfDestination = Destination(fromAddress, Some(Amount(OXM.oneAlph)), None)
+      val selfDestination = Destination(fromAddress, Some(Amount(OXM.oneOxm)), None)
 
       info("Sending some coins to itself twice, creating 3 UTXOs in total for the same public key")
       val destinations = AVector(selfDestination, selfDestination)
@@ -622,7 +622,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       val toGroup                            = chainIndex.to
       val (toPrivateKey, toPublicKey, _)     = genesisKeys(toGroup.value)
       val toAddress                          = Address.p2pkh(toPublicKey)
-      val destination                        = Destination(toAddress, Some(Amount(OXM.oneAlph)))
+      val destination                        = Destination(toAddress, Some(Amount(OXM.oneOxm)))
 
       info("Sending some coins to an address, resulting 10 UTXOs for its corresponding public key")
       val destinations = AVector.fill(10)(destination)
@@ -802,7 +802,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val genesisKey  = genesisKeys(groupIndex.value)._1
     val pubKey      = groupIndex.generateKey._2
     (0 until 6).foreach { _ =>
-      val block = transfer(blockFlow, genesisKey, pubKey, OXM.oneAlph)
+      val block = transfer(blockFlow, genesisKey, pubKey, OXM.oneOxm)
       addAndCheck(blockFlow, block)
     }
     val lockupScript = LockupScript.p2pkh(pubKey)
@@ -922,7 +922,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       OutputRef(utxo.ref.hint, utxo.ref.key)
     }
 
-    // OXM.oneAlph is transferred to each destination
+    // OXM.oneOxm is transferred to each destination
     val unsignedTx = serverUtils
       .prepareUnsignedTransaction(
         blockFlow,
@@ -942,12 +942,12 @@ class ServerUtilsSpec extends OxygeniumSpec {
       val defaultGas =
         GasEstimation.estimateWithSameP2PKHInputs(outputRefs.length, outputLockupScripts.length)
       val defaultGasFee = nonCoinbaseMinGasPrice * defaultGas
-      fromAddressBalance - OXM.oneAlph.mulUnsafe(2) - defaultGasFee
+      fromAddressBalance - OXM.oneOxm.mulUnsafe(2) - defaultGasFee
     }
 
     unsignedTx.fixedOutputs.map(_.amount).toSeq should contain theSameElementsAs Seq(
-      OXM.oneAlph,
-      OXM.oneAlph,
+      OXM.oneOxm,
+      OXM.oneOxm,
       fromAddressBalanceAfterTransfer
     )
   }
@@ -959,7 +959,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       NetworkId.OxygeniumDevNet,
       None,
       minimalGas,
-      GasPrice(OXM.oneAlph),
+      GasPrice(OXM.oneOxm),
       AVector(txInputGen.sample.get),
       AVector.empty
     )
@@ -987,7 +987,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     )
   }
 
-  it should "not create transaction with provided UTXOs, if Alph amount isn't enough" in new MultipleUtxos {
+  it should "not create transaction with provided UTXOs, if Oxm amount isn't enough" in new MultipleUtxos {
     val outputRefs = utxos.collect { utxo =>
       if (utxo.amount.value.equals(OXM.cent(50))) {
         Some(OutputRef(utxo.ref.hint, utxo.ref.key))
@@ -1125,16 +1125,16 @@ class ServerUtilsSpec extends OxygeniumSpec {
   }
 
   it should "not create transaction with overflowing OXM amount" in new MultipleUtxos {
-    val attoAlphAmountOverflowDestinations = AVector(
+    val attoOxmAmountOverflowDestinations = AVector(
       destination1,
-      destination2.copy(attoAlphAmount = Some(Amount(OXM.MaxOXMValue)))
+      destination2.copy(attoOxmAmount = Some(Amount(OXM.MaxOXMValue)))
     )
     serverUtils
       .prepareUnsignedTransaction(
         blockFlow,
         fromPublicKey,
         outputRefsOpt = None,
-        attoAlphAmountOverflowDestinations,
+        attoOxmAmountOverflowDestinations,
         gasOpt = Some(minimalGas),
         nonCoinbaseMinGasPrice,
         targetBlockHashOpt = None,
@@ -1214,23 +1214,23 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
   it should "check the minimal amount deposit for contract creation" in new Fixture {
     val serverUtils = new ServerUtils
-    serverUtils.getInitialAttoAlphAmount(None, HardFork.Leman) isE minimalAlphInContractPreRhone
-    serverUtils.getInitialAttoAlphAmount(
-      Some(minimalAlphInContractPreRhone),
+    serverUtils.getInitialAttoOxmAmount(None, HardFork.Leman) isE minimalOxmInContractPreRhone
+    serverUtils.getInitialAttoOxmAmount(
+      Some(minimalOxmInContractPreRhone),
       HardFork.Leman
-    ) isE minimalAlphInContractPreRhone
+    ) isE minimalOxmInContractPreRhone
     serverUtils
-      .getInitialAttoAlphAmount(Some(minimalAlphInContractPreRhone - 1), HardFork.Leman)
+      .getInitialAttoOxmAmount(Some(minimalOxmInContractPreRhone - 1), HardFork.Leman)
       .leftValue
       .detail is "Expect 1 OXM deposit to deploy a new contract"
 
-    serverUtils.getInitialAttoAlphAmount(None, HardFork.Rhone) isE minimalAlphInContract
-    serverUtils.getInitialAttoAlphAmount(
-      Some(minimalAlphInContract),
+    serverUtils.getInitialAttoOxmAmount(None, HardFork.Rhone) isE minimalOxmInContract
+    serverUtils.getInitialAttoOxmAmount(
+      Some(minimalOxmInContract),
       HardFork.Rhone
-    ) isE minimalAlphInContract
+    ) isE minimalOxmInContract
     serverUtils
-      .getInitialAttoAlphAmount(Some(minimalAlphInContract - 1), HardFork.Rhone)
+      .getInitialAttoOxmAmount(Some(minimalOxmInContract - 1), HardFork.Rhone)
       .leftValue
       .detail is "Expect 0.1 OXM deposit to deploy a new contract"
   }
@@ -1301,7 +1301,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     val chainIndex            = ChainIndex.unsafe(0, 0)
     val (_, fromPublicKey, _) = genesisKeys(chainIndex.from.value)
-    val amount                = Amount(OXM.oneAlph)
+    val amount                = Amount(OXM.oneOxm)
     val destination           = Destination(generateAddress(chainIndex), Some(amount))
 
     val source = BuildMultiAddressesTransaction.Source(
@@ -1330,7 +1330,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val chainIndex             = ChainIndex.unsafe(0, 0)
     val (fromPrivateKey, _, _) = genesisKeys(chainIndex.from.value)
     val amount                 = OXM.alph(10)
-    val destination = Destination(generateAddress(chainIndex), Some(Amount(OXM.oneAlph)))
+    val destination = Destination(generateAddress(chainIndex), Some(Amount(OXM.oneOxm)))
 
     val inputPubKeys = AVector.fill(10)(chainIndex.to.generateKey._2)
 
@@ -1392,12 +1392,12 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     val chainIndex = ChainIndex.unsafe(0, 0)
 
-    val destination = Destination(generateAddress(chainIndex), Some(Amount(OXM.oneAlph)))
+    val destination = Destination(generateAddress(chainIndex), Some(Amount(OXM.oneOxm)))
 
     forAll(Gen.choose(1, 20)) { i =>
       val outputs = serverUtils.mergeAndprepareOutputInfos(AVector.fill(i)(destination)).rightValue
       outputs.length is 1
-      outputs(0).attoAlphAmount is OXM.alph(i.toLong)
+      outputs(0).attoOxmAmount is OXM.alph(i.toLong)
       outputs(0).tokens is AVector.empty[(TokenId, U256)]
     }
 
@@ -1410,9 +1410,9 @@ class ServerUtilsSpec extends OxygeniumSpec {
         )
         .rightValue
       outputs.length is 2
-      outputs(0).attoAlphAmount is OXM.alph(i.toLong)
+      outputs(0).attoOxmAmount is OXM.alph(i.toLong)
       outputs(0).tokens is AVector.empty[(TokenId, U256)]
-      outputs(1).attoAlphAmount is OXM.alph(2 * i.toLong)
+      outputs(1).attoOxmAmount is OXM.alph(2 * i.toLong)
       outputs(1).tokens is AVector.empty[(TokenId, U256)]
     }
   }
@@ -1428,12 +1428,12 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val tokens = AVector(Token(tokenId1, U256.One), Token(tokenId2, U256.Two))
 
     val destination =
-      Destination(generateAddress(chainIndex), Some(Amount(OXM.oneAlph)), Some(tokens))
+      Destination(generateAddress(chainIndex), Some(Amount(OXM.oneOxm)), Some(tokens))
 
     forAll(Gen.choose(1, 20)) { i =>
       val outputs = serverUtils.mergeAndprepareOutputInfos(AVector.fill(i)(destination)).rightValue
       outputs.length is 1
-      outputs(0).attoAlphAmount is OXM.alph(i.toLong)
+      outputs(0).attoOxmAmount is OXM.alph(i.toLong)
       outputs(0).tokens is AVector(
         (tokenId1, U256.unsafe(i)),
         (tokenId2, U256.unsafe(2 * i.toLong))
@@ -1450,12 +1450,12 @@ class ServerUtilsSpec extends OxygeniumSpec {
         )
         .rightValue
       outputs.length is 2
-      outputs(0).attoAlphAmount is OXM.alph(i.toLong)
+      outputs(0).attoOxmAmount is OXM.alph(i.toLong)
       outputs(0).tokens is AVector(
         (tokenId1, U256.unsafe(i)),
         (tokenId2, U256.unsafe(2 * i.toLong))
       )
-      outputs(1).attoAlphAmount is OXM.alph(2 * i.toLong)
+      outputs(1).attoOxmAmount is OXM.alph(2 * i.toLong)
       outputs(1).tokens is AVector(
         (tokenId1, U256.unsafe(i)),
         (tokenId2, U256.unsafe(2 * i.toLong))
@@ -1469,14 +1469,14 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val chainIndex = ChainIndex.unsafe(0, 0)
 
     val destAddress = generateAddress(chainIndex)
-    val destination = Destination(destAddress, Some(Amount(OXM.oneAlph)))
+    val destination = Destination(destAddress, Some(Amount(OXM.oneOxm)))
     val destinationLockTime =
-      Destination(destAddress, Some(Amount(OXM.oneAlph)), lockTime = Some(TimeStamp.now()))
+      Destination(destAddress, Some(Amount(OXM.oneOxm)), lockTime = Some(TimeStamp.now()))
     val destinationMessage =
-      Destination(destAddress, Some(Amount(OXM.oneAlph)), message = Some(ByteString.empty))
+      Destination(destAddress, Some(Amount(OXM.oneOxm)), message = Some(ByteString.empty))
     val destinationBoth = Destination(
       destAddress,
-      Some(Amount(OXM.oneAlph)),
+      Some(Amount(OXM.oneOxm)),
       lockTime = Some(TimeStamp.now()),
       message = Some(ByteString.empty)
     )
@@ -1491,17 +1491,17 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     val outputs = serverUtils.mergeAndprepareOutputInfos(destinations).rightValue
     outputs.length is 4
-    outputs(0).attoAlphAmount is OXM.alph(2)
+    outputs(0).attoOxmAmount is OXM.alph(2)
 
-    outputs(1).attoAlphAmount is OXM.alph(1)
+    outputs(1).attoOxmAmount is OXM.alph(1)
     outputs(1).lockTime.isDefined is true
     outputs(1).additionalDataOpt.isEmpty is true
 
-    outputs(2).attoAlphAmount is OXM.alph(1)
+    outputs(2).attoOxmAmount is OXM.alph(1)
     outputs(2).lockTime.isEmpty is true
     outputs(2).additionalDataOpt.isDefined is true
 
-    outputs(3).attoAlphAmount is OXM.alph(1)
+    outputs(3).attoOxmAmount is OXM.alph(1)
     outputs(3).lockTime.isDefined is true
     outputs(3).additionalDataOpt.isDefined is true
   }
@@ -1513,12 +1513,12 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     val destAddress = generateAddress(chainIndex)
     val destinationLockTime =
-      Destination(destAddress, Some(Amount(OXM.oneAlph)), lockTime = Some(TimeStamp.now()))
+      Destination(destAddress, Some(Amount(OXM.oneOxm)), lockTime = Some(TimeStamp.now()))
     val destinationMessage =
-      Destination(destAddress, Some(Amount(OXM.oneAlph)), message = Some(ByteString.empty))
+      Destination(destAddress, Some(Amount(OXM.oneOxm)), message = Some(ByteString.empty))
     val destinationBoth = Destination(
       destAddress,
-      Some(Amount(OXM.oneAlph)),
+      Some(Amount(OXM.oneOxm)),
       lockTime = Some(TimeStamp.now()),
       message = Some(ByteString.empty)
     )
@@ -1532,15 +1532,15 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val outputs = serverUtils.mergeAndprepareOutputInfos(destinations).rightValue
     outputs.length is 3
 
-    outputs(0).attoAlphAmount is OXM.alph(1)
+    outputs(0).attoOxmAmount is OXM.alph(1)
     outputs(0).lockTime.isDefined is true
     outputs(0).additionalDataOpt.isEmpty is true
 
-    outputs(1).attoAlphAmount is OXM.alph(1)
+    outputs(1).attoOxmAmount is OXM.alph(1)
     outputs(1).lockTime.isEmpty is true
     outputs(1).additionalDataOpt.isDefined is true
 
-    outputs(2).attoAlphAmount is OXM.alph(1)
+    outputs(2).attoOxmAmount is OXM.alph(1)
     outputs(2).lockTime.isDefined is true
     outputs(2).additionalDataOpt.isDefined is true
   }
@@ -1575,7 +1575,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     def deployContract(
         contract: String,
-        initialAttoAlphAmount: Amount,
+        initialAttoOxmAmount: Amount,
         keyPair: (PrivateKey, PublicKey),
         issueTokenAmount: Option[Amount]
     ): Address.Contract = {
@@ -1587,7 +1587,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
           BuildDeployContractTx(
             Hex.unsafe(keyPair._2.toHexString),
             bytecode = serialize(Code(code, AVector.empty, AVector.empty)),
-            initialAttoAlphAmount = Some(initialAttoAlphAmount),
+            initialAttoOxmAmount = Some(initialAttoOxmAmount),
             issueTokenAmount = issueTokenAmount
           )
         )
@@ -1597,7 +1597,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
         deserialize[UnsignedTransaction](Hex.unsafe(deployContractTxResult.unsignedTx)).rightValue
       deployContractTx.fixedOutputs.length is 1
 
-      val testAddressAlphBalance = getAlphBalance(blockFlow, LockupScript.p2pkh(keyPair._2))
+      val testAddressOxmBalance = getOxmBalance(blockFlow, LockupScript.p2pkh(keyPair._2))
       signAndAddToMemPool(
         deployContractTxResult.txId,
         deployContractTxResult.unsignedTx,
@@ -1610,8 +1610,8 @@ class ServerUtilsSpec extends OxygeniumSpec {
       serverUtils.getTransaction(blockFlow, deployContractTxResult.txId, None, None).rightValue
 
       // Check that gas is paid correctly
-      getAlphBalance(blockFlow, LockupScript.p2pkh(keyPair._2)) is testAddressAlphBalance.subUnsafe(
-        deployContractTx.gasPrice * deployContractTx.gasAmount + initialAttoAlphAmount.value
+      getOxmBalance(blockFlow, LockupScript.p2pkh(keyPair._2)) is testAddressOxmBalance.subUnsafe(
+        deployContractTx.gasPrice * deployContractTx.gasAmount + initialAttoOxmAmount.value
       )
       deployContractTxResult.contractAddress
     }
@@ -1637,7 +1637,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
         mutFields: AVector[vm.Val]
     ): (Block, ContractId) = {
       val script =
-        contractCreation(contract, immFields, mutFields, lockupScript, minimalAlphInContract)
+        contractCreation(contract, immFields, mutFields, lockupScript, minimalOxmInContract)
       val block      = executeScript(script, None)
       val contractId = ContractId.from(block.transactions.head.id, 0, chainIndex.from)
       (block, contractId)
@@ -1646,7 +1646,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
   trait CallContractFixture extends ContractFixture {
     val callerAddress = Address.Asset(lockupScript)
-    val inputAsset    = TestInputAsset(callerAddress, AssetState(OXM.oneAlph))
+    val inputAsset    = TestInputAsset(callerAddress, AssetState(OXM.oneOxm))
 
     val barCode =
       s"""
@@ -1668,7 +1668,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
          |Contract Foo(mut value: U256) {
          |  @using(preapprovedAssets = true, assetsInContract = true, updateFields = true)
          |  pub fn addOne() -> U256 {
-         |    transferTokenToSelf!(@$callerAddress, OXM, ${OXM.oneNanoAlph})
+         |    transferTokenToSelf!(@$callerAddress, OXM, ${OXM.oneNanoOxm})
          |    value = value + 1
          |    let bar = Bar(#${barId.toHexString})
          |    bar.addOne()
@@ -1699,19 +1699,19 @@ class ServerUtilsSpec extends OxygeniumSpec {
          |$fooCode
          |""".stripMargin
 
-    def checkContractStates(contractId: ContractId, value: U256, attoAlphAmount: U256) = {
+    def checkContractStates(contractId: ContractId, value: U256, attoOxmAmount: U256) = {
       val worldState    = blockFlow.getBestPersistedWorldState(chainIndex.from).rightValue
       val contractState = worldState.getContractState(contractId).rightValue
       contractState.mutFields is AVector[vm.Val](vm.Val.U256(value))
       val contractOutput = worldState.getContractAsset(contractState.contractOutputRef).rightValue
-      contractOutput.amount is attoAlphAmount
+      contractOutput.amount is attoOxmAmount
     }
   }
 
   "ServerUtils.callContract" should "call contract" in new CallContractFixture {
     executeScript(callScriptCode, None)
-    checkContractStates(barId, U256.unsafe(1), minimalAlphInContract)
-    checkContractStates(fooId, U256.unsafe(1), minimalAlphInContract + OXM.oneNanoAlph)
+    checkContractStates(barId, U256.unsafe(1), minimalOxmInContract)
+    checkContractStates(fooId, U256.unsafe(1), minimalOxmInContract + OXM.oneNanoOxm)
 
     info("call contract against the latest world state")
     val params0 = CallContract(
@@ -1726,20 +1726,20 @@ class ServerUtilsSpec extends OxygeniumSpec {
     callContractResult0.returns is AVector[Val](ValU256(2))
     callContractResult0.gasUsed is 23206
     callContractResult0.txOutputs.length is 2
-    val contractAttoAlphAmount0 = minimalAlphInContract + OXM.nanoAlph(2)
-    callContractResult0.txOutputs(0).attoAlphAmount.value is contractAttoAlphAmount0
+    val contractAttoOxmAmount0 = minimalOxmInContract + OXM.nanoOxm(2)
+    callContractResult0.txOutputs(0).attoOxmAmount.value is contractAttoOxmAmount0
 
     callContractResult0.contracts.length is 2
     val barState0 = callContractResult0.contracts(0)
     barState0.immFields is AVector.empty[Val]
     barState0.mutFields is AVector[Val](ValU256(2))
     barState0.address is barAddress
-    barState0.asset is AssetState(minimalAlphInContract, Some(AVector.empty))
+    barState0.asset is AssetState(minimalOxmInContract, Some(AVector.empty))
     val fooState0 = callContractResult0.contracts(1)
     barState0.immFields is AVector.empty[Val]
     fooState0.mutFields is AVector[Val](ValU256(2))
     fooState0.address is fooAddress
-    fooState0.asset is AssetState(contractAttoAlphAmount0, Some(AVector.empty))
+    fooState0.asset is AssetState(contractAttoOxmAmount0, Some(AVector.empty))
 
     info("call contract against the old world state")
     val params1 = params0.copy(worldStateBlockHash = Some(createContractBlock.hash))
@@ -1748,20 +1748,20 @@ class ServerUtilsSpec extends OxygeniumSpec {
     callContractResult1.returns is AVector[Val](ValU256(1))
     callContractResult1.gasUsed is 23206
     callContractResult1.txOutputs.length is 2
-    val contractAttoAlphAmount1 = minimalAlphInContract + OXM.oneNanoAlph
-    callContractResult1.txOutputs(0).attoAlphAmount.value is contractAttoAlphAmount1
+    val contractAttoOxmAmount1 = minimalOxmInContract + OXM.oneNanoOxm
+    callContractResult1.txOutputs(0).attoOxmAmount.value is contractAttoOxmAmount1
 
     callContractResult1.contracts.length is 2
     val barState1 = callContractResult1.contracts(0)
     barState1.immFields is AVector.empty[Val]
     barState1.mutFields is AVector[Val](ValU256(1))
     barState1.address is barAddress
-    barState1.asset is AssetState(minimalAlphInContract, Some(AVector.empty))
+    barState1.asset is AssetState(minimalOxmInContract, Some(AVector.empty))
     val fooState1 = callContractResult1.contracts(1)
     barState1.immFields is AVector.empty[Val]
     fooState1.mutFields is AVector[Val](ValU256(1))
     fooState1.address is fooAddress
-    fooState1.asset is AssetState(contractAttoAlphAmount1, Some(AVector.empty))
+    fooState1.asset is AssetState(contractAttoOxmAmount1, Some(AVector.empty))
 
     info("call getName method successfully")
     val params2 = params0.copy(methodIndex = 2)
@@ -1866,7 +1866,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
       val blockHash = blockFlow.getBlockChain(chainIndex).getBestTipUnsafe()
       executeScript(script(false), None)
-      checkFooState(2, minimalAlphInContract * 2)
+      checkFooState(2, minimalOxmInContract * 2)
 
       val callerAddress = Address.p2pkh(chainIndex.from.generateKey._2)
       val fooAddress    = Address.contract(fooId)
@@ -1877,20 +1877,20 @@ class ServerUtilsSpec extends OxygeniumSpec {
         callerAddress = Some(callerAddress),
         interestedContracts = Some(AVector(fooAddress)),
         worldStateBlockHash = Some(blockHash),
-        inputAssets = Some(AVector(TestInputAsset(callerAddress, AssetState(OXM.oneAlph))))
+        inputAssets = Some(AVector(TestInputAsset(callerAddress, AssetState(OXM.oneOxm))))
       )
       val result0 = serverUtils.callTxScript(blockFlow, params0).rightValue
       result0.returns is AVector[Val](ValU256(2))
       result0.contracts.length is 1
       result0.contracts.head.mutFields is AVector[Val](ValU256(2))
       result0.contracts.head.immFields.isEmpty is true
-      result0.contracts.head.asset.attoAlphAmount is minimalAlphInContract * 2
+      result0.contracts.head.asset.attoOxmAmount is minimalOxmInContract * 2
       result0.txOutputs
         .find(_.address == callerAddress)
-        .exists(_.attoAlphAmount.value == OXM.cent(40)) is true
+        .exists(_.attoOxmAmount.value == OXM.cent(40)) is true
       result0.txOutputs
         .find(_.address == fooAddress)
-        .exists(_.attoAlphAmount.value == OXM.cent(20)) is true
+        .exists(_.attoOxmAmount.value == OXM.cent(20)) is true
 
       val params1 = params0.copy(worldStateBlockHash = None)
       val result1 = serverUtils.callTxScript(blockFlow, params1).rightValue
@@ -1898,15 +1898,15 @@ class ServerUtilsSpec extends OxygeniumSpec {
       result1.contracts.length is 1
       result1.contracts.head.mutFields is AVector[Val](ValU256(3))
       result1.contracts.head.immFields.isEmpty is true
-      result1.contracts.head.asset.attoAlphAmount is minimalAlphInContract * 3
+      result1.contracts.head.asset.attoOxmAmount is minimalOxmInContract * 3
       result1.txOutputs
         .find(_.address == callerAddress)
-        .exists(_.attoAlphAmount.value == OXM.cent(40)) is true
+        .exists(_.attoOxmAmount.value == OXM.cent(40)) is true
       result1.txOutputs
         .find(_.address == fooAddress)
-        .exists(_.attoAlphAmount.value == OXM.cent(30)) is true
+        .exists(_.attoOxmAmount.value == OXM.cent(30)) is true
 
-      checkFooState(2, minimalAlphInContract * 2)
+      checkFooState(2, minimalOxmInContract * 2)
     }
 
     {
@@ -2027,7 +2027,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       None,
       AVector.empty[Val],
       AVector.empty[Val],
-      AssetState(OXM.oneAlph)
+      AssetState(OXM.oneOxm)
     )
     val testContractParams = TestContract(
       group = Some(groupIndex.value),
@@ -2035,7 +2035,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       bytecode = barContract,
       initialAsset = Some(AssetState(OXM.alph(10))),
       existingContracts = Some(AVector(existingContract)),
-      inputAssets = Some(AVector(TestInputAsset(assetAddress, AssetState(OXM.oneAlph))))
+      inputAssets = Some(AVector(TestInputAsset(assetAddress, AssetState(OXM.oneOxm))))
     ).toComplete().rightValue
 
     val testFlow    = BlockFlow.emptyUnsafe(config)
@@ -2053,7 +2053,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     result.contracts(1).address is Address.contract(barContractId)
     val assetOutput = result.txOutputs(1)
     assetOutput.address is assetAddress
-    assetOutput.attoAlphAmount is Amount(
+    assetOutput.attoOxmAmount is Amount(
       OXM.alph(2).subUnsafe(nonCoinbaseMinGasPrice * maximalGasPerTx)
     )
   }
@@ -2094,7 +2094,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     result.txInputs.length is 1
     result.txInputs(0).lockupScript is fooContractAddress.lockupScript
     result.txOutputs.length is 1
-    result.txOutputs(0).attoAlphAmount.value is OXM.alph(10)
+    result.txOutputs(0).attoOxmAmount.value is OXM.alph(10)
     result.txOutputs(0).address is assetAddress
   }
 
@@ -2189,7 +2189,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
         None,
         AVector(ValByteVec(fooContractId.bytes)),
         AVector.empty,
-        AssetState(OXM.oneAlph)
+        AssetState(OXM.oneOxm)
       ),
       ContractState(
         Address.contract(fooContractId),
@@ -2198,7 +2198,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
         None,
         AVector.empty,
         AVector.empty,
-        AssetState(OXM.oneAlph)
+        AssetState(OXM.oneOxm)
       )
     )
     val testContractParams = TestContract(
@@ -2206,7 +2206,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       bytecode = barContract,
       initialAsset = Some(AssetState(OXM.alph(10))),
       existingContracts = Some(existingContracts),
-      inputAssets = Some(AVector(TestInputAsset(assetAddress, AssetState(OXM.oneAlph))))
+      inputAssets = Some(AVector(TestInputAsset(assetAddress, AssetState(OXM.oneOxm))))
     )
 
     val testFlow    = BlockFlow.emptyUnsafe(config)
@@ -2239,10 +2239,10 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val assetOutput = result.txOutputs(1)
     assetOutput.address is assetAddress
     val totalGas = nonCoinbaseMinGasPrice * maximalGasPerTx
-    assetOutput.attoAlphAmount is Amount(OXM.oneAlph.subUnsafe(totalGas))
+    assetOutput.attoOxmAmount is Amount(OXM.oneOxm.subUnsafe(totalGas))
     val contractOutput = result.txOutputs(0)
     contractOutput.address is Address.contract(fooCallerContractId)
-    contractOutput.attoAlphAmount.value is OXM.alph(2)
+    contractOutput.attoOxmAmount.value is OXM.alph(2)
   }
 
   it should "fail to destroy contracts and transfer fund to non-calling address" in new DestroyFixture {
@@ -2584,7 +2584,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     result0.txOutputs(2) is AssetOutput(
       result0.txOutputs(2).hint,
       emptyKey(2),
-      Amount(OXM.nanoAlph(90500000000L) - dustUtxoAmount),
+      Amount(OXM.nanoOxm(90500000000L) - dustUtxoAmount),
       buyer,
       AVector.empty,
       TimeStamp.zero,
@@ -2633,7 +2633,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     result1.txOutputs(1) is AssetOutput(
       result1.txOutputs(1).hint,
       emptyKey(1),
-      Amount(OXM.nanoAlph(110500000000L)),
+      Amount(OXM.nanoOxm(110500000000L)),
       lp,
       AVector.empty,
       TimeStamp.zero,
@@ -2641,7 +2641,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     )
   }
 
-  it should "test AMM contract: swap Alph" in new TestContractFixture {
+  it should "test AMM contract: swap Oxm" in new TestContractFixture {
     val testContract0 = TestContract.Complete(
       code = AMMContract.swapCode,
       originalCodeHash = AMMContract.swapCode.hash,
@@ -2678,7 +2678,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     result0.txOutputs(1) is AssetOutput(
       result0.txOutputs(1).hint,
       emptyKey(1),
-      Amount(OXM.nanoAlph(105500000000L)),
+      Amount(OXM.nanoOxm(105500000000L)),
       buyer,
       AVector.empty,
       TimeStamp.zero,
@@ -2736,7 +2736,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     result1.txOutputs(2) is AssetOutput(
       result1.txOutputs(2).hint,
       emptyKey(2),
-      Amount(OXM.nanoAlph(95500000000L) - dustUtxoAmount),
+      Amount(OXM.nanoOxm(95500000000L) - dustUtxoAmount),
       lp,
       AVector.empty,
       TimeStamp.zero,
@@ -3219,11 +3219,11 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val testContract0 = TestContract(bytecode = code).toComplete().rightValue
     serverUtils.runTestContract(blockFlow, testContract0).rightValue
 
-    val inputAssets1  = AVector(TestInputAsset(caller, AssetState(OXM.oneAlph / 2)))
+    val inputAssets1  = AVector(TestInputAsset(caller, AssetState(OXM.oneOxm / 2)))
     val testContract1 = testContract0.copy(inputAssets = inputAssets1)
     serverUtils.runTestContract(blockFlow, testContract1).rightValue
 
-    val inputAssets2  = AVector(TestInputAsset(caller, AssetState(OXM.oneAlph / 2 - 1)))
+    val inputAssets2  = AVector(TestInputAsset(caller, AssetState(OXM.oneOxm / 2 - 1)))
     val testContract2 = testContract0.copy(inputAssets = inputAssets2)
     serverUtils
       .runTestContract(blockFlow, testContract2)
@@ -3256,7 +3256,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       blockHash = Some(BlockHash.random),
       txId = Some(TransactionId.random),
       bytecode = code,
-      initialAsset = Some(AssetState(OXM.oneAlph, Some(AVector(Token(tokenId, 10))))),
+      initialAsset = Some(AssetState(OXM.oneOxm, Some(AVector(Token(tokenId, 10))))),
       args = Some(AVector.empty[Val]),
       inputAssets = Some(AVector(inputAssets))
     ).toComplete().rightValue
@@ -3308,7 +3308,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
         BuildDeployContractTx(
           Hex.unsafe(testPubKey.toHexString),
           bytecode = serialize(Code(code, AVector.empty, AVector.empty)),
-          initialAttoAlphAmount = Some(Amount(OXM.oneAlph))
+          initialAttoOxmAmount = Some(Amount(OXM.oneOxm))
         )
       )
       .rightValue
@@ -3318,7 +3318,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
         deserialize[UnsignedTransaction](Hex.unsafe(deployContractTxResult.unsignedTx)).rightValue
       deployContractTx.fixedOutputs.length is 1
       val output = deployContractTx.fixedOutputs.head
-      output.amount is OXM.oneAlph.subUnsafe(
+      output.amount is OXM.oneOxm.subUnsafe(
         deployContractTx.gasPrice * deployContractTx.gasAmount
       )
 
@@ -3377,9 +3377,9 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val (_, testPubKey) = chainIndex.from.generateKey
     val testAddress     = Address.p2pkh(testPubKey)
 
-    def attoAlphAmount: Option[Amount]
+    def attoOxmAmount: Option[Amount]
 
-    val alphPerUTXO = dustUtxoAmount + gasFee + attoAlphAmount.getOrElse(Amount.Zero).value - 1
+    val alphPerUTXO = dustUtxoAmount + gasFee + attoOxmAmount.getOrElse(Amount.Zero).value - 1
     val block1      = transfer(blockFlow, genesisKeys(1)._1, testPubKey, alphPerUTXO)
     addAndCheck(blockFlow, block1)
     checkAddressBalance(testAddress, alphPerUTXO, utxoNum = 1)
@@ -3395,7 +3395,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
           bytecode = serialize(scriptCode),
           gasAmount = Some(gasAmount),
           gasPrice = Some(gasPrice),
-          attoAlphAmount = attoAlphAmount
+          attoOxmAmount = attoOxmAmount
         )
       )
     }
@@ -3409,9 +3409,9 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     def deployContract(
         contract: String,
-        initialAttoAlphAmount: Amount = Amount(OXM.alph(3))
+        initialAttoOxmAmount: Amount = Amount(OXM.alph(3))
     ): Address.Contract = {
-      deployContract(contract, initialAttoAlphAmount, (testPriKey, testPubKey), None)
+      deployContract(contract, initialAttoOxmAmount, (testPriKey, testPubKey), None)
     }
 
     val testAddressBalance = OXM.alph(1000)
@@ -3506,7 +3506,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     checkAddressBalance(
       scriptCaller,
-      OXM.alph(1000000).addUnsafe(OXM.oneAlph).subUnsafe(scriptTxGasFee)
+      OXM.alph(1000000).addUnsafe(OXM.oneOxm).subUnsafe(scriptTxGasFee)
     )
     checkAddressBalance(contractAddress, OXM.alph(2))
   }
@@ -3692,7 +3692,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     checkAddressBalance(
       scriptCaller,
-      OXM.alph(1000000).addUnsafe(OXM.oneAlph).subUnsafe(scriptTxGasFee.subUnsafe(U256.Two))
+      OXM.alph(1000000).addUnsafe(OXM.oneOxm).subUnsafe(scriptTxGasFee.subUnsafe(U256.Two))
     )
     checkAddressBalance(contractAddress, OXM.alph(1).addUnsafe(partialGasFee).subUnsafe(2))
   }
@@ -3824,12 +3824,12 @@ class ServerUtilsSpec extends OxygeniumSpec {
   }
 
   it should "considers dustAmount for change output when selecting UTXOs, without amounts" in new DustAmountFixture {
-    override def attoAlphAmount: Option[Amount] = None
+    override def attoOxmAmount: Option[Amount] = None
     executeTxScript()
   }
 
   it should "considers dustAmount for change output when selecting UTXOs, with amounts" in new DustAmountFixture {
-    override def attoAlphAmount: Option[Amount] = Some(Amount(U256.unsafe(10)))
+    override def attoOxmAmount: Option[Amount] = Some(Amount(U256.unsafe(10)))
     executeTxScript()
   }
 
@@ -3894,13 +3894,13 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     def checkBalance(
         lockupScript: LockupScript,
-        expectedAlphBalance: U256,
+        expectedOxmBalance: U256,
         tokenId: TokenId,
         expectedTokenBalance: Option[U256]
     ) = {
       val (alphAmount, _, tokens, _, _) =
         blockFlow.getBalance(lockupScript, defaultUtxoLimit, true).rightValue
-      expectedAlphBalance is alphAmount
+      expectedOxmBalance is alphAmount
       tokens.find(_._1 == tokenId).map(_._2) is expectedTokenBalance
     }
   }
@@ -3914,7 +3914,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
           AVector.empty,
           AVector.empty,
           lockupScript,
-          minimalAlphInContract,
+          minimalOxmInContract,
           issuanceInfo
         )
       val block = payableCall(blockFlow, chainIndex, script)
@@ -3930,7 +3930,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val query = BuildDeployContractTx(
       fromPublicKey = publicKey.bytes,
       bytecode = serialize(Code(contract, AVector.empty, AVector.empty)),
-      initialAttoAlphAmount = Some(Amount(OXM.alph(2))),
+      initialAttoOxmAmount = Some(Amount(OXM.alph(2))),
       initialTokenAmounts = Some(AVector(Token(tokenId, U256.unsafe(4))))
     )
 
@@ -3948,7 +3948,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val query = BuildDeployContractTx(
       fromPublicKey = publicKey.bytes,
       bytecode = serialize(Code(contract, AVector.empty, AVector.empty)),
-      initialAttoAlphAmount = Some(Amount(OXM.alph(2))),
+      initialAttoOxmAmount = Some(Amount(OXM.alph(2))),
       issueTokenAmount = Some(Amount(U256.unsafe(10))),
       issueTokenTo = Some(Address.p2pkh(toPublicKey))
     )
@@ -3975,7 +3975,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val query = BuildDeployContractTx(
       fromPublicKey = publicKey.bytes,
       bytecode = serialize(Code(contract, AVector.empty, AVector.empty)),
-      initialAttoAlphAmount = Some(Amount(OXM.alph(2))),
+      initialAttoOxmAmount = Some(Amount(OXM.alph(2))),
       issueTokenAmount = None,
       issueTokenTo = Some(Address.p2pkh(publicKey))
     )
@@ -3988,13 +3988,13 @@ class ServerUtilsSpec extends OxygeniumSpec {
   }
 
   trait ChainedTransactionsFixture extends ExecuteScriptFixture with ContractFixture {
-    def checkAlphBalance(
+    def checkOxmBalance(
         lockupScript: LockupScript,
-        expectedAlphBalance: U256
+        expectedOxmBalance: U256
     ) = {
       val (alphAmount, _, _, _, _) =
         blockFlow.getBalance(lockupScript, defaultUtxoLimit, true).rightValue
-      expectedAlphBalance is alphAmount
+      expectedOxmBalance is alphAmount
     }
 
     def checkTokenBalance(
@@ -4098,7 +4098,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       .rightValue
     signAndAndToMemPool(transferToAddress0, genesisPrivateKey)
     confirmNewBlock(blockFlow, ChainIndex.unsafe(0, 0))
-    checkAlphBalance(groupInfo0.address.lockupScript, address0InitBalance)
+    checkOxmBalance(groupInfo0.address.lockupScript, address0InitBalance)
   }
 
   it should "build multiple transfers transactions" in new ChainedTransactionsFixture {
@@ -4106,7 +4106,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       BuildTransferTx(
         groupInfo1.publicKey.bytes,
         None,
-        AVector(groupInfo2.destination(OXM.oneAlph))
+        AVector(groupInfo2.destination(OXM.oneOxm))
       ),
       errorDetails = "Not enough balance: got 0, expected 1001000000000000000"
     )
@@ -4124,7 +4124,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
           BuildTransferTx(
             groupInfo0.publicKey.bytes,
             None,
-            AVector(groupInfo2.destination(OXM.oneAlph))
+            AVector(groupInfo2.destination(OXM.oneOxm))
           )
         )
       ),
@@ -4144,7 +4144,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
           BuildTransferTx(
             groupInfo1.publicKey.bytes,
             None,
-            AVector(groupInfo2.destination(OXM.oneAlph))
+            AVector(groupInfo2.destination(OXM.oneOxm))
           )
         ),
         BuildChainedTransferTx(
@@ -4170,7 +4170,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
         BuildTransferTx(
           groupInfo1.publicKey.bytes,
           None,
-          AVector(groupInfo2.destination(OXM.oneAlph))
+          AVector(groupInfo2.destination(OXM.oneOxm))
         )
       ),
       BuildChainedTransferTx(
@@ -4202,26 +4202,26 @@ class ServerUtilsSpec extends OxygeniumSpec {
       OXM.alph(1) - nonCoinbaseMinGasFee * 3 + buildTransferTransaction03.value.gasFee
     val buildTransferTransaction01GasFee =
       buildTransferTransaction01.value.gasPrice * buildTransferTransaction01.value.gasAmount
-    checkAlphBalance(
+    checkOxmBalance(
       groupInfo0.address.lockupScript,
       address0InitBalance - address0Transfer01Cost - address0Transfer03Cost
     )
-    checkAlphBalance(
+    checkOxmBalance(
       groupInfo1.address.lockupScript,
-      OXM.oneAlph - buildTransferTransaction01GasFee
+      OXM.oneOxm - buildTransferTransaction01GasFee
     )
-    checkAlphBalance(groupInfo2.address.lockupScript, OXM.oneAlph)
-    checkAlphBalance(groupInfo3.address.lockupScript, OXM.alph(1) - nonCoinbaseMinGasFee * 3)
+    checkOxmBalance(groupInfo2.address.lockupScript, OXM.oneOxm)
+    checkOxmBalance(groupInfo3.address.lockupScript, OXM.alph(1) - nonCoinbaseMinGasFee * 3)
   }
 
   it should "build a transfer transaction followed by an execute script transactions" in new ChainedTransactionsFixture {
-    def buildExecuteScript(publicKey: PublicKey, attoAlphAmount: Option[Amount] = None) =
+    def buildExecuteScript(publicKey: PublicKey, attoOxmAmount: Option[Amount] = None) =
       BuildExecuteScriptTx(
         fromPublicKey = publicKey.bytes,
         bytecode = serialize(scriptCode),
         gasAmount = Some(gasAmount),
         gasPrice = Some(gasPrice),
-        attoAlphAmount = attoAlphAmount
+        attoOxmAmount = attoOxmAmount
       )
 
     failedExecuteTxScript(
@@ -4258,7 +4258,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
           buildExecuteScript(groupInfo1.publicKey)
         ),
         BuildChainedExecuteScriptTx(
-          buildExecuteScript(groupInfo0.publicKey, Some(Amount(OXM.oneAlph)))
+          buildExecuteScript(groupInfo0.publicKey, Some(Amount(OXM.oneOxm)))
         )
       ),
       errorDetails = "Not enough balance: got 998000000000000000, expected 1005000000000000000"
@@ -4276,7 +4276,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
         buildExecuteScript(groupInfo1.publicKey)
       ),
       BuildChainedExecuteScriptTx(
-        buildExecuteScript(groupInfo0.publicKey, Some(Amount(OXM.oneAlph / 2)))
+        buildExecuteScript(groupInfo0.publicKey, Some(Amount(OXM.oneOxm / 2)))
       )
     )
 
@@ -4295,15 +4295,15 @@ class ServerUtilsSpec extends OxygeniumSpec {
     confirmNewBlock(blockFlow, buildExecuteScriptTransaction1.value.chainIndex().value)
     confirmNewBlock(blockFlow, buildExecuteScriptTransaction0.value.chainIndex().value)
 
-    checkAlphBalance(
+    checkOxmBalance(
       groupInfo0.address.lockupScript,
       address0InitBalance - OXM.alph(
         2
       ) - buildTransferTransaction.value.gasFee - buildExecuteScriptTransaction0.value.gasFee
     )
-    checkAlphBalance(
+    checkOxmBalance(
       groupInfo1.address.lockupScript,
-      OXM.oneAlph * 2 - buildExecuteScriptTransaction1.value.gasFee
+      OXM.oneOxm * 2 - buildExecuteScriptTransaction1.value.gasFee
     )
   }
 
@@ -4318,10 +4318,10 @@ class ServerUtilsSpec extends OxygeniumSpec {
          |""".stripMargin
     val contract = Compiler.compileContract(contractCode).toOption.get
 
-    def buildDeployContract(publicKey: PublicKey, initialAttoAlphAmount: Option[Amount] = None) =
+    def buildDeployContract(publicKey: PublicKey, initialAttoOxmAmount: Option[Amount] = None) =
       BuildDeployContractTx(
         fromPublicKey = publicKey.bytes,
-        initialAttoAlphAmount = initialAttoAlphAmount,
+        initialAttoOxmAmount = initialAttoOxmAmount,
         bytecode = serialize(contract) ++ ByteString(0, 0)
       )
 
@@ -4362,7 +4362,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
         BuildChainedDeployContractTx(
           buildDeployContract(
             groupInfo0.publicKey,
-            initialAttoAlphAmount = Some(Amount(OXM.alph(1)))
+            initialAttoOxmAmount = Some(Amount(OXM.alph(1)))
           )
         )
       ),
@@ -4384,7 +4384,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       BuildChainedDeployContractTx(
         buildDeployContract(
           groupInfo0.publicKey,
-          initialAttoAlphAmount = Some(Amount(OXM.alph(1) / 2))
+          initialAttoOxmAmount = Some(Amount(OXM.alph(1) / 2))
         )
       )
     )
@@ -4406,13 +4406,13 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     val address0TransferCost       = buildTransferTransaction.value.gasFee + OXM.alph(2)
     val address0DeployContractCost = buildDeployContractTransaction0.value.gasFee + OXM.alph(1) / 2
-    checkAlphBalance(
+    checkOxmBalance(
       groupInfo0.address.lockupScript,
       address0InitBalance - address0TransferCost - address0DeployContractCost
     )
-    checkAlphBalance(
+    checkOxmBalance(
       groupInfo1.address.lockupScript,
-      OXM.oneAlph * 2 - minimalAlphInContract - buildDeployContractTransaction1.value.gasFee
+      OXM.oneOxm * 2 - minimalOxmInContract - buildDeployContractTransaction1.value.gasFee
     )
   }
 
@@ -4429,7 +4429,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     val tokenContract1Address = deployContract(
       tokenContract1,
-      initialAttoAlphAmount = Amount(OXM.alph(5)),
+      initialAttoOxmAmount = Amount(OXM.alph(5)),
       keyPair = (genesisPrivateKey, genesisPublicKey),
       issueTokenAmount = Some(Amount(U256.unsafe(100)))
     )
@@ -4450,7 +4450,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     val tokenContract2Address = deployContract(
       tokenContract2,
-      initialAttoAlphAmount = Amount(OXM.alph(5)),
+      initialAttoOxmAmount = Amount(OXM.alph(5)),
       keyPair = (genesisPrivateKey, genesisPublicKey),
       issueTokenAmount = Some(Amount(U256.unsafe(200)))
     )
@@ -4470,7 +4470,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val buildWithdrawToken2ExecuteScriptTx = BuildExecuteScriptTx(
       fromPublicKey = genesisPublicKey.bytes,
       bytecode = serialize(withdrawToken2ScriptCode),
-      attoAlphAmount = Some(Amount(OXM.alph(1))),
+      attoOxmAmount = Some(Amount(OXM.alph(1))),
       tokens = Some(AVector(Token(tokenId1, U256.unsafe(1))))
     )
 
@@ -4491,7 +4491,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val withdrawToken1ScriptCode = Compiler.compileTxScript(withdrawToken1Script).toOption.get
     val buildWithdrawToken1ExecuteScriptTx = BuildExecuteScriptTx(
       fromPublicKey = genesisPublicKey.bytes,
-      attoAlphAmount = Some(Amount(OXM.alph(1))),
+      attoOxmAmount = Some(Amount(OXM.alph(1))),
       bytecode = serialize(withdrawToken1ScriptCode)
     )
 
@@ -4527,7 +4527,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     val tokenContractAddress = deployContract(
       tokenContract,
-      initialAttoAlphAmount = Amount(OXM.alph(5)),
+      initialAttoOxmAmount = Amount(OXM.alph(5)),
       keyPair = (genesisPrivateKey, genesisPublicKey),
       issueTokenAmount = Some(Amount(U256.unsafe(100)))
     )
@@ -4545,7 +4545,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     val withdrawTokenScriptCode = Compiler.compileTxScript(withdrawTokenScript).toOption.get
     val buildWithdrawTokenExecuteScriptTx = BuildExecuteScriptTx(
       fromPublicKey = genesisPublicKey.bytes,
-      attoAlphAmount = Some(Amount(OXM.alph(1))),
+      attoOxmAmount = Some(Amount(OXM.alph(1))),
       bytecode = serialize(withdrawTokenScriptCode)
     )
 
@@ -4618,7 +4618,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     val tokenContractAddress = deployContract(
       tokenContract,
-      initialAttoAlphAmount = Amount(OXM.alph(5)),
+      initialAttoOxmAmount = Amount(OXM.alph(5)),
       keyPair = (genesisPrivateKey, genesisPublicKey),
       issueTokenAmount = None
     )
@@ -4782,8 +4782,8 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     val contractId = createContract(
       contractCode,
-      initialMutState = AVector(vm.Val.U256(OXM.oneAlph)),
-      initialAttoAlphAmount = OXM.alph(100),
+      initialMutState = AVector(vm.Val.U256(OXM.oneOxm)),
+      initialAttoOxmAmount = OXM.alph(100),
       tokenIssuanceInfo = Some(TokenIssuance.Info(OXM.alph(20)))
     )._1
 
@@ -4990,7 +4990,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       Some(OXM.LaunchTimestamp.plusMillisUnsafe(1))
     )
     addAndCheck(blockFlow, block0)
-    val block1 = transfer(blockFlow, fromPrivateKey, toPublicKey, OXM.oneAlph)
+    val block1 = transfer(blockFlow, fromPrivateKey, toPublicKey, OXM.oneOxm)
     addAndCheck(blockFlow, block1)
 
     block1.nonCoinbase.length is 1
@@ -5064,7 +5064,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
         BuildExecuteScriptTx(
           fromPublicKey = publicKey.bytes,
           bytecode = scriptBytecode,
-          attoAlphAmount = Some(Amount(OXM.alph(10)))
+          attoOxmAmount = Some(Amount(OXM.alph(10)))
         )
       )
       .rightValue
@@ -5074,7 +5074,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
         BuildExecuteScriptTx(
           fromPublicKey = publicKey.bytes,
           bytecode = scriptBytecode,
-          attoAlphAmount = Some(Amount(OXM.alph(10))),
+          attoOxmAmount = Some(Amount(OXM.alph(10))),
           gasEstimationMultiplier = Some(1.01)
         )
       )
@@ -5250,7 +5250,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
 
     val contractAddress = deployContract(
       fooContract,
-      initialAttoAlphAmount = Amount(OXM.alph(5)),
+      initialAttoOxmAmount = Amount(OXM.alph(5)),
       keyPair = (privateKey0, publicKey0),
       None
     )
@@ -5462,7 +5462,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       AVector.empty,
       AVector.empty,
       genesisLockupScript,
-      minimalAlphInContract,
+      minimalOxmInContract,
       Some(tokenIssuance)
     )
     val tokenIssuanceBlock = payableCall(blockFlow, chainIndex, contractCreationScript)
@@ -5490,7 +5490,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       addAndCheck(blockFlow, block)
     }
 
-    def buildExecuteScriptTx(approvedAlphAmount: U256, iterations: Int) = {
+    def buildExecuteScriptTx(approvedOxmAmount: U256, iterations: Int) = {
       val script = s"""
                       |TxScript Main {
                       |  let mut sum = 0
@@ -5508,7 +5508,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
           BuildExecuteScriptTx(
             fromPublicKey = testPublicKey.bytes,
             bytecode = scriptBytecode,
-            attoAlphAmount = Some(Amount(approvedAlphAmount)),
+            attoOxmAmount = Some(Amount(approvedOxmAmount)),
             tokens = Some(AVector(Token(tokenId, U256.unsafe(78))))
           ),
           ExtraUtxosInfo.empty
@@ -5536,7 +5536,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
           destinations = AVector(
             Destination(
               address = Address.Asset(testLockupScript),
-              attoAlphAmount = alphAmount.map(Amount(_)),
+              attoOxmAmount = alphAmount.map(Amount(_)),
               tokens = Some(AVector(Token(tokenId, U256.unsafe(10))))
             )
           ),
@@ -5573,7 +5573,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
     verifyBuildTransferTx(None)
   }
 
-  it should "not allow destination with no tokens and no attoAlphAmount" in new VerifyTxOutputFixture {
+  it should "not allow destination with no tokens and no attoOxmAmount" in new VerifyTxOutputFixture {
     serverUtils
       .prepareUnsignedTransaction(
         blockFlow,
@@ -5700,7 +5700,7 @@ class ServerUtilsSpec extends OxygeniumSpec {
       groupConfig: GroupConfig
   ): Destination = {
     val address = generateAddress(chainIndex)
-    val amount  = Amount(OXM.oneAlph)
+    val amount  = Amount(OXM.oneOxm)
     Destination(address, Some(amount), None, None, Some(message))
   }
 
@@ -5752,6 +5752,6 @@ class ServerUtilsSpec extends OxygeniumSpec {
       serverUtils: ServerUtils,
       blockFlow: BlockFlow
   ) = {
-    checkAddressBalance(destination.address, destination.getAttoAlphAmount().value, utxoNum)
+    checkAddressBalance(destination.address, destination.getAttoOxmAmount().value, utxoNum)
   }
 }

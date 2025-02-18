@@ -82,14 +82,14 @@ trait TransactionSnapshotsFixture extends ModelSnapshots with NoIndexModelGenera
   }
 
   def p2shOutput(
-      attoAlphAmount: U256,
+      attoOxmAmount: U256,
       hash: ByteString,
       timeStamp: TimeStamp = TimeStamp.unsafe(0),
       additionalData: ByteString = ByteString.empty,
       tokens: AVector[(TokenId, U256)] = AVector.empty
   ) = {
     AssetOutput(
-      attoAlphAmount,
+      attoOxmAmount,
       LockupScript.P2SH(Hash.unsafe(hash)),
       timeStamp,
       tokens,
@@ -98,14 +98,14 @@ trait TransactionSnapshotsFixture extends ModelSnapshots with NoIndexModelGenera
   }
 
   def p2pkhOutput(
-      attoAlphAmount: U256,
+      attoOxmAmount: U256,
       hash: ByteString,
       timeStamp: TimeStamp = TimeStamp.unsafe(0),
       additionalData: ByteString = ByteString.empty,
       tokens: AVector[(TokenId, U256)] = AVector.empty
   ) = {
     AssetOutput(
-      attoAlphAmount,
+      attoOxmAmount,
       LockupScript.P2PKH(Hash.unsafe(hash)),
       timeStamp,
       tokens,

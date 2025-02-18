@@ -131,7 +131,7 @@ object Ast {
       assume(approveCount >= 1)
       val approveTokens: Seq[Instr[Ctx]] = tokenAmounts.flatMap {
         case (OXMTokenId(), amount) =>
-          amount.genCode(state) :+ ApproveAlph.asInstanceOf[Instr[Ctx]]
+          amount.genCode(state) :+ ApproveOxm.asInstanceOf[Instr[Ctx]]
         case (tokenId, amount) =>
           tokenId.genCode(state) ++ amount.genCode(state) :+ ApproveToken.asInstanceOf[Instr[Ctx]]
       }
@@ -633,16 +633,16 @@ object Ast {
     def _genCode(state: Compiler.State[Ctx]): Seq[Instr[Ctx]] = {
       (id, args) match {
         case (BuiltIn.approveToken.funcId, Seq(from, OXMTokenId(), amount)) =>
-          Seq(from, amount).flatMap(_.genCode(state)) :+ ApproveAlph.asInstanceOf[Instr[Ctx]]
+          Seq(from, amount).flatMap(_.genCode(state)) :+ ApproveOxm.asInstanceOf[Instr[Ctx]]
         case (BuiltIn.tokenRemaining.funcId, Seq(from, OXMTokenId())) =>
-          val instrs = from.genCode(state) :+ AlphRemaining.asInstanceOf[Instr[Ctx]]
+          val instrs = from.genCode(state) :+ OxmRemaining.asInstanceOf[Instr[Ctx]]
           if (ignoreReturn) instrs :+ Pop.asInstanceOf[Instr[Ctx]] else instrs
         case (BuiltIn.transferToken.funcId, Seq(from, to, OXMTokenId(), amount)) =>
-          Seq(from, to, amount).flatMap(_.genCode(state)) :+ TransferAlph.asInstanceOf[Instr[Ctx]]
+          Seq(from, to, amount).flatMap(_.genCode(state)) :+ TransferOxm.asInstanceOf[Instr[Ctx]]
         case (BuiltIn.transferTokenFromSelf.funcId, Seq(to, OXMTokenId(), amount)) =>
-          Seq(to, amount).flatMap(_.genCode(state)) :+ TransferAlphFromSelf.asInstanceOf[Instr[Ctx]]
+          Seq(to, amount).flatMap(_.genCode(state)) :+ TransferOxmFromSelf.asInstanceOf[Instr[Ctx]]
         case (BuiltIn.transferTokenToSelf.funcId, Seq(from, OXMTokenId(), amount)) =>
-          Seq(from, amount).flatMap(_.genCode(state)) :+ TransferAlphToSelf.asInstanceOf[Instr[Ctx]]
+          Seq(from, amount).flatMap(_.genCode(state)) :+ TransferOxmToSelf.asInstanceOf[Instr[Ctx]]
         case _ =>
           val func = getFunc(state)
           if (func.inline && state.genInlineCode) {
@@ -1137,7 +1137,7 @@ object Ast {
         mutFields :+ CreateMapEntry(immFieldLength.toByte, mutFieldLength.toByte)
     }
     def genCode(state: Compiler.State[StatefulContext]): Seq[Instr[StatefulContext]] = {
-      val approveOXMCodes    = args(0).genCode(state) ++ Seq(MinimalContractDeposit, ApproveAlph)
+      val approveOXMCodes    = args(0).genCode(state) ++ Seq(MinimalContractDeposit, ApproveOxm)
       val createContractCodes = genCreateContract(state)
       approveOXMCodes ++ createContractCodes
     }

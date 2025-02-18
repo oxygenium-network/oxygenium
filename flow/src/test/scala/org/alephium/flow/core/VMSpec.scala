@@ -205,7 +205,7 @@ class VMSpec extends OxygeniumSpec with Generators {
         initialImmState: AVector[Val] = AVector.empty,
         initialMutState: AVector[Val] = AVector[Val](Val.U256(U256.Zero)),
         tokenIssuanceInfo: Option[TokenIssuance.Info] = None,
-        initialAttoAlphAmount: U256 = minimalContractStorageDeposit(
+        initialAttoOxmAmount: U256 = minimalContractStorageDeposit(
           networkConfig.getHardFork(TimeStamp.now())
         )
     ): (ContractId, ContractOutputRef) = {
@@ -215,7 +215,7 @@ class VMSpec extends OxygeniumSpec with Generators {
           initialImmState,
           initialMutState,
           tokenIssuanceInfo,
-          initialAttoAlphAmount
+          initialAttoOxmAmount
         )
 
       checkState(
@@ -440,17 +440,17 @@ class VMSpec extends OxygeniumSpec with Generators {
          |Contract Foo() {
          |  @using(preapprovedAssets = true, assetsInContract = true)
          |  pub fn foo(sender: Address) -> () {
-         |    let senderAlph = tokenRemaining!(sender, OXM)
-         |    assert!(tokenRemaining!(sender, OXM) == senderAlph, 0)
-         |    let contractAlph = tokenRemaining!(selfAddress!(), OXM)
-         |    assert!(tokenRemaining!(selfAddress!(), OXM) == contractAlph, 0)
+         |    let senderOxm = tokenRemaining!(sender, OXM)
+         |    assert!(tokenRemaining!(sender, OXM) == senderOxm, 0)
+         |    let contractOxm = tokenRemaining!(selfAddress!(), OXM)
+         |    assert!(tokenRemaining!(selfAddress!(), OXM) == contractOxm, 0)
          |
          |    transferTokenToSelf!(sender, OXM, 1 alph)
-         |    assert!(tokenRemaining!(sender, OXM) == senderAlph - 1 alph, 0)
+         |    assert!(tokenRemaining!(sender, OXM) == senderOxm - 1 alph, 0)
          |    transferTokenFromSelf!(sender, OXM, 0.1 alph)
-         |    assert!(tokenRemaining!(selfAddress!(), OXM) == contractAlph - 0.1 alph, 0)
+         |    assert!(tokenRemaining!(selfAddress!(), OXM) == contractOxm - 0.1 alph, 0)
          |    transferToken!(sender, selfAddress!(), OXM, 1 alph)
-         |    assert!(tokenRemaining!(sender, OXM) == senderAlph - 2 alph, 0)
+         |    assert!(tokenRemaining!(sender, OXM) == senderOxm - 2 alph, 0)
          |  }
          |}
          |""".stripMargin
@@ -585,7 +585,7 @@ class VMSpec extends OxygeniumSpec with Generators {
     val address0                  = Address.p2pkh(publicKey0)
     callTxScript(script(tokenId.toHexString, address0.toBase58, 100))
     getTokenBalance(blockFlow, address0.lockupScript, tokenId) is 100
-    getAlphBalance(blockFlow, address0.lockupScript) is dustUtxoAmount
+    getOxmBalance(blockFlow, address0.lockupScript) is dustUtxoAmount
 
     info("fail to transfer token from contract to address in group 1")
     val (_, publicKey1) = GroupIndex.unsafe(1).generateKey
@@ -601,10 +601,10 @@ class VMSpec extends OxygeniumSpec with Generators {
       genesisPrivateKey,
       address0.lockupScript,
       AVector.empty[(TokenId, U256)],
-      OXM.oneAlph
+      OXM.oneOxm
     )
     addAndCheck(blockFlow, block)
-    getAlphBalance(blockFlow, address0.lockupScript) is (dustUtxoAmount + OXM.oneAlph)
+    getOxmBalance(blockFlow, address0.lockupScript) is (dustUtxoAmount + OXM.oneOxm)
 
     info("transfer token from address in group 0 to address in group 1")
     val tokens: AVector[(TokenId, U256)] = AVector(tokenId -> 10)
@@ -628,8 +628,8 @@ class VMSpec extends OxygeniumSpec with Generators {
          |}
          |""".stripMargin
     val (barContractId, _, _) =
-      createContract(bar, initialAttoAlphAmount = minimalAlphInContract * 2)
-    getContractAsset(barContractId).amount is minimalAlphInContract * 2
+      createContract(bar, initialAttoOxmAmount = minimalOxmInContract * 2)
+    getContractAsset(barContractId).amount is minimalOxmInContract * 2
 
     val foo =
       s"""
@@ -642,7 +642,7 @@ class VMSpec extends OxygeniumSpec with Generators {
          |$bar
          |""".stripMargin
     val (fooContractId, _, _) = createContract(foo, AVector(Val.ByteVec(barContractId.bytes)))
-    getContractAsset(fooContractId).amount is minimalAlphInContract
+    getContractAsset(fooContractId).amount is minimalOxmInContract
 
     val script =
       s"""
@@ -652,8 +652,8 @@ class VMSpec extends OxygeniumSpec with Generators {
          |$foo
          |""".stripMargin
     callTxScript(script, chainIndex)
-    getContractAsset(barContractId).amount is minimalAlphInContract
-    getContractAsset(fooContractId).amount is minimalAlphInContract * 2
+    getContractAsset(barContractId).amount is minimalOxmInContract
+    getContractAsset(fooContractId).amount is minimalOxmInContract * 2
   }
 
   it should "burn token" in new ContractFixture {
@@ -1134,7 +1134,7 @@ class VMSpec extends OxygeniumSpec with Generators {
     val encodedState     = Hex.toHexString(serialize[AVector[Val]](AVector.empty))
     val encodedImmFields = encodedState
     val encodedMutFields = encodedState
-    val tokenAmount      = OXM.oneNanoAlph
+    val tokenAmount      = OXM.oneNanoOxm
 
     {
       info("copy create contract with token")
@@ -1387,14 +1387,14 @@ class VMSpec extends OxygeniumSpec with Generators {
     def prepareContract(
         contract: String,
         initialMutState: AVector[Val] = AVector.empty,
-        initialAttoAlphAmount: U256 = minimalAlphInContract
+        initialAttoOxmAmount: U256 = minimalOxmInContract
     ): (String, ContractOutputRef) = {
       val contractId =
         createContract(
           contract,
           AVector.empty,
           initialMutState,
-          initialAttoAlphAmount = initialAttoAlphAmount
+          initialAttoOxmAmount = initialAttoOxmAmount
         )._1
       val worldState       = blockFlow.getBestCachedWorldState(chainIndex.from).rightValue
       val contractAssetRef = worldState.getContractState(contractId).rightValue.contractOutputRef
@@ -1518,13 +1518,13 @@ class VMSpec extends OxygeniumSpec with Generators {
 
     val fooCallerContractId  = ContractId.unsafe(Hash.unsafe(Hex.unsafe(fooCallerId)))
     val fooCallerAssetBefore = getContractAsset(fooCallerContractId, chainIndex)
-    fooCallerAssetBefore.amount is minimalAlphInContract
+    fooCallerAssetBefore.amount is minimalOxmInContract
 
     callTxScript(destroy())
     checkContractState(fooId, foo, fooAssetRef, false)
 
     val fooCallerAssetAfter = getContractAsset(fooCallerContractId, chainIndex)
-    fooCallerAssetAfter.amount is minimalAlphInContract.mulUnsafe(2)
+    fooCallerAssetAfter.amount is minimalOxmInContract.mulUnsafe(2)
   }
 
   it should "destroy contract and transfer fund to caller's caller" in new DestroyFixture
@@ -1568,7 +1568,7 @@ class VMSpec extends OxygeniumSpec with Generators {
         contract.methods
           .replace(0, contract.methods.head.copy(useContractAssets = useAssetsInContract))
       )
-      val fooId = createCompiledContract(newContract, initialAttoAlphAmount = OXM.alph(10))._1
+      val fooId = createCompiledContract(newContract, initialAttoOxmAmount = OXM.alph(10))._1
       failCallTxScript(main(fooId), error)
     }
 
@@ -2228,7 +2228,7 @@ class VMSpec extends OxygeniumSpec with Generators {
         .length is numContractOutput
     }
 
-    checkSwapBalance(minimalAlphInContract, 0, 5, 3)
+    checkSwapBalance(minimalOxmInContract, 0, 5, 3)
 
     callTxScript(s"""
                     |TxScript Main {
@@ -2240,7 +2240,7 @@ class VMSpec extends OxygeniumSpec with Generators {
                     |
                     |${AMMContract.swapContract}
                     |""".stripMargin)
-    checkSwapBalance(minimalAlphInContract + 10, 100, 6 /* 1 more coinbase output */, 3)
+    checkSwapBalance(minimalOxmInContract + 10, 100, 6 /* 1 more coinbase output */, 3)
 
     callTxScript(s"""
                     |TxScript Main {
@@ -2250,19 +2250,19 @@ class VMSpec extends OxygeniumSpec with Generators {
                     |
                     |${AMMContract.swapContract}
                     |""".stripMargin)
-    checkSwapBalance(minimalAlphInContract + 20, 50, 7 /* 1 more coinbase output */, 3)
+    checkSwapBalance(minimalOxmInContract + 20, 50, 7 /* 1 more coinbase output */, 3)
 
     callTxScript(
       s"""
          |TxScript Main {
          |  let swap = Swap(#${swapContractId.toHexString})
-         |  swap.swapAlph{@$genesisAddress -> #${tokenId.toHexString}: 50}(@$genesisAddress, 50)
+         |  swap.swapOxm{@$genesisAddress -> #${tokenId.toHexString}: 50}(@$genesisAddress, 50)
          |}
          |
          |${AMMContract.swapContract}
          |""".stripMargin
     )
-    checkSwapBalance(minimalAlphInContract + 10, 100, 8 /* 1 more coinbase output */, 3)
+    checkSwapBalance(minimalOxmInContract + 10, 100, 8 /* 1 more coinbase output */, 3)
   }
 
   trait TxExecutionOrderFixture extends ContractFixture {
@@ -2313,14 +2313,14 @@ class VMSpec extends OxygeniumSpec with Generators {
         code: StatefulContract,
         initialState: AVector[Val],
         lockupScript: LockupScript.Asset,
-        attoAlphAmount: U256
+        attoOxmAmount: U256
     ): StatefulScript = {
       val codeRaw  = serialize(code)
       val stateRaw = serialize(initialState)
       val instrs = AVector[Instr[StatefulContext]](
         AddressConst(Val.Address(lockupScript)),
-        U256Const(Val.U256(attoAlphAmount)),
-        ApproveAlph,
+        U256Const(Val.U256(attoOxmAmount)),
+        ApproveOxm,
         BytesConst(Val.ByteVec(codeRaw)),
         BytesConst(Val.ByteVec(stateRaw)),
         CreateContract
@@ -2343,7 +2343,7 @@ class VMSpec extends OxygeniumSpec with Generators {
       val genesisLockup = getGenesisLockupScript(chainIndex)
       val initialState  = AVector[Val](Val.U256(0))
       val txScript =
-        contractCreationPreLeman(contract, initialState, genesisLockup, minimalAlphInContract)
+        contractCreationPreLeman(contract, initialState, genesisLockup, minimalOxmInContract)
       val block = payableCall(blockFlow, chainIndex, txScript)
       addAndCheck(blockFlow, block)
 
@@ -2411,7 +2411,7 @@ class VMSpec extends OxygeniumSpec with Generators {
         testContract,
         2,
         2,
-        initialAttoAlphAmount = OXM.alph(10)
+        initialAttoOxmAmount = OXM.alph(10)
       )._1
 
     def checkContract(alphReserve: U256, x: Int) = {
@@ -3373,7 +3373,7 @@ class VMSpec extends OxygeniumSpec with Generators {
          |
          |  @using(preapprovedAssets = true, updateFields = true)
          |  pub fn foo() -> () {
-         |    subContractId = copyCreateContract!{callerAddress!() -> OXM: $minimalAlphInContract}(selfContractId!(), #00, #010300)
+         |    subContractId = copyCreateContract!{callerAddress!() -> OXM: $minimalOxmInContract}(selfContractId!(), #00, #010300)
          |    emit Create(subContractId)
          |  }
          |}
@@ -3385,7 +3385,7 @@ class VMSpec extends OxygeniumSpec with Generators {
         2,
         AVector.empty,
         AVector(Val.ByteVec(ByteString.empty)),
-        initialAttoAlphAmount = minimalAlphInContract * 2
+        initialAttoOxmAmount = minimalOxmInContract * 2
       )._1
 
     val main: String =
@@ -4013,7 +4013,7 @@ class VMSpec extends OxygeniumSpec with Generators {
       s"""
          |TxScript Deploy() {
          |  let (encodedImmFields, encodedMutFields) = Foo.encodeFields!(0, [1, 2], 3, [4, 5])
-         |  createContract!{@$genesisAddress -> OXM: $minimalAlphInContract}(#$fooBytecode, encodedImmFields, encodedMutFields)
+         |  createContract!{@$genesisAddress -> OXM: $minimalOxmInContract}(#$fooBytecode, encodedImmFields, encodedMutFields)
          |}
          |$foo
          |""".stripMargin
@@ -4382,9 +4382,9 @@ class VMSpec extends OxygeniumSpec with Generators {
     val fooContract = Compiler.compileContract(foo).rightValue
     val fooByteCode = Hex.toHexString(serialize(fooContract))
 
-    def createFooContract(transferAlph: Boolean): String = {
-      val maybeTransfer = if (transferAlph) {
-        s"transferTokenFromSelf!(contractAddress, OXM, ${minimalAlphInContract.v})"
+    def createFooContract(transferOxm: Boolean): String = {
+      val maybeTransfer = if (transferOxm) {
+        s"transferTokenFromSelf!(contractAddress, OXM, ${minimalOxmInContract.v})"
       } else {
         ""
       }
@@ -4392,9 +4392,9 @@ class VMSpec extends OxygeniumSpec with Generators {
       val bar: String =
         s"""
            |Contract Bar() {
-           |  @using(preapprovedAssets = true, assetsInContract = $transferAlph)
+           |  @using(preapprovedAssets = true, assetsInContract = $transferOxm)
            |  pub fn bar() -> () {
-           |    let contractId = createContract!{@$genesisAddress -> OXM: $minimalAlphInContract}(#$fooByteCode, #00, #00)
+           |    let contractId = createContract!{@$genesisAddress -> OXM: $minimalOxmInContract}(#$fooByteCode, #00, #00)
            |    let contractAddress = contractIdToAddress!(contractId)
            |
            |    $maybeTransfer
@@ -4407,13 +4407,13 @@ class VMSpec extends OxygeniumSpec with Generators {
           bar,
           AVector.empty,
           AVector.empty,
-          initialAttoAlphAmount = OXM.alph(2)
+          initialAttoOxmAmount = OXM.alph(2)
         )._1
 
       s"""
          |TxScript Main {
          |  let bar = Bar(#${barContractId.toHexString})
-         |  bar.bar{@$genesisAddress -> OXM: $minimalAlphInContract}()
+         |  bar.bar{@$genesisAddress -> OXM: $minimalOxmInContract}()
          |}
          |
          |$bar
@@ -4454,7 +4454,7 @@ class VMSpec extends OxygeniumSpec with Generators {
            |  }
            |}
            |""".stripMargin
-      val fooId      = createContract(foo, initialAttoAlphAmount = OXM.alph(2))._1
+      val fooId      = createContract(foo, initialAttoOxmAmount = OXM.alph(2))._1
       val fooAddress = Address.contract(fooId)
 
       val script =
@@ -4483,7 +4483,7 @@ class VMSpec extends OxygeniumSpec with Generators {
            |}
            |""".stripMargin
       val fooId =
-        createContract(foo, initialAttoAlphAmount = OXM.alph(2))._1
+        createContract(foo, initialAttoOxmAmount = OXM.alph(2))._1
 
       val bar: String =
         s"""
@@ -4508,7 +4508,7 @@ class VMSpec extends OxygeniumSpec with Generators {
         val initialFields =
           AVector[Val](Val.U256(U256.unsafe(index)), Val.ByteVec(lastBarId.bytes))
         val barId =
-          createContract(bar, initialFields, AVector.empty, initialAttoAlphAmount = OXM.alph(2))._1
+          createContract(bar, initialFields, AVector.empty, initialAttoOxmAmount = OXM.alph(2))._1
         lastBarId = barId
       }
 
@@ -4540,7 +4540,7 @@ class VMSpec extends OxygeniumSpec with Generators {
          |  }
          |}
          |""".stripMargin
-    val fooId = createContract(foo, initialAttoAlphAmount = OXM.alph(2))._1
+    val fooId = createContract(foo, initialAttoOxmAmount = OXM.alph(2))._1
 
     val script =
       s"""
@@ -4885,10 +4885,10 @@ class VMSpec extends OxygeniumSpec with Generators {
       }
     }
 
-    test(OXM.oneNanoAlph, true)
-    test(OXM.oneNanoAlph, false)
-    test(OXM.oneAlph, true)
-    test(OXM.oneAlph, false)
+    test(OXM.oneNanoOxm, true)
+    test(OXM.oneNanoOxm, false)
+    test(OXM.oneOxm, true)
+    test(OXM.oneOxm, false)
   }
 
   it should "return LowerThanContractMinimalBalance if contract balance falls below the minimal deposit" in new ContractFixture {
@@ -4903,8 +4903,8 @@ class VMSpec extends OxygeniumSpec with Generators {
            |}
            |""".stripMargin
 
-      val contractInitialAlphAmount = OXM.oneAlph * 2
-      val contractId = createContract(code, initialAttoAlphAmount = contractInitialAlphAmount)._1
+      val contractInitialOxmAmount = OXM.oneOxm * 2
+      val contractId = createContract(code, initialAttoOxmAmount = contractInitialOxmAmount)._1
 
       val script: String =
         s"""|
@@ -4917,12 +4917,12 @@ class VMSpec extends OxygeniumSpec with Generators {
             |${code}
             |""".stripMargin
 
-      if (amount > OXM.oneAlph) {
+      if (amount > OXM.oneOxm) {
         failCallTxScript(
           script,
           LowerThanContractMinimalBalance(
             Address.contract(contractId),
-            contractInitialAlphAmount - amount
+            contractInitialOxmAmount - amount
           )
         )
       } else {
@@ -4930,10 +4930,10 @@ class VMSpec extends OxygeniumSpec with Generators {
       }
     }
 
-    test(OXM.oneNanoAlph)
-    test(minimalAlphInContract - 1)
-    test(minimalAlphInContract)
-    test(minimalAlphInContract + 1)
+    test(OXM.oneNanoOxm)
+    test(minimalOxmInContract - 1)
+    test(minimalOxmInContract)
+    test(minimalOxmInContract + 1)
   }
 
   it should "call the correct contract method based on the interface method index" in new ContractFixture {
@@ -5061,7 +5061,7 @@ class VMSpec extends OxygeniumSpec with Generators {
       s"""
          |TxScript Deploy() {
          |  let (encodedImmFields, encodedMutFields) = C.encodeFields!($fields)
-         |  createContract!{@$genesisAddress -> OXM: $minimalAlphInContract}(
+         |  createContract!{@$genesisAddress -> OXM: $minimalOxmInContract}(
          |    #$contractBytecode,
          |    encodedImmFields,
          |    encodedMutFields
@@ -5238,7 +5238,7 @@ class VMSpec extends OxygeniumSpec with Generators {
       subContractState.immFields is (immFields :+ Val.ByteVec(mapContractId.bytes))
       subContractState.mutFields is mutFields
       val contractAsset = worldState.getContractAsset(subContractState.contractOutputRef).rightValue
-      contractAsset.amount is minimalAlphInContract
+      contractAsset.amount is minimalOxmInContract
     }
 
     def subContractNotExist(key: Val, mapIndex: Int = 0) = {
@@ -5252,11 +5252,11 @@ class VMSpec extends OxygeniumSpec with Generators {
       mapKeyAndValue.foreach { case (key, _) =>
         subContractNotExist(key)
       }
-      val balance0 = getAlphBalance(blockFlow, genesisAddress.lockupScript)
+      val balance0 = getOxmBalance(blockFlow, genesisAddress.lockupScript)
       val block0   = callTxScript(insert)
-      val balance1 = getAlphBalance(blockFlow, genesisAddress.lockupScript)
+      val balance1 = getOxmBalance(blockFlow, genesisAddress.lockupScript)
       val txFee0   = block0.nonCoinbase.head.gasFeeUnsafe
-      (balance0 - txFee0 - minimalAlphInContract.mulUnsafe(mapKeyAndValue.size)) is balance1
+      (balance0 - txFee0 - minimalOxmInContract.mulUnsafe(mapKeyAndValue.size)) is balance1
       val insertEvent = getLogStates(blockFlow, mapContractId, currentCount).value
       insertEvent.states.length is mapKeyAndValue.size
       mapKeyAndValue.zipWithIndex.foreach { case ((key, (immFields, mutFields)), index) =>
@@ -5266,11 +5266,11 @@ class VMSpec extends OxygeniumSpec with Generators {
         checkSubContractState(key, immFields, mutFields)
       }
       callTxScript(checkAndUpdate)
-      val balance2 = getAlphBalance(blockFlow, genesisAddress.lockupScript)
+      val balance2 = getOxmBalance(blockFlow, genesisAddress.lockupScript)
       val block1   = callTxScript(remove)
-      val balance3 = getAlphBalance(blockFlow, genesisAddress.lockupScript)
+      val balance3 = getOxmBalance(blockFlow, genesisAddress.lockupScript)
       val txFee1   = block1.nonCoinbase.head.gasFeeUnsafe
-      (balance2 - txFee1 + minimalAlphInContract.mulUnsafe(mapKeyAndValue.size)) is balance3
+      (balance2 - txFee1 + minimalOxmInContract.mulUnsafe(mapKeyAndValue.size)) is balance3
       val removeEvent = getLogStates(blockFlow, mapContractId, currentCount + 1).value
       removeEvent.states.length is mapKeyAndValue.size
       mapKeyAndValue.zipWithIndex.foreach { case ((key, _), index) =>
@@ -5961,7 +5961,7 @@ class VMSpec extends OxygeniumSpec with Generators {
          |  pub fn createBaz() -> () {
          |    map.insert!(@$genesisAddress, 0, Foo { x: 0, y: 1 })
          |    let (encodedImmFields, encodedMutFields) = Baz.encodeFields!(map[0])
-         |    let bazId = createContract!{@$genesisAddress -> OXM: $minimalAlphInContract}(
+         |    let bazId = createContract!{@$genesisAddress -> OXM: $minimalOxmInContract}(
          |      #${Hex.toHexString(bazContractCode)},
          |      encodedImmFields,
          |      encodedMutFields
@@ -5981,7 +5981,7 @@ class VMSpec extends OxygeniumSpec with Generators {
       s"""
          |TxScript Main {
          |  let bar = Bar(#$barId)
-         |  bar.createBaz{@$genesisAddress -> OXM: ${minimalAlphInContract * 2}}()
+         |  bar.createBaz{@$genesisAddress -> OXM: ${minimalOxmInContract * 2}}()
          |}
          |$bar
          |""".stripMargin
@@ -6051,8 +6051,8 @@ class VMSpec extends OxygeniumSpec with Generators {
          |}
          |""".stripMargin
     val entrySize     = 4
-    val initialAmount = minimalAlphInContract * entrySize
-    val fooId         = createContract(foo, initialAttoAlphAmount = initialAmount)._1
+    val initialAmount = minimalOxmInContract * entrySize
+    val fooId         = createContract(foo, initialAttoOxmAmount = initialAmount)._1
 
     def insert(idx: Int) = {
       val script =
@@ -6080,14 +6080,14 @@ class VMSpec extends OxygeniumSpec with Generators {
 
     (0 until entrySize - 1).foreach { idx =>
       insert(idx)
-      getContractAsset(fooId).amount is (initialAmount - minimalAlphInContract * (idx + 1))
+      getContractAsset(fooId).amount is (initialAmount - minimalOxmInContract * (idx + 1))
     }
     intercept[AssertionError](insert(entrySize - 1)).getMessage is
       s"Right(TxScriptExeFailed(${EmptyContractAsset(Address.contract(fooId))}))"
 
     (0 until entrySize - 1).foreach { idx =>
       remove(idx)
-      getContractAsset(fooId).amount is minimalAlphInContract * (idx + 2)
+      getContractAsset(fooId).amount is minimalOxmInContract * (idx + 2)
     }
     getContractAsset(fooId).amount is initialAmount
   }
@@ -6124,7 +6124,7 @@ class VMSpec extends OxygeniumSpec with Generators {
          |}
          |""".stripMargin
 
-    lazy val fooId = createContract(foo, initialAttoAlphAmount = OXM.alph(10))._1
+    lazy val fooId = createContract(foo, initialAttoOxmAmount = OXM.alph(10))._1
 
     def script(statements: String) =
       s"""
@@ -6216,7 +6216,7 @@ class VMSpec extends OxygeniumSpec with Generators {
          |}
          |""".stripMargin
 
-    lazy val fooId = createContract(foo, initialAttoAlphAmount = OXM.alph(100))._1
+    lazy val fooId = createContract(foo, initialAttoOxmAmount = OXM.alph(100))._1
 
     lazy val script =
       s"""
@@ -6521,7 +6521,7 @@ class VMSpec extends OxygeniumSpec with Generators {
           AVector.empty,
           AVector.empty,
           lockupScript,
-          minimalAlphInContract,
+          minimalOxmInContract,
           None
         )
       val balances = blockFlow.getUsableUtxos(lockupScript, defaultUtxoLimit).rightValue
@@ -6544,7 +6544,7 @@ class VMSpec extends OxygeniumSpec with Generators {
     val now = TimeStamp.now()
     blockFlow.grandPool.add(chainIndex, tx0, now)
 
-    val tx1 = transferTx(blockFlow, chainIndex, lockupScript, OXM.oneAlph, None).toTemplate
+    val tx1 = transferTx(blockFlow, chainIndex, lockupScript, OXM.oneOxm, None).toTemplate
     tx1.unsigned.inputs.length is 1
     tx1.unsigned.inputs.head.outputRef is tx0.fixedOutputRefs.head
     blockFlow.grandPool.add(chainIndex, tx1, now.plusMillisUnsafe(1))
@@ -6556,10 +6556,10 @@ class VMSpec extends OxygeniumSpec with Generators {
     val fooId         = ContractId.from(tx0.id, 1, chainIndex.from)
     val worldState    = blockFlow.getBestPersistedWorldState(chainIndex.from).rightValue
     val contractAsset = worldState.getContractAsset(fooId).rightValue
-    contractAsset.amount is minimalAlphInContract
+    contractAsset.amount is minimalOxmInContract
 
     val receiver = tx1.unsigned.fixedOutputs.head.lockupScript
-    getAlphBalance(blockFlow, receiver) is OXM.oneAlph.subUnsafe(nonCoinbaseMinGasFee)
+    getOxmBalance(blockFlow, receiver) is OXM.oneOxm.subUnsafe(nonCoinbaseMinGasFee)
   }
 
   trait SubContractIndexesFixture extends ContractFixture {
@@ -7218,7 +7218,7 @@ class VMSpec extends OxygeniumSpec with Generators {
          |""".stripMargin
     callTxScript(script)
     val balance = getContractAsset(fooId).amount
-    balance is OXM.oneAlph.addUnsafe(minimalAlphInContract)
+    balance is OXM.oneOxm.addUnsafe(minimalOxmInContract)
   }
 
   it should "call multiple inline functions that use contract assets" in new ContractFixture {
@@ -7246,8 +7246,8 @@ class VMSpec extends OxygeniumSpec with Generators {
     val compiled = Compiler.compileContractFull(foo).rightValue
     compiled.warnings.isEmpty is true
     compiled.code.methods.length is 1
-    val initialAlphAmount = OXM.alph(2)
-    val fooId = createCompiledContract(compiled.code, initialAttoAlphAmount = initialAlphAmount)._1
+    val initialOxmAmount = OXM.alph(2)
+    val fooId = createCompiledContract(compiled.code, initialAttoOxmAmount = initialOxmAmount)._1
 
     val script =
       s"""
@@ -7259,7 +7259,7 @@ class VMSpec extends OxygeniumSpec with Generators {
          |""".stripMargin
     callTxScript(script)
     val balance = getContractAsset(fooId).amount
-    balance is initialAlphAmount.addUnsafe(OXM.oneAlph)
+    balance is initialOxmAmount.addUnsafe(OXM.oneOxm)
   }
 
   private def getEvents(

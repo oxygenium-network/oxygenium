@@ -33,8 +33,8 @@ object Amount {
 
   final case class Hint(value: U256)
 
-  def toAlphString(value: U256): String = {
-    val dec = new java.math.BigDecimal(value.v).divide(new java.math.BigDecimal(OXM.oneAlph.v))
+  def toOxmString(value: U256): String = {
+    val dec = new java.math.BigDecimal(value.v).divide(new java.math.BigDecimal(OXM.oneOxm.v))
     s"${dec} OXM"
   }
 }

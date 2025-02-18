@@ -253,7 +253,7 @@ final case class NoAssetsApproved(address: Address.Asset) extends ExeFailure {
 
 case object BalanceOverflow extends ExeFailure
 
-final case class NoAlphBalanceForTheAddress(address: Address) extends ExeFailure {
+final case class NoOxmBalanceForTheAddress(address: Address) extends ExeFailure {
   override def toString: String = s"No OXM balance for the address ${address.toBase58}"
 }
 
@@ -270,7 +270,7 @@ final case class LowerThanContractMinimalBalance(address: Address, amount: U256)
     extends ExeFailure {
   override def toString: String =
     s"Contract output contains ${OXM.prettifyAmount(amount)}," +
-      s"less than contract minimal balance ${OXM.prettifyAmount(minimalAlphInContract)}"
+      s"less than contract minimal balance ${OXM.prettifyAmount(minimalOxmInContract)}"
 }
 
 case object UnableToPayGasFee extends ExeFailure {
@@ -280,22 +280,22 @@ case object UnableToPayGasFee extends ExeFailure {
 final case class InvalidOutputBalances(
     lockupScript: LockupScript,
     tokenSize: Int,
-    attoAlphAmount: U256
+    attoOxmAmount: U256
 ) extends ExeFailure {
   override def toString: String = {
     val address         = Address.from(lockupScript)
     val tokenDustAmount = dustUtxoAmount.mulUnsafe(U256.unsafe(tokenSize))
-    val totalDustAmount = if (attoAlphAmount == U256.Zero) {
+    val totalDustAmount = if (attoOxmAmount == U256.Zero) {
       tokenDustAmount
     } else {
-      if (attoAlphAmount < tokenDustAmount) {
+      if (attoOxmAmount < tokenDustAmount) {
         tokenDustAmount
       } else {
         tokenDustAmount.addUnsafe(dustUtxoAmount)
       }
     }
     s"Invalid OXM balance for address $address, expected ${OXM.prettifyAmount(totalDustAmount)}, " +
-      s"got ${OXM.prettifyAmount(attoAlphAmount)}, you need to transfer more OXM to this address"
+      s"got ${OXM.prettifyAmount(attoOxmAmount)}, you need to transfer more OXM to this address"
   }
 }
 
@@ -348,7 +348,7 @@ final case class ContractAssetUnloaded(address: Address.Contract) extends ExeFai
 
 final case class EmptyContractAsset(address: Address.Contract) extends ExeFailure {
   override def toString: String =
-    s"No assets for contract $address, a minimum of ${OXM.prettifyAmount(minimalAlphInContract)} is required"
+    s"No assets for contract $address, a minimum of ${OXM.prettifyAmount(minimalOxmInContract)} is required"
 }
 
 case object NoCaller extends ExeFailure {
@@ -397,7 +397,7 @@ case object DebugMessageIsEmpty extends ExeFailure
 case object ZeroContractId extends ExeFailure {
   override def toString: String = s"Can not create contract with id ${ContractId.zero.toHexString}"
 }
-case object BurningAlphNotAllowed extends ExeFailure {
+case object BurningOxmNotAllowed extends ExeFailure {
   override def toString: String = "Burning OXM is not allowed for `burnToken` function"
 }
 

@@ -26,7 +26,7 @@ import org.oxygenium.util.AVector
 sealed trait RichInput {
   def hint: Int
   def key: Hash
-  def attoAlphAmount: Amount
+  def attoOxmAmount: Amount
   def address: Address
   def tokens: AVector[Token]
 }
@@ -36,7 +36,7 @@ final case class RichAssetInput(
     hint: Int,
     key: Hash,
     unlockScript: ByteString,
-    attoAlphAmount: Amount,
+    attoOxmAmount: Amount,
     address: Address.Asset,
     tokens: AVector[Token]
 ) extends RichInput
@@ -45,7 +45,7 @@ final case class RichAssetInput(
 final case class RichContractInput(
     hint: Int,
     key: Hash,
-    attoAlphAmount: Amount,
+    attoOxmAmount: Amount,
     address: Address.Contract,
     tokens: AVector[Token]
 ) extends RichInput
@@ -56,7 +56,7 @@ object RichInput {
       hint = assetInput.outputRef.hint.value,
       key = assetInput.outputRef.key.value,
       unlockScript = serialize(assetInput.unlockScript),
-      attoAlphAmount = Amount(txOutput.amount),
+      attoOxmAmount = Amount(txOutput.amount),
       address = Address.Asset(txOutput.lockupScript),
       tokens = txOutput.tokens.map(Token.tupled.apply)
     )
@@ -66,7 +66,7 @@ object RichInput {
     RichContractInput(
       hint = contractOutputRef.hint.value,
       key = contractOutputRef.key.value,
-      attoAlphAmount = Amount(txOutput.amount),
+      attoOxmAmount = Amount(txOutput.amount),
       address = Address.Contract(txOutput.lockupScript),
       tokens = txOutput.tokens.map(Token.tupled.apply)
     )

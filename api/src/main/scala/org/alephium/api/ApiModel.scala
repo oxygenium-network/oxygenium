@@ -105,7 +105,7 @@ trait ApiModelCodec {
 
   implicit val amountHintReader: Reader[Amount.Hint] = amountReader.map(_.hint)
   implicit val amountHintWriter: Writer[Amount.Hint] = StringWriter.comap[Amount.Hint] { amount =>
-    Amount.toAlphString(amount.value)
+    Amount.toOxmString(amount.value)
   }
 
   implicit val publicKeyWriter: Writer[PublicKey] = bytesWriter

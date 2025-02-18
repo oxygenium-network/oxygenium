@@ -361,7 +361,7 @@ class ServerUtils(implicit
         lockupScript,
         unlockScript,
         query.toAddress,
-        query.maxAttoAlphPerUTXO,
+        query.maxAttoOxmPerUTXO,
         query.lockTime,
         query.gasAmount,
         query.gasPrice.getOrElse(nonCoinbaseMinGasPrice),
@@ -416,7 +416,7 @@ class ServerUtils(implicit
         blockFlow,
         query.fromPublicKey,
         query.toAddress,
-        query.maxAttoAlphPerUTXO,
+        query.maxAttoOxmPerUTXO,
         query.lockTime,
         query.gasAmount,
         query.gasPrice.getOrElse(nonCoinbaseMinGasPrice),
@@ -877,7 +877,7 @@ class ServerUtils(implicit
 
       if (simpleDests.nonEmpty) {
         for {
-          amount <- TxUtils.checkTotalAttoAlphAmount(simpleDests.map(_.getAttoAlphAmount().value))
+          amount <- TxUtils.checkTotalAttoOxmAmount(simpleDests.map(_.getAttoOxmAmount().value))
           tokens <- UnsignedTransaction
             .calculateTotalAmountPerToken(
               simpleDests.flatMap(
@@ -908,7 +908,7 @@ class ServerUtils(implicit
 
       TxOutputInfo(
         destination.address.lockupScript,
-        Math.max(destination.getAttoAlphAmount().value, tokensDustAmount),
+        Math.max(destination.getAttoOxmAmount().value, tokensDustAmount),
         tokensInfo,
         destination.lockTime,
         destination.message
@@ -929,7 +929,7 @@ class ServerUtils(implicit
           lockUnlock <- in.getLockPair()
           utxos      <- prepareOutputRefsOpt(in.utxos).left.map(failed)
           amount <- TxUtils
-            .checkTotalAttoAlphAmount(in.destinations.map(_.getAttoAlphAmount().value))
+            .checkTotalAttoOxmAmount(in.destinations.map(_.getAttoOxmAmount().value))
             .left
             .map(failed)
           tokens <- UnsignedTransaction
@@ -1065,7 +1065,7 @@ class ServerUtils(implicit
       blockFlow: BlockFlow,
       fromPublicKey: PublicKey,
       toAddress: Address.Asset,
-      maxAttoAlphPerUTXO: Option[Amount],
+      maxAttoOxmPerUTXO: Option[Amount],
       lockTimeOpt: Option[TimeStamp],
       gasOpt: Option[GasBox],
       gasPrice: GasPrice,
@@ -1079,7 +1079,7 @@ class ServerUtils(implicit
       lockTimeOpt,
       gasOpt,
       gasPrice,
-      maxAttoAlphPerUTXO.map(_.value),
+      maxAttoOxmPerUTXO.map(_.value),
       getUtxosLimit(utxosLimit)
     ) match {
       case Right(Right(unsignedTxs)) => unsignedTxs.mapE(validateUnsignedTransaction)
@@ -1095,7 +1095,7 @@ class ServerUtils(implicit
       fromLockupScript: LockupScript.Asset,
       fromUnlockupScript: UnlockScript,
       toAddress: Address.Asset,
-      maxAttoAlphPerUTXO: Option[Amount],
+      maxAttoOxmPerUTXO: Option[Amount],
       lockTimeOpt: Option[TimeStamp],
       gasOpt: Option[GasBox],
       gasPrice: GasPrice,
@@ -1110,7 +1110,7 @@ class ServerUtils(implicit
       lockTimeOpt,
       gasOpt,
       gasPrice,
-      maxAttoAlphPerUTXO.map(_.value),
+      maxAttoOxmPerUTXO.map(_.value),
       getUtxosLimit(utxosLimit)
     ) match {
       case Right(Right(unsignedTxs)) => unsignedTxs.mapE(validateUnsignedTransaction)
@@ -1374,14 +1374,14 @@ class ServerUtils(implicit
     val hardfork = blockFlow.networkConfig.getHardFork(TimeStamp.now())
     for {
       amounts <- BuildTxCommon
-        .getAlphAndTokenAmounts(query.initialAttoAlphAmount, query.initialTokenAmounts)
+        .getOxmAndTokenAmounts(query.initialAttoOxmAmount, query.initialTokenAmounts)
         .left
         .map(badRequest)
       tokenIssuanceInfo <- BuildTxCommon
         .getTokenIssuanceInfo(query.issueTokenAmount, query.issueTokenTo)
         .left
         .map(badRequest)
-      initialAttoAlphAmount <- getInitialAttoAlphAmount(amounts._1, hardfork)
+      initialAttoOxmAmount <- getInitialAttoOxmAmount(amounts._1, hardfork)
       code                  <- query.decodeBytecode()
       lockPair              <- query.getLockPair()
       script <- buildDeployContractTxWithParsedState(
@@ -1389,17 +1389,17 @@ class ServerUtils(implicit
         Address.Asset(lockPair._1),
         code.initialImmFields,
         code.initialMutFields,
-        initialAttoAlphAmount,
+        initialAttoOxmAmount,
         amounts._2,
         tokenIssuanceInfo
       )
-      totalAttoAlphAmount <- initialAttoAlphAmount
+      totalAttoOxmAmount <- initialAttoOxmAmount
         .add(query.issueTokenTo.map(_ => dustUtxoAmount).getOrElse(U256.Zero))
         .toRight(failed("OXM amount overflow"))
       result <- unsignedTxFromScript(
         blockFlow,
         script,
-        totalAttoAlphAmount,
+        totalAttoOxmAmount,
         amounts._2,
         lockPair._1,
         lockPair._2,
@@ -1513,14 +1513,14 @@ class ServerUtils(implicit
     }
   }
 
-  def getInitialAttoAlphAmount(amountOption: Option[U256], hardfork: HardFork): Try[U256] = {
+  def getInitialAttoOxmAmount(amountOption: Option[U256], hardfork: HardFork): Try[U256] = {
     val minimalContractDeposit = minimalContractStorageDeposit(hardfork)
     amountOption match {
       case Some(amount) =>
         if (amount >= minimalContractDeposit) { Right(amount) }
         else {
           val error =
-            s"Expect ${Amount.toAlphString(minimalContractDeposit)} deposit to deploy a new contract"
+            s"Expect ${Amount.toOxmString(minimalContractDeposit)} deposit to deploy a new contract"
           Left(failed(error))
         }
       case None => Right(minimalContractDeposit)
@@ -1556,7 +1556,7 @@ class ServerUtils(implicit
       _          <- query.check().left.map(badRequest)
       multiplier <- GasEstimationMultiplier.from(query.gasEstimationMultiplier).left.map(badRequest)
       amounts <- BuildTxCommon
-        .getAlphAndTokenAmounts(query.attoAlphAmount, query.tokens)
+        .getOxmAndTokenAmounts(query.attoOxmAmount, query.tokens)
         .left
         .map(badRequest)
       lockPair <- query.getLockPair()
@@ -2101,7 +2101,7 @@ class ServerUtils(implicit
 
   private def checkGasFee(testGasFee: U256, inputAssets: AVector[TestInputAsset]): Try[Unit] = {
     inputAssets.headOption match {
-      case Some(inputAsset) if inputAsset.asset.attoAlphAmount < testGasFee =>
+      case Some(inputAsset) if inputAsset.asset.attoOxmAmount < testGasFee =>
         Left(
           failed(
             s"First input asset should have at least ${OXM.prettifyAmount(testGasFee)} to cover gas"
@@ -2332,7 +2332,7 @@ object ServerUtils {
       address: Address,
       initialImmFields: AVector[vm.Val],
       initialMutFields: AVector[vm.Val],
-      initialAttoAlphAmount: U256,
+      initialAttoOxmAmount: U256,
       initialTokenAmounts: AVector[(TokenId, U256)],
       tokenIssuanceInfo: Option[(U256, Option[Address.Asset])]
   ): Try[StatefulScript] = {
@@ -2341,7 +2341,7 @@ object ServerUtils {
       address,
       initialImmFields,
       initialMutFields,
-      initialAttoAlphAmount,
+      initialAttoOxmAmount,
       initialTokenAmounts,
       tokenIssuanceInfo
     )
@@ -2352,7 +2352,7 @@ object ServerUtils {
       address: Address,
       initialImmFields: AVector[vm.Val],
       initialMutFields: AVector[vm.Val],
-      initialAttoAlphAmount: U256,
+      initialAttoOxmAmount: U256,
       initialTokenAmounts: AVector[(TokenId, U256)],
       tokenIssuanceInfo: Option[(U256, Option[Address.Asset])]
   ): String = {
@@ -2371,7 +2371,7 @@ object ServerUtils {
     }
 
     val create = if (initialTokenAmounts.isEmpty) {
-      val approveAssets = s"{@$address -> OXM: ${initialAttoAlphAmount.v}}"
+      val approveAssets = s"{@$address -> OXM: ${initialAttoOxmAmount.v}}"
       toCreate(approveAssets)
     } else {
       val approveTokens = initialTokenAmounts
@@ -2379,7 +2379,7 @@ object ServerUtils {
           s"#${tokenId.toHexString}: ${amount.v}"
         }
         .mkString(", ")
-      val approveAssets = s"{@$address -> OXM: ${initialAttoAlphAmount.v}, $approveTokens}"
+      val approveAssets = s"{@$address -> OXM: ${initialAttoOxmAmount.v}, $approveTokens}"
       toCreate(approveAssets)
     }
     s"""
@@ -2394,7 +2394,7 @@ object ServerUtils {
       address: Address,
       initialImmFields: AVector[vm.Val],
       initialMutFields: AVector[vm.Val],
-      initialAttoAlphAmount: U256,
+      initialAttoOxmAmount: U256,
       initialTokenAmounts: AVector[(TokenId, U256)],
       tokenIssuanceInfo: Option[(U256, Option[Address.Asset])]
   ): Try[StatefulScript] = {
@@ -2403,7 +2403,7 @@ object ServerUtils {
       address,
       initialImmFields,
       initialMutFields,
-      initialAttoAlphAmount,
+      initialAttoOxmAmount,
       initialTokenAmounts,
       tokenIssuanceInfo
     )

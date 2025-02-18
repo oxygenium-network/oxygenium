@@ -1231,14 +1231,14 @@ class BlockValidationSpec extends OxygeniumSpec {
       chainIndexGenForBroker(brokerConfig).retryUntil(_.isIntraGroup).sample.get
     val (_, toPublicKey0) = chainIndex.to.generateKey
     val now               = TimeStamp.now()
-    val tx0 = transfer(blockFlow, privateKey, toPublicKey0, OXM.oneAlph).nonCoinbase.head
+    val tx0 = transfer(blockFlow, privateKey, toPublicKey0, OXM.oneOxm).nonCoinbase.head
     blockFlow.grandPool.add(chainIndex, tx0.toTemplate, now)
-    val tx1 = transfer(blockFlow, privateKey, toPublicKey0, OXM.oneAlph).nonCoinbase.head
+    val tx1 = transfer(blockFlow, privateKey, toPublicKey0, OXM.oneOxm).nonCoinbase.head
     tx1.unsigned.inputs.forall(input =>
       tx0.unsigned.fixedOutputRefs.contains(input.outputRef)
     ) is true
     blockFlow.grandPool.add(chainIndex, tx1.toTemplate, now.plusMillisUnsafe(1))
-    val tx2 = transfer(blockFlow, privateKey, toPublicKey0, OXM.oneAlph).nonCoinbase.head
+    val tx2 = transfer(blockFlow, privateKey, toPublicKey0, OXM.oneOxm).nonCoinbase.head
     tx2.unsigned.inputs.forall(input =>
       tx1.unsigned.fixedOutputRefs.contains(input.outputRef)
     ) is true

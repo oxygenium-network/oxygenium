@@ -33,8 +33,8 @@ class UnsignedTransactionSpec extends OxygeniumSpec with NumericHelpers {
       AVector(output(dustUtxoAmount))
     UnsignedTransaction.buildOutputs(outputInfo(dustUtxoAmount)) is
       AVector(output(dustUtxoAmount))
-    UnsignedTransaction.buildOutputs(outputInfo(OXM.oneAlph)) is
-      AVector(output(OXM.oneAlph))
+    UnsignedTransaction.buildOutputs(outputInfo(OXM.oneOxm)) is
+      AVector(output(OXM.oneOxm))
   }
 
   it should "build outputs for token" in new BuildOutputsFixture {

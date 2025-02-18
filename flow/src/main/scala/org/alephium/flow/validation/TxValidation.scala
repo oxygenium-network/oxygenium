@@ -322,7 +322,7 @@ trait TxValidation {
   ): TxValidationResult[GasBox] = {
     for {
       _ <- checkLockTime(preOutputs, blockEnv.timeStamp)
-      _ <- checkAlphBalance(tx, preOutputs, coinbaseNetReward)
+      _ <- checkOxmBalance(tx, preOutputs, coinbaseNetReward)
       _ <- checkTokenBalance(tx, preOutputs)
       gasRemaining <- checkGasAndWitnesses(
         tx,
@@ -355,7 +355,7 @@ trait TxValidation {
   protected[validation] def checkUniqueInputs(tx: Transaction, checkDoubleSpending: Boolean): TxValidationResult[Unit]
 
   protected[validation] def checkLockTime(preOutputs: AVector[TxOutput], headerTs: TimeStamp): TxValidationResult[Unit]
-  protected[validation] def checkAlphBalance(tx: Transaction, preOutputs: AVector[TxOutput], coinbaseNetReward: Option[U256]): TxValidationResult[Unit]
+  protected[validation] def checkOxmBalance(tx: Transaction, preOutputs: AVector[TxOutput], coinbaseNetReward: Option[U256]): TxValidationResult[Unit]
   protected[validation] def checkTokenBalance(tx: Transaction, preOutputs: AVector[TxOutput]): TxValidationResult[Unit]
   def checkGasAndWitnesses(
     tx: Transaction,
@@ -511,7 +511,7 @@ object TxValidation {
     ): TxValidationResult[U256] = {
       for {
         _      <- checkEachOutputStats(tx, hardFork)
-        amount <- checkAlphOutputAmount(tx)
+        amount <- checkOxmOutputAmount(tx)
       } yield amount
     }
 
@@ -602,8 +602,8 @@ object TxValidation {
       }
     }
 
-    protected[validation] def checkAlphOutputAmount(tx: Transaction): TxValidationResult[U256] = {
-      tx.attoAlphAmountInOutputs match {
+    protected[validation] def checkOxmOutputAmount(tx: Transaction): TxValidationResult[U256] = {
+      tx.attoOxmAmountInOutputs match {
         case Some(total) => validTx(total)
         case None        => invalidTx(BalanceOverFlow)
       }
@@ -694,19 +694,19 @@ object TxValidation {
         case _                                       => true
       }
 
-    protected[validation] def checkAlphBalance(
+    protected[validation] def checkOxmBalance(
         tx: Transaction,
         preOutputs: AVector[TxOutput],
         coinbaseNetReward: Option[U256]
     ): TxValidationResult[Unit] = {
       val inputSum = preOutputs.fold(coinbaseNetReward.getOrElse(U256.Zero))(_ addUnsafe _.amount)
       val result = for {
-        outputSum <- tx.attoAlphAmountInOutputs
+        outputSum <- tx.attoOxmAmountInOutputs
         allOutSum <- outputSum.add(tx.gasFeeUnsafe) // safe after gas bound check
       } yield allOutSum == inputSum
       result match {
         case Some(true)  => validTx(())
-        case Some(false) => invalidTx(InvalidAlphBalance)
+        case Some(false) => invalidTx(InvalidOxmBalance)
         case None        => invalidTx(BalanceOverFlow)
       }
     }

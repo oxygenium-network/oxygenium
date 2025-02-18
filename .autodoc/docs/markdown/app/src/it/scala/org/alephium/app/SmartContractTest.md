@@ -31,8 +31,8 @@ And here's an example of how a script is executed to swap OXM for tokens:
 
 ```scala
 script(
-  SwapContracts.swapAlphForTokenTxScript(address, swapContractKey, OXM.alph(100)),
-  attoAlphAmount = Some(Amount(OXM.alph(100) + dustUtxoAmount))
+  SwapContracts.swapOxmForTokenTxScript(address, swapContractKey, OXM.alph(100)),
+  attoOxmAmount = Some(Amount(OXM.alph(100) + dustUtxoAmount))
 )
 ```
 ## Questions: 

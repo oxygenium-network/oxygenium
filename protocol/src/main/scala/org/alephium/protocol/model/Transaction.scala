@@ -115,7 +115,7 @@ final case class Transaction(
     }
   }
 
-  lazy val attoAlphAmountInOutputs: Option[U256] = {
+  lazy val attoOxmAmountInOutputs: Option[U256] = {
     val sum1Opt =
       unsigned.fixedOutputs
         .foldE(U256.Zero)((sum, output) => sum.add(output.amount).toRight(()))
@@ -257,7 +257,7 @@ object Transaction {
 
   // PoLW burning is not considered
   @inline def totalRewardPreLeman(gasFee: U256, miningReward: U256): U256 = {
-    val threshold = Math.max(miningReward, OXM.oneAlph)
+    val threshold = Math.max(miningReward, OXM.oneOxm)
     val gasReward = gasFee.divUnsafe(U256.Two)
     if (gasReward >= threshold) {
       miningReward.addUnsafe(threshold)

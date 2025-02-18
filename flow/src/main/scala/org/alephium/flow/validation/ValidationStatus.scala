@@ -176,7 +176,7 @@ final case object TooManyKeysInMultisig                         extends InvalidT
 final case object OutputDataSizeExceeded                        extends InvalidTxStatus
 final case object NonExistInput                                 extends InvalidTxStatus
 final case object TimeLockedTx                                  extends InvalidTxStatus
-final case object InvalidAlphBalance                            extends InvalidTxStatus
+final case object InvalidOxmBalance                            extends InvalidTxStatus
 final case object InvalidTokenBalance                           extends InvalidTxStatus
 final case object BalanceOverFlow                               extends InvalidTxStatus
 final case object InvalidWitnessLength                          extends InvalidTxStatus

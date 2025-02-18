@@ -4,7 +4,7 @@ The code above defines a case class called `Destination` which is used to repres
 
 The `Destination` class has five fields:
 - `address`: an `Address.Asset` object representing the destination address for the transaction.
-- `attoAlphAmount`: an `Amount` object representing the amount of Oxygenium to be sent to the destination address.
+- `attoOxmAmount`: an `Amount` object representing the amount of Oxygenium to be sent to the destination address.
 - `tokens`: an optional `AVector[Token]` object representing any tokens to be sent along with the Oxygenium. If no tokens are being sent, this field is set to `None`.
 - `lockTime`: an optional `TimeStamp` object representing the time at which the transaction should be locked until. If no lock time is specified, this field is set to `None`.
 - `message`: an optional `ByteString` object representing a message to be included with the transaction. If no message is specified, this field is set to `None`.
@@ -18,13 +18,13 @@ import org.oxygenium.protocol.model.Address
 import org.oxygenium.util.Amount
 
 val destAddress = Address.fromString("OXM-abc123")
-val alphAmount = Amount.fromAlph(10)
+val alphAmount = Amount.fromOxm(10)
 val token1 = Token.fromString("TOKEN1-xyz789")
 val token2 = Token.fromString("TOKEN2-123abc")
 
 val dest = Destination(
   address = destAddress,
-  attoAlphAmount = alphAmount,
+  attoOxmAmount = alphAmount,
   tokens = Some(AVector(token1, token2)),
   lockTime = Some(TimeStamp.now().plusSeconds(3600)),
   message = Some(ByteString("Hello, world!"))

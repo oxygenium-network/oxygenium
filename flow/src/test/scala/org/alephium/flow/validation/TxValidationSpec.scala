@@ -169,15 +169,15 @@ class TxValidationSpec extends OxygeniumFlowSpec with NoIndexModelGeneratorsLike
     }
 
     implicit class RichTx(tx: Transaction) {
-      def addAttoAlphAmount(delta: U256): Transaction = {
-        updateAttoAlphAmount(_ + delta)
+      def addAttoOxmAmount(delta: U256): Transaction = {
+        updateAttoOxmAmount(_ + delta)
       }
 
-      def zeroAttoAlphAmount(): Transaction = {
-        updateAttoAlphAmount(_ => 0)
+      def zeroAttoOxmAmount(): Transaction = {
+        updateAttoOxmAmount(_ => 0)
       }
 
-      def updateAttoAlphAmount(f: U256 => U256): Transaction = {
+      def updateAttoOxmAmount(f: U256 => U256): Transaction = {
         updateRandomFixedOutputsWithoutToken(output => output.copy(amount = f(output.amount)))
       }
 
@@ -502,26 +502,26 @@ class TxValidationSpec extends OxygeniumFlowSpec with NoIndexModelGeneratorsLike
       implicit val validator = checkOutputStats(_, HardFork.Leman)
 
       // balance overflow
-      val attoAlphAmount = tx.attoAlphAmountInOutputs.value
-      val delta          = U256.MaxValue - attoAlphAmount + 1
-      tx.addAttoAlphAmount(delta).fail(BalanceOverFlow)
+      val attoOxmAmount = tx.attoOxmAmountInOutputs.value
+      val delta          = U256.MaxValue - attoOxmAmount + 1
+      tx.addAttoOxmAmount(delta).fail(BalanceOverFlow)
 
       // zero amount
-      tx.zeroAttoAlphAmount().fail(InvalidOutputStats)
+      tx.zeroAttoOxmAmount().fail(InvalidOutputStats)
 
       {
         info("Check dust amount before leman")
         implicit val validator = checkOutputStats(_, HardFork.Mainnet)
-        tx.updateAttoAlphAmount(_ => deprecatedDustUtxoAmount).pass()
-        tx.updateAttoAlphAmount(_ => deprecatedDustUtxoAmount - 1).fail(InvalidOutputStats)
+        tx.updateAttoOxmAmount(_ => deprecatedDustUtxoAmount).pass()
+        tx.updateAttoOxmAmount(_ => deprecatedDustUtxoAmount - 1).fail(InvalidOutputStats)
       }
 
       {
         info("Check dust amount for leman")
         dustUtxoAmount is (deprecatedDustUtxoAmount * 1000)
         implicit val validator = checkOutputStats(_, HardFork.Leman)
-        tx.updateAttoAlphAmount(_ => dustUtxoAmount).pass()
-        tx.updateAttoAlphAmount(_ => dustUtxoAmount - 1).fail(InvalidOutputStats)
+        tx.updateAttoOxmAmount(_ => dustUtxoAmount).pass()
+        tx.updateAttoOxmAmount(_ => dustUtxoAmount - 1).fail(InvalidOutputStats)
       }
     }
   }
@@ -733,7 +733,7 @@ class TxValidationSpec extends OxygeniumFlowSpec with NoIndexModelGeneratorsLike
 
   it should "test both OXM and token balances" in new Fixture {
     forAll(transactionGenWithPreOutputs()) { case (tx, preOutputs) =>
-      checkAlphBalance(tx, preOutputs.map(_.referredOutput), None).pass()
+      checkOxmBalance(tx, preOutputs.map(_.referredOutput), None).pass()
       checkTokenBalance(tx, preOutputs.map(_.referredOutput)).pass()
       checkBlockTx(tx, preOutputs).pass()
     }
@@ -742,11 +742,11 @@ class TxValidationSpec extends OxygeniumFlowSpec with NoIndexModelGeneratorsLike
   it should "validate OXM balances" in new Fixture {
     forAll(transactionGenWithPreOutputs()) { case (tx, preOutputs) =>
       implicit val validator = nestedValidator(
-        checkAlphBalance(_, preOutputs.map(_.referredOutput), None),
+        checkOxmBalance(_, preOutputs.map(_.referredOutput), None),
         preOutputs
       )
 
-      tx.addAttoAlphAmount(1).fail(InvalidAlphBalance)
+      tx.addAttoOxmAmount(1).fail(InvalidOxmBalance)
     }
   }
 

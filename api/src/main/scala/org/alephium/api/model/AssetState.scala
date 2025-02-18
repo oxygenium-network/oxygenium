@@ -21,12 +21,12 @@ import org.oxygenium.protocol.vm.LockupScript
 import org.oxygenium.util.{AVector, U256}
 
 @SuppressWarnings(Array("org.wartremover.warts.DefaultArguments"))
-final case class AssetState(attoAlphAmount: U256, tokens: Option[AVector[Token]] = None) {
+final case class AssetState(attoOxmAmount: U256, tokens: Option[AVector[Token]] = None) {
   lazy val flatTokens: AVector[Token] = tokens.getOrElse(AVector.empty)
 
   def toContractOutput(contractId: ContractId): ContractOutput = {
     ContractOutput(
-      attoAlphAmount,
+      attoOxmAmount,
       LockupScript.p2c(contractId),
       flatTokens.map(token => (token.id, token.amount))
     )
@@ -34,8 +34,8 @@ final case class AssetState(attoAlphAmount: U256, tokens: Option[AVector[Token]]
 }
 
 object AssetState {
-  def from(attoAlphAmount: U256, tokens: AVector[Token]): AssetState = {
-    AssetState(attoAlphAmount, Some(tokens))
+  def from(attoOxmAmount: U256, tokens: AVector[Token]): AssetState = {
+    AssetState(attoOxmAmount, Some(tokens))
   }
 
   def from(output: model.TxOutput): AssetState = {

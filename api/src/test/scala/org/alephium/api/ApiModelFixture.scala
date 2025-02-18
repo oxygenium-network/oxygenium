@@ -50,13 +50,13 @@ trait ApiModelFixture
 
   val txInput = TxInput(assetTxOutputRef, scriptPair.unlock)
   val assetOutput = TxOutput.asset(
-    OXM.oneAlph,
+    OXM.oneOxm,
     AVector.empty,
     LockupScript.p2pkh(Hash.zero)
   )
 
   val contractOutput = TxOutput.contract(
-    OXM.oneAlph,
+    OXM.oneOxm,
     LockupScript.p2c(ContractId.zero)
   )
 

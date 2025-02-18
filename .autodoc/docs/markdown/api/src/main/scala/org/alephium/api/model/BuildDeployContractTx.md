@@ -16,7 +16,7 @@ val gasAmount: Option[GasBox] = // gas amount for executing the transaction
 val deployTx = BuildDeployContractTx(
   fromPublicKey = senderPublicKey,
   bytecode = contractCode,
-  initialAttoAlphAmount = initialAmount,
+  initialAttoOxmAmount = initialAmount,
   gasPrice = gasPrice,
   gasAmount = gasAmount
 )

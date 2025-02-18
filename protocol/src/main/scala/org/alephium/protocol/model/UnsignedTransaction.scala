@@ -160,13 +160,13 @@ object UnsignedTransaction {
       fromLockupScript: LockupScript.Asset,
       fromUnlockScript: UnlockScript,
       inputs: AVector[(AssetOutputRef, AssetOutput)],
-      approvedAttoAlphAmount: U256,
+      approvedAttoOxmAmount: U256,
       approvedTokens: AVector[(TokenId, U256)],
       gasAmount: GasBox,
       gasPrice: GasPrice
   )(implicit networkConfig: NetworkConfig): Either[String, UnsignedTransaction] = {
     val approved =
-      TxOutputInfo(fromLockupScript, approvedAttoAlphAmount, approvedTokens, None, None)
+      TxOutputInfo(fromLockupScript, approvedAttoOxmAmount, approvedTokens, None, None)
     val approvedAsOutput = buildOutputs(approved)
     for {
       gasFee <- preCheckBuildTx(inputs, gasAmount, gasPrice)
@@ -210,7 +210,7 @@ object UnsignedTransaction {
   ): Either[String, AVector[AssetOutput]] = {
     val inputUTXOView = inputs.map(_._2)
     for {
-      alphRemainder   <- calculateAlphRemainder(inputUTXOView, txOutputs, gasFee)
+      alphRemainder   <- calculateOxmRemainder(inputUTXOView, txOutputs, gasFee)
       tokensRemainder <- calculateTokensRemainder(inputUTXOView, txOutputs)
       changeOutputs   <- calculateChangeOutputs(alphRemainder, tokensRemainder, fromLockupScript)
     } yield changeOutputs
@@ -238,7 +238,7 @@ object UnsignedTransaction {
   ): Either[String, (AVector[AssetOutput], AVector[AssetOutput])] = {
     for {
       gasFee <- preCheckBuildTx(inputs, gas, gasPrice)
-      _      <- checkMinimalAlphPerOutput(outputInfos)
+      _      <- checkMinimalOxmPerOutput(outputInfos)
       _      <- checkTokenValuesNonZero(outputInfos)
       txOutputs = buildOutputs(outputInfos)
       changeOutputs <- calculateChangeOutputs(fromLockupScript, inputs, txOutputs, gasFee)
@@ -304,7 +304,7 @@ object UnsignedTransaction {
   }
 
   def buildOutputs(outputInfo: TxOutputInfo): AVector[AssetOutput] = {
-    val TxOutputInfo(toLockupScript, attoAlphAmount, tokens, lockTimeOpt, additionalDataOpt) =
+    val TxOutputInfo(toLockupScript, attoOxmAmount, tokens, lockTimeOpt, additionalDataOpt) =
       outputInfo
     val tokenOutputs = tokens.map { token =>
       AssetOutput(
@@ -315,7 +315,7 @@ object UnsignedTransaction {
         additionalDataOpt.getOrElse(ByteString.empty)
       )
     }
-    val alphRemaining = attoAlphAmount
+    val alphRemaining = attoOxmAmount
       .sub(dustUtxoAmount.mulUnsafe(U256.unsafe(tokens.length)))
       .getOrElse(U256.Zero)
     if (alphRemaining == U256.Zero) {
@@ -348,10 +348,10 @@ object UnsignedTransaction {
       _ <- checkWithMaxTxInputNum(inputs)
       _ <- checkUniqueInputs(inputs)
       outputs = buildOutputs(outputInfos)
-      _               <- checkMinimalAlphPerOutput(outputInfos)
+      _               <- checkMinimalOxmPerOutput(outputInfos)
       _               <- checkTokenValuesNonZero(outputInfos)
-      alphRemainder   <- calculateAlphRemainder(inputRefs, outputs, gasFee)
-      _               <- checkNoAlphRemainder(alphRemainder)
+      alphRemainder   <- calculateOxmRemainder(inputRefs, outputs, gasFee)
+      _               <- checkNoOxmRemainder(alphRemainder)
       tokensRemainder <- calculateTokensRemainder(inputRefs, outputs)
       _               <- checkNoTokensRemainder(tokensRemainder)
     } yield {
@@ -367,9 +367,9 @@ object UnsignedTransaction {
     }
   }
 
-  def checkNoAlphRemainder(alphRemainder: U256): Either[String, Unit] = {
+  def checkNoOxmRemainder(alphRemainder: U256): Either[String, Unit] = {
     if (alphRemainder != U256.Zero) {
-      Left("Inputs' Alph don't sum up to outputs and gas fee")
+      Left("Inputs' Oxm don't sum up to outputs and gas fee")
     } else {
       Right(())
     }
@@ -400,19 +400,19 @@ object UnsignedTransaction {
     )
   }
 
-  private def calculateAlphRemainder(
+  private def calculateOxmRemainder(
       inputs: AVector[AssetOutput],
       outputs: AVector[AssetOutput],
       gasFee: U256
   ): Either[String, U256] = {
-    calculateAlphRemainder(
+    calculateOxmRemainder(
       inputs.map(_.amount),
       outputs.map(_.amount),
       gasFee
     )
   }
 
-  def calculateAlphRemainder(
+  def calculateOxmRemainder(
       inputs: AVector[U256],
       outputs: AVector[U256],
       gasFee: U256
@@ -482,12 +482,12 @@ object UnsignedTransaction {
     }
   }
 
-  private def checkMinimalAlphPerOutput(
+  private def checkMinimalOxmPerOutput(
       outputs: AVector[TxOutputInfo]
   ): Either[String, Unit] = {
     check(
       failCondition = outputs.exists { output =>
-        output.attoAlphAmount < dustUtxoAmount
+        output.attoOxmAmount < dustUtxoAmount
       },
       "Tx output value is too small, avoid spreading dust"
     )
@@ -508,24 +508,24 @@ object UnsignedTransaction {
   ): Either[String, (U256, AVector[(TokenId, U256)], Int)] = {
     outputInfos
       .foldE((U256.Zero, ListMap.empty[TokenId, U256], 0)) {
-        case ((totalAlphAmount, totalTokens, totalOutputLength), outputInfo) =>
+        case ((totalOxmAmount, totalTokens, totalOutputLength), outputInfo) =>
           val tokenDustAmount = dustUtxoAmount.mulUnsafe(U256.unsafe(outputInfo.tokens.length))
           val outputLength = outputInfo.tokens.length + // UTXOs for token
-            (if (outputInfo.attoAlphAmount <= tokenDustAmount) 0 else 1) // UTXO for OXM
+            (if (outputInfo.attoOxmAmount <= tokenDustAmount) 0 else 1) // UTXO for OXM
           val alphAmount =
-            Math.max(outputInfo.attoAlphAmount, dustUtxoAmount.mulUnsafe(U256.unsafe(outputLength)))
+            Math.max(outputInfo.attoOxmAmount, dustUtxoAmount.mulUnsafe(U256.unsafe(outputLength)))
           for {
-            newAlphAmount  <- totalAlphAmount.add(alphAmount).toRight("OXM amount overflow")
+            newOxmAmount  <- totalOxmAmount.add(alphAmount).toRight("OXM amount overflow")
             newTotalTokens <- updateTokens(totalTokens, outputInfo.tokens)
-          } yield (newAlphAmount, newTotalTokens, totalOutputLength + outputLength)
+          } yield (newOxmAmount, newTotalTokens, totalOutputLength + outputLength)
       }
-      .flatMap { case ((totalAlphAmount, totalTokens, totalOutputLength)) =>
+      .flatMap { case ((totalOxmAmount, totalTokens, totalOutputLength)) =>
         val outputLengthSender = totalTokens.size + 1
         val alphAmountSender   = dustUtxoAmount.mulUnsafe(U256.unsafe(outputLengthSender))
-        totalAlphAmount.add(alphAmountSender).toRight("OXM amount overflow").map {
-          finalAlphAmount =>
+        totalOxmAmount.add(alphAmountSender).toRight("OXM amount overflow").map {
+          finalOxmAmount =>
             (
-              finalAlphAmount,
+              finalOxmAmount,
               AVector.from(totalTokens.iterator),
               totalOutputLength + outputLengthSender
             )
@@ -594,7 +594,7 @@ object UnsignedTransaction {
 
   final case class TxOutputInfo(
       lockupScript: LockupScript.Asset,
-      attoAlphAmount: U256,
+      attoOxmAmount: U256,
       tokens: AVector[(TokenId, U256)],
       lockTime: Option[TimeStamp],
       additionalDataOpt: Option[ByteString]
@@ -603,11 +603,11 @@ object UnsignedTransaction {
   object TxOutputInfo {
     def apply(
         lockupScript: LockupScript.Asset,
-        attoAlphAmount: U256,
+        attoOxmAmount: U256,
         tokens: AVector[(TokenId, U256)],
         lockTime: Option[TimeStamp]
     ): TxOutputInfo = {
-      TxOutputInfo(lockupScript, attoAlphAmount, tokens, lockTime, None)
+      TxOutputInfo(lockupScript, attoOxmAmount, tokens, lockTime, None)
     }
   }
 

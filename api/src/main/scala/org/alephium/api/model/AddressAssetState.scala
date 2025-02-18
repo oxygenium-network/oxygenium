@@ -20,7 +20,7 @@ import org.oxygenium.protocol.model.Address
 import org.oxygenium.util.{AVector, U256}
 final case class AddressAssetState(
     address: Address,
-    attoAlphAmount: U256,
+    attoOxmAmount: U256,
     tokens: Option[AVector[Token]]
 )
 

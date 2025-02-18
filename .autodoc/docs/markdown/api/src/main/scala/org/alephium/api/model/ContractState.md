@@ -12,11 +12,11 @@ This file contains two case classes, `ContractState` and `AssetState`, and an ob
 - `asset`: an `AssetState` object representing the assets held by the contract
 
 `AssetState` represents the assets held by a smart contract and contains the following fields:
-- `attoAlphAmount`: the amount of Oxygenium tokens held by the contract
+- `attoOxmAmount`: the amount of Oxygenium tokens held by the contract
 - `tokens`: an optional vector of tokens held by the contract
 
 `AssetState` also contains two methods:
-- `from(attoAlphAmount: U256, tokens: AVector[Token]): AssetState`: creates an `AssetState` object from the given amount of Oxygenium tokens and vector of tokens
+- `from(attoOxmAmount: U256, tokens: AVector[Token]): AssetState`: creates an `AssetState` object from the given amount of Oxygenium tokens and vector of tokens
 - `from(output: ContractOutput): AssetState`: creates an `AssetState` object from the given `ContractOutput` object
 
 `ContractState` has a method `id` that returns the ID of the contract, which is derived from the contract's lockup script.
@@ -27,7 +27,7 @@ These classes and methods are used throughout the Oxygenium project to represent
 - The `oxygenium.api.model` package contains classes that represent data models used in the Oxygenium API.
 
 2. What is the `AssetState` case class used for?
-- The `AssetState` case class represents the state of an asset, including the amount of attoAlph and an optional vector of tokens.
+- The `AssetState` case class represents the state of an asset, including the amount of attoOxm and an optional vector of tokens.
 
 3. What is the `toContractOutput` method used for in the `AssetState` case class?
 - The `toContractOutput` method is used to convert an `AssetState` object to a `ContractOutput` object, which is used to represent the output of a contract.

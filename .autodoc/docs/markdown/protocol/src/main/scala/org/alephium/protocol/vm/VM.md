@@ -6,7 +6,7 @@ The main method for executing a contract is `execute(obj: ContractObj[Ctx], meth
 
 The `StatelessVM` and `StatefulVM` classes provide their own implementations for starting a new frame and handling the execution of payable and non-payable methods. The `StatefulVM` also handles the management of contract balances and the generation of transaction outputs.
 
-The `VM` object provides utility methods for checking code size, field size, and contract Atto Alph amounts. It also defines the `AssetScriptExecution` and `TxScriptExecution` case classes, which represent the results of executing asset and transaction scripts, respectively.
+The `VM` object provides utility methods for checking code size, field size, and contract Atto Oxm amounts. It also defines the `AssetScriptExecution` and `TxScriptExecution` case classes, which represent the results of executing asset and transaction scripts, respectively.
 
 Example usage of the VM can be found in the `StatelessVM` and `StatefulVM` companion objects, which provide methods for running asset and transaction scripts, such as `runAssetScript` and `runTxScript`. These methods take a blockchain environment, transaction environment, initial gas, and script as input and return the execution result.
 ## Questions: 

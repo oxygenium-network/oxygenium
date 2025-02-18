@@ -360,7 +360,7 @@ trait BlockValidation extends Validation[Block, InvalidBlockStatus, Option[World
     }
 
     result match {
-      case Left(Right(ExistInvalidTx(_, InvalidAlphBalance))) => Left(Right(InvalidCoinbaseReward))
+      case Left(Right(ExistInvalidTx(_, InvalidOxmBalance))) => Left(Right(InvalidCoinbaseReward))
       case result                                             => result
     }
   }

@@ -155,7 +155,7 @@ class OxygeniumConfigSpec extends OxygeniumSpec {
   }
 
   it should "load genesis config" in {
-    val amount = OXM.oneAlph
+    val amount = OXM.oneOxm
     val addresses = AVector(
       "127TathFRczW5LXeNK2n2A6Qi2EpkamcmvwCrr3y18uHT",
       "1HMSFdhPpvPybfWLZiHeBxVbnfTc2L6gkVPHfuJWoZrMA"

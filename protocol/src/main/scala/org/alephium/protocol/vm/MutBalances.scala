@@ -27,18 +27,18 @@ final case class MutBalances(all: ArrayBuffer[(LockupScript, MutBalancesPerLocku
     all.collectFirst { case (ls, balance) if ls == lockupScript => balance }
   }
 
-  def getAttoAlphAmount(lockupScript: LockupScript): Option[U256] = {
-    getBalances(lockupScript).map(_.attoAlphAmount)
+  def getAttoOxmAmount(lockupScript: LockupScript): Option[U256] = {
+    getBalances(lockupScript).map(_.attoOxmAmount)
   }
 
   def getTokenAmount(lockupScript: LockupScript, tokenId: TokenId): Option[U256] = {
     getBalances(lockupScript).flatMap(_.getTokenAmount(tokenId))
   }
 
-  def addAlph(lockupScript: LockupScript, amount: U256): Option[Unit] = {
+  def addOxm(lockupScript: LockupScript, amount: U256): Option[Unit] = {
     getBalances(lockupScript) match {
       case Some(balances) =>
-        balances.addAlph(amount)
+        balances.addOxm(amount)
       case None =>
         all.addOne(lockupScript -> MutBalancesPerLockup.alph(amount))
         Some(())
@@ -55,8 +55,8 @@ final case class MutBalances(all: ArrayBuffer[(LockupScript, MutBalancesPerLocku
     }
   }
 
-  def subAlph(lockupScript: LockupScript, amount: U256): Option[Unit] = {
-    getBalances(lockupScript).flatMap(_.subAlph(amount))
+  def subOxm(lockupScript: LockupScript, amount: U256): Option[Unit] = {
+    getBalances(lockupScript).flatMap(_.subOxm(amount))
   }
 
   def subToken(lockupScript: LockupScript, tokenId: TokenId, amount: U256): Option[Unit] = {
