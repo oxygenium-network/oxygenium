@@ -446,7 +446,7 @@ lazy val integration = project("integration")
   .dependsOn(app % "test->test")
   .settings(
     publish / skip                   := true,
-    Test / envVars += "ALEPHIUM_ENV" -> "it"
+    Test / envVars += "OXYGENIUM_ENV" -> "it"
   )
 
 val publishSettings = Seq(
@@ -511,7 +511,7 @@ val commonSettings = publishSettings ++ Seq(
   fork                                  := true,
   javaOptions += "-Xss2m",
   Test / scalacOptions ++= Seq("-Xcheckinit"),
-  Test / envVars += "ALEPHIUM_ENV" -> "test",
+  Test / envVars += "OXYGENIUM_ENV" -> "test",
   Test / testOptions += Tests.Argument("-oD"),
   libraryDependencies ++= Seq(
     `akka-test`,
