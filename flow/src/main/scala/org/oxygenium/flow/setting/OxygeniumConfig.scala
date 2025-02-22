@@ -404,8 +404,8 @@ object OxygeniumConfig {
           if (discovery.bootstrap.isEmpty) {
             discovery.copy(bootstrap =
               ArraySeq(
-                new InetSocketAddress("bootstrap0.testnet.oxygenium.org", 9983),
-                new InetSocketAddress("bootstrap1.testnet.oxygenium.org", 9983)
+                new InetSocketAddress("bootstrap0-testnet.oxygenium-network.org", 9983),
+                new InetSocketAddress("bootstrap1-testnet.oxygenium-network.org", 9983)
               )
             )
           } else {
