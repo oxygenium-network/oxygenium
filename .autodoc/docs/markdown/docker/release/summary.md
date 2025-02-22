@@ -15,7 +15,7 @@ Here's an example of how to build and run the Oxygenium node using the provided 
 docker build -t oxygenium-node -f Dockerfile.release .
 
 # Run the Oxygenium node in a Docker container
-docker run -d -p 12973:12973 -p 11973:11973 -p 10973:10973 -p 9973:9973 -v /path/to/data:/oxygenium-home/.oxygenium -v /path/to/wallets:/oxygenium-home/.oxygenium-wallets oxygenium-node
+docker run -d -p 12983:12983 -p 11983:11983 -p 10983:10983 -p 9983:9983 -v /path/to/data:/oxygenium-home/.oxygenium -v /path/to/wallets:/oxygenium-home/.oxygenium-wallets oxygenium-node
 ```
 
 In summary, the `.autodoc/docs/json/docker/release` folder provides the necessary files for building a Docker image of the Oxygenium node software and running it in a container. The Dockerfiles set up the environment, directories, and configuration files, while the `entrypoint.sh` script allows for easy customization of the Java environment. The `user-mainnet-release.conf` file configures the network and mining API interfaces, enabling communication and mining operations within the Oxygenium network.

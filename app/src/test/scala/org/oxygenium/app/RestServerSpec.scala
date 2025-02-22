@@ -988,7 +988,7 @@ abstract class RestServerSpec(
         read[ujson.Value](
           Using(Source.fromFile(openapiPath.getPath, "UTF-8")) { source =>
             val openApiJson = source.getLines().mkString("\n")
-            reverseAddressTruncation(openApiJson).replaceFirst("12973", s"$port")
+            reverseAddressTruncation(openApiJson).replaceFirst("12983", s"$port")
           }.get
         )
 

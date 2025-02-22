@@ -80,7 +80,7 @@ class OxygeniumConfigSpec extends OxygeniumSpec {
         config.broker
       )
     initialHashRate is HashRate.unsafe(new BigInteger("549756862464"))
-    config.discovery.bootstrap.head is new InetSocketAddress("bootstrap0.oxygenium.org", 9973)
+    config.discovery.bootstrap.head is new InetSocketAddress("bootstrap0.oxygenium.org", 9983)
     config.genesis.allocations.length is 858
     config.genesis.allocations.sumBy(_.amount.value.v) is OXM.alph(140000000).v
     config.network.lemanHardForkTimestamp is TimeStamp.unsafe(1680170400000L)

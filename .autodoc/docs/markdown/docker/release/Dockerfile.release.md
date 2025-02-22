@@ -4,7 +4,7 @@ This Dockerfile is used to build a Docker image for the Oxygenium project. The i
 
 The Dockerfile sets up the necessary directories for the Oxygenium binary to run, including creating a home directory for the `nobody` user, which is the user that the Oxygenium binary will run as. The Dockerfile also copies a configuration file (`user-mainnet-release.conf`) to the `nobody` user's home directory, which is used to configure the Oxygenium binary at runtime. 
 
-The Dockerfile exposes several ports that the Oxygenium binary uses to communicate with other nodes on the network. These ports include `12973` for HTTP, `11973` for WebSocket, `10973` for the miner, and `9973` for P2P communication. 
+The Dockerfile exposes several ports that the Oxygenium binary uses to communicate with other nodes on the network. These ports include `12983` for HTTP, `11983` for WebSocket, `10983` for the miner, and `9983` for P2P communication. 
 
 The Dockerfile also sets up two volumes for the `nobody` user's home directory, one for the Oxygenium data directory (`/oxygenium-home/.oxygenium`) and one for the Oxygenium wallets directory (`/oxygenium-home/.oxygenium-wallets`). These volumes allow the user to persist data and wallets across container restarts. 
 
@@ -16,7 +16,7 @@ Example usage:
 
 ```
 docker build -t oxygenium-node .
-docker run -d -p 12973:12973 -p 11973:11973 -p 10973:10973 -p 9973:9973 -v /path/to/data:/oxygenium-home/.oxygenium -v /path/to/wallets:/oxygenium-home/.oxygenium-wallets oxygenium-node
+docker run -d -p 12983:12983 -p 11983:11983 -p 10983:10983 -p 9983:9983 -v /path/to/data:/oxygenium-home/.oxygenium -v /path/to/wallets:/oxygenium-home/.oxygenium-wallets oxygenium-node
 ```
 ## Questions: 
  1. What is the purpose of this Dockerfile?

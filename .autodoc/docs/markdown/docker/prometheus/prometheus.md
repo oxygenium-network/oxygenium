@@ -4,7 +4,7 @@ This code is a configuration file for Prometheus, a monitoring and alerting syst
 
 The `global` section sets the default scrape interval and evaluation interval to 15 seconds. It also sets the external label for all time series and alerts to 'oxygenium'. 
 
-The `scrape_configs` section defines the job name as 'oxygenium' and sets the scrape interval to 15 seconds. The `static_configs` section specifies the target to be scraped, which is the Oxygenium application running on port 12973. It also adds a label 'app' with the value 'oxygenium' to all scraped time series and alerts. 
+The `scrape_configs` section defines the job name as 'oxygenium' and sets the scrape interval to 15 seconds. The `static_configs` section specifies the target to be scraped, which is the Oxygenium application running on port 12983. It also adds a label 'app' with the value 'oxygenium' to all scraped time series and alerts. 
 
 This configuration file can be used in the larger Oxygenium project to monitor the performance and health of the application. Prometheus will scrape metrics from the Oxygenium application at the defined interval and store them in a time series database. These metrics can then be visualized and analyzed using Prometheus' built-in query language, or used to trigger alerts based on predefined rules. 
 
@@ -28,4 +28,4 @@ http://localhost:9090/
 
 3. What is the purpose of the `scrape_configs` section in this code?
     
-    The `scrape_configs` section contains the configuration for scraping a specific endpoint, in this case, Prometheus itself. It sets the job name, scrape interval, and targets to scrape. In this case, the target is `'oxygenium:12973'` and the label `app` is set to `'oxygenium'`.
+    The `scrape_configs` section contains the configuration for scraping a specific endpoint, in this case, Prometheus itself. It sets the job name, scrape interval, and targets to scrape. In this case, the target is `'oxygenium:12983'` and the label `app` is set to `'oxygenium'`.

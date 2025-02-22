@@ -8,7 +8,7 @@ The next step is to download the Oxygenium node software from GitHub. This is do
 
 The `COPY` command is then used to copy two files into the container. The first file is called `user-mainnet-release.conf` and is copied to `/oxygenium-home/.oxygenium/user.conf`. This file contains the configuration settings for the Oxygenium node. The second file is called `entrypoint.sh` and is copied to the root directory of the container. This file is used as the entrypoint for the container.
 
-The `EXPOSE` command is used to expose four ports: `12973` for HTTP, `11973` for WebSocket, `10973` for the miner, and `9973` for P2P communication.
+The `EXPOSE` command is used to expose four ports: `12983` for HTTP, `11983` for WebSocket, `10983` for the miner, and `9983` for P2P communication.
 
 The `VOLUME` command is used to create two volumes: `/oxygenium-home/.oxygenium` and `/oxygenium-home/.oxygenium-wallets`. These volumes are used to store the Oxygenium node data and wallet data, respectively.
 
@@ -30,4 +30,4 @@ Overall, this Dockerfile is used to build a container that can run the Oxygenium
 
 3. What is the significance of the exposed ports?
    
-   The exposed ports are used by the Oxygenium network to communicate with other nodes and miners. Port 12973 is used for HTTP communication, port 11973 is used for WebSocket communication, port 10973 is used for miner communication, and port 9973 is used for peer-to-peer communication.
+   The exposed ports are used by the Oxygenium network to communicate with other nodes and miners. Port 12983 is used for HTTP communication, port 11983 is used for WebSocket communication, port 10983 is used for miner communication, and port 9983 is used for peer-to-peer communication.
