@@ -126,10 +126,10 @@ object OXM {
       Address.fromBase58(address).get.lockupScript
     }
     Set(
-      miner("18vjw7mZkewYftGEAd1xYdikwT9pQQBZJ9X6iVZcP7RMH"),
-      miner("1C92vpoTFsqREhtL77WxhFzwMpU6TNxAui5P8eRJQANAQ"),
-      miner("184BrusRUyFBpwgRUz9WpKX9DTa29k8MsUMwscuwJG5M2"),
-      miner("198jFdJwLWRBvFwQ1K54Bdr2TJ2MYDYiVs2QWr1aYUaDE")
+      miner("1GC2TDVmsprP4khryR4wXoKxinXmbSdmZMXdinFdfkTwi"),
+      miner("124oZKw9WkNhBrsW1L2TGjrmhyMoxZi98RotAZXMq9AoF"),
+      miner("15TM5iGb9hpN4pWT1u4tXGC59seo5XSc1T29khoPcrwpt"),
+      miner("1EFqgJ5aXnkCtK6Cp7jMynEExqHHMCXZ16BJkq78brdn5")
     )
   }
 
